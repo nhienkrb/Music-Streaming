@@ -1,0 +1,227 @@
+<body ng-controller="playlistCtrl">
+    <section class="w-100 h-100">
+        <div class="row pt-5" style="background: linear-gradient(to bottom, #4e2e89, rgb(75, 106, 135));">
+            <div class="col-2 ms-3 mb-3">
+                <img class="w-100 img-playlist" style="height: 200px; object-fit: cover;"
+                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1699455162/Background/System/liked-songs-640_mhrtwz.png"
+                    alt="">
+            </div>
+            <div class="col-9 d-flex flex-column justify-content-center">
+                <div>
+                    <p class="p-0 m-0">Playlist</p>
+                    <h1>Liked songs</h1>
+                </div>
+                <div>
+                    <p class="text-white-50">{{playlist.description}}</p>
+                </div>
+                <div>
+                    <h6>{{account.username}}</h6>
+                </div>
+            </div>
+        </div>
+        <div ng-show="listLikedSongs.length > 0" class="d-flex justify-content-between align-items-center">
+            <div>
+                <button id="btn-wishlist-play" class="btn border-0">
+                    <i class="display-3 bi bi-play-circle" style="color: green;"></i>
+                </button>
+                <button id="btn-wishlist-pause" hidden class="btn border-0">
+                    <i class="display-3 bi bi-pause-circle" style="color: green;"></i>
+                </button>
+                <button id="btn-wishlist-shuffle" class="btn text-white border-0 py-0"><i
+                        class="display-6 bi bi-shuffle"></i></button>
+            </div>
+            <div class="d-flex">
+                <div>
+                    <div class="input-group me-3">
+                        <span class="input-group-text" style="background-color: transparent;"><i
+                                class="text-white bi bi-search-heart"></i></span>
+                        <input type="text" class="text-white form-control" placeholder="Search in liked song"
+                            style="background-color: transparent;" ng-model="searchWishlist">
+                    </div>
+                </div>
+                <div class="product_sorting_container product_sorting_container_top">
+                    <ul class="product_sorting">
+                        <li>
+                            <span class="type_sorting_text">Default Sorting</span>
+                            <i class="fa fa-angle-down"></i>
+                            <ul class="sorting_type p-0" style="z-index: 2;">
+                                <li class="type_sorting_btn">
+                                    <span>Default Sorting</span>
+                                </li>
+                                <li class="type_sorting_btn"><span>Custom order</span></li>
+                                <li class="type_sorting_btn"><span>Title</span></li>
+                                <li class="type_sorting_btn"><span>Artist</span></li>
+                                <li class="type_sorting_btn"><span>Album</span></li>
+                                <li class="type_sorting_btn"><span>Date added</span></li>
+                                <li class="type_sorting_btn"><span>Duration</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>Show</span>
+                            <span class="num_sorting_text">{{pagination.size}}</span>
+                            <i class="fa fa-angle-down"></i>
+                            <ul class="sorting_num  p-0" style="z-index: 2;">
+                                <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mx-4 mb-5">
+            <table ng-show="listLikedSongs.length > 0" class="table table-borderless text-white table-hover mb-5"
+                style="background-color: transparent!important;">
+                <thead class="border-bottom">
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Album</th>
+                    <th>Date added</th>
+                    <th class="text-center"><i class="bi bi-stopwatch"></i></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in pagination.items(listLikedSongs) | filter: searchWishlist"
+                        ng-dblclick="item.recordingId ? selectAudio(item,'song',listLikedSongs,$index) : selectAudio(item,'episode',listLikedSongs,$index)"
+                        class="audio align-items-center">
+                        <!-- Col 1 -->
+                        <td class="text-white">
+                            {{$index+1}}
+                        </td>
+                        <!-- Col 2 -->
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex">
+                                    <img class="rounded-2 mx-3"
+                                        src="{{item.recordingId ? item.song.image.url : item.image.url}}"
+                                        style="width: 50px; height: 50px; object-fit: cover;" alt="">
+                                    <div>
+                                        <h6 class="text-white">{{item.recordingId ? item.recordingName :
+                                            item.episodeTitle}}</h6>
+                                        <span class="small text-white"
+                                            ng-repeat="a in item.song.writters">{{a.artist.artistName}}</span>
+                                        <span class="small text-white">{{item.podcast.authorName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!-- Col 3 -->
+                        <td>
+                            <h6 ng-show="item.tracks.length === 0" class="p-0 m-0 text-white">{{item.recordingName}}</h6>
+                            <h6 ng-show="item.tracks.length > 0" class="p-0 m-0 text-white">
+                                {{item.tracks[0].album.albumName}}
+                            </h6>
+                            <h6 class="p-0 m-0 text-white">{{item.podcast.podcastName}}</h6>
+                        </td>
+
+                        <!-- Col 4 -->
+                        <td>
+                            <p class="p-0 m-0 text-white">{{wishList[$index].addDate}}</p>
+                        </td>
+
+                        <!-- Col 5 -->
+                        <td>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button ng-click="removeWishlist(wishList[$index].wishlistId,$index)" class="btn border-0 text-white"><i style="color: green;" class="bi bi-heart-fill"></i></button>
+                                <h6 class="p-0 m-0 text-white"><format-time seconds="item.duration"></format-time></h6>
+                                <button class="btn border-0 text-white" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu p-0 bg-dark ul-dropdown-start-end">
+                                        <li ng-show="account.email" class="li-dropdown-start-end">
+                                            <a class="btn text-white dropdown-item py-2"
+                                                ng-click="checkExisted(item,$event)"><i
+                                                    class="bi bi-hearts"></i>{{isLiked(item) ? 'Remove from liked songs':'Save to your liked songs'}} </a>
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a ng-click="createPlaylistAddSong(item)" class="btn text-white dropdown-item py-2">
+                                                <i class="bi bi-plus-lg"></i> Create playlist
+                                            </a>
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a class="btn text-white dropdown-item py-2" ng-click="enqueue(item)"><i
+                                                    class="bi bi-hdd-stack"></i> Add to queue</a>
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a class="btn text-white dropdown-item py-2"><i
+                                                    class="bi bi-person-lines-fill"></i> Go to artist</a>
+                                            <ul class="nav bg-dark w-100">
+                                                <li class="nav-item" ng-repeat="a in item.song.writters">
+                                                    <a href="#!artist/{{a.artist.artistId}}" class="nav-link text-white">
+                                                        {{a.artist.artistName}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a href="{{item.episodeId ? '#!episode/'+item.episode.episodeId : item.tracks.length>0 ? '#!album/'+item.tracks[0].album.albumId : '#!song/'+item.recordingId}}"
+                                                class="btn text-white dropdown-item py-2">
+                                                <i class="bi bi-journal-album"></i> Go to album
+                                            </a>
+                                        </li>
+                                        <li class="li-dropdown-start-end" ng-if="item.recording">
+                                            <a class="btn text-white dropdown-item py-2" data-bs-toggle="modal"
+                                                data-bs-target="#credits-{{item.recordingId}}"><i
+                                                    class="bi bi-share"></i> Show
+                                                credits</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a ng-click="item.recordingId ? typeShare('#!/song/'+item.recordingId) : typeShare('#!/episode/'+item.episodeId)"
+                                                data-bs-toggle="modal" data-bs-target="#sharing"
+                                                class="btn text-white dropdown-item py-2"><i class="bi bi-share"></i>
+                                                Share</a>
+                                        </li>
+                                        <li class="li-dropdown-start-end">
+                                            <a ng-show="item.episodeId" href="#!report/episode/{{item.episodeId}}" class="btn text-white dropdown-item py-2">
+                                                <i class="bi bi-flag-fill"></i></i>
+                                                Report
+                                            </a>
+                                            <a ng-show="item.recordingId" href="#!report/recording/{{item.recordingId}}" class="btn text-white dropdown-item py-2">
+                                                <i class="bi bi-flag-fill"></i></i>
+                                                Report
+                                            </a>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listLikedSongs)}} of
+                    {{pagination.items(listLikedSongs).length}} results</span>
+                <div class="pages d-flex flex-row align-items-center">
+                    <div ng-show="pagination.page > 0" ng-click="pagination.prev(listLikedSongs)" id="next_page_1" class="page_prev">
+                        <a>
+                            <i class="bi bi-arrow-left text-white"></i>
+                        </a>
+                    </div>
+                    <div class="page_current">
+                        <span>{{pagination.page +1}}</span>
+                        <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                            <li ng-repeat="i in pagination.getNumbers(pagination.count(listLikedSongs))">
+                                <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="page_total"><span>of</span> {{pagination.count(listLikedSongs)}}</div>
+                    <div ng-show="pagination.page < pagination.count(listLikedSongs)-1" ng-click="pagination.next(listLikedSongs)" id="next_page_1" class="page_next">
+                        <a>
+                            <i class="bi bi-arrow-right text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div></div>
+</body>

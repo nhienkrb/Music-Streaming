@@ -1,0 +1,22 @@
+body {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxMjgwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMy42MzUxIDQyMi4yNUwyMzkuODk2IDgzLjU3MDlMLTMyLjM1NDUgODcyTDExMzQuOTMgLTUwTDg2MS4xMzMgNzM5LjgwOEwxNTcxLjY1IDY5Ljk1NzhMMTMxNS43MiA4NTUuMzUxIiBzdHJva2U9IiMyODI4MjgiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4K) !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.img-podcast {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.inputCss {
+  background-color: transparent !important;
+
+}

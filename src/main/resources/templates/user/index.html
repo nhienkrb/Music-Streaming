@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Rhymthwave</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/search-detail.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/cssUser/profile.css" />
+
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/angularjs/user/index.js"></script>
+    <link rel="stylesheet" href="../../static/css/cssUser/profile.css" />
+    <link rel="stylesheet" href="../../static/css/report.css" />
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="bl-search-box-ss" style="z-index: 900;">
+        <!-- search -->
+        <div class="bl-search">
+            <div class="bl-search-box">
+                <div class="bl-search-hilden" style="opacity: 0"></div>
+                <div class="bl-back-next">
+                    <button class="bl-back-next-btn" style="color: white !important;" id="back">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+                    <button class="bl-back-next-btn" style="color: white !important;" id="forward">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="bl-input-search">
+                    <div class="bl-input-search-box">
+                        <div class="bl-input-search-f" ng-show="!searchHiden">
+                            <form id="searchform">
+                                <input ng-model="searchKeyword" class="bl-input-search-f-in" maxlength="800"
+                                    autocorrect="off" autocapitalize="off" spellcheck="false"
+                                    placeholder="What do you want to listen to?" data-testid="search-input"
+                                    data-encore-id="type" value="" style="color: rgb(0, 0, 0)" />
+                            </form>
+                            <div class="bl-input-search-f-icon">
+                                <span class="H6jh9Xd7DNOq3NsLDmCB"><i class="bi bi-search"
+                                        style="color: white;"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bl-install-ring-account">
+                    <div class="bl-install-ring-account-hilden"></div>
+                    <a href="/subscription">
+                        <span class="Type__TypeElement-sc-goli3j-0 eoWRdH ellipsis-one-line"
+                            data-encore-id="type">Premium</span>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <div class="bl-install-ring-account-hilden"></div>
+                    <button class="bl-install-ring-account-btn" data-bs-toggle="dropdown">
+                        <img src="{{account.image.url}}" alt="" class="rounded-circle w-100" height="25"
+                        loading="lazy">
+                        <figure style="color: white !important;">
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li ng-show="hideni"><a class="dropdown-item" ng-click="accountInfo()"> <i
+                                            class="bi bi-box-arrow-up-right"></i> Account</a></li>
+                                <li ng-show="hideni"><a class="dropdown-item" ng-click="artistPage()"> <i
+                                            class="bi bi-cassette"></i> Artist</a></li>
+                                <li ng-show="hideni"><a class="dropdown-item" ng-click="podcastPag()"> <i
+                                            class="bi bi-broadcast"></i> Podcast</a></li>
+                                <li ng-show="hidenAdmin"><a class="dropdown-item" ng-click="adminPage()"> <i
+                                            class="bi bi-person-bounding-box"></i> Admin</a></li>
+                                <li ng-show="!hideni"><a class="dropdown-item" ng-click="signin()"> <i
+                                            class="bi bi-box-arrow-in-left"></i> Sign in</a></li>
+                                <li ng-show="hideni">
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li ng-show="account.email">
+                                    <a class="dropdown-item" ng-click="logout()"> 
+                                        <i class="bi bi-box-arrow-right"></i> Log out
+                                    </a>
+                                </li>
+                            </ul>
+                        </figure>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- end search -->
+    </div>
+    <div class="content d-flex">
+        <div class="sidebar container-fluid">
+            <div class="row">
+                <ul class="list-group">
+                    <div class="card card-content shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <li>
+                                    <a class="list-group-item py-3 m-2" href="#!main">
+                                        <i class="mx-2 bi bi-house-heart-fill"></i> Dash board
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="list-group-item py-3 m-2" href="#!search">
+                                        <i class="mx-2 bi bi-search"></i> Search
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-content shadow ">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5>Your Library</h5>
+                                    <div class="dropdown">
+                                        <button type="button " class="btn border-0 button-control"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bi bi-plus-circle"></i>
+                                        </button>
+                                        <ul class="dropdown-menu drop-playlist ">
+                                            <li>
+                                                <a ng-show="!account.email" href="./signin" class="dropdown-item">
+                                                    <i class="bi bi-music-note-beamed"></i>
+                                                    Create a new Playlist
+                                                </a>
+                                                <a ng-show="account.email" class="dropdown-item" id="create-playlist">
+                                                    <i class="bi bi-music-note-beamed"></i> Create a new Playlist
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="playlist">
+                                    <!-- Wishlist -->
+                                    <li>
+                                        <a class="" ng-show="!account.email" href="./signin">
+                                            <div class="d-flex align-items-center">
+                                                <img class="m-2 rounded-2 thumbnail-playlist"
+                                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1699455162/Background/System/liked-songs-640_mhrtwz.png"
+                                                    alt="">
+                                                <div>
+                                                    <h6 class="p-0 m-0">Liked songs</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="" ng-show="account.email" href="#!wishlist">
+                                            <div class="d-flex align-items-center">
+                                                <img class="m-2 rounded-2 thumbnail-playlist"
+                                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1699455162/Background/System/liked-songs-640_mhrtwz.png"
+                                                    alt="">
+                                                <div>
+                                                    <h6 class="p-0 m-0">Liked songs</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- list follow -->
+                                    <li ng-repeat="item in listFollow"
+                                        ng-init="menuPlaylistId='element-menu-profile'+ $index"
+                                        oncontextmenu="contextMenu(event,this)">
+                                        <a ng-if="item.authorsAccountB.role.role !== 'ARTIST'"
+                                            href="#!profile/{{item.authorsAccountB.role.role.toLowerCase()}}/{{item.authorsAccountB.account.username}}">
+                                            <div class="d-flex align-items-center">
+                                                <img class="m-2 rounded-2 thumbnail-playlist"
+                                                    ng-src="{{item.authorsAccountB.account.image !==null?item.authorsAccountB.account.image.url:'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                                    alt="">
+                                                <div class="d-flex justify-content-between flex-column">
+                                                    <p class="p-0 m-0">{{item.authorsAccountB.account.username}}</p>
+                                                    <span class="small">{{item.authorsAccountB.role.role}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a ng-if="item.authorsAccountB.role.role === 'ARTIST'"
+                                            href="#!artist/{{item.authorsAccountB.account.artist.artistId}}">
+                                            <div class="d-flex align-items-center">
+                                                <img class="m-2 rounded-2 thumbnail-playlist"
+                                                    ng-src="{{item.authorsAccountB.account.artist.imagesProfile!==null?item.authorsAccountB.account.artist.imagesProfile.url:'https://res.cloudinary.com/div9ldpou/image/upload/v1696293833/Avatar/System/807831_rrsd2v.png'}}"
+                                                    alt="">
+                                                <div class="d-flex justify-content-between flex-column">
+                                                    <p class="p-0 m-0">
+                                                        {{item.authorsAccountB.account.artist.artistName}}
+                                                    </p>
+                                                    <span class="small">{{item.authorsAccountB.role.role}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="element-menu" id="{{menuPlaylistId}}">
+                                            <ul class="p-0 bg-dark ul-dropdown-end">
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="deleteFollow(item.followerId)"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-x-lg"></i> Unfollow
+                                                    </a>
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <a href="{{item.authorsAccountB.role.role === 'ARTIST' ? '#!artist/'+item.authorsAccountB.account.artist.artistId : '#!profile/'+item.authorsAccountB.role.role.toLowerCase()+'/'+item.authorsAccountB.account.username}}"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i ng-class="item.isPublic ? 'bi bi-lock' : 'bi bi-globe2'"></i>
+                                                        Go to the profile
+                                                    </a>
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <a ng-show="item.authorsAccountB.role.role === 'ARTIST'"
+                                                        href="#!report/artist/{{item.artistId}}"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-exclamation-octagon"></i> Report
+                                                    </a>
+                                                    <a ng-show="item.authorsAccountB.role.role !== 'ARTIST'"
+                                                        href="#!report/user/{{item.email}}"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-exclamation-octagon"></i> Report
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="typeShare(item.authorsAccountB.role.role === 'ARTIST' ? '#!/artist/'+item.authorsAccountB.account.artist.artistId : '#!/profile/'+item.authorsAccountB.role.role.toLowerCase()+'/'+item.authorsAccountB.account.username)"
+                                                        data-bs-toggle="modal" data-bs-target="#sharing"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-share"></i>
+                                                        Share</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    <!-- list Playlist -->
+                                    <li ng-repeat="item in listPlaylist"
+                                        ng-init="menuPlaylistId='element-menu-' + item.playlistId"
+                                        oncontextmenu="contextMenu(event,this)">
+                                        <a href="#!playlist/{{item.playlistId}}">
+                                            <div class="d-flex align-items-center">
+                                                <img class="m-2 rounded-2 thumbnail-playlist"
+                                                    ng-src="{{item.image!==null?item.image.url:'https://res.cloudinary.com/div9ldpou/image/upload/v1696394508/Background/System/ss_276c32d569fe8394e31f5f53aaf7ce07b8874387.1920x1080_raeceo.jpg'}}"
+                                                    alt="">
+                                                <div>
+                                                    <p class="p-0 m-0">{{item.playlistName}}</p>
+                                                    <span>Playlist</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="element-menu" id="{{menuPlaylistId}}">
+                                            <ul class="p-0 bg-dark ul-dropdown-end">
+                                                <li class="li-dropdown-end">
+                                                    <a class="btn text-white dropdown-item py-2 ">
+                                                        <i class="ms-3 bi bi-plus-lg"></i>
+                                                        Add to other playlist
+                                                    </a>
+                                                    <ul class="nav bg-dark w-100">
+                                                        <li class="nav-item">
+                                                            <div class="input-group border-0">
+                                                                <span class="input-group-text"
+                                                                    style="background-color: transparent;"><i
+                                                                        class="text-white bi bi-search-heart"></i></span>
+                                                                <input ng-model="nameMyPlaylist"
+                                                                    type="text" class="text-white form-control"
+                                                                    placeholder="Search in playlist"
+                                                                    style="background-color: transparent;">
+                                                            </div>
+                                                        </li>
+                                                        <li class="li-dropdown-end">
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a ng-click="createSamePlaylist(item.playlistId)"
+                                                                class="nav-link text-white">
+                                                                <i class="bi bi-plus-lg"></i> Create playlist
+                                                            </a>
+                                                        </li>
+                                                        <li class="li-dropdown-end">
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li ng-repeat="playlist in listPlaylist | filter: nameMyPlaylist" class="nav-item">
+                                                            <a ng-click="addOtherPlaylistOrQueue(item.playlistId,playlist.playlistId,'playlist')"
+                                                                class="nav-link text-white">{{playlist.playlistName}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="addOtherPlaylistOrQueue(item.playlistId,null,'queue')"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-hdd-stack"></i> Add to queue
+                                                    </a>
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a href="#!/playlist/{{item.playlistId}}"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-pencil"></i> Edit details
+                                                    </a>
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="categoryInPlaylist(item.playlistId)"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-stars"></i> Create similar playlist
+                                                    </a>
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="deletePlaylist(item.playlistId)"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-dash-circle"></i> Delete
+                                                    </a>
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="createPlaylist()"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-plus-lg"></i> Create playlist
+                                                    </a>
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="makePrivate(item, !item.isPublic)"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i ng-class="item.isPublic ? 'bi bi-lock' : 'bi bi-globe2'"></i>
+                                                        Make {{item.isPublic === true ? 'Private' : 'Public'}}
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                                <li class="li-dropdown-end">
+                                                    <a ng-click="typeShare('!#/playlist/'+item.playlistId)"
+                                                        data-bs-toggle="modal" data-bs-target="#sharing"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-share"></i>
+                                                        Share</a>
+                                                </li>
+                                                <li class="li-dropdown-end">
+                                                    <a href="#!report/playlist/{{item.playlistId}}"
+                                                        class="btn text-white dropdown-item py-2 px-3">
+                                                        <i class="bi bi-flag-fill"></i>
+                                                        Report
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <main class="bl-body p-0" ng-view>
+
+        </main>
+    </div>
+    <footer class="player-controls col-12 fixed-bottom p-0">
+        <div class="audio-bar row align-items-center">
+            <div class="col-md-3 col-3 player-controls-left">
+                <div class="media d-flex align-items-center">
+                    <div class="media-left">
+                        <a ng-show="!ads.adId" href="">
+                            <img ng-if="!audioItem.episodeId" class="m-2 thumbnail" src="{{audioItem.song.image.url}}"
+                                alt="">
+                            <img ng-if="audioItem.episodeId" class="m-2 thumbnail" src="{{audioItem.image.url}}" alt="">
+                        </a>
+                        <a href="">
+                            <img ng-show="ads.adId" class="m-2 thumbnail" src="{{ads.image.url}}" alt="">
+                        </a>
+                    </div>
+                    <div class="media-content d-none d-md-block">
+                        <div ng-show="!ads.adId" class="m-0 p-0">
+                            <span><a class="text-white">{{audioItem.recordingName}}</a></span>
+                            <span><a class="text-white">{{audioItem.episodeTitle}}</a></span>
+                        </div>
+                        <span><a class="text-white">{{ads.title}}</a></span>
+                        <div class="m-0 p-0">
+                            <div ng-show="!ads.adId" class="m-0 p-0">
+                                <a class="text-white"
+                                    ng-repeat="item in audioItem.song.writters">{{item.artist.artistName}} | </a>
+                                <a class="text-white">{{audioItem.podcast.authorName}}</a>
+                            </div>
+                            <a ng-show="ads.adId" ng-click="updateClickAds(ads)" class="text-white">Learn more</a>
+                        </div>
+                    </div>
+
+                    <div class="media-right d-flex">
+                        <div class="level-item">
+                            <span ng-show="account.email">
+                                <button id="btn-wishlist" class="btn button-control border-0"
+                                    ng-click="checkExisted(audioItem,$event)" data-bs-hover="tooltip"
+                                    title="Thêm vào yêu thích!">
+                                    <i ng-style="{'color': isLiked(audioItem) ? 'green' : 'white'}"
+                                        class="{{isLiked(audioItem) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                </button>
+                            </span>
+                            <span ng-show="!account.email">
+                                <a href="./singin" class="btn button-control border-0" data-bs-hover="tooltip"
+                                    title="Thêm vào yêu thích!">
+                                    <i class="bi bi-heart"></i>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="level-item d-none d-md-block">
+                            <div class="dropdown">
+                                <button type="button" class="btn button-control" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu p-0 bg-dark ul-dropdown-start-end">
+                                    <li class="li-dropdown-start-end">
+                                        <a class="btn text-white dropdown-item py-2" ng-click="enqueue(audioItem)"><i
+                                                class="bi bi-hdd-stack"></i> Add to queue</a>
+                                    </li>
+                                    <li class="li-dropdown-start-end">
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li class="li-dropdown-start-end">
+                                        <a class="btn text-white dropdown-item py-2"><i
+                                                class="bi bi-person-lines-fill"></i> Go to artist</a>
+                                        <ul class="nav bg-dark w-100">
+                                            <li class="nav-item" ng-repeat="a in audioItem.song.writters">
+                                                <a href="#!artist/{{a.artist.artistId}}" class="nav-link text-white">
+                                                    {{a.artist.artistName}}</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="li-dropdown-start-end">
+                                        <a href="{{audioItem.episodeId ? '#!episode/'+audioItem.episode.episodeId : audioItem.tracks.length>0 ? '#!album/'+audioItem.tracks[0].album.albumId : '#!song/'+audioItem.recordingId}}"
+                                            class="btn text-white dropdown-item py-2">
+                                            <i class="bi bi-journal-album"></i> Go to album
+                                        </a>
+                                    </li>
+                                    <li class="li-dropdown-start-end" ng-if="item.recording">
+                                        <a class="btn text-white dropdown-item py-2" data-bs-toggle="modal"
+                                            data-bs-target="#credits-{{audioItem.recordingId}}"><i
+                                                class="bi bi-share"></i> Show
+                                            credits</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li class="li-dropdown-start-end">
+                                        <a ng-show="audioItem.episodeId" href="#!report/episode/{{audioItem.episodeId}}"
+                                            class="btn text-white dropdown-item py-2">
+                                            <i class="bi bi-flag-fill"></i></i>
+                                            Report
+                                        </a>
+                                        <a ng-show="audioItem.recordingId"
+                                            href="#!report/recording/{{audioItem.recordingId}}"
+                                            class="btn text-white dropdown-item py-2">
+                                            <i class="bi bi-flag-fill"></i></i>
+                                            Report
+                                        </a>
+                                    </li>
+                                    <li class="li-dropdown-start-end">
+                                        <a ng-click="audioItem.recordingId ? typeShare('#!/song/'+audioItem.recordingId) : typeShare('#!/episode/'+audioItem.episodeId)"
+                                            data-bs-toggle="modal" data-bs-target="#sharing"
+                                            class="btn text-white dropdown-item py-2"><i class="bi bi-share"></i>
+                                            Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-9 player-controls-center d-flex flex-column align-items-center">
+                <div class="controls-bar d-flex align-items-center">
+                    <button id="shuffle" class="btn border-0 py-0 button-control-music" data-bs-hover="tooltip"
+                        title="Bật phát ngẫu nhiên!"><i class="bi bi-shuffle"></i></button>
+
+                    <button id="prev" class="btn border-0 py-0 button-control-music"><i
+                            class="bi bi-skip-start-circle"></i></button>
+
+                    <button id="play" class="btn border-0 py-0 button-control-music-play">
+                        <i class="bi bi-play-circle"></i>
+                    </button>
+                    <button id="resume" hidden class="btn border-0 py-0 button-control-music-play">
+                        <i class="bi bi-pause-circle"></i>
+                    </button>
+
+                    <button id="next" class="btn border-0 py-0 button-control-music"><i
+                            class="bi bi-skip-end-circle"></i></button>
+
+                    <button id="loop" class="btn border-0 py-0 button-control-music"><i
+                            class="bi bi-repeat"></i></button>
+                </div>
+                <div class="time-line w-100 d-flex align-items-center flex-fill">
+                    <span style="font-size: x-small;" id="current-time">00:00</span>
+                    <input id="duration-audio" class="duration-bar w-100 mx-2" type="range" min="0" value="0" step="0.1"
+                        name="">
+                    <audio id="audio" src=""></audio>
+                    <div class="line-first"></div>
+                    <div class="line-current"></div>
+                    <div class="circle"></div>
+                    <span style="font-size: x-small;" id="total-time">00:00</span>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-md-block player-controls-right ">
+                <div class="d-flex align-items-center">
+                    <button ng-if="audioItem.idMv!==null && !ads.adId" class="btn text-white border-0"
+                        data-bs-toggle="modal" data-bs-target="#MV">MV</button>
+                    <button id="download" class="btn border-0 button-control"><i class="bi bi-download"></i></button>
+                    <a href="#!queue" class="btn border-0 button-control"><i class="bi bi-hdd-stack"></i></a>
+                    <a ng-if="audioItem.lyricsUrl !== null" href="#!karaoke" id="karaoke"
+                        class="btn border-0 button-control"><i class="bi bi-mic"></i></a>
+
+                    <button id="mute" class="btn button-control"><i id="icon-mute" class="bi bi-volume-up"></i></button>
+                    <input id="volumeAudio" class="" type="range" min="0" max="1" step="0.1" name="">
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal thông báo  -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="popup modal-dialog">
+            <div class="popup-message modal-content bg-dark">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-end">
+                        <span class="btn" type="button" aria-hidden="true" data-bs-dismiss="modal"
+                            aria-label="Close">&times;</span>
+                    </div>
+                    <div id="notify" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="{{notify.toURL}}">
+                                    <img style="height: 500px; object-fit: cover;" src="{{notify.urlImage}}" alt="Los Angeles" class="d-block w-100">
+                                </a>
+                            </div>
+                            <div class="carousel-item" ng-repeat="item in AdsNotification track by $index">
+                                <a ng-click="updateClickAds(item)">
+                                    <img style="height: 500px; object-fit: cover;" src="{{item.image.url}}"
+                                        alt="Chicago" class="d-block w-100">
+                                </a>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#notify"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#notify"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal trình chiếu MV -->
+    <div class="modal fade" id="MV">
+        <div class="popup modal-dialog">
+            <div class="popup-message  modal-content" style="background-color: transparent;">
+                <div class="modal-body p-0">
+                    <iframe class="w-100" height="600" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen autoplay src="{{trustedUrl}}"> Your
+                        browser does not support HTML video. </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal share -->
+    <!-- Button to Open the Modal -->
+    <div class="modal fade" id="sharing">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <p>Share</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <input ng-model="link" type="text" ng-click="copyToClipboard(link)" readonly
+                            class="text-white form-control" style="background-color: transparent;">
+                    </div>
+                    <div class="d-flex mt-4 justify-content-between">
+                        <a ng-click="share('fb')" class="facebook" target="blank"><i
+                                class="display-6 bi bi-facebook"></i></a>
+                        <!-- twitter -->
+                        <a ng-click="share('twitter')" class="twitter" target="blank"><i
+                                class="display-6 bi bi-twitter"></i></a>
+                        <!-- linkedin -->
+                        <a ng-click="share('linkedIn')" class="linkedin" target="blank"><i
+                                class="display-6 bi bi-linkedin"></i></a>
+                        <!-- reddit -->
+                        <a ng-click="share('reddit')" class="reddit" target="blank"><i
+                                class="display-6 bi bi-reddit"></i></a>
+                        <!-- whatsapp-->
+                        <a ng-click="share('whasapp')" class="whatsapp" target="blank"><i
+                                class="display-6 bi bi-whatsapp"></i></i></a>
+                        <!-- telegram-->
+                        <a ng-click="share('tele')" class="telegram" target="blank"><i
+                                class="display-6 bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <script src="../../static/js/angularjs/user/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="../../static/js/Utiliez/CookiesUtil.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <script src="../../static/js/jscustom/toasts.js"></script>
+    <script src="../../static/js/angularjs/user/myCtrl.js"></script>
+
+    <script src="../../static/js/angularjs/user/Karaoke.js"></script>
+
+    <script src="../../static/js/angularjs/user/Queue.js"></script>
+
+    <script src="../../static/js/angularjs/user/search.js"></script>
+
+    <script src="../../static/js/angularjs/user/playlist.js"></script>
+
+    <script src="../../static/js/angularjs/user/profile.js"></script>
+
+    <script src="../../static/js/angularjs/user/show-podcast.js"></script>
+
+    <script src="../../static/js/angularjs/user/album.js"></script>
+
+    <script src="../../static/js/angularjs/user/mood.js"></script>
+
+    <script src="../../static/js/angularjs/user/episode.js"></script>
+
+    <script src="../../static/js/angularjs/user/dashboard.js"></script>
+
+    <script src="../../static/js/angularjs/user/discography.js"></script>
+
+    <script src="../../static/js/angularjs/user/report.js"></script>
+
+    <script src="../../static/js/angularjs/user/song.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/auth0/angular-jwt@0.1.10/dist/angular-jwt.js"></script>
+</body>
+
+</html>

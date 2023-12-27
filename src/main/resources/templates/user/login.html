@@ -1,0 +1,83 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in to Rhymthwave</title>
+  <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../static/js/angularjs/user/login.js"></script>
+  <script src="../../static/js/Utiliez/CookiesUtil.js"></script>
+  <link rel="stylesheet" href="../../static/css/login.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" href="../../static/css/toasts.css">
+  <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+  <script src="../../static/js/jscustom/toasts.js"></script>
+</head> 
+
+<body ng-app="myApp" ng-controller="loginCtrl">
+  <div>
+    <div class="bl-nav">
+      <div class="logo">
+        <img src="../../static/img/logo.png" alt="">
+      </div>
+    </div>
+    <div class="bl-login-form bl2-login-form">
+      <div class="bl-form">
+        <h1 class="bl-title">Log in to Rhymthwave</h1>
+        <div class="bl-form-container bl2-form-container">
+          <h1 class="bl-title2 bl2-title2">Log in to Rhymthwave</h1>
+          <ul class="bl-option bl2-option">
+            <li class="bl-li"><a id="loginGoogleId" ng-click="loginWithGoogle()" class="bl-btn" type="button" href="" style="text-decoration: none;">
+                <span class="bl-google"></span>
+                <span class="bl-title-google">Continue using Google</span></a></li>
+            <li class="bl-li"><a id="loginFacebookId" ng-click="loginWithFacebook()" class="bl-btn"type="button" href="" style="text-decoration: none;">
+                <span class="bl-fb"></span>
+                <span class="bl-title-fb">Continue with Facebook</span></a></li>
+          </ul>
+          <hr class="bl-hr">
+          <form id="loginForm">
+            <div class="form-group">
+              <label class="bl-title-lable">Email</label>
+              <input id="email" ng-model="loginRequest.email" name="username" type="text" class="bl-input-login form-control"
+                placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label class="bl-title-lable">Password</label>
+              <input id="password" name="password" ng-model="loginRequest.password" type="password" class="bl-input-login form-control"
+                placeholder="Password">
+            </div>
+            <div class="form-group form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" checked>
+              <label class="form-check-label" for="flexSwitchCheckDefault">Remember me</label>
+            </div>
+            <div class="bl-btn-login">
+              <button onclick="showCaptchaDialog(event)" type="submit" class="btn-login btn">Log in</button>
+            </div>
+          </form>
+          <div class="bl-fogot ">
+            <a href="/forgot">Forgot your password</a>
+          </div>
+          <hr class="bl-hr">
+          <div class="bl-sign-up">
+            <p>Don't have account? <a href="/signup">Sign up for Rhymthwave</a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- captcha v2 -->
+    <div id="captchaDialog">
+      <div class="bl-captchaDialog">
+        <div class="g-recaptcha" data-sitekey="6LdqdacoAAAAAGhIB2BBo_X5FauUiQtlp2xopUuq"></div>
+        <button id="login">Submit</button>
+        <button onclick="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

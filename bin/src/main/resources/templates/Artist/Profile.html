@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    .profile {
+        position: relative;
+    }
+
+    .bg-profile {
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .name-artist {
+        position: absolute;
+        bottom: 10%;
+        left: 5%;
+        color: white;
+    }
+
+    .total-listener {
+        position: absolute;
+        bottom: 10%;
+        right: 5%;
+    }
+
+    .change-bg {
+        position: absolute;
+        top: 10%;
+        right: 5%;
+    }
+
+    .nav {
+        border: 0px;
+    }
+
+    .nav-link {
+        border: 0px !important;
+        font-weight: bold;
+        color: black;
+    }
+
+    .nav-link:hover {
+        color: black;
+    }
+
+    .nav-item:hover {
+        border-radius: 10px;
+    }
+
+    .nav-link.active {
+        border-bottom: 3px solid green !important;
+    }
+</style>
+
+<body>
+    <div class="container-fluid profile">
+        <img class="w-100 bg-profile" src="../../static/img/artistfeature.webp" alt="">
+        <div class="change-bg">
+            <input type="file">
+        </div>
+        <div class="m-0 name-artist">
+            <h6 class="m-0 ">ARTIST</h6>
+            <h1 class="m-0 ">LILBAOR</h1>
+        </div>
+        <div class="total-listener text-white">
+            <h6>Listeners</h6>
+            <p>264489498</p>
+        </div>
+    </div>
+    <section class="container-fluid">
+        <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item me-3 pb-3">
+                    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab"
+                        aria-controls="tab1" aria-selected="true">Listeners</a>
+                </li>
+                <li class="nav-item me-3 pb-3">
+                    <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2"
+                        aria-selected="false">Followers</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="popular">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <h4>Your top songs</h4>
+                                            </th>
+                                            <th>streams</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="align-items-center">
+                                            <td class="d-flex align-items-center">
+                                                <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                <h6>Listeners</h6>
+                                            </td>
+                                            <td class="text-center">12,2023</td>
+                                        </tr>
+                                        <tr class="align-items-center">
+                                            <td class="d-flex align-items-center">
+                                                <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                <h6>Listeners</h6>
+                                            </td>
+                                            <td class="text-center">12,2023</td>
+                                        </tr>
+                                        <tr class="align-items-center">
+                                            <td class="d-flex align-items-center">
+                                                <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                <h6>Listeners</h6>
+                                            </td>
+                                            <td class="text-center">12,2023</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="Albums">
+
+                            </div>
+                            <div class="playlist">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5>Artist Playlists</h5>
+                                    <button class="btn modifyPlaylist" data-bs-toggle="collapse"
+                                        data-bs-target="#artist-playlist"><i class="bi bi-pencil"></i></button>
+                                </div>
+                                <div id="artist-playlist" class="collapse">
+                                    <div class="d-flex align-items-center">
+                                        <img src="../../static/img/cs1.webp" alt="">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                            <input type="text" class="form-control" placeholder="Username">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn">Save</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr class="align-items-center">
+                                                <td class="d-flex align-items-center">
+                                                    <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                    <h6>Listeners</h6>
+                                                </td>
+                                                <td class="text-center"><button
+                                                        class="remove-playlist-artist btn"></button></td>
+                                            </tr>
+                                            <tr class="align-items-center">
+                                                <td class="d-flex align-items-center">
+                                                    <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                    <h6>Listeners</h6>
+                                                </td>
+                                                <td class="text-center"><button
+                                                        class="remove-playlist-artist btn"></button></td>
+                                            </tr>
+                                            <tr class="align-items-center">
+                                                <td class="d-flex align-items-center">
+                                                    <img class="w-25" src="../../static/img/cs1.webp" alt="">
+                                                    <h6>Listeners</h6>
+                                                </td>
+                                                <td class="text-center"><button
+                                                        class="remove-playlist-artist btn"></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                    <div class="row">
+                        <div class="col-7">
+                            <div>
+                                <h3>Image gallery</h3>
+                                <div>
+                                    <img src="" alt="">
+                                </div>
+                            </div>
+                            <div>
+                                <h3>Bio</h3>
+                                <p>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <h3>More infor</h3>
+                            <div class="d-flex flex-column">
+                                <a href=""><i class="bi bi-instagram"></i> Instagram</a>
+                                <a href=""><i class="bi bi-twitter"></i> Twitter</a>
+                                <a href=""><i class="bi bi-facebook"></i> Facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            $('#myTab a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+            
+            $('.modifyPlaylist').click(function () {
+                var modifyPlaylist = $('.modifyPlaylist').hasClass('collapsed');
+                if (modifyPlaylist) {
+                    $('.remove-playlist-artist').removeClass('btn-close');
+                } else {
+                    $('.remove-playlist-artist').addClass('btn-close');
+                }
+                console.log(modifyPlaylist)
+            });
+        })
+    </script>
+</body>
+
+</html>

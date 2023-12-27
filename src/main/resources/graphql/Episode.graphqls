@@ -1,0 +1,24 @@
+#Episode.graphqls
+
+type Episode{
+	episodeId: ID
+	publicIdFile: String
+	fileUrl: String
+	episodeTitle: String
+	description: String
+	publishDate: String
+	sessionNumber: Int
+	episodeNumber: Int
+	episodeType: String
+	content: String
+	isPublic: Boolean
+	isDelete: Boolean
+	listened: Int
+	podcast: Podcast
+	image: Image
+	duration: Int
+	playlistPodcast: [Playlist_Podcast]
+	reports: [Report]
+	monitorEp: [MonitorEpisode]
+	wishlist: [Wishlist]
+}

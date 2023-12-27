@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+   <div class="content-wrapper">
+
+      <section class="dashboard-top-sec">
+
+         <div class="container-fluid">
+
+
+            <div class="row profile-content">
+
+               <div class="col-12 col-md-12 col-lg-12">
+
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-4">
+
+                           <div class="iq-card-body">
+                              <div class="row">
+                                 <div class="col-md-9">
+                                    <label>Select position silde:</label>
+                                    <select class="form-select form-select-display " id="positionSelect"
+                                       ng-model="selectedPosition" ng-change="getPositionSlidesShowing()">
+
+                                       <option value="user">User</option>
+                                       <option value="artist">Artist</option>
+                                       <option value="podcast">Podcast</option>
+
+                                    </select>
+                                 </div>
+
+                                 <div class="col-sm-3">
+                                    <div class="row">
+                                       <div class="col-6">
+                                          <div class="button-edit">
+                                             <button class="btn btn-danger button-size" ng-click="createSlide()"> Create
+                                             </button>
+
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                           <div class="iq-card-header text-center">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title mb-0 ">Home Image slideshow</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body ">
+
+                              <div class="row">
+                                 <div class="col-md-4 col-sm-6 mb-3">
+                                    <div class="edit-blog addSlideImage" id="test">
+                                       <input hidden="true" id="img" type="file" style="font-size: 10px;"
+                                          ng-model="slideDTO.img" accept="image/*" required />
+                                       <div class="iconAddSlideImage" ng-click="openFileInput()">
+                                          <i class="bi bi-plus-circle-dotted" id="addImage"></i>
+                                       </div>
+                                    </div>
+                                    <div class="inputurlsidle mt-3">
+                                       <input ng-model="form.urlSlide" type="text" class="form-control" id="exampleInputUrl" placeholder="Url address Slide">
+                                    </div>
+                                    
+                                    <!-- <img ng-src="{{imagePreview}}" alt="Preview Image" /> -->
+                                 </div>
+                                 <div class="col-md-4 col-sm-6 mb-3" ng-repeat="imageUrl in imageUrls">
+                                    <div class="edit-blog">
+
+
+                                       <img ng-src="{{imageUrl}}" style="max-width: 100%; height: auto; object-fit: cover;" class="card-img-top" alt="...">
+
+
+                                       <!-- Dots Edit Dropdown -->
+                                       <div class="dots-edit">
+                                          <a href data-bs-toggle="dropdown" id="Notify{{$index}}" class="nav-link"> <i
+                                                class="bi bi-three-dots"></i></a>
+                                          <div class="dropdown-menu" style="min-width: 5rem;">
+                                             <!-- Edit Button -->
+                                             <div class="dp-main-menu">
+                                                <a href="" class="dropdown-item message-item mt-1"
+                                                   data-bs-toggle="modal" data-bs-target="#exampleModal{{$index}}">
+                                                   <i class="bi bi-pen icon-pen-edit"></i>
+                                                   <div class="note-info-desmis">
+                                                      <div class="dropdown-edit-font">
+                                                         <p class="note-name">Edit</p>
+                                                      </div>
+                                                   </div>
+                                                </a>
+                                             </div>
+                                             <!-- Delete Button -->
+                                             <div class="dp-main-menu">
+                                                <a href="" class="dropdown-item message-item mt-1"
+                                                   data-bs-toggle="modal" data-bs-target="#deleteModal{{$index}}">
+                                                   <i class="bi bi-trash"></i>
+                                                   <div class="note-info-desmis">
+                                                      <div class="dropdown-edit-font">
+                                                         <p class="note-name">Delete</p>
+                                                      </div>
+                                                   </div>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+
+                                    </div>
+                                    <div class=" text-center">
+                                       <div class="image-number-display">
+                                          {{$index + 1}}
+                                       </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteModal{{$index}}" tabindex="-1"
+                                       aria-labelledby="deleteLabel{{$index}}" aria-hidden="true">
+                                       <div class="modal-dialog modal-sm modal-dialog-centered">
+                                          <div class="modal-content">
+                                             <div class="modal-header modal-header-delete">
+                                                <div>
+
+                                                </div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                   aria-label="Close"></button>
+                                             </div>
+                                             <div class="modal-body">
+                                                <div class="icon-close-bodyModal">
+                                                   <i class="bi bi-x-circle"></i>
+                                                </div>
+                                                <div style="text-align: center;" class="m-2">
+                                                   <h5> Are you sure ? </h5>
+                                                </div>
+
+                                             </div>
+                                             <div class="modal-footer btn-event-deleteModal">
+                                                <button type="button" class="btn btn-secondary"
+                                                   data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger"
+                                                   ng-click="deleteSlide(accessIds[$index])">Delete</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="modal fade" id="exampleModal{{$index}}" tabindex="-1"
+                                       aria-labelledby="exampleModal{{$index}}" aria-hidden="true">
+                                       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                          <div class="modal-content">
+                                             <div class="modal-header">
+
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Slide from
+                                                   positon {{
+                                                   selectedPosition}}</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                   aria-label="Close"></button>
+                                             </div>
+                                             <div class="modal-body">
+                                                <div class="container-fluid mt-0">
+                                                   <div class="row">
+                                                      <div class="col-sm-12">
+                                                         <div class="image-news-modal mb-3">
+                                                            <img class="w-100" style="height: 400px;width: 800px;  object-fit: fill;"
+                                                               ng-src="{{imageUrl}}" alt="">
+                                                         </div>
+                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                            Select a photo to replace : </h1>
+                                                         <div class="container col-11 mt-3">
+                                                            <div class="edit-blog addSlideImage" id="test">
+                                                               <input hidden="true" id="img" type="file"
+                                                                  style="font-size: 10px;" ng-model="slideDTO.img"
+                                                                  accept="image/*" required />
+                                                               <div class="iconAddSlideImage"
+                                                                  ng-click="openFileInput()">
+                                                                  <i class="bi bi-plus-circle-dotted" id="addImage"></i>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <div class="inputurlsidle mt-3">
+                                                            <label for="exampleInputUrlupdate" class="form-label" style="font-size: 18px;">Url address Slide :</label>
+                                                            <input ng-model="urlSlide" type="text" class="form-control" id="exampleInputUrlupdate" placeholder="Url address Slide">
+                                                         </div>
+
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                   data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                                                   ng-click="updateSlide(accessIds[$index])">Save</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
+
+                                 
+
+                              </div>
+
+
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </section>
+
+   </div>
+
+
+
+
+   <script
+      src="../../static/js/jscustom/UI-Js-Admin/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_js_bootstrap.bundle.min.js"></script>
+   <script src="../../static/js/jscustom/UI-Js-Admin/code.jquery.com_jquery-3.7.1.min.js"></script>
+   <script src="../../static/js/jscustom/UI-Js-Admin/admin.js"></script>
+
+</body>
+
+</html>

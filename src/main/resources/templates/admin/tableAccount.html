@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   <!-- CONTENT START  -->
+   <div class="content-wrapper">
+
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+
+          
+
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="cardperShadow shadow mb-4">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary"> Statistics Account
+                        </h6>
+                     </div>
+                     <div class="card-bodyPerShadow">
+
+                        <div class="container">
+                           <div class=" table-responsive ">
+                              <div>
+                                 <canvas id="myChart" width="100" height="100"></canvas>
+
+                              </div>
+
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                  <div class="cardperShadow shadow mb-4">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary"> Statistics Account Role
+                        </h6>
+                     </div>
+                     <div class="card-bodyPerShadow">
+
+                        <div class="container">
+                           <div class=" table-responsive ">
+                              <div>
+                                 <canvas id="accountRole" width="300" height="300"></canvas>
+
+                              </div>
+
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+            <div class="row" style="height: 400px;">
+               <div id="world"></div>
+             
+               
+            </div>
+
+            <div class="cardperShadow shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"> Account
+                  </h6>
+               </div>
+               <div class="card-bodyPerShadow">
+
+                  <div id="dataTable_wrapper">
+                     <div class="row">
+
+                        <ul class="nav nav-pills mb-3 ms-2" id="pills-tab" role="tablist">
+                           <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="pills-user-tab"
+                                 ng-click="load_all_AccountByRole('USER')" data-bs-toggle="pill"
+                                 data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                 aria-selected="true">User</button>
+                           </li>
+                           <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-artist-tab" ng-click="load_all_AccountByRole('ARTIST')"
+                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
+                                 aria-controls="pills-profile" aria-selected="false">Artist</button>
+                           </li>
+                           <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-podcast-tab"
+                                 ng-click="load_all_AccountByRole('PODCAST')" data-bs-toggle="pill"
+                                 data-bs-target="#pills-podcast" type="button" role="tab" aria-controls="pills-podcast"
+                                 aria-selected="false">Podcast</button>
+                           </li>
+                           <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-staff-tab" ng-click="load_all_AccountByRole('STAFF')"
+                                 data-bs-toggle="pill" data-bs-target="#pills-staff" type="button" role="tab"
+                                 aria-controls="pills-staff" aria-selected="false">Staff</button>
+                           </li>
+                        </ul>
+                        <div class="tab-content" style="display: block;" id="pills-tabContent">
+                           <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                              aria-labelledby="pills-user-tab" tabindex="0">
+                              <div class="row">
+                                 <div class="col-sm-6 text-left">
+                                    <div id="custom-search-input" class="mb-2 mt-0">
+                                       <div class="input-group col-md-12">
+                                          <input type="text" ng-model="searchText" class="form-control form-control-sm"
+                                             placeholder="search" />
+
+                                          <span class="input-group-btn">
+                                             <button class="btn btn-info btn-lg" type="button">
+                                                <i class="bi bi-search"></i>
+                                             </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6 text-right">
+                  
+                                 </div>
+                              </div>
+
+
+                              <!-- LIST USER -->
+
+                              <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                       <table class="table ">
+                                          <thead class="table-light">
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">User Type</th>
+                                                <th scope="col" class="threee-dots-table"><i
+                                                      class="bi bi-three-dots-vertical"></i></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+
+                                             <tr
+                                                dir-paginate="user in itemsAccountByRole | itemsPerPage: 12 | filter:searchText">
+                                                <th scope="row">{{$index + 1}}</th>
+
+                                                <td>
+                                                   <div class="cha">
+                                                      <a href=""> <img ng-src="{{user.image.url}}" alt=""
+                                                            class="image-table-user-tabs"></a>
+
+                                                   </div>
+                                                </td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.gender ? 'Male' : 'Female'}}</td>
+                                                <td>
+                                                   <span ng-repeat="userType in user.userType"
+                                                      ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM','badge text-bg-secondary mx-1': userType.nameType === 'MASTER'}">{{userType.nameType}}</span>
+
+                                                </td>
+                                                <td>
+                                                   <div class="dropdown">
+                                                      <a class="dropdown-toggle threee-dots-table" type="button"
+                                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                                         <i class="bi bi-three-dots-vertical"></i>
+                                                      </a>
+                                                      <ul class="dropdown-menu">
+                                                         <li><button class="dropdown-item"
+                                                               ng-click="profileById(user.email)" type="button"
+                                                               data-bs-toggle="modal"
+                                                               data-bs-target="#exampleModal">Profile</button>
+                                                         </li>
+                                  
+                                                      </ul>
+                                                   </div>
+                                                </td>
+                                             </tr>
+
+
+
+                                          </tbody>
+                                          <tfoot>
+                                             <th scope="col">#</th>
+                                             <th scope="col">Image</th>
+                                             <th scope="col">Email</th>
+                                             <th scope="col">Gender</th>
+                                             <th scope="col">User Type</th>
+                                             <th scope="col" class="threee-dots-table"><i
+                                                   class="bi bi-three-dots-vertical"></i></th>
+                                          </tfoot>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                           </div>
+                           <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                              aria-labelledby="pills-artist-tab" tabindex="0">
+                              <div class="row">
+                                 <div class="col-sm-6 text-left">
+                                    <div id="custom-search-input" class="mb-2 mt-0">
+                                       <div class="input-group col-md-12">
+                                          <input type="text" class="form-control form-control-sm" placeholder="search"
+                                             ng-modal="searchText1" />
+                                          <span class="input-group-btn">
+                                             <button class="btn btn-info btn-lg" type="button">
+                                                <i class="bi bi-search"></i>
+                                             </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6 text-right">
+                                  
+                                 </div>
+                              </div>
+
+                              <!-- LIST ARTIST -->
+
+                              <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                       <table class="table ">
+                                          <thead class="table-light">
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">User Type</th>
+                                                <th scope="col" class="threee-dots-table"><i
+                                                      class="bi bi-three-dots-vertical"></i></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+
+                                             <tr
+                                                dir-paginate="user in itemsAccountByRole | itemsPerPage: 12 | filter:searchText1">
+                                                <th scope="row">{{$index + 1}}</th>
+
+                                                <td>
+                                                   <div class="cha">
+                                                      <a href=""> <img
+                                                            ng-src="{{user.artist.imagesProfile.url ?  user.artist.imagesProfile.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png' }}"
+                                                            alt="" class="image-table-user-tabs"></a>
+
+                                                   </div>
+                                                </td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.gender ? 'Male' : 'Female'}}</td>
+                                                <td>
+                                                   <span ng-repeat="userType in user.userType"
+                                                      ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM','badge text-bg-secondary mx-1': userType.nameType === 'MASTER'}">{{userType.nameType}}</span>
+
+                                                </td>
+                                                <td>
+                                                   <div class="dropdown">
+                                                      <a class="dropdown-toggle threee-dots-table" type="button"
+                                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                                         <i class="bi bi-three-dots-vertical"></i>
+                                                      </a>
+                                                      <ul class="dropdown-menu">
+                                                         <li><a class="dropdown-item" type="button"
+                                                               href="#!/{{user.email}}/artist-profile">Profile</a>
+                                                         </li>
+                                                        
+                                                      </ul>
+                                                   </div>
+                                                </td>
+                                             </tr>
+                                          </tbody>
+                                          <tfoot>
+                                             <th scope="col">#</th>
+                                             <th scope="col">Image</th>
+                                             <th scope="col">Email</th>
+                                             <th scope="col">Gender</th>
+                                             <th scope="col">User Type</th>
+                                             <th scope="col" class="threee-dots-table"><i
+                                                   class="bi bi-three-dots-vertical"></i></th>
+                                          </tfoot>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                           </div>
+                           <div class="tab-pane fade" id="pills-podcast" role="tabpanel"
+                              aria-labelledby="pills-podcast-tab" tabindex="0">
+                              <div class="row">
+                                 <div class="col-sm-6 text-left">
+                                    <div id="custom-search-input" class="mb-2 mt-0">
+                                       <div class="input-group col-md-12">
+                                          <input type="text" class="form-control form-control-sm" placeholder="search"
+                                             ng-modal="searchText2" />
+                                          <span class="input-group-btn">
+                                             <button class="btn btn-info btn-lg" type="button">
+                                                <i class="bi bi-search"></i>
+                                             </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6 text-right">
+                                  
+                                 </div>
+                              </div>
+
+                              <!-- LIST PODCAST -->
+
+                              <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                       <table class="table ">
+                                          <thead class="table-light">
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">User Type</th>
+                                                <th scope="col" class="threee-dots-table"><i
+                                                      class="bi bi-three-dots-vertical"></i></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+
+                                             <tr
+                                                dir-paginate="user in itemsAccountByRole | itemsPerPage: 12 | filter:searchText2">
+                                                <th scope="row">{{$index + 1}}</th>
+
+                                                <td>
+                                                   <div class="cha">
+                                                      <a href=""> <img
+                                                            ng-src="{{user.artist.imagesProfile.url ?  user.artist.imagesProfile.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1697882865/ProfilePicture/User%20null/user-null.png' }}"
+                                                            alt="" class="image-table-user-tabs"></a>
+
+                                                   </div>
+                                                </td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.gender ? 'Male' : 'Female'}}</td>
+                                                <td>
+                                                   <span ng-repeat="userType in user.userType"
+                                                      ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM','badge text-bg-secondary mx-1': userType.nameType === 'MASTER'}">{{userType.nameType}}</span>
+
+                                                </td>
+                                                <td>
+                                                   <div class="dropdown">
+                                                      <a class="dropdown-toggle threee-dots-table" type="button"
+                                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                                         <i class="bi bi-three-dots-vertical"></i>
+                                                      </a>
+                                                      <ul class="dropdown-menu">
+                                                         <li><a href="#!/{{user.email}}/podcast-profile" class="dropdown-item" type="button">Detail</a>
+                                                         </li>
+                                                       
+                                                      </ul>
+                                                   </div>
+                                                </td>
+                                             </tr>
+
+
+
+                                          </tbody>
+                                          <tfoot>
+                                             <th scope="col">#</th>
+                                             <th scope="col">Image</th>
+                                             <th scope="col">Email</th>
+                                             <th scope="col">Gender</th>
+                                             <th scope="col">User Type</th>
+                                             <th scope="col" class="threee-dots-table"><i
+                                                   class="bi bi-three-dots-vertical"></i></th>
+                                          </tfoot>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                           </div>
+                           <div class="tab-pane fade" id="pills-staff" role="tabpanel" aria-labelledby="pills-staff-tab"
+                              tabindex="0">
+                              <div class="row">
+                                 <div class="col-sm-6 text-left">
+                                    <div id="custom-search-input" class="mb-2 mt-0">
+                                       <div class="input-group col-md-12">
+                                          <input type="text" class="form-control form-control-sm" placeholder="search"
+                                             ng-modal="searchText3" />
+                                          <span class="input-group-btn">
+                                             <button class="btn btn-info btn-lg" type="button">
+                                                <i class="bi bi-search"></i>
+                                             </button>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6 text-right">
+                                    <div class="dt-buttons btn-group mb-2">
+                                      
+                                       <!-- <button class="btn btn-warning text-dark-emphasis">
+                                          <i class="bi bi-person-fill-add"></i>
+                                        
+                                       </button> -->
+
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                              <!-- LIST STAFF -->
+
+                              <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="table-responsive">
+                                       <table class="table ">
+                                          <thead class="table-light">
+                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">User Type</th>
+                                                <th scope="col" class="threee-dots-table"><i
+                                                      class="bi bi-three-dots-vertical"></i></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             
+                                             <tr
+                                                dir-paginate="user in itemsAccountByRole | itemsPerPage:12 | filter:searchText3">
+                                                <th scope="row">{{$index + 1}}</th>
+
+                                                <td>
+                                                   <div class="cha">
+                                                      <a href=""> <img
+                                                            ng-src="{{user.image.url ?  user.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1697882865/ProfilePicture/User%20null/user-null.png' }}"
+                                                            alt="" class="image-table-user-tabs"></a>
+
+                                                   </div>
+                                                </td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.gender ? 'Male' : 'Female'}}</td>
+                                                <td>
+                                                   <span ng-repeat="userType in user.userType"
+                                                      ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM','badge text-bg-secondary mx-1': userType.nameType === 'MASTER'}">{{userType.nameType}}</span>
+
+                                                </td>
+                                                <td>
+                                                   <div class="dropdown">
+                                                      <a class="dropdown-toggle threee-dots-table" type="button"
+                                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                                         <i class="bi bi-three-dots-vertical"></i>
+                                                      </a>
+                                                      <ul class="dropdown-menu">
+                                                         <li><button class="dropdown-item" type="button" 
+                                                            ng-click="profileById(user.email)"
+                                                              data-bs-toggle="modal"
+                                                            data-bs-target="#upRole">Detail</button>
+                                                         </li>
+                                                        
+                                                      </ul>
+                                                   </div>
+                                                </td>
+                                             </tr>
+
+
+
+                                          </tbody>
+                                          <tfoot>
+                                             <th scope="col">#</th>
+                                             <th scope="col">Image</th>
+                                             <th scope="col">Email</th>
+                                             <th scope="col">Gender</th>
+                                             <th scope="col">User Type</th>
+                                             <th scope="col" class="threee-dots-table"><i
+                                                   class="bi bi-three-dots-vertical"></i></th>
+                                          </tfoot>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <!-- Pagination -->
+
+                        <div class="row">
+                           <div class="col-sm-12 col-md-5">
+                           </div>
+                           <div class="col-sm-12 col-md-7">
+                              <dir-pagination-controls class="dir-pagination-controls"></dir-pagination-controls>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+                  <!-- Modal Profile -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+
+                     <div class="modal-dialog modal-dialog-centered  modal-lg">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h1 class="modal-title fs-5 " id="exampleModalLabel">Profile By {{formUser.username}}
+                              </h1>
+                              <button type="button" class="btn-close " data-bs-dismiss="modal"
+                                 aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                              <div class="container-fluid">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="profile-img">
+                                          <img ng-src="{{formUser.image.url}}" alt="" />
+                                          <div class="file btn btn-lg btn-primary">
+                                             Photo
+                                             <input type="file" name="file" />
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="profile-head">
+                                          <h5>
+                                             {{formUser.username}}
+                                          </h5>
+                                          <h6>
+                                             {{formUser.email}}
+                                          </h6>
+                                          <p class="proile-rating">User Type : 
+                                             <span    ng-repeat="userType in formUser.userType"
+                                                ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM', 'badge text-bg-secondary mx-1': userType.nameType === 'MASTER'}">{{userType.nameType}}</span>
+                                          </p>
+                                          <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                             <li class="nav-item" ole="presentation">
+                                                <a class="nav-link active" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="true">Profile</a>
+                                             </li>
+                                             <li class="nav-item" ole="presentation">
+                                                <a class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" >Other</a>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </div>
+
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="profile-work">
+
+                                          <p>Recent activities</p>
+                                          <a href="">Wishlist</a> <span class="badge text-bg-danger  ms-2"
+                                             style="font-size: 12px;"> {{countReport}}</span> <br />
+                                          <a href="">Report</a> <span class="badge text-bg-danger  ms-2"
+                                             style="font-size: 12px;"> {{countWishlist}}</span><br />
+                                          <a href="">Follow</a><span class="badge text-bg-danger ms-2"
+                                             style="font-size: 12px;">{{follow.length}}</span> <br />
+                                          <a href="">Following</a><span class="badge text-bg-danger ms-2"
+                                             style="font-size: 12px;">{{following.length}}</span> <br />
+                                       </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                       <div class="tab-content profile-tab" id="myTabContent">
+                                          <div class="tab-pane fade show active" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <label>Name</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p> {{formUser.username}}</p>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p> {{formUser.email}}</p>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <label>Birthday</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p> {{formUser.birthday | date:'dd-MM-yyyy'}} </p>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <label>Country</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p>{{formUser.country}}</p>
+                                                </div>
+                                             </div>
+
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <label>Gender</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <p>{{formUser.gender === 0 ? "Female" :"Male"}}</p>
+                                                </div>
+                                             </div>
+
+
+                                          </div>
+                                          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+                                             <div class="row">
+                                                <div class="col-md-3">
+                                                  
+                                                   <label>Update roles:</label>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                   <div class="d-grid gap-2 d-md-block">
+                                                      <button class="btn btn-secondary" type="button"  data-bs-dismiss="modal" ng-click="updateRoleStaff(formUser.email)"><i class="bi bi-person-vcard-fill mx-1"></i> Staff</button>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="modal fade" id="upRole" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+
+                  <div class="modal-dialog modal-dialog-centered  modal-lg">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h1 class="modal-title fs-5 " id="exampleModalLabel">Profile By {{formUser.username}}
+                           </h1>
+                           <button type="button" class="btn-close " data-bs-dismiss="modal"
+                              aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="container-fluid">
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="profile-img">
+                                       <img ng-src="{{formUser.image.url}}" alt="" />
+                                       <div class="file btn btn-lg btn-primary">
+                                          Photo
+                                          <input type="file" name="file" />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="profile-head">
+                                       <h5>
+                                          {{formUser.username}}
+                                       </h5>
+                                       <h6>
+                                          {{formUser.email}}
+                                       </h6>
+                                       <p class="proile-rating">User Type : 
+                                          <span ng-repeat="userType in formUser.userType"
+                                                ng-class="{
+                                                'badge text-bg-info mx-1': userType.nameType === 'BASIC',
+                                                'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM',
+                                                'badge text-bg-secondary mx-1': userType.nameType === 'MASTER'
+                                           }">{{userType.nameType}}</span>
+                                       </p>
+                                       <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                          <li class="nav-item" role="presentation">
+                                             <a class="nav-link active" id="pills-home-tab-profile" data-bs-toggle="pill" data-bs-target="#pills-home-profile" type="button" role="tab" aria-controls="pills-home-profile" aria-selected="true">Profile</a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                             <a class="nav-link" id="pills-profile-tab-orther" data-bs-toggle="pill" data-bs-target="#pills-profile-orther" type="button" role="tab" aria-controls="pills-profile-orther" aria-selected="false">Other</a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+
+
+                                 <!-- <div class="col-md-2">
+                                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                                    </div> -->
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="profile-work">
+
+                                       <p>Recent activities</p>
+                                       <a href="">Wishlist</a> <span class="badge text-bg-danger  ms-2"
+                                          style="font-size: 12px;"> {{countReport}}</span> <br />
+                                       <a href="">Report</a> <span class="badge text-bg-danger  ms-2"
+                                          style="font-size: 12px;"> {{countWishlist}}</span><br />
+                                       <a href="">Follow</a><span class="badge text-bg-danger ms-2"
+                                          style="font-size: 12px;">{{follow.length}}</span> <br />
+                                       <a href="">Following</a><span class="badge text-bg-danger ms-2"
+                                          style="font-size: 12px;">{{following.length}}</span> <br />
+
+                                    </div>
+                                 </div>
+                                 <div class="col-md-8">
+                                    <div class="tab-content profile-tab" id="myTabContent">
+                                       <div class="tab-pane fade show active" id="pills-home-profile" role="tabpanel" aria-labelledby="pills-home-tab-profile" tabindex="0">
+
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <label>Name</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p> {{formUser.username}}</p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <label>Email</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p> {{formUser.email}}</p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <label>Birthday</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p> {{formUser.birthday | date:'dd-MM-yyyy'}} </p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <label>Country</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p>{{formUser.country}}</p>
+                                             </div>
+                                          </div>
+
+                                          <div class="row">
+                                             <div class="col-md-6">
+                                                <label>Gender</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p>{{formUser.gender === 0 ? "Female" :"Male"}}</p>
+                                             </div>
+                                          </div>
+
+
+                                       </div>
+
+                                       <div class="tab-pane fade" id="pills-profile-orther" role="tabpanel" aria-labelledby="pills-profile-tab-orther" tabindex="0">
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                               
+                                                <label>Delete roles:</label>
+                                             </div>
+
+                                             <div class="col-md-9">
+                                                <div class="d-grid gap-2 d-md-block">
+                                                   <button class="btn btn-secondary"  data-bs-dismiss="modal" type="button" ng-click="deleteRoleStaff(formUser.email)"><i class="bi bi-person-vcard-fill mx-1"></i> Staff</button>
+                                                 </div>
+                                             </div>
+                                          </div>
+                                     
+                                         
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-danger mb-0" data-bs-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+
+               </div>
+            </div>
+      </section>
+   </div>
+   <!--  CONTENT END  -->
+   </div>
+   </div>
+
+</body>
+
+</html>

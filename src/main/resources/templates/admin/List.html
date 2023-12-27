@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <title>Document</title>
+   <link rel="stylesheet" href="../../static/css/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_css_bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+   <link rel="stylesheet" href="../../static/css/variable.css">
+   <link rel="stylesheet" href="../../static/css/layout.css">
+   <link rel="stylesheet" href="../../static/css/content.css">
+   <link rel="stylesheet" href="../../static/css/responsive.css">
+</head>
+
+<body>
+   <div class="main-wrapper">
+      <!-- NAVBAR -->
+      <div class="header-container fixed-top">
+         <header class="header navbar navbar-expand-sm expand-header">
+            <div class="header-left d-flex">
+               <div class="logo">
+                  Brand
+               </div>
+               <a href="#" id="toggleSidebar" class="sidebarCollapse" data-placement="bottom">
+                  <span class="fas fa-bars"></span>
+               </a>
+            </div>
+            <ul class="navbar-item flex-row ml-auto">
+               <li class="nav-item dropdown user-profile-dropdown">
+                  <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                     <img src="../../static/img/bell.png" class="icon" alt="">
+                     <p class="count purple-gradient">5</p>
+                  </a>
+                  <div class="dropdown-menu ">
+                     <div class="dp-main-menu">
+                        <a href="#" class="dropdown-item message-item responsives">
+                           <img src="../../static/img/bell.png" alt="" class="user-note">
+                           <div class="note-info-desmis">
+                              <div class="user-notify-info">
+                                 <p class="note-name">Server Report </p>
+                                 <p class="note-time">10 phut truoc</p>
+                              </div>
+                              <p href="" class="status-link">
+                                 <span class="fas fa-times"></span>
+                              </p>
+                           </div>
+                        </a>
+
+                        <a href="#" class="dropdown-item message-item responsives">
+                           <img src="../../static/img/bell.png" alt="" class="user-note">
+                           <div class="note-info-desmis">
+                              <div class="user-notify-info">
+                                 <p class="note-name">Server Report</p>
+                                 <p class="note-time">10 phut truoc</p>
+                              </div>
+                              <p class="status-link">
+                                 <span class="fas fa-times"></span>
+                              </p>
+                           </div>
+                        </a>
+
+                        <a href="#" class="dropdown-item message-item">
+                           <img src="../../static/img/bell.png" alt="" class="user-note">
+                           <div class="note-info-desmis">
+                              <div class="user-notify-info">
+                                 <p class="note-name">Server Report</p>
+                                 <p class="note-time">10 phut truoc</p>
+                              </div>
+                              <p class="status-link">
+                                 <span class="fas fa-times"></span>
+                              </p>
+                           </div>
+                        </a>
+                     </div>
+                  </div>
+               </li>
+
+               <li class="nav-item dropdown user-profile-dropdown">
+                  <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                     <img src="../../static/img/email.png" class="icon" alt="">
+                     <p class="count .bg-clc">5</p>
+                  </a>
+
+                  <div class="dropdown-menu">
+                     <div class="dp-main-menu">
+                        <a href="#" class="dropdown-item message-item">
+                           <img src="../../static/img/email.png" alt="" class="user-note">
+                           <div class="note-info-desmis">
+                              <div class="user-notify-info">
+                                 <p class="note-name">Server Report </p>
+                                 <p class="note-time">10 phut truoc</p>
+                              </div>
+                              <p href="" class="status-link">
+                                 <span class="fas fa-times"></span>
+                              </p>
+                           </div>
+                        </a>
+                     </div>
+                  </div>
+
+
+
+
+               </li>
+
+               <li class="nav-item dropdown user-profile-dropdown">
+                  <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                     <img src="../../static/img/profile.png" class="icon" alt="">
+                  </a>
+                  <div class="dropdown-menu">
+                     <div class="user-profile-section">
+                        <div class="media mx-auto">
+                           <img src="../../static/img/profile.png" alt="" class="img-fluid mr-2">
+                           <div class="media-body">
+                              <h5>Nguye Van A</h5>
+                              <p>Admin</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="dp-profile-menu">
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-user"></span>
+                           Profile
+                        </a>
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-inbox"></span>
+                           Profile
+                        </a>
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-lock-open"></span>
+                           Profile
+                        </a>
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-outdent"></span>
+                           Logout
+                        </a>
+                     </div>
+                  </div>
+               </li>
+
+
+               <li class="nav-item dropdown user-profile-dropdown">
+                  <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                     <img src="../../static/img/settings.png" class="icon" alt="">
+                  </a>
+
+                  <div class="dropdown-menu">
+                     <div class="dp-profile-menu">
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-plug"></span>
+                           Design Style
+                        </a>
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-object-ungroup"></span>
+                           Design Style
+                        </a>
+                        <a href="" class="dropdown-item">
+                           <span class="fas fa-palette"></span>
+                           Design Style
+                        </a>
+
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </header>
+      </div>
+      <!-- NAVBAR END -->
+
+
+      <!-- SIDEBAR START -->
+      <div class="left-menu">
+         <div class="menubar-content">
+            <nav class="animated bounceInDown">
+               <ul id="sidebar">
+                  <li class="active">
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-music"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-chart-bar"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fa-solid fa-headphones"></i></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li class="sub-menu">
+                     <a href="#"><i class="fas fa-home"></i>Music
+                        <div class="fa fa-caret-down right"></div>
+                     </a>
+                     <ul class="left-menu-dp">
+                        <li><a href="#"><i class="fas fa-smoking "></i>Song</a></li>
+                        <li><a href="#"><i class="fas fa-smoking "></i>Song</a></li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#"><i class="bi bi-music-note-list"></i></i>bootstrap-icons</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="bi bi-file-music"></i></i>bootstrap-icons</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>font-awesome icon</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+
+                  <li>
+                     <a href="#"><i class="fas fa-home"></i>Dashboard</a>
+                  </li>
+
+
+               </ul>
+            </nav>
+         </div>
+      </div>
+      <!-- SIDEBAR END -->
+
+
+      <!-- CONTENT START  -->
+
+      <div class="content-wrapper">
+
+         <section class="dashboard-top-sec">
+
+            <div class="container-fluid">
+
+
+               <div class="row profile-content">
+
+                  <div class="col-12 col-md-12 col-lg-12">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                              <div class="iq-card-header text-center">
+                                 <div class="iq-header-title">
+                                    <h4 class="card-title mb-0 ">Manager Blog</h4>
+                                 </div>
+                              </div>
+                              <div class="iq-card-body ">
+                               
+                                 <ul class="responsive-table">
+                                    <li class="table-header">
+                                       <div class="col col-1">Id</div>
+                                       <div class="col col-2">Name</div>
+                                       <div class="col col-3">Nhạc cụ</div>
+                                       <div class="col col-4">Thể loại</div>
+                                    </li>
+                                    <li class="table-row">
+                                       <div class="col col-1" data-label="Job Id">1</div>
+                                       <div class="col col-2" data-label="Customer Name">Jádasd</div>
+                                       <div class="col col-3" data-label="Amount">ádsa</div>
+                                       <div class="col col-4" data-label="Payment Status">dsdsad</div>
+                                    </li>
+               
+                                 </ul>
+               
+                                
+                              </div>
+                           </div>
+
+                        </div>
+
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </section>
+
+      </div>
+
+      <!--  CONTENT END  -->
+
+
+
+
+   </div>
+
+   <script src="../../static/js/jscustom/UI-Js-Admin/chart.js"></script>
+   <script src="../../static/js/jscustom/UI-Js-Admin/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_js_bootstrap.bundle.min.js"></script>
+   <script src="../../static/js/jscustom/UI-Js-Admin/code.jquery.com_jquery-3.7.1.min.js"></script>
+   <script src="../../static/js/jscustom/UI-Js-Admin/admin.js"></script>
+  
+</body>
+
+</html>

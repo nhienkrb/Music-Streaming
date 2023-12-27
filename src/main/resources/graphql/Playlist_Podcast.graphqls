@@ -1,0 +1,12 @@
+#Playlist_Podcast.graphqls
+#import "./Playlist.graphqls"
+#import "./Episode.graphqls"
+#import "./Access.graphqls"
+
+type Playlist_Podcast{
+	playlistPodcastId: ID
+	playlist: Playlist
+	episode: Episode
+	dateAdded: String
+	accesses: [Access]
+}

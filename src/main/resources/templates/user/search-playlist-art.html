@@ -1,0 +1,109 @@
+<body ng-controller="playlistCtrl">
+    <section class="w-100 h-100">
+        <div class="row pt-5" data-bs-toggle="modal" data-bs-target="#infor-playlist"
+            style="background-color: #2a2b2b;">
+            <div class="col-2 ms-3 mb-3">
+                <img class="w-100 img-playlist" style="height: 200px; object-fit: cover;"
+                    src="{{playlist.image !== null ? playlist.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1696394508/Background/System/ss_276c32d569fe8394e31f5f53aaf7ce07b8874387.1920x1080_raeceo.jpg'}}"
+                    alt="">
+            </div>
+            <div class="col-9 d-flex flex-column justify-content-center">
+                <div>
+                    <p class="p-0 m-0">{{playlist.isPublic === true ? 'Public Playlist' : 'Private Playlist'}}</p>
+                    <h6 class="display-3">{{playlist.playlistName}}</h6>
+                </div>
+                <div>
+                    <p class="text-white-50">{{playlist.description}}</p>
+                </div>
+                <div>
+                    <h6>Ng.vanbao</h6>
+                </div>
+            </div>
+        </div>
+        <div ng-show="listAudioPlaylist.length > 0" class="d-flex justify-content-between align-items-center">
+            <div>
+                <button id="btn-playlist-play" class="btn border-0">
+                    <i class="display-3 bi bi-play-circle" style="color: green;"></i>
+                </button>
+                <button id="btn-playlist-pause" hidden class="btn border-0">
+                    <i class="display-3 bi bi-pause-circle" style="color: green;"></i>
+                </button>
+                <button id="btn-playlist-shuffle" class="btn text-white border-0 py-0"><i
+                        class="display-6 bi bi-shuffle"></i></button>
+            </div>
+            
+        </div>
+        <div class="mx-4">
+            <table ng-show="listAudioPlaylist.length > 0" class="table text-white table-hover"
+                style="background-color: transparent!important;">
+                <thead>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Album</th>
+                    <th></th>
+                    <th class="text-center"><i class="bi bi-stopwatch"></i></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in listAudioPlaylist | limitTo: 10"
+                        ng-dblclick="item.recordingId ? selectAudio(item,'song',listAudioPlaylist,$index) : selectAudio(item,'episode',listAudioPlaylist,$index)"
+                        class="audio align-items-center">
+                        <!-- Col 1 -->
+                        <td class="text-white">
+                            {{$index+1}}
+                        </td>
+                        <!-- Col 2 -->
+                        <td ng-if="item.recordingId">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex">
+                                    <img class="rounded-2 mx-3" src="{{item.song.image.url}}"
+                                        style="width: 50px; height: 50px; object-fit: cover;" alt="">
+                                    <div>
+                                        <h6 class="text-white">{{item.recordingName}}</h6>
+                                        <span class="small text-white"
+                                            ng-repeat="a in item.song.writters">{{a.artist.artistName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td ng-if="item.episodeId">
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex">
+                                    <img class="rounded-2 mx-3" src="{{item.image.url}}"
+                                        style="width: 50px; height: 50px; object-fit: cover;" alt="">
+                                    <div>
+                                        <h6 class="text-white">{{item.episodeTitle}}</h6>
+                                        <span class="small text-white">{{item.podcast.authorName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- Col 3 -->
+                        <td>
+                            <h6 class="p-0 m-0 text-white">{{item.tracks[0].album.albumName}}</h6>
+                            <h6 class="p-0 m-0 text-white">{{item.podcast.podcastName}}</h6>
+                        </td>
+
+                        <!-- Col 4 -->
+                        <td>
+                          
+                        </td>
+
+                        <!-- Col 5 -->
+                        <td>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button ng-click="checkExisted(item,$event)"
+                                    class="btn border-0 playlist-liked text-white">
+                                    <i ng-style="{'color': isLiked(item) ? 'green' : 'white'}"
+                                        class="{{isLiked(item) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                </button>
+                                <h6 class="p-0 m-0 text-white"><format-time seconds="item.duration"></format-time></h6>
+                                <button class="btn border-0 text-white"><i class="bi bi-three-dots"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>

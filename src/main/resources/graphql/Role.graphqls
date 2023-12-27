@@ -1,0 +1,8 @@
+#Role.graphqls
+#import "./Author.graphqls"
+
+type Role{
+	roleId: ID
+	role: String
+	authors: [Author]
+}

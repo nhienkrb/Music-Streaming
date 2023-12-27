@@ -1,0 +1,16 @@
+#Song.graphqls
+#import "./Image.graphqls"
+#import "./Recording.graphqls"
+#import "./Writter.graphqls"
+
+type Song{
+	songId: ID
+	songName: String
+	image: Image
+	releaseDay: String
+	isDeleted: Boolean
+	description: String
+	artistCreate: Int
+	recordings: [Recording]
+	writters: [Writter]
+}

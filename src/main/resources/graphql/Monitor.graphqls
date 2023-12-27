@@ -1,0 +1,10 @@
+#Monitor.graphqls
+#import "./Recording.graphqls"
+#import "./Account.graphqls"
+
+type Monitor{
+	monitorid: ID
+	dateMonitor: String
+	recording: Recording
+	account: Account
+}

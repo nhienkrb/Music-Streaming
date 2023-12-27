@@ -1,0 +1,204 @@
+*{
+    box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+div{
+    display: block;
+}
+/* logo=============================================== */
+.logo{
+    height: 55px;
+    text-align: center;
+}
+/* bl-login-form=============================================== */
+.bl-login-form{
+    flex: 3 1 0%;
+    display: flex;
+    justify-content: center;
+    padding: 32px;
+    -webkit-box-pack: center;
+    min-height: 100vh; 
+}
+
+/* bl-title2=============================================== */
+.bl2-title2{
+    text-align: center;
+    margin: 48px 0px;
+}
+/* ul=============================================== */
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+/* bl-option=============================================== */
+.bl-option{
+    list-style: none;
+    padding: 0px;
+    text-indent: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 324px;
+    margin: 0px auto;
+    row-gap: normal;
+}
+.bl2-option{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+/* bl-btn=============================================== */
+.bl-btn{
+    display: inline-flex;
+    box-sizing: border-box; 
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: transparent;
+    border-radius: 500px;
+    min-block-size: 48px;
+    align-items: center;
+    justify-content: center;
+    inline-size: 100%;
+    color: #000000;
+}
+.bl-btn:hover{
+    box-shadow: 0px 0px 10px #1ed760;
+}
+/* icons=============================================== */
+.bl-google{
+    background: url(https://accounts.scdn.co/sso/images/new-google-icon.72fd940a229bc94cf9484a3320b3dccb.svg) center center no-repeat ;
+    width: 1.5rem ;
+    height: 1.5rem ;
+}
+.bl-fb{
+    background: url(https://accounts.scdn.co/sso/images/new-facebook-icon.eae8e1b6256f7ccf01cf81913254e70b.svg) center center no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+/* bl-title-google=============================================== */
+.bl-title-google{
+    margin-left: 1.5rem;
+}
+.bl-title-fb{
+    margin-left: 1rem;
+}
+/* bl-hr=============================================== */
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+.bl-hr{
+    margin: 32px 100px;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-image: initial;
+    border-top: 1px solid rgb(41, 41, 41);
+}
+/* bl-form=============================================== */
+form{
+    width: 450px;
+    margin: 0px auto;
+    padding-bottom: 0px;
+} 
+/* form-group=============================================== */
+.form-group{
+    padding-bottom: 16px;
+}
+.form-group a{
+    color: green;
+}
+/* bl-title-lable=============================================== */
+.bl-title-lable{
+    font-weight: bold;
+    padding-block-end: 10px;
+}
+/* form-check-label=============================================== */
+.form-check-label{
+    font-size: small;
+}
+/* bl-input-login=============================================== */
+.bl-input-login{
+    border: 0px;
+    font-size: 1rem;
+    inline-size: 100%;
+    padding-inline: 14px;
+    min-block-size: 48px;
+    background-color: #fff;
+    box-shadow: inset 0 0 0 1px var(--essential-subdued,#878787);
+    color: #000000 !important;
+}
+.bl-input-login:focus{
+    background-color: ffff;
+    border: 2px solid #000000;
+}
+.bl-input-login:hover{
+    box-shadow: 0px 0px 10px #1ed760;
+}
+/*form-check-input=============================================== */
+.form-check-input{
+    border-radius: 20px;
+    block-size: 20px;
+    min-inline-size: 20px;
+}
+.form-check-input:checked{
+    background-color: #1ed760;
+    border: 1px solid black;
+}
+.form-check-input:focus{
+    border: 2px solid #ffff;
+}
+/* bl-btn-login=============================================== */
+.bl-btn-login{
+    text-align: center;
+    padding: 32px 0px;
+}
+.btn-login{
+    border: 0px;
+    box-sizing: border-box;
+    background-color: var(--background-base,#1ed760);
+    color:#000000;
+    font-weight: bolder;
+    border-radius: 500px;
+    min-block-size: 48px;
+    justify-content: center;
+    padding-block: 8px;
+    padding-inline: 32px;
+    inline-size: 100%;
+}
+.btn-login:hover{
+    background-color: #1ed760;
+    color:#000000;
+    box-shadow: 0px 0px 10px #1ed760;
+}
+
+/* bl-sign-up=============================================== */
+.bl-sign-up{
+    padding: 16px 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.bl-sign-up a{
+    color: green;
+}
+.bl-sign-up a:hover{
+    color: #1ed760;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    p {
+    margin: 0px !important;
+  }
+
+  .checkbox {
+    width: 140px;
+    height: 40px;
+    position: relative;
+    margin: 0.5em 0.5em;
+  }
+
+  .checkbox input {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    border: 2px solid #d1d1d1;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.6s;
+  }
+
+  .checkbox input:checked~.box {
+    background: black;
+    border: 2px solid white;
+    color: white;
+  }
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img src="" alt="">
+            </div>
+
+            <div class="col-8">
+                <input class="form-control my-3" type="text" name="" id="" placeholder="Name">
+                <select class="form-control my-3" name="" id="">
+                    <option value="">Single</option>
+                    <option value="">Album</option>
+                </select>
+                <div class="d-flex">
+                    <input class="form-control my-3" type="datetime-local">
+                </div>
+                <input list="writters" class="form-control" name="writters" id="writter">
+                <datalist id="writters">
+                    <option value="Edge">
+                    <option value="Firefox">
+                    <option value="Chrome">
+                    <option value="Opera">
+                    <option value="Safari">
+                </datalist>
+                <div id="list-writter" class="d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#writter').on('change', function () {
+            var selectedOption = $(this).val();
+            if (selectedOption) {
+                var tag = $('<div class="checkbox"> <input type="checkbox" name="writter" id="" />' +
+                    '<div class="box bg-black text-white"><p>' + selectedOption + '</p></div>' +
+                    '</div>');
+                tag.find('input[type="checkbox"]').val(selectedOption);
+                $('#list-writter').append(tag);
+                $(this).find('option[value="' + selectedOption + '"]').remove();
+            }
+            $('#writter').val("");
+        });
+
+        $('#list-writter').on('click', 'input[type="checkbox"]', function () {
+            var selectedGenre = $(this).val();
+            if (selectedGenre) {
+                $('#writter').append($('<option>', {
+                    value: selectedGenre,
+                    text: selectedGenre
+                }));
+                $(this).closest('.checkbox').remove();
+            }
+        });
+    </script>
+</body>
+
+</html>

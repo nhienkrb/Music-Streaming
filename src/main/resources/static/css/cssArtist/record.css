@@ -1,0 +1,49 @@
+.list-tag {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0 0 0;
+}
+
+p {
+    margin: 0px !important;
+}
+
+.checkbox {
+    width: 140px;
+    height: 40px;
+    position: relative;
+    margin: 0.5em 0.5em;
+}
+
+.checkbox input {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    border: 2px solid #d1d1d1;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.6s;
+}
+
+.checkbox input:checked~.box {
+    background: black;
+    border: 2px solid white;
+    color: white;
+}

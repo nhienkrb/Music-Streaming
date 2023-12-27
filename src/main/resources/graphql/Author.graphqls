@@ -1,0 +1,9 @@
+#Author.graphqls
+#import "./Role.graphqls"
+#import "./Account.graphqls"
+
+type Author{
+	authorId: ID
+	role: Role
+	account: Account
+}

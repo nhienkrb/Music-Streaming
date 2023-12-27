@@ -1,0 +1,10 @@
+#Culture.graphqls
+
+type Culture{
+	cultureId: ID
+	cultureName: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

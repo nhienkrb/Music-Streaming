@@ -1,0 +1,165 @@
+<body ng-controller="myPodcastCtrl">
+    <section class="container">
+        <div class="d-flex justify-content-between mt-5">
+            <h1>Podcast settings</h1>
+            <button id="save-change-podcast" class="border-0 px-5 save-podcast rounded-pill"
+                style="background-color: #7b75ff">
+                <h6>Save</h6>
+            </button>
+        </div>
+        <div>
+            <h6>About</h6>
+            <div class="mt-4">
+                <label for="podcast-name">
+                    <h6>Podcast name</h6>
+                </label>
+                <input ng-model="podcast.podcastName" type="text" class="form-control"
+                    placeholder="Your podcast name is how people will find your podcast, both on Spotify for Podcasters and on other platforms.">
+            </div>
+            <div class="mt-4">
+                <label for="podcast-description">
+                    <h6>Description</h6>
+                </label>
+                <textarea ng-model="podcast.bio" class="form-control" name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="mt-4">
+                <h6>Author</h6>
+                <p>The host, creator, or network name that should appear as the owner of the podcast on listening
+                    platforms.</p>
+                <input ng-model="podcast.authorName" type="text" class="form-control" placeholder="Author name">
+            </div>
+            <div class="mt-4">
+                <h3>Podcast cover art</h3>
+                <div class="row shadow mt-2 rounded-4">
+                    <div class="col-4 my-3">
+                        <img id="podcast-change-cover-image" class="h-100 w-75"
+                            src="{{podcast.image.url !==null ? podcast.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1698037496/Avatar/System/1200px-PlusCM128.svg_i15hyw.png'}}"
+                            alt="">
+                    </div>
+                    <div class="col-8 my-3 d-flex flex-column justify-content-center align-items-center">
+                        <h6>Upload cover art for your podcast.</h6>
+                        <button id="btn-change-cover-image" class="mt-3 py-2 px-3 border-0 rounded-pill"
+                            style="background-color: #7b75ff">
+                            <h6>Update Cover Art</h6>
+                        </button>
+                        <input id="cover-image-podcast-file" type="file" hidden>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-5">
+                <h3>More details</h3>
+                <hr>
+                <div>
+                    <h6>Podcast category:</h6>
+                    <div class="d-flex align-items-center">
+                        <p>{{podcast.tag.tagName}}</p>
+                        <button class="btn border-0" data-bs-toggle="collapse" data-bs-target="#tag"><i
+                                class="bi bi-recycle"></i></button>
+                    </div>
+                    <div id="tag" class="collapse">
+                        <select ng-model="podcast.tag" class="inputCss form-control ip">
+                            <option ng-repeat="item in listTag" value="{{item}}" class="text-black">
+                                {{item.tagName}}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="mt-2">
+                    <h6>Podcast language:</h6>
+                    <div class="d-flex align-items-center">
+                        <p>{{podcast.language}}</p>
+                        <button class="btn border-0" data-bs-toggle="collapse" data-bs-target="#language"><i
+                                class="bi bi-recycle"></i></button>
+                    </div>
+                    <div id="language" class="collapse">
+                        <select ng-model="podcast.language" class="inputCss form-control ip">
+                            <option ng-repeat="item in listCountries" value="{{item.id}}" class="text-black">
+                                {{item.nameCountry}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5 flex-fill">
+                <h3>Connections</h3>
+                <hr>
+                <div>
+                    <div class="m-2 d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <i class="mx-2 bi bi-twitter"></i>
+                            <h6 class="m-0">Twitter</h6>
+                        </div>
+                        <input value="{{socials[0]}}" class="w-50 form-control" name="social-links"
+                            ng-model="socials[0]" type="text">
+                    </div>
+                    <div class="m-2 d-flex justify-content-between">
+                        <div class="d-flex  align-items-center">
+                            <i class="mx-2 bi bi-instagram"></i>
+                            <h6 class="m-0">Instagram</h6>
+                        </div>
+                        <input value="{{socials[1]}}" class="w-50 form-control" name="social-links"
+                            ng-model="socials[1]" type="text">
+                    </div>
+                    <div class="m-2 d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <i class="mx-2 bi bi-youtube"></i>
+                            <h6 class="m-0">Youtube</h6>
+                        </div>
+                        <input value="{{socials[2]}}" class="w-50 form-control" name="social-links"
+                            ng-model="socials[2]" type="text">
+                    </div>
+                    <div class="m-2 d-flex justify-content-between">
+                        <div class="d-flex  align-items-center">
+                            <i class="mx-2 bi bi-facebook"></i>
+                            <h6 class="m-0">Facebook</h6>
+                        </div>
+                        <input value="{{socials[3]}}" class="w-50 form-control" name="social-links"
+                            ng-model="socials[3]" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <h3 class="my-5">More actions</h3>
+            <h5>Delete podcast</h5>
+            <p>This will delete your podcast and its associated data from Spotify apps and services. Your show and its
+                episodes will be removed from all listening platforms.</p>
+            <button class="btn p-2 my-4 text-danger rounded-pill border-1 border-dark" data-bs-toggle="modal"
+                data-bs-target="#delete-podcast">
+                <h6>Delete podcast</h6>
+            </button>
+            <hr>
+        </div>
+    </section>
+    <div class="modal fade" id="delete-podcast">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Do you want delete podcast</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <img id="podcast-change-cover-image" class="h-100 w-25"
+                            src="{{podcast.image.url !==null ? podcast.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1698037496/Avatar/System/1200px-PlusCM128.svg_i15hyw.png'}}"
+                            alt="">
+                        <h5 class="ms-3">{{podcast.podcastName}}</h5>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="confirm-delete-podcast" type="button" class="btn btn-danger"
+                        data-bs-dismiss="modal">Yes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,188 @@
+<body ng-controller="album">
+    <div class="card card-content shadow mb-4" style="background: linear-gradient(to bottom, #237958, #413d3d);">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="bl-search">
+                    <div class="bl-search-box"></div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="text-title mb-3">
+                    <div class="row" ng-show="aloption == 'album'">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-img" >
+                                    <img ng-src="{{ alDetail.image.url }}" alt="Sunset Over the Sea"
+                                        style="width: 100%; height: 250px;object-fit: cover;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tt-pct col-sm-9">
+                            <h4>Album</h4>
+                            <h1>{{alDetail.albumName | limitTo: 13}}</h1> <br>
+                            <a href="#!artist/{{alDetail.artist.artistId}}">
+                                <h2>{{alDetail.artist.artistName}}</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="aloption == 'single'">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-img" >
+                                    <img ng-src="{{ s.song.image.url }}" alt="Sunset Over the Sea"
+                                        style="width: 100%; height: 250px;object-fit: cover;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tt-pct col-sm-9">
+                            <h4>Single</h4>
+                            <h1>{{s.recordingName | limitTo: 13}}</h1> <br>
+                            <span ng-repeat="a in s.song.writters">
+                                <a class="text-white" href="#!artist/{{a.artist.artistId}}">{{a.artist.artistName}}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <button id="btn-playlist-play" class="btn border-0">
+                            <i class="display-3 bi bi-play-circle" style="color: green;"></i>
+                        </button>
+                        <button id="btn-playlist-pause" hidden class="btn border-0">
+                            <i class="display-3 bi bi-pause-circle" style="color: green;"></i>
+                        </button>
+                        <button ng-show="aloption == 'album'" id="btn-playlist-shuffle"
+                            class="btn text-white border-0 py-0"><i class="display-6 bi bi-shuffle"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="mx-4">
+                    <table class="table text-white table-borderless" style="background-color: transparent!important;">
+                        <thead>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th></th>
+                            <th></th>
+                            <th class="text-center"><i class="bi bi-stopwatch"></i></th>
+                        </thead>
+                        <tbody ng-show="aloption == 'album'">
+                            <tr ng-repeat="item in alDetail.tracks track by $index"
+                                ng-dblclick="selectAudio(item.recording,'song',listSong,$index)"
+                                class="audio align-items-center">
+                                <!-- Col 1 -->
+                                <td class="text-white">
+                                    {{$index+1}}
+                                </td>
+                                <!-- Col 2 -->
+                                <td ng-if="item.recording.recordingId">
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex">
+                                            <img class="rounded-2 mx-3" ng-src="{{item.recording.song.image.url}}"
+                                                style="width: 50px; height: 50px; object-fit: cover;" alt="">
+                                            <div>
+                                                <h6 class="text-white">{{item.recording.recordingName}}</h6>
+                                                <span class="small text-white"
+                                                    ng-repeat="a in item.recording.song.writters">
+                                                    <a class="text-white"
+                                                        href="#!artist/{{a.artist.artistId}}">{{a.artist.artistName}}</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <!-- <p>{{item.recording.recordingId}}</p> -->
+                                        <button ng-click="checkExisted(item.recording,$event)"
+                                            class="btn border-0 playlist-liked text-white">
+                                            <i ng-style="{'color': isLiked(item.recording) ? 'green' : 'white'}"
+                                                class="{{isLiked(item.recording) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                        </button>
+                                        <h6 class="p-0 m-0 text-white"><format-time
+                                                seconds="item.recording.duration"></format-time></h6>
+                                        <button class="btn border-0 text-white"><i
+                                                class="bi bi-three-dots"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-show="aloption == 'single'">
+                            <tr ng-dblclick="selectAudio(s,'song',s,$index)" class="audio align-items-center">
+                                <!-- Col 1 -->
+                                <td class="text-white">
+                                    {{$index+1}}
+                                </td>
+                                <!-- Col 2 -->
+                                <td ng-if="s.recordingId">
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex">
+                                            <img class="rounded-2 mx-3" ng-src="{{s.song.image.url}}"
+                                                style="width: 50px; height: 50px; object-fit: cover;" alt="">
+                                            <div>
+                                                <h6 class="text-white">{{s.recordingName}}</h6>
+                                                <span class="small text-white" ng-repeat="a in s.song.writters">
+                                                    <a class="text-white"
+                                                        href="#!artist/{{a.artist.artistId}}">{{a.artist.artistName}}</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button ng-click="checkExisted(s,$event)"
+                                            class="btn border-0 playlist-liked text-white">
+                                            <i ng-style="{'color': isLiked(s) ? 'green' : 'white'}"
+                                                class="{{isLiked(s) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                        </button>
+                                        <h6 class="p-0 m-0 text-white"><format-time seconds="s.duration"></format-time>
+                                        </h6>
+                                        <button class="btn border-0 text-white"><i
+                                                class="bi bi-three-dots"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="moreByArt.length > 0 | limitTo : 6" class="row">
+            <h5 class="text-white">More by {{alDetail.artist.artistName}}</h5>
+            <div class="col-2 mt-3" ng-repeat="item in moreByArt">
+                <a href="#!album/single/{{item.song.songId}}" class="text-white">
+                    <div class="card card-play-list-profile">
+                        <div class="img-car-profile">
+                            <img src="{{item.song.image.url}}" class="card-img-top w-100"
+                                style="height: 150px; object-fit: cover;" alt="...">
+                            <i class="bi bi-play-circle-fill icon-play-card-playlist-profile"></i>
+                        </div>
+                        <div class="card-body card-body-playlist-profile">
+                            <h6 class="text-truncate">{{item.recordingName}}</h6>
+                            <div class="d-flex">
+                                <p class="card-text-playlist-profile-folow">{{item.song.releaseDay | date:
+                                    'yyyy'}}</p>
+                                <i class="bi bi-dot"></i>
+                                <p class="card-text-playlist-profile-folow">Single</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>

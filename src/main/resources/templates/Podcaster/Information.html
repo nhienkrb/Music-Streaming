@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../static/css/cssPobcast/information.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../static/js/angularjs/pobcast/VerifyPodcast.js"></script>
+  <script src="../../static/js/jscustom/Podcast/verify.js"></script>
+  <script src="../../static/js/Utiliez/CookiesUtil.js"></script>
+
+
+  <link rel="stylesheet" href="../../static/css/toasts.css">
+  <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+  <script src="../../static/js/jscustom/toasts.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="verifyCtrl">
+  <div class="container mt-5 col-7">
+    <div class="row d-flex justify-content-center align-items-center">
+      <form id="regForm">
+        <div class="all-steps my-0" hidden id="all-steps">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+
+        <div class="tab">
+          <h6>1/4</h6>
+          <h1>Claim an podcaster profile</h1>
+          <p>If you already have episode on Rhythm Wave, you can get access to stats.</p>
+        </div>
+
+        <div class="tab">
+          <h6>2/4</h6>
+          <h1>Is this the right Rhythm Wave account?</h1>
+          <p>You’ll use this to log in to Rhythm Wave for Artists.</p>
+          <div class="my-5 d-flex flex-column align-items-center">
+            <img style="width: 150px; height: 150px; object-fit: cover;" class="rounded-circle" ng-src="{{account.image == null ? 'https://res.cloudinary.com/div9ldpou/image/upload/v1696293833/Avatar/System/807831_rrsd2v.png' : account.image.url}}"  alt="Cinque Terre">
+            <p>{{account.email}}</p>
+            <p>{{account.username}}</p>
+            <a href="./sigin">Change account</a>
+          </div>
+        </div>
+
+        <div class="tab">
+          <h6>3/4</h6>
+          <h1 class="text-center">Set up your podcast</h1>
+          <h6 class="text-center">Before we can distribute your podcast to additional listening platforms, you just need
+            to fill in a few
+            things.
+            (You can always change these later.)</h6>
+          <div class="row">
+            <div class="col-5">
+              <img ng-click="selectImg('podcast-img')" class="podcast-img w-100 img-podcast"
+                src="https://res.cloudinary.com/div9ldpou/image/upload/v1696293833/Avatar/System/807831_rrsd2v.png"
+                alt="">
+              <input accept="image/*" id="podcast-img" type="file" hidden required>
+            </div>
+            <div class="col-7">
+              <div class="my-3">
+                <label for="">Podcast name</label>
+                <input ng-model="podcast.podcastName" class="text-white inputCss form-control ip" type="text">
+              </div>
+              <div class="my-3">
+                <label for="">Podcast category</label>
+                <select ng-model="podcast.tag.tagId" class="text-white inputCss form-control ip" name="" id="option-tag" required>
+                  <option ng-repeat="item in listTag" value="{{item.tagId}}" class="text-black">{{item.tagName}}
+                  </option>
+                </select>
+              </div>
+              <div class="my-3">
+                <label for="">Podcast language</label>
+                <select ng-model="podcast.language" class="text-white inputCss form-control ip" name="" id="option-country" required>
+                  <option ng-repeat="item in listCountries" value="{{item.id}}" class="text-black">{{item.nameCountry}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="my-3">
+            <label for="">Podcast description</label>
+            <textarea required ng-model="podcast.bio" class="text-white inputCss form-control ip" name="" id="" cols="30" rows="10"
+              placeholder="Bio"></textarea>
+          </div>
+        </div>
+
+        <div class="tab">
+          <h6>4/4</h6>
+          <h3>Thanks for your Donation!</h3>
+          <span>Your donation has been entered! We will contact you shortly!</span>
+        </div>
+
+        <div class="my-4" id="nextprevious">
+          <button type="button" id="prevBtn" class="float-start py-2 btn btn-dark rounded-pill bg-white text-black ms-5"
+            onclick="nextPrev(-1)">Go back</button>
+          <button type="button" id="nextBtn" class="float-end py-2 px-4 btn btn-success rounded-pill me-5"
+            onclick="nextPrev(1)">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

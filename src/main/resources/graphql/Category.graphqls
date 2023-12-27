@@ -1,0 +1,7 @@
+#Category.graphqls
+
+type Category{
+	id: ID
+	source: String
+	search: String
+}

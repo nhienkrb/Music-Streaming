@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+  .tab {
+    display: none
+  }
+
+  button:hover {
+    opacity: 0.8
+  }
+
+  #prevBtn {
+    background-color: #bbbbbb
+  }
+
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5
+  }
+
+  .step.active {
+    opacity: 1
+  }
+
+  .step.finish {
+    background-color: #4CAF50
+  }
+
+  .all-steps {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px
+  }
+
+  .thanks-message{
+    display: none;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .table-container {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .list-tag {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0 0 0;
+  }
+
+  /*=================List tag============== 
+  =========================================*/
+  p {
+    margin: 0px !important;
+  }
+
+  .checkbox {
+    width: 140px;
+    height: 40px;
+    position: relative;
+    margin: 0.5em 0.5em;
+  }
+
+  .checkbox input {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    border: 2px solid #d1d1d1;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.6s;
+  }
+
+  .checkbox input:checked~.box {
+    background: black;
+    border: 2px solid white;
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="container mt-5 col-7">
+    <div class="row d-flex justify-content-center align-items-center">
+      <form id="regForm">
+        <div class="all-steps my-0" id="all-steps" hidden>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+
+        <div class="tab tab-1">
+          <div class="d-flex">
+            <h6>1 of 5 - Song</h6>
+          </div>
+          <h1>Choose a song to pitch</h1>
+          <p>We'll add this song to Release Radar if we get yout pitch at least a week before release</p>
+          <div class="d-flex">
+            <img style="height: 100px; width: 50px; object-fit: cover;" class="w-25" src="../../static/img/ab1.webp"
+              alt="">
+            <div>
+              <h6>Tên album</h6>
+              <p>Album - Release 23 Oct 2023</p>
+            </div>
+          </div>
+          <div class="table-container table-responsive">
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Duration</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="tab tab-2">
+          <div class="d-flex">
+            <h6>2 of 5 - Location</h6>
+          </div>
+          <h1>Confirm where the artist is from</h1>
+          <p>We only use this information to look for music made by people from specific parts of the world</p>
+          <div class="my-5">
+            <label for="hometown">
+              <h6>Hometown</h6>
+            </label>
+            <input list="hometowns" class="form-control" name="hometown" id="hometown">
+            <datalist id="hometowns">
+              <option value="Edge">
+              <option value="Firefox">
+              <option value="Chrome">
+              <option value="Opera">
+              <option value="Safari">
+            </datalist>
+          </div>
+
+
+        </div>
+
+        <div class="tab tab-3">
+          <div class="d-flex">
+            <h6>3 of 5 - Details</h6>
+          </div>
+          <h1>Add song details</h1>
+          <p>Tell us what this song sounds like and how it was recorded</p>
+          <div class="d-flex">
+            <img style="height: 100px; width: 50px; object-fit: cover;" class="w-25" src="../../static/img/ab1.webp"
+              alt="">
+            <div>
+              <h6>Tên album</h6>
+              <p>Album - Release 23 Oct 2023</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <label for="genre">
+              <h6>Choose up to 3 genre</h6>
+            </label>
+            <input list="genres" class="form-control" name="genres" id="genre">
+            <datalist id="genres">
+              <option value="Edge">
+              <option value="Firefox">
+              <option value="Chrome">
+              <option value="Opera">
+              <option value="Safari">
+            </datalist>
+            <!-- List genres -->
+            <div id="list-genres" class="d-flex">
+            </div>
+          </div>
+          <!-- List music cultures -->
+          <div class="mt-4">
+            <h6>Choose up to 3 music cultures. (Optional)</h6>
+            <div class="list-tag">
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Afican</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Arabic</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Asian</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Buddist</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Celtic</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Caribbean</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>Christian</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="culture" id="" />
+                <div class="box">
+                  <p>None of these</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List mood -->
+          <div class="mt-4">
+            <h6>Choose up to 2 moods. (Optional)</h6>
+            <div class="list-tag">
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Chill</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Energetic</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Happy</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Fierce</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Meditative</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Romantic</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>Sad</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="mood" id="" />
+                <div class="box">
+                  <p>None of these</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List song styles -->
+          <div class="mt-4">
+            <h6>Choose up to 2 song styles. (Optional)</h6>
+            <div class="list-tag">
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Acoustic</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Ballad</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Beats</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box" name="style" id="">
+                  <p>Christmas</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Holiday</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Kids</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>Traditional</p>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" name="style" id="" />
+                <div class="box">
+                  <p>None of these</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List instruments -->
+          <div class="mt-4">
+            <h6>What instruments are on this song? (Optional)</h6>
+            <div class="list-tag">
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Accordian</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Banjo</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Buzuq</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Cello</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Clarinet</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Mbiria</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>Kora</p>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <input type="checkbox" name="intrument" id="" />
+                <div class="box">
+                  <p>None of these</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="question d-flex mt-4">
+            <div class="d-flex flex-column me-5">
+              <div>
+                <h6>Is this a cover?</h6>
+                <input class="form-check-input" type="radio" name="cover" id=""><span>Yes</span>
+                <input class="form-check-input" type="radio" name="cover" id=""><span>No</span>
+              </div>
+              <div class="mt-4">
+                <h6>How was it recorded?</h6>
+                <input class="form-check-input" type="radio" name="recorded" id=""><span>Yes</span>
+                <input class="form-check-input" type="radio" name="recorded" id=""><span>No</span>
+              </div>
+            </div>
+            <div class="d-flex flex-column ms-5">
+              <div>
+                <h6>Is it a remix?</h6>
+                <input class="form-check-input" type="radio" name="remix" id=""><span>Yes</span>
+                <input class="form-check-input" type="radio" name="remix" id=""><span>No</span>
+              </div>
+              <div class="mt-4">
+                <h6>Is it an instruments?</h6>
+                <input class="form-check-input" type="radio" name="intruments" id=""><span>Yes</span>
+                <input class="form-check-input" type="radio" name="intruments" id=""><span>No</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab tab-4">
+          <div class="d-flex">
+            <h6>4 of 5 - Description</h6>
+          </div>
+          <h1>Add a description</h1>
+          <h6>Tell our team about the process of creating this song, as well as any plans to promote it</h6>
+          <div class="mt-5">
+            <h5>Description</h5>
+            <textarea class="w-100 form-control" name="" id="" cols="30" rows="10"
+              placeholder="500 characters remaining"></textarea>
+          </div>
+
+        </div>
+
+        <div class="tab tab-5">
+          <div class="d-flex">
+            <h6>5 of 5 - Review</h6>
+          </div>
+          <h1>Make sure everything looks goods</h1>
+          <p>You can update your pitch up until release day. But changes made within a week of release won't be
+            reflected on Release Radar</p>
+
+          <div class="d-flex">
+            <img style="height: 100px; width: 50px; object-fit: cover;" class="w-25" src="../../static/img/ab1.webp"
+              alt="">
+            <div>
+              <h6>Tên album</h6>
+              <p>Album - Release 23 Oct 2023</p>
+            </div>
+          </div>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="lgenre my-3">
+            <span class="p-2 badge bg-success">Genre</span>
+          </div>
+          <div class="lgenre my-3">
+            <span class="p-2 badge bg-success">Mood</span>
+          </div>
+          <div class="lgenre my-3">
+            <span class="p-2 badge bg-success">Culture</span>
+          </div>
+          <div class="lgenre my-3">
+            <span class="p-2 badge bg-success">Song style</span>
+          </div>
+          <div class="lgenre my-3">
+            <span class="p-2 badge bg-success">Instruments</span>
+          </div>
+          <div>
+            <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+          </div>
+        </div>
+
+        <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png"
+            width="100" class="mb-4">
+          <h3>Thanks for your Donation!</h3> <span>Your donation has been entered! We will contact you shortly!</span>
+        </div>
+
+        <div class="fixed-bottom my-4" id="nextprevious">
+          <button type="button" id="prevBtn" class="float-start py-2 btn btn-dark rounded-pill bg-white text-black ms-5"
+            onclick="nextPrev(-1)">Previous</button>
+          <button type="button" id="nextBtn" class="float-end py-2 px-4 btn btn-success rounded-pill me-5"
+            onclick="nextPrev(1)">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    var currentTab = 0;
+    document.addEventListener("DOMContentLoaded", function (event) {
+      showTab(currentTab);
+      $('#current-tab').innerText = currentTab + 1;
+    });
+
+
+    function showTab(n) {
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+      var x = document.getElementsByClassName("tab");
+      x[currentTab].style.display = "none";
+      currentTab = currentTab + n;
+      if (currentTab >= x.length) {
+        document.getElementById("nextprevious").style.display = "none";
+        document.getElementById("all-steps").style.display = "none";
+        document.getElementById("register").style.display = "none";
+        $("#text-message").css("display","inline-block")
+      }
+      showTab(currentTab);
+    }
+
+    function fixStepIndicator(n) {
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace("active", "");
+      }
+      x[n].className += " active";
+    }
+
+    //Tag Genre
+    $('#genre').on('change', function () {
+      var selectedOption = $(this).val();
+      if (selectedOption) {
+        var tag = $('<div class="checkbox"> <input type="checkbox" name="genre" id="" />' +
+          '<div class="box bg-black text-white"><p>' + selectedOption + '</p></div>' +
+          '</div>');
+        tag.find('input[type="checkbox"]').val(selectedOption);
+        $('#list-genres').append(tag);
+        $(this).find('option[value="' + selectedOption + '"]').remove();
+      }
+      $('#genre').val("");
+    });
+
+    $('#list-genres').on('click', 'input[type="checkbox"]', function () {
+      var selectedGenre = $(this).val();
+      if (selectedGenre) {
+        $('#genre').append($('<option>', {
+          value: selectedGenre,
+          text: selectedGenre
+        }));
+        $(this).closest('.checkbox').remove();
+      }
+    });
+
+  </script>
+</body>
+
+</html>

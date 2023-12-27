@@ -1,0 +1,220 @@
+<body ng-controller="profileCtrl">
+    <div class="container-fluid m-0 p-0">
+        <div class="row py-5" id="container-profile"
+            style="background: linear-gradient(to bottom, rgb(26, 118, 198), rgb(87, 134, 178))">
+            <div class="col-2 ms-3 mb-3 me-3">
+                <img style="width: 200px; height: 200px;object-fit: cover!important;" src="{{profile.image.url}}"
+                    class="rounded-circle" alt="...">
+            </div>
+            <div class="col-9 d-flex flex-column justify-content-center">
+                <div>
+                    <h6 class="text-white">{{role ==='podcast' ? 'Podcaster' : 'Profile'}}</h6>
+                    <h1 class="display-1 text-bold fw-bolder">{{profile.username}}</h1>
+                </div>
+                <!-- <p>11 Public Playlist - 4,607 Followers</p> -->
+            </div>
+        </div>
+        <div class="flow d-flex align-items-center">
+            <button class="btn border-1 border-white rounded-pill text-white mt-3 me-5 ms-3 mb-3" id="btn-follow">
+                Follow</button>
+            <div class="dropdown">
+                <button type="button" class="btn border-0" data-bs-toggle="dropdown">
+                    <div class="in"><i class="text-white bi bi-three-dots"></i></div>
+                </button>
+                <ul class="dropdown-menu bg-black">
+                    <li><a class="dropdown-item bg-black" href="#">Report</a></li>
+                    <li><a class="dropdown-item bg-black" href="#">Copy link to profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="mx-3 container">
+        <div ng-show="listPlaylistPublic.length > 0 || listPodcast.length > 0" class="row">
+            <div class="title tile-playlist-profile">
+                <p class="prf-name-title">{{type === 1 ? 'Public Playlists' : 'Public Podcast'}}</p>
+                <a ng-click="showAll(1)" class="text-white show-all-playlist-profile" data-bs-toggle="modal" data-bs-target="#showProfile-1">
+                    Show All
+                </a>
+            </div>
+            <div class="col-2" ng-repeat=" item in type===1 ? listPlaylistPublic : listPodcast | limitTo : 6">
+                <a href="{{type===1 ? '#!playlist/'+item.playlistId : '#!show/'+item.podcastId}}">
+                    <div class="card card-play-list-profile">
+                        <div class="img-car-profile">
+                            <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                            <i class="bi bi-play-circle-fill icon-play-card-playlist-profile"></i>
+                        </div>
+                        <div class="card-body card-body-playlist-profile">
+                            <p class="card-text card-text-playlist-profile-namesong">{{type === 1 ?
+                                item.playlistName :
+                                item.podcastName}}</p>
+                            <p class="card-text-playlist-profile-folow">Playlist</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div ng-show="listFollower.length > 0" class="container-fluid mb-5">
+            <div class="title tile-playlist-profile mt-5">
+                <p class="prf-name-title">Followers</p>
+                <a ng-click="showAll(2)" class="text-white show-all-playlist-profile" data-bs-toggle="modal" data-bs-target="#showProfile-2">
+                    Show All
+                </a>
+            </div>
+            <div class="row">
+                <div ng-repeat="item in listFollower | limitTo: 6" class="col-sm-2">
+                    <a class="text-white" href="#!profile/user/{{item.authorsAccountA.account.username}}">
+                        <div class="card card-play-list-profile">
+                            <div class="img-car-profile-like">
+                                <img style="object-fit: cover!important;"
+                                    src="{{item.authorsAccountA.account.image !== null ? item.authorsAccountA.account.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                    class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body card-body-playlist-profile">
+                                <p class="card-text card-text-playlist-profile-namesong">
+                                    {{item.authorsAccountA.account.username}}</p>
+                                <h6 class="small font-weight-bold">Profile</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="listFollowing.length > 0" class="container-fluid mb-5">
+            <div class="title tile-playlist-profile">
+                <p class="prf-name-title">Following</p>
+                <a ng-click="showAll(3)" class="text-white show-all-playlist-profile" data-bs-toggle="modal" data-bs-target="#showProfile-3">
+                    Show All
+                </a>
+            </div>
+            <div class="row">
+                <div ng-repeat="item in listFollowing | limitTo: 6" class="col-sm-2">
+                    <a href="{{item.authorsAccountB.role.roleId == 2 ? '#!/artist/' + item.authorsAccountB.account.artist.artistId : '#!/profile/'+item.authorsAccountB.role.role+'/' + item.authorsAccountB.account.username}}"
+                        class="text-white">
+                        <div class="card card-play-list-profile">
+                            <div class="img-car-profile-like">
+                                <img src="{{item.authorsAccountB.account.artist !==null ? item.authorsAccountB.account.artist.imagesProfile.url : item.authorsAccountB.account.image !== null ? item.authorsAccountB.account.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                    class="card-img-top w-100" alt="...">
+                            </div>
+                            <div class="card-body card-body-playlist-profile">
+                                <p class="card-text card-text-playlist-profile-namesong">
+                                    {{item.authorsAccountB.account.artist!==null ?
+                                    item.authorsAccountB.account.artist.artistName :
+                                    item.authorsAccountB.account.username}}</p>
+                                <h6 class="small font-weight-bold">{{item.authorsAccountB.role.role === "ARTIST" ?
+                                    "Artist" : item.authorsAccountB.role.role === "USER" ? 'Profile' : 'Podcaster'}}
+                                </h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div class="modal fade" id="my-profile">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body border-0 d-flex align-items-center">
+                        <div class="img-car-profile-like d-flex flex-column">
+                            <button class="me-auto btn bg-dark text-white rounded-pill">X</button>
+                            <img src="{{account.image ? account.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                class="img-my-profile" style="width: 200px; height: 200px; object-fit: cover;"
+                                alt="...">
+                            <input accept="image/*" id="img-my-profile" type="file" hidden>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" ng-model="account.username" />
+                            <button ng-click="modifiedMyProfile()"
+                                class="me-auto btn bg-white mt-3 text-dark rounded-pill w-100">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <h6>By proceeding, you agree to give us access to the image you choose upload. Please make sure
+                            you have the right to the upload the image.</h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade " id="showProfile-{{show}}">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content bg-dark">
+
+                    <div class="modal-header">
+                        <button id="modal-show-all" type="button" class="btn-close text-white"
+                            data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div ng-show="show == 1" class="row">
+                            <div class="col-2 mb-3"
+                                ng-repeat=" item in type===1 ? listPlaylistPublic : listPodcast">
+                                <a href="{{type===1 ? '#!playlist/'+item.playlistId : '#!show/'+item.podcastId}}">
+                                    <div class="card card-play-list-profile">
+                                        <div class="img-car-profile">
+                                            <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                                            <i class="bi bi-play-circle-fill icon-play-card-playlist-profile"></i>
+                                        </div>
+                                        <div class="card-body card-body-playlist-profile">
+                                            <p class="card-text card-text-playlist-profile-namesong">{{type === 1 ?
+                                                item.playlistName :
+                                                item.podcastName}}</p>
+                                            <p class="card-text-playlist-profile-folow">Playlist</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div ng-show="show == 2" class="row">
+                            <div ng-repeat="item in listFollower" class="col-sm-2 mb-3">
+                                <a class="text-white" href="#!profile/user/{{item.authorsAccountA.account.username}}">
+                                    <div class="card card-play-list-profile">
+                                        <div class="img-car-profile-like">
+                                            <img style="object-fit: cover!important;"
+                                                src="{{item.authorsAccountA.account.image !== null ? item.authorsAccountA.account.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                                class="card-img-top" alt="...">
+                                        </div>
+                                        <div class="card-body card-body-playlist-profile">
+                                            <p class="card-text card-text-playlist-profile-namesong">
+                                                {{item.authorsAccountA.account.username}}</p>
+                                            <h6 class="small font-weight-bold">Profile</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div ng-show="show == 3" class="row">
+                            <div ng-repeat="item in listFollowing" class="col-sm-2 mb-3">
+                                <a href="{{item.authorsAccountB.role.roleId == 2 ? '#!/artist/' + item.authorsAccountB.account.artist.artistId : '#!/profile/'+item.authorsAccountB.role.role+'/' + item.authorsAccountB.account.username}}"
+                                    class="text-white">
+                                    <div class="card card-play-list-profile">
+                                        <div class="img-car-profile-like">
+                                            <img src="{{item.authorsAccountB.account.artist !==null ? item.authorsAccountB.account.artist.imagesProfile.url : item.authorsAccountB.account.image !== null ? item.authorsAccountB.account.image.url : 'https://res.cloudinary.com/div9ldpou/image/upload/v1699632134/Avatar/System/user_oujyrp.png'}}"
+                                                class="card-img-top w-100" alt="...">
+                                        </div>
+                                        <div class="card-body card-body-playlist-profile">
+                                            <p class="card-text card-text-playlist-profile-namesong">
+                                                {{item.authorsAccountB.account.artist!==null ?
+                                                item.authorsAccountB.account.artist.artistName :
+                                                item.authorsAccountB.account.username}}</p>
+                                            <h6 class="small font-weight-bold">{{item.authorsAccountB.role.role === "ARTIST" ?
+                                                "Artist" : item.authorsAccountB.role.role === "USER" ? 'Profile' : 'Podcaster'}}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

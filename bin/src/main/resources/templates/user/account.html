@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/css/accountcss.css">
+</head>
+
+<body>
+
+</body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="../../static/img/logo.png" alt="" width="117">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item me-2">
+                    <a class="nav-link me-2" href="#">Premium</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="#">Hỗ trợ </a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="#">Tải xuống |</a>
+                </li>
+                <li class="nav-item dropdown ms-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle"></i> Hồ sơ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fuild premium">
+    <div class="img-wrapper">
+        <img class="background-img" src="../../static/img/bg.png" alt="">
+    </div>
+    <div class="text-overlay">
+        <p style="font-size: 30px;font-weight: bold;">Sắp kết thúc: 3 tháng dùng gói Premium với giá 0₫</p>
+        <p style="font-size: 20px;">Đừng bỏ lỡ cơ hội nghe nhạc không quảng cáo, không cần kết nối mạng và nhiều lợi ích
+            khác. Hủy bất cứ lúc
+            nào.</p>
+        <p style="font-size: 20px;">Ưu đãi kết thúc sau 7ngày: 6giờ: 37phút</p>
+        <button type="button" class="btn btn-dark btn-rounded mt-2 mb-2 " data-mdb-ripple-color="dark"
+            style="border-radius: 10px;">Dùng thử 3 tháng 0đ</button>
+        <p style="font-size: 12px;">Chỉ áp dụng cho gói Individual. Sau đó là 59,000₫/tháng. Có áp dụng các điều khoản
+            và điều kiện. Chỉ dành cho
+            những người chưa dùng thử gói Premium. Ưu đãi kết thúc vào 12/09/2023.</p>
+    </div>
+</div>
+
+<div class="container ">
+    <div class="row ">
+        <div class="col-sm-3 p-0 optionlist">
+            <div class="option-list">
+                <div class="user-avatar mb-3">
+                    <img src="../../static/img/dz.png" alt="User Avatar">
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item py-3"><a href="#" data-option="option1"><i class="bi bi-person-vcard"></i>
+                            Tổng quan về tài khoản</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option2"><i class="bi bi-pencil"></i> Chỉnh sửa
+                            hồ sơ</a></li>
+                    <li class="list-group-item py-3"> <a href="#" data-option="option3"><i class="bi bi-lock"></i> Phương
+                            thức đăng nhập</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option4"><i class="bi bi-lock"></i> Đổi mật
+                            khẩu</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option5"><i class="bi bi-bell"></i> Cài đặt
+                            thông báo</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option6"><i class="bi bi-lock"></i> Cài đặt
+                            quyền riêng tư</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option7"><i class="bi bi-credit-card"></i> Thẻ
+                            thanh toán đã lưu</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option8"><i class="bi bi-arrow-clockwise"></i>
+                            Khôi phục danh sách phát</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option9"><i class="bi bi-clock"></i> Biên
+                            nhận</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option10"><i class="bi bi-grid-fill"></i> Ứng
+                            dụng</a></li>
+                    <li class="list-group-item py-3"><a href="#" data-option="option11"><i
+                                class="bi bi-music-player-fill"></i> Đổi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9 p-0">
+            <div class="content-display">
+                <!-- Biểu mẫu cho Tùy chọn 1 -->
+                <div id="option1-form" class="content-data" style="display: none;">
+                    <h1 class="title-option">Tổng quan về tài khoản</h1>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 1 -->
+                    <div class="file-acc mt-5">
+                        <h3>Hồ sơ</h3>
+                        <ul class="list-group list-group-flush mt-3">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        Tên người dùng
+                                    </div>
+                                    <div class="col-sm-6">
+                                        Nguyễn Đăng khoa
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        Email
+                                    </div>
+                                    <div class="col-sm-6">
+                                        nguyenkhoalolm@gmail.com
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        Ngày sinh
+                                    </div>
+                                    <div class="col-sm-6">
+                                        1 tháng 2, 2003
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        Quốc gia hoặc khu vực
+                                    </div>
+                                    <div class="col-sm-6">
+                                        Việt Nam
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item mt-3">
+                                <button type="button" class="btn btn-outline-dark btn-rounded"
+                                    data-mdb-ripple-color="dark" style="border-radius: 10px;">Chỉnh sửa hồ sơ</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="package mt-5">
+                        <h3>Gói của bạn</h3>
+                        <div class="card shadow border-2 mt-3">
+                            <div class="card-header">
+                                <h1 class=" mt-5 mb-5">Spotify Free</h1>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-check-lg"></i> 1 tài khoản free</h5>
+                                <p class="card-text"><a class=" text-dark" href="#">Tìm hiểu thêm về gói của bạn</a></p>
+                                <hr>
+                                <h3>Miễn phí</h3>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded mt-4 "
+                            data-mdb-ripple-color="dark" style="border-radius: 10px;">Dùng Premium</button>
+                    </div>
+                    <div class="logout mt-5">
+                        <h3>Đăng xuất ở mọi nơi</h3>
+                        <div class="text mt-3">
+                            <p>Thao tác này sẽ giúp bạn đăng xuất trên tất cả thiết bị di động, máy tính bảng, trình
+                                phát trên web và ứng dụng cho máy tính mà bạn đã đăng nhập. Đối với thiết bị của đối tác
+                                (ví dụ: loa, máy chơi trò chơi và TV), hãy chuyển đến phần Ứng dụng trong trang tài
+                                khoản của bạn rồi chọn XÓA QUYỀN TRUY CẬP.</p>
+                        </div>
+                        <div class="border p-1">
+                            <p>Lưu ý: Bạn có thể phải chờ 1 giờ để thấy bạn đã đăng xuất khỏi trình phát trên web.</p>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded mt-4 mb-5 "
+                            data-mdb-ripple-color="dark" style="border-radius: 10px;">Đăng xuất ở mọi nơi</button>
+                    </div>
+                </div>
+
+                <!-- Biểu mẫu cho Tùy chọn 2 -->
+                <div id="option2-form" class="content-data" style="display: none;">
+                    <h1 class="title-option">Chỉnh sửa hồ sơ</h1>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 2 -->
+                    <div class="container mt-5">
+                        <h2>Biểu mẫu đăng ký</h2>
+                        <form>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Nhập email của bạn">
+                            </div>
+
+                            <!-- Mật khẩu -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                            </div>
+
+                            <!-- Giới tính -->
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Giới tính</label>
+                                <select class="form-select" id="gender">
+                                    <option value="male">Nam</option>
+                                    <option value="female">Nữ</option>
+                                    <option value="neutral">Giới tính trung lập</option>
+                                    <option value="unspecified">Không muốn nêu cụ thể</option>
+                                </select>
+                            </div>
+
+                            <!-- Ngày sinh -->
+                            <label class="form-label">Ngày Sinh</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" id="day" placeholder="Ngày" min="1"
+                                        max="31">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" id="month" placeholder="Tháng" min="1"
+                                        max="12">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" id="year" placeholder="Năm" min="1900"
+                                        max="2099">
+                                </div>
+                            </div>
+
+                            <!-- Quốc tịch -->
+                            <div class="mb-3 mt-2">
+                                <label for="nationality" class="form-label">Quốc tịch</label>
+                                <select class="form-select" id="nationality">
+                                    <option value="vn">Việt Nam</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn ">
+                                        <input type="checkbox"> Chia sẻ dữ liệu đăng ký của tôi với các nhà cung cấp nội
+                                        dung Spotify cho mục đích tiếp thị.
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- Nút Đăng ký -->
+                            <button type="button" class="btn btn-outline-dark btn-rounded mt-4 mb-5 me-3"
+                                data-mdb-ripple-color="dark" style="border-radius: 10px;">Hủy</button>
+                            <button type="button" class="btn btn-success mt-4 mb-5 " data-mdb-ripple-color="dark"
+                                style="border-radius: 10px;">Lưu hồ sơ</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Biểu mẫu cho Tùy chọn 3 -->
+                <div id="option3-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 3</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 3 -->
+                </div>
+                <div id="option4-form" class="content-data" style="display: none;">
+                    <h1 class="title-option">Đổi mật khẩu</h1>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 4 -->
+                    <div class="container mt-5">
+                        <form>
+                            <!-- Mật khẩu hiện tại -->
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Mật khẩu hiện tại</label>
+                                <input type="password" class="form-control" id="currentPassword"
+                                    placeholder="Nhập mật khẩu hiện tại">
+                            </div>
+
+                            <!-- Mật khẩu mới -->
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">Mật khẩu mới</label>
+                                <input type="password" class="form-control" id="newPassword"
+                                    placeholder="Nhập mật khẩu mới">
+                            </div>
+
+                            <!-- Xác nhận mật khẩu mới -->
+                            <div class="mb-3">
+                                <label for="confirmNewPassword" class="form-label">Xác nhận mật khẩu mới</label>
+                                <input type="password" class="form-control" id="confirmNewPassword"
+                                    placeholder="Xác nhận mật khẩu mới">
+                            </div>
+
+                            <button type="button" class="btn btn-outline-dark btn-rounded mt-4 mb-5 me-3"
+                                data-mdb-ripple-color="dark" style="border-radius: 10px;">Hủy</button>
+                            <button type="button" class="btn btn-success mt-4 mb-5 " data-mdb-ripple-color="dark"
+                                style="border-radius: 10px;">Cài đặt mật khẩu mới</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="option5-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 5</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 5 -->
+                </div>
+
+                <div id="option6-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 6</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 6 -->
+                </div>
+
+                <div id="option7-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 7</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 7 -->
+                </div>
+
+                <div id="option8-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 8</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 8 -->
+                </div>
+                <div id="option9-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 9</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 9 -->
+                </div>
+
+                <div id="option10-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 10</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 10 -->
+                </div>
+                <div id="option11-form" class="content-data" style="display: none;">
+                    <h2>Biểu mẫu cho Tùy chọn 11</h2>
+                    <!-- Đây là nơi để bạn thiết kế biểu mẫu cho Tùy chọn 11 -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-dark-custom text-white">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+            <a href="#" class="me-4 text-reset">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="me-4 text-reset">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="#" class="me-4 text-reset">
+                <i class="bi bi-google"></i>
+            </a>
+            <a href="#" class="me-4 text-reset">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <img src="img/logo.png" alt="" width="117">
+                    </h6>
+                    
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                      Công ty
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Giới thiệu</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Việc làm</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">For the Record</a>
+                    </p>
+                
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Cộng đồng
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Dành cho các Nghệ sĩ</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Nhà phát triển</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Quảng cáo</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Nhà đầu tư </a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none ">Nhà cung cấp</a>
+                    </p>
+                </div>
+                
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">liên kết hữu ích</h6>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Hỗ trợ</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none">Trình phát web</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset text-decoration-none ">Ứng dụng di động miễn phí</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+</footer>
+<!-- Footer -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy phần "premium" cần ẩn/phục hiện
+        const premiumSection = document.querySelector(".premium");
+        // Lấy tất cả các liên kết tùy chọn
+        const optionLinks = document.querySelectorAll(".optionlist .list-group-item a");
+
+        // Lấy vùng hiển thị biểu mẫu
+        const formDisplay = document.querySelector(".content-display");
+
+        // Mặc định hiển thị biểu mẫu cho option1
+        displayForm("option1");
+
+        // Xử lý sự kiện khi người dùng chọn một tùy chọn
+        optionLinks.forEach(function (optionLink) {
+            optionLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                const selectedOption = optionLink.getAttribute("data-option");
+                displayForm(selectedOption);
+                premiumSection.style.display = "none";
+            });
+        });
+
+        // Hàm hiển thị biểu mẫu tương ứng
+        function displayForm(option) {
+            // Ẩn tất cả các biểu mẫu
+            const allForms = document.querySelectorAll(".content-display > div");
+            allForms.forEach(function (div) {
+                div.style.display = "none";
+            });
+
+            // Hiển thị biểu mẫu tương ứng với tùy chọn đã chọn
+            const selectedForm = document.getElementById(option + "-form");
+            if (selectedForm) {
+                selectedForm.style.display = "block";
+            }
+
+            // Loại bỏ lớp 'active' khỏi tất cả các tùy chọn
+            optionLinks.forEach(function (link) {
+                link.parentElement.classList.remove("active");
+            });
+
+            // Đánh dấu tùy chọn đã chọn bằng cách thêm lớp 'active'
+            optionLink = document.querySelector(`[data-option="${option}"]`);
+            optionLink.parentElement.classList.add("active");
+        }
+    });
+</script>
+</html>

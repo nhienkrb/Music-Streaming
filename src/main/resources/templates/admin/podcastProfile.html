@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+   <body>
+      <!-- CONTENT START  -->
+    
+
+      <div class="content-wrapper">
+         <section class="dashboard-top-sec">
+            <div class="container-fluid">
+               <div class="row profile-content">
+                  <div class="col-12 col-md-12 col-lg-8">
+                     <div class="iq-card">
+                        <div class="iq-card-body ">
+                           <!-- <div class="profile-header ">
+                              <div class="box-img-info text-center">
+                                 <img
+                                    src="https://cdn.24h.com.vn/upload/4-2020/images/2020-11-11/Nu-sinh-Nhan-van-la-nguoi-mau-anh-tuoi-20-mon-mon-dep-xinh-khong-kem-dich-Le-Nhiet-Ba-107368862_2653859988196507_3262836775669550024_n-1605081022-435-width960height960.jpg"
+                                    class="img-profile" alt>
+                                 <div class="profile-detail mt-3">
+                                    <div class="p-image">
+                                       <div class="file-input">
+                                          <input type="file" name="file-input"
+                                             id="file-input"
+                                             class="file-input__input" />
+                                          <label class="file-input__label"
+                                             for="file-input">
+                                             <svg aria-hidden="true"
+                                                focusable="false"
+                                                data-prefix="fas"
+                                                data-icon="upload"
+                                                class="svg-inline--fa fa-upload fa-w-16"
+                                                role="img"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512">
+                                                <path fill="currentColor"
+                                                   d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                                                </path>
+                                             </svg>
+                                             <span>Upload file</span></label>
+                                       </div>
+                                    </div> 
+                                    <div class="img-extension mt-3">
+                                       <div
+                                          class="d-inline-block align-items-center">
+                                          <span>Only</span>
+                                          <a href="javascript:void();">.jpg</a>
+                                          <a href="javascript:void();">.png</a>
+                                          <a href="javascript:void();">.jpeg</a>
+                                          <span>allowed</span>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="icon-profile">
+                                    <ul
+                                       class="list-inline d-flex p-0 mb-0 align-items-center">
+                                       <li>
+                                          <a href="#"
+                                             class="icon-profile-detail"><i
+                                                class="bi bi-facebook"
+                                                aria-hidden="true"></i></a>
+                                       </li>
+                                       <li>
+                                          <a href="#"
+                                             class="icon-profile-detail"><i
+                                                class="bi bi-facebook"
+                                                aria-hidden="true"></i></a>
+                                       </li>
+                                       <li>
+                                          <a href="#"
+                                             class="icon-profile-detail"><i
+                                                class="bi bi-facebook"
+                                                aria-hidden="true"></i></a>
+                                       </li>
+
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div> -->
+                           <div class="row mt-2">
+                              <div class="col-md-3 text-center box-image-name-profile mb-2">
+                                 <div class="image-profile-podcast">
+                                    <img ng-src="{{accountPodcast.image.url}}" class="rounded-circle img-fluid" alt="">
+                                 </div>
+                                 <div class="mt-2 ">
+                                    <h6 class="text-primary-emphasis">{{accountPodcast.country}}</h6>
+                                    <h6 class="text-secondary-emphasis mt-1">{{accountPodcast.username}} </h6>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-9">
+                                 <div class="d-flex justify-content-between">
+                                    <h4>Personal Details</h4>
+                                    <div class="dropdown">
+                                       <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          <i class="bi bi-three-dots" style="font-size: 1.5rem;"></i>
+                                       </a>
+                                     
+                                       <ul class="dropdown-menu">
+                                         <li ><a class="dropdown-item" href="" ng-click="lockAccount(accountPodcast.email)" >Lock</a></li>
+                                         <li ><a class="dropdown-item" href="" ng-click="unLockAccount(accountPodcast.email)" >Unlock</a></li>
+
+                                       </ul>
+                                     </div>
+                                     
+                                 </div>
+                                 <div class="container mt-1">
+                                    <div class="row">
+
+                                       <div class="col-md-6">
+                                          <div class=" personal-detail-podcast">
+                                             <p><i class="bi bi-envelope-at"></i></i> <span>{{accountPodcast.email}}</span></p>
+                                             <p><i class="fa-solid fa-cake-candles"></i><span>{{accountPodcast.birthday | date: 'dd'}}</span></p>
+                                             <p><i class="bi bi-gender-trans"></i><span>{{accountPodcast.gender == 1 ? 'Male' : 'Female'}}</span></p>
+                                             <p> <i class="bi bi-person-video2"></i> <span  ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM'}" ng-repeat="userType in accountPodcast.userType">{{userType.nameType}}</span>  
+                                            </p>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class=" personal-detail-podcast">
+                                           <p>Followers: <span> <b>{{follower ===null ? follower: 0}}</b> </span></p>
+                                             <p>Following: <span><b>{{follower ===null ? follower: 0}}</b> </span></p>
+                                             <p>Total Podcast: <span><b>{{accountPodcast.podcast.length}}</b> </span></p>
+                                            
+                                          </div>
+                                       </div>
+                                       
+                                    </div>
+                                     
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                     </div>
+
+                  </div>
+                  <div class="col-12 col-md-12 col-lg-4">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div
+                              class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                              <!-- <div
+                                 class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                                 <div class="iq-header-title">
+                                    <h4 class="card-title mb-0">Statistic</h4>
+                                      
+                                 </div>
+                              </div> -->
+                              <div class="iq-card-body ">
+                                    <div class="container text-center">
+                                       <!-- <div>
+                                          <p>Follower : <span> 3</span> </p> 
+                                          <p>Total Podcasts: <span> 3</span></p> 
+                                          <p>Listener :<span> 1231</span> </p> 
+                                       </div> -->
+                                     
+                                          <canvas id="chart" class="text-center"></canvas>
+                                        
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-12 col-md-12 col-lg-12 mt-lg-4">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div
+                                 class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                                 <div
+                                    class="iq-card-header d-flex justify-content-between align-items-center mb-0" style="border-bottom:none !important;">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title mb-0">Podcast</h4>
+                                         
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body ">
+                                       <div class="container ">
+
+                                          <div class="row mb-2">
+                                             <div class="form col-5  mt-0">
+                                                <i class="  mx-2 fa fa-search"></i>
+                                                <input type="text" class="form-control form-input" placeholder="Search" ng-model="search">
+       
+                                             </div>
+                                             <div class=" col-2 mx-0">
+                                                <select class="form-select" style="font-size: 16px;" ng-model="sortFilter">
+                                                   <option value="" selected >Default</option>
+                                                   <option value="-podcastName"  >ASC</option>
+                                                   <option value="podcastName">DESC</option>
+                                                </select>
+                                             </div>
+                                          </div>
+
+                                          <div class="table-responsive ">
+                                             <table class="table table-hover table-borderless">
+                                                <thead style="border-bottom: 1px solid rgb(234, 230, 230);">
+                                                   <tr>
+                                                      
+                                                      <th scope="col">Podcast name</th>
+                                                      <th scope="col">Tags</th>
+                                                      <th scope="col">Episodes</th>
+                                                      <th scope="col">Reported</th>
+                                                      
+                                                   </tr>
+                                                </thead>
+                                                <tbody  >
+                                                   <tr ng-repeat=" podcast in accountPodcast.podcast | filter:search | orderBy: sortFilter">
+                                                     
+                                                      <td >
+                                                         <div class="d-flex align-items-center " style="cursor:pointer">
+                                                            <img ng-src="{{podcast.image.url}}" alt="img" class="img-songs rounded-1  ">
+                                                            <div class="mx-2"   style="line-height: 15px;">
+                                                               <span class="song-namefor-actist">{{podcast.podcastName}}  </span>
+                                                              
+                                                               <h6 class="songs-in-album ">{{podcast.authorName}}<span>9</span></h6>
+                                                            </div>
+                                                         </div>
+                                                      </td>
+                                                   
+                  
+                                                      <td class="text-start">
+                                                         <div class="title-albums">
+                                                            <h6 class="songs-in-album mb-1"  >
+                                                               <span class="mx-2">{{podcast.tag.tagName}} </span> 
+                                                           </h6>
+                                                         </div>
+                                                      </td>
+                  
+                                                      
+                                                      <td >
+                                                         <div class="title-albums">
+                                                            <h6 class="songs-in-album mb-1"  >
+                                                             
+                                                               <span class="mx-2">{{ podcast.Episodes.length }} </span>   </h6>
+                                                         </div>
+                                                      </td>
+                  
+                                                      <td >
+                                                         <div class="title-albums">
+                                                            <h6 class="songs-in-album mb-1"  >
+                                                              
+                                                               <span class="mx-2">{{ podcast.reports.length }} </span>
+                                                            </h6>
+                                                         </div>
+                                                      </td>
+                                                      
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                         
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+               </section>
+            </div>
+            <!--  CONTENT END  -->
+         </div>
+      </body>
+
+   </html>

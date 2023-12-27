@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   <!-- CONTENT START  -->
+   <div class="content-wrapper">
+
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+
+            <div class="cardperShadow shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"> Create The Mood
+                  </h6>
+               </div>
+
+               <div class="card-bodyPerShadow">          
+                  <form name="validateMood" novalidate>
+                  <div class="mb-3 row">
+                     <label class="col-sm-2 col-form-label">Name Mood:</label>
+                     <div class="col-sm-10">
+                        <input name="mood"  ng-model="form.moodname" type="text" class="form-control" required ng-minlength="2"  ng-maxlength="55"  >
+                        <div ng-messages="validateMood.mood.$touched && validateMood.mood.$error ">
+                           <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                           </div>
+                      </div>
+                     </div>
+                    
+                  </div>
+           
+                  <div class="row">
+
+                     <div class="col-sm-2"></div>
+                     <div class="col-sm-10">
+                        <div class="event-createCountry">
+                           <button class="btn btn-success"  ng-disabled="!validateMood.$valid" ng-click="create()">Save</button>
+                           <button class="btn btn-success"  ng-disabled="!validateMood.$valid" ng-click="update()">Update</button>
+                           <button class="btn btn-success"  ng-disabled="!validateMood.$valid" ng-click="delete(form.moodid)">Delete</button>                          
+                        </div>
+                     </div>
+
+                  </div>
+               </form>
+               </div>
+
+            </div>
+
+
+            <div class="cardperShadow shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"> Mood Table
+                  </h6>
+               </div>
+               <div class="card-bodyPerShadow">
+
+                  <div id="dataTable_wrapper">
+                     <div class="row">
+                        <div class="row">
+                           <div class="col-sm-6 text-left"></div>
+                           <div class="col-sm-6 text-right">
+                              <div class="dt-buttons btn-group mb-2">
+                                 <button class="btn btn-secondary buttons-export" ng-click="exportToExcel()" type="button"><i class="bi bi-file-earmark-spreadsheet-fill" style="margin-right: 5px;"></i><span>Excel</span>
+                                 </button>
+                                
+
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-12 ">
+                              <table class="table table-bordered ">
+                                 <thead style="border-bottom: 2px solid rgb(212, 212, 212); cursor: pointer;">
+                                    <tr>
+
+                                       <th scope="col" style="width: 145.333px;" ng-click="sortData('moodid')">
+                                          ID 
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('moodid')"></i></a>
+                                      </th>
+                                      <th scope="col" style="width: 218.333px;" ng-click="sortData('moodname')">Mood
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('moodname')"></i></a>
+                                      </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('createBy')">Create By
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('createBy')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('createDate')">Create Date
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('createDate')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('modifiedBy')">Modified By
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('modifiedBy')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('modifiDate')">Modified Date
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('modifiDate')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;">Action</th>
+                                    </tr>
+                                 </thead>
+                                 <tfoot>
+                                    <tr class="">
+                                       <th scope="col" style="width: 145.333px;">Id</th>
+                                       <th scope="col" style="width: 218.333px;">Mood</th>
+                                       <th scope="col" style="width: 218.333px;">Create By</th>
+                                       <th scope="col" style="width: 218.333px;">Create Date</th>
+                                       <th scope="col" style="width: 218.333px;">Modified By</th>
+                                       <th scope="col" style="width: 218.333px;">Modified Date</th>
+                                       <th scope="col" style="width: 218.333px;">Action</th>
+                                    </tr>
+                                 </tfoot>
+                                 <tbody>
+
+                                    <tr class="odd" dir-paginate="mood in items | itemsPerPage: 12 | orderBy: sortColumn:revertSort">
+                                       <td >{{mood.moodid}}</td>
+                                       <td>{{mood.moodname}}</td>
+                                       <td>{{mood.createBy}}</td>
+                                       <td>{{mood.createDate  | date:'dd-MM-yyyy HH:mm:ss '}}</td>
+                                       <td>{{mood.modifiedBy ? mood.modifiedBy : "Null" }}</td>
+                                       <td>{{mood.modifiDate ? mood.modifiDate : "Null" | date:'dd-MM-yyyy HH:mm:ss '}}</td>
+                                       <td><button class="btn btn-primary" ng-click="edit(mood.moodid)">Edit</button></td>
+                                    </tr>
+                                
+                                
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                           <div class="d-flex justify-content-end">
+                                 <dir-pagination-controls class="dir-pagination-controls"></dir-pagination-controls>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+      </section>
+   </div>
+   <!--  CONTENT END  -->
+   </div>
+   </div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+#Recording.graphqls
+#import "./Song.graphqls"
+#import "./Monitor.graphqls"
+#import "./Wishlist.graphqls"
+#import "./PlaylistRecord.graphqls"
+#import "./Report.graphqls"
+#import "./Track.graphqls"
+#import "./SongGenre.graphqls"
+
+type Recording{
+	recordingId: ID!
+	recordingName: String
+	audioFileUrl: String
+	publicIdAudio: String
+	lyricsUrl: String
+	publicIdLyrics: String
+	duration: Int
+	songStyle: String
+	listened: Int
+	mood: String
+	culture: String
+	instrument: String
+	versions: String
+	studio: String
+	idMv: String
+	produce: String
+	recordingdate: String
+	isDeleted: Boolean
+	emailCreate: String
+	song: Song
+	monitors: [Monitor]
+	wishlists: [Wishlist]
+	playlistRecords: [PlaylistRecord]
+	reports: [Report]
+	tracks: [Track]
+	songGenres: [SongGenre]
+}

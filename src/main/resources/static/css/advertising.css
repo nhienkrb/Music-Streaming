@@ -1,0 +1,124 @@
+nav{
+    border-bottom: 1px solid rgb(112, 112, 112);
+}
+.ad-nav-logo{
+    margin-left: 5em;
+}
+.ad-nav-btn,.ad-btn-sh{
+    padding: 10px;
+    width: 100px;
+    background-color: rgb(33, 33, 33);
+    border: 1px solid #878787;
+    color: #fff;
+    border-radius: 500px;
+    margin-right: 5em;
+}
+@media (max-width: 783px) {
+    .ad-nav-btn{
+        display: none;
+    }
+}
+.ad-img-sh{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ad-h1-sh{
+    font-size: 65px;
+    font-weight: bold;
+}
+@media (max-width: 783px) {
+    .ad-h1-sh{
+        font-size: 30px;
+        font-weight: bold;
+    }
+}
+footer{
+    border-top: 1px solid rgb(112, 112, 112);
+}
+/*-------------------------------------------------
+-------------------detail--------------------------
+---------------------------------------------------*/
+.ad-left{
+    height: 100vh;
+}
+@media (max-width: 575px) {
+    .ad-left{
+        display: none;
+    }
+}
+.ad-right{
+
+}
+.ad-mn-btn{
+    padding: 10px;
+    width: 100px; 
+    background-color: rgb(33, 33, 33);
+    border: 1px solid #878787;
+    color: #fff;
+    border-radius: 500px;
+    margin-right: 5em;
+}
+.pr-pick-header{
+    margin-bottom: 72px;
+}
+.pr-pick-h2{
+    text-align: center;
+}
+.pr-pick-h2 h2{
+    font-weight: bold;
+}
+/* pr-pick-column======================================================== */
+.pr-pick-columnp-tt1 {
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 4px 8px;
+    display: inline-block;
+    font-weight: 900;
+    margin: 0px 4px 10px 0px;
+    margin-block: 0px 10px;
+    color: rgb(13, 114, 234);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(13, 114, 234);
+}
+.pr-pick-columnp-tt2{
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 4px 8px;
+    display: inline-block;
+    font-weight: 900;
+    margin: 0px 4px 10px 0px;
+    margin-block: 0px 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(13, 114, 234);
+}
+@media (min-height: 575px){
+    .pr-pick-column{
+        padding-bottom: 30px;
+    }
+}
+.pr-pick-column .card{
+    min-height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pr-pick-column .pr-pick-column-term{
+    margin-top: 15px;
+    text-align: center;
+}
+.pr-pick-column-term a{
+    color:black;
+}
+/* pr-pick-btn======================================================== */
+.pr-pick-btn{
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    border-radius: 500px;
+    min-block-size: 48px;
+    align-items: center;
+    padding-inline: 32px;
+    background-color: black;
+    color: #fff;
+    font-weight: bold;
+}

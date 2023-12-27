@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+  body{
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxMjgwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0xMy42MzUxIDQyMi4yNUwyMzkuODk2IDgzLjU3MDlMLTMyLjM1NDUgODcyTDExMzQuOTMgLTUwTDg2MS4xMzMgNzM5LjgwOEwxNTcxLjY1IDY5Ljk1NzhMMTMxNS43MiA4NTUuMzUxIiBzdHJva2U9IiMyODI4MjgiIHN0cm9rZS13aWR0aD0iMyIvPgo8L3N2Zz4K)!important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+  }
+  .tab {
+    display: none
+  }
+
+  button:hover {
+    opacity: 0.8
+  }
+
+  #prevBtn {
+    background-color: #bbbbbb
+  }
+
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5
+  }
+
+  .step.active {
+    opacity: 1
+  }
+
+  .step.finish {
+    background-color: #4CAF50
+  }
+
+  .all-steps {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px
+  }
+
+  .thanks-message {
+    display: none
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .table-container {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+</style>
+
+<body>
+  <div class="container mt-5 col-7">
+    <div class="row d-flex justify-content-center align-items-center">
+      <form id="regForm">
+        <div class="all-steps my-0" hidden id="all-steps">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+
+        <div class="tab">
+          <h6>1/5</h6>
+          <h1>Claim an artist profile</h1>
+          <p>If you already have music on Spotify, you can get access to stats, pitch tracks to our editors, and more.</p>
+        </div>
+
+        <div class="tab">
+          <h6>2/5</h6>
+          <h1>Is this the right Spotify account?</h1>
+          <p>You’ll use this to log in to Spotify for Artists.</p>
+          <div class="my-5 d-flex flex-column align-items-center">
+            <img src="cinqueterre.jpg" class="rounded" alt="Cinque Terre">
+            <p>@gmail.com</p>
+            <p>Ng.VanBao</p>
+            <a href="">Change account</a>
+          </div>
+        </div>
+
+        <div class="tab tab-3">
+          <h6>3/5</h6>
+          <h1>Claim an artist</h1>
+          <p>Only claim 1 profile at a time and wait until you get access before claiming another.</p>
+          <div class="d-flex">
+            <input type="text" class="form-control" placeholder="Your stage name">
+          </div>
+        </div>
+
+        <div class="tab">
+          <h6>4/5</h6>
+          <h1>Claim an information</h1>
+          <h6></h6>
+          <div class="mt-5">
+            <div>
+                <img src="" alt="">
+                <input type="file">
+            </div>
+            <div>
+                <img src="" alt="">
+                <input  type="file">
+            </div>
+            <div>
+                <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Bio"></textarea>
+            </div>
+            <div>
+                <input class="form-control" type="date">
+            </div>
+            <div>
+                <select class="form-control" name="" id="">
+                    <option value=""></option>
+                </select>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab">
+            <h6>5/5</h6>
+            <h3>Thanks for your Donation!</h3> 
+            <span>Your donation has been entered! We will contact you shortly!</span>
+        </div>
+
+        <div class="my-4" id="nextprevious">
+          <button type="button" id="prevBtn" class="float-start py-2 btn btn-dark rounded-pill bg-white text-black ms-5"
+            onclick="nextPrev(-1)">Go back</button>
+          <button type="button" id="nextBtn" class="float-end py-2 px-4 btn btn-success rounded-pill me-5"
+            onclick="nextPrev(1)">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    var currentTab = 0;
+    document.addEventListener("DOMContentLoaded", function (event) {
+      showTab(currentTab);
+      $('#current-tab').innerText = currentTab + 1;
+    });
+
+
+    function showTab(n) {
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+      var x = document.getElementsByClassName("tab");
+      x[currentTab].style.display = "none";
+      currentTab = currentTab + n;
+      if (currentTab >= x.length) {
+        document.getElementById("nextprevious").style.display = "none";
+        document.getElementById("all-steps").style.display = "none";
+        document.getElementById("register").style.display = "none";
+        document.getElementById("text-message").style.display = "block";
+      }
+      showTab(currentTab);
+    }
+
+    function fixStepIndicator(n) {
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace("active", "");
+      }
+      x[n].className += " active";
+    }
+  </script>
+</body>
+
+</html>

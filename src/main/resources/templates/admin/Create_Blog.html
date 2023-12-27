@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<body>
+   <!-- CONTENT START  -->
+   <div class="content-wrapper">
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+            <div class="row profile-content">
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+
+
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                        <div class="iq-card-header text-center">
+                           <div class="iq-header-title">
+                              <h4 class="card-title mb-0 ">Create New</h4>
+                           </div>
+                        </div>
+
+                        <div class="iq-card-body ">
+                           <ul class="list-inline p-0 mb-4">
+                              <li>
+                                 <div class="row">
+                                    <div class=" container col-10 ">
+                                       <form name="validate" novalidate>
+                                          <!-- ng-submit='validate.$valid && eventCtl.submitForm(eventCtl.eventForm)' -->
+                                          <div class="mb-2">
+                                             <label for="formGroupExampleInput" class="form-label mb-0">Title:</label>
+                                             <input type="text" name="title" class="form-control" ng-model="form.title"
+                                                required ng-minlength="3" ng-maxlength="250">
+
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.title.$dirty && validate.title.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+
+                                          </div>
+
+                                          <div class="mb-2">
+                                             <label for="formGroupExampleInput" class="form-label mb-0">Summary:</label>
+                                             <input type="text" name="title" class="form-control" ng-model="form.summary"
+                                                required ng-minlength="3" ng-maxlength="350">
+
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.title.$dirty && validate.title.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+
+                                          </div>
+
+                                          <label for="formGroupExampleInput" class="form-label mb-0">Content:</label>
+                                          <div class="form-floating mb-2 ">
+                                             <textarea name="content" ng-model="form.content" class="form-control"
+                                                placeholder="here" id="floatingTextarea2" style="height: 100px" required
+                                                ng-minlength="10"></textarea>
+                                             <label for="floatingTextarea2">Description</label>
+
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.content.$dirty && validate.content.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+
+                                          </div>
+
+                                          <div class="mb-3">
+                                             <label for="formGroupExampleInput" class="form-label mb-0">Create For:</label>
+                                           
+                                             <select name="ImageLocation" class="form-select font-select"
+                                                ng-model="formRole.role"  required>
+                                                <option value="">Select</option>
+                                                <option ng-repeat="itemsRole in itemsRole " ng-value="itemsRole">{{itemsRole.role}}</option>
+                                             </select>
+                                             <!-- VALIDATION FORM -->
+                                             <div
+                                                ng-messages="validate.ImageLocation.$touched && validate.ImageLocation.$error ">
+                                                <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+                                          </div>
+
+
+                                          <div class="mb-3">
+                                             <label for="formGroupExampleInput" class="form-label mb-0">Save
+                                                image:</label>
+                                             <select name="ImageLocation" class="form-select font-select"
+                                                ng-model="form.ImageLocation" required>
+                                                <option value="">Choose where to save</option>
+                                                <option ng-repeat="items in items track by $index" ng-value="items">{{items}}</option>
+                                             </select>
+                                             <!-- VALIDATION FORM -->
+                                             <div
+                                                ng-messages="validate.ImageLocation.$touched && validate.ImageLocation.$error ">
+                                                <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+                                          </div>
+
+                                          <div class="mb-2 ">
+                                             <div  id="fileImg" for="images" class="drop-container " >
+                                                
+                                                <!-- <img src="../../static/img/bannerBog.png"  alt="" > -->
+                                                <input name="image" id="img" type="file" accept=".webp, .jpg, .jpeg, .png, .gif" required>
+                                             </div>
+                                           
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.image.$touched && validate.image.$error ">
+                                                <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+                                          </div>
+
+                                          <div class="mt-4 ">
+                                             <button type="button" class="form-control text-center btn btn-primary"
+                                                ng-click="create()" ng-disabled="!validate.$valid"> Create  </button>
+                                          </div>
+                                    </div>
+                                    </form>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+   <!--  CONTENT END  -->
+   </div>
+</body>
+
+</html>

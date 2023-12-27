@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+  <style>
+    #choose-image {
+      height: 250px;
+      width: 400px;
+      border: 2px dashed rgb(152, 152, 152);
+      color: rgb(152, 152, 152);
+      font-size: 70px;
+      cursor: pointer;
+
+    }
+  </style>
+  <div class="content-wrapper">
+
+    <section class="dashboard-top-sec">
+
+      <div class="container-fluid">
+
+
+        <div class="row profile-content">
+
+          <div class="col-12 col-md-12 col-lg-12">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                  <div class="iq-card-header text-center">
+                    <div class="iq-header-title">
+                      <h4 class="card-title mb-0 ">Notification</h4>
+                    </div>
+                  </div>
+                  <div class="iq-card-body ">
+                    <div class="row ">
+                      <div class="col-md-3 ">
+                        <button ng-click="reset()" class="btn btn-primary" data-bs-toggle="modal"
+                          data-bs-target="#addNotification"><i class="bi bi-plus-circle fs-6"></i> Add</button>
+                      </div>
+
+                    </div>
+                    <div class="row">
+
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+
+                              <th scope="col">Title</th>
+                              <th scope="col">Content</th>
+                              <th scope="col">Create By</th>
+                              <th scope="col">Modify By</th>
+                              <th scope="col">Active</th>
+                              <th class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="notification in items | orderBy: createDate">
+
+                              <td>
+                                <div class="text-truncate">
+                                  <img ng-src="{{notification.urlImage}}" alt="" class="img-fluid w-25 rounded-3"
+                                    style="margin-right: 10px;">
+                                  {{notification.title}}
+                                </div>
+
+                              </td>
+                              <td class="text-truncate" style="max-width: 150px;">{{notification.content}} </td>
+                              <td>{{notification.createBy}}</td>
+                              <td>{{notification.modifiedBy === null ? "none": notification.modifiedBy}}</td>
+                              <td>
+                                <span
+                                  ng-class="{'badge text-bg-success': notification.active, 'badge text-bg-secondary': !notification.active}"
+                                  style="font-size: 12px;">{{notification.active ? 'On' : 'Off'}}</span>
+                              </td>
+                              <td class="text-center fs-4 ">
+                                <div class="dropdown inline-block">
+                                  <a type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                      class="bi bi-three-dots"></i></a>
+                                  <ul class="dropdown-menu" style="min-width: 150px;">
+                                    <li><button ng-click="edit(notification.notificationId)" class="dropdown-item p-1"
+                                        type="button" data-bs-toggle="modal" data-bs-target="#update-notification"><i
+                                          class="bi bi-pencil-square mx-2"></i>Edit</button>
+                                    </li>
+                                    <li>
+                                      <button ng-click="edit(notification.notificationId)" class="dropdown-item p-1"
+                                        type="button" data-bs-toggle="modal" data-bs-target="#see-demo">
+
+                                        <i class="bi bi-eye-fill mx-2"></i>
+                                        See Demo</button>
+
+                                    </li>
+                                  </ul>
+                                </div>
+
+                              </td>
+
+                            </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+
+                    <!-- START CREATE NOTIFICATION -->
+
+                    <div class="modal fade" id="addNotification" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal Notification</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="container">
+                              <div class="row">
+                                <form name="validate" novalidate>
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-center">
+                                      <div id="choose-image" class="d-flex justify-content-center  align-items-center ">
+                                        <i class="bi bi-plus-circle-dotted"></i>
+                                      </div>
+                                      <input required type="file" hidden="true" id="image-file" accept=".png, .jpg, .webp">
+                                      <img id="image-notification" src="" class="img-fluid" alt=""
+                                        style="max-height: 300px; cursor: pointer;">
+                                        <div ng-messages="validate.title.$dirty && validate.title.$error" class="text-end">
+                                          <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Title</label>
+                                    <input ng-model="form.title" type="text" class="form-control" name="title" id=""
+                                      aria-describedby="helpId" placeholder="" required ng-minlength="2" />
+                                    <div ng-messages="validate.title.$touched && validate.title.$error">
+                                      <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">Content</label>
+                                    <input required ng-minlength="10"  ng-model="form.content" type="text" class="form-control" name="content" id=""
+                                      aria-describedby="helpId" placeholder="" />
+                                      <div ng-messages="validate.content.$touched && validate.content.$error">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  <div class="mb-3">
+                                    <label for="" class="form-label">To URL</label>
+                                    <input  required ng-minlength="10" ng-model="form.toURL" type="text" class="form-control" name="url" id=""
+                                      aria-describedby="helpId" placeholder="" />
+                                      <div ng-messages="validate.url.$touched && validate.url.$error">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" ng-disabled="!validate.$valid" class="btn btn-success"
+                              data-bs-dismiss="modal" ng-click="create()">Save</button>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- END CREATE NOTIFICATION -->
+
+                    <!-- START DEMO NOTIFICATION -->
+                    <div class="modal fade" id="see-demo" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content modal-dialog-centered">
+
+                          <a href="{{form.toURL}}" target="_blank">
+                            <img ng-src="{{form.urlImage}}" alt="" class="rounded-2 img-fluid h-50">
+                          </a>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- END DEMO NOTIFICATION -->
+
+                    <!-- START Update NOTIFICATION -->
+                    <div class="modal fade" id="update-notification" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal Notification</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <img ng-src="{{form.urlImage}}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label fs-6">Title:</label>
+                                    <input ng-model="form.title" type="text" name="" id="" class="form-control"
+                                      placeholder="" aria-describedby="helpId" />
+
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <label for="" class="form-label fs-6">Content:</label>
+                                    <textarea ng-model="form.content" class="form-control" name="" id=""
+                                      rows="3"></textarea>
+                                  </div>
+                                  <div class="outerDivFull d-flex">
+                                    <label class="fs-6">Active:</label>
+                                    <div class="switchToggle mx-4">
+                                      <input type="checkbox" id="switch" ng-model="form.active" ng-click="">
+                                      <label for="switch">Toggle</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-3 fs-6">
+                                <div class="col-md-6" style="border-right: 1px solid rgb(164, 164, 164);">
+                                 <p><i class="bi bi-person-fill-add mx-3 fs-6"></i> {{form.createBy}}</p>
+                                  <p><i class="fa-regular fa-calendar-plus mx-3 fs-6"></i>{{form.createDate | date: 'dd-MM-yyyy HH:ss'}}</p>
+                                  <p><i class="bi bi-person-fill-gear mx-3 fs-6"></i>{{form.modifiedBy}}</p>
+                                  <p><i class="fa-regular fa-calendar-plus mx-3 fs-6"></i>{{form.modifiDate| date: 'dd-MM-yyyy HH:ss'}}</p>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                  <div class="mb-3">
+                                    <label for="" class="form-label fs-6">Url:</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      name=""
+                                      id=""
+                                      aria-describedby="helpId"
+                                      placeholder=""
+                                      ng-model="form.toURL"
+                                    />
+                                  </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                              ng-click="update()">Update</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- END Update NOTIFICATION -->
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+
+.profile {
+    position: relative;
+}
+
+.bg-profile {
+    height: 400px;
+    object-fit: cover;
+}
+
+.name-artist {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    color: white;
+}
+
+.total-listener {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+}
+
+.change-bg {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+
+.nav {
+    border: 0px;
+}
+
+.nav-link {
+    border: 0px !important;
+    color: black;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.nav-item:hover {
+    border-radius: 10px;
+}
+
+.nav-link.active {
+    border-bottom: 3px solid green !important;
+}
+.avatar{
+    width: 150px;
+    height: 150px;
+    transition: opacity 0.3s;
+}
+.avatar:hover{
+    opacity: 0.7!important;
+}
+
+.select-image{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+#bio:focus{
+    border: 0px!important;
+    outline: none!important;
+}
+
+.image-gallery{
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+}
+
+.card-body-playlist-profile {
+    margin-top: 5px; 
+}
+.card-body-playlist-profile{
+    margin-top: 1px;
+}
+.card-play-list-profile{
+    width: 100%;
+    max-width: 100%;
+    width: 220px !important;
+    background-color: rgb(250, 247, 247);
+}
+.card-play-list-profile:hover{
+    background-color:rgb(183, 170, 170);
+}
+.card-play-list-profile:hover .icon-play-card-playlist-profile {
+    display: block;
+}
+
+.card-text-playlist-profile-namesong {
+    margin-bottom: 5px;
+    color: black;
+    font-weight: bold;
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+}
+.img-car-profile-like img{
+    border-radius: 50%;
+    height:150px!important;
+    width: 150px!important; 
+    object-fit: cover!important;
+}
+.img-car-profile-like{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+

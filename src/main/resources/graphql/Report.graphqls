@@ -1,0 +1,18 @@
+#Report.graphqls
+#import "./Artist.graphqls"
+#import "./Recording.graphqls"
+#import "./Podcast.graphqls"
+#import "./Episode.graphqls"
+#import "./UserType.graphqls"
+
+type Report{
+	reportId: ID
+	reportDate: String
+	description: String
+	status: Boolean
+	artist: Artist
+	recording: Recording
+	podcast: Podcast
+	episode: Episode
+	usertype: UserType
+}

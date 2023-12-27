@@ -1,0 +1,11 @@
+#Notification.graphqls
+
+type Notification{
+	notificationId: ID
+	title: String
+	content: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

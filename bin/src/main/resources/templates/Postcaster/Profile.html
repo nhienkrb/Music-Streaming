@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    input {
+        border: 0px !important;
+    }
+
+    textarea {
+        border: 0px !important;
+        overflow-y: hidden;
+        resize: none;
+    }
+
+    p {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .form-control:focus {
+        border-color: inherit;
+        box-shadow: none;
+    }
+
+    .podcast-name {
+        font-weight: bold;
+        font-size: xx-large;
+    }
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <div class="container col-7">
+        <div class="row">
+            <div class="col-4">
+                <img class="w-100"
+                    src="https://media.istockphoto.com/id/1222357475/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-xem-tr%C6%B0%E1%BB%9Bc-h%C3%ACnh-%E1%BA%A3nh-gi%E1%BB%AF-ch%E1%BB%97-h%C3%ACnh-%E1%BA%A3nh-cho-trang-web-ho%E1%BA%B7c-thi%E1%BA%BFt-k%E1%BA%BF-ui-ux-minh-h%E1%BB%8Da.jpg?s=612x612&w=0&k=20&c=85Mb60buhPvbdQd2CaKEXn6YJyhKqd_QZ0nIh_2OtqM="
+                    alt="">
+            </div>
+            <div class="col-8">
+                <div class="d-flex">
+                    <input class="form-control podcast-name" readonly type="text" value="Lilbaor Pobcast">
+                    <button id="modify" class="btn"><i class="bi bi-pencil-fill"></i></button>
+                </div>
+                <p class="mx-3">By Nguyễn Văn Bảo</p>
+                <textarea readonly class="form-control" name="" id="about" cols="30" rows="3">Đây là kênh Podcast chính thức của Nguyễn Hữu Trí. Hiện tại anh là một thầy giáo, youtuber, đồng thời là CEO, trực tiếp giảng dạy các khóa học kỹ năng tại học viện AYP. Thông tin thêm về anh và học viện, các bạn xem tại website: ayp.vn.Tập mới sẽ phát sóng vào mỗi tối thứ 3 và 6 hàng tuần. Hãy đăng kí kênh và thường xuyên tương tác với anh những chủ đề bạn muốn anh chia sẻ nhé!.Hotline CSKH: 0938667060
+                </textarea>
+                <button class="btn" id="show">Show more</button>
+            </div>
+            <div>
+                <a href=""></a>
+            </div>
+            <div class="col-12 my-5">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="w-100"
+                                    src="https://media.istockphoto.com/id/1222357475/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-xem-tr%C6%B0%E1%BB%9Bc-h%C3%ACnh-%E1%BA%A3nh-gi%E1%BB%AF-ch%E1%BB%97-h%C3%ACnh-%E1%BA%A3nh-cho-trang-web-ho%E1%BA%B7c-thi%E1%BA%BFt-k%E1%BA%BF-ui-ux-minh-h%E1%BB%8Da.jpg?s=612x612&w=0&k=20&c=85Mb60buhPvbdQd2CaKEXn6YJyhKqd_QZ0nIh_2OtqM="
+                                    alt="">
+                            </div>
+                            <div class="col-9 flex-fill">
+                                <h3>Quản trị website</h3>
+                                <div class="d-flex">
+                                    <p>Lilbaor Pobcast</p>
+                                    <p class="mx-3">Sep 19,2023</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn" id="play-pobcast"><i class="bi bi-play-circle-fill"></i><button
+                                            class="btn">
+                                            <button class="btn" data-bs-toggle="modal" data-bs-target="#share"><i
+                                                    class="bi bi-cloud-arrow-up"></i> Share</button>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>7:20</span>
+                                    <span>27:20</span>
+                                </div>
+                                <input class="w-100" type="range" min="0" max="100" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="rounded-3 row border border-dark mx-3">
+                            <div class="col-2 my-3">
+                                <a href="">
+                                    <img class="w-50"
+                                    src="https://media.istockphoto.com/id/1222357475/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-xem-tr%C6%B0%E1%BB%9Bc-h%C3%ACnh-%E1%BA%A3nh-gi%E1%BB%AF-ch%E1%BB%97-h%C3%ACnh-%E1%BA%A3nh-cho-trang-web-ho%E1%BA%B7c-thi%E1%BA%BFt-k%E1%BA%BF-ui-ux-minh-h%E1%BB%8Da.jpg?s=612x612&w=0&k=20&c=85Mb60buhPvbdQd2CaKEXn6YJyhKqd_QZ0nIh_2OtqM="
+                                    alt="">
+                                </a>
+                            </div>
+                            <div class="col-9 flex-fill my-3">
+                                <a href="">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6>Cháy</h6>
+                                        <p>Sep 19,2023</p>
+                                    </div>
+                                </a>
+                                <div></div>
+                                <div id="des" class="collapse">
+                                    Lorem ipsum dolor text....
+                                </div>
+                                <h6 data-bs-toggle="collapse" data-bs-target="#des">Description</h6>
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <p>28:07</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="share">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body d-flex align-items-center">
+                            <label for="shareURL">URL:</label>
+                            <input type="text" id="shareURL" class="form-control">
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const show = $('#show');
+        const modify = $('#modify');
+        const playPobcast = $('#play-pobcast');
+        var childrenModify = modify.children();
+        var childrenPlay = playPobcast.children();
+        $('#show').click(function () {
+            if (show.hasClass('showless')) {
+                this.innerHTML = 'show more';
+                $('#about').attr('rows', '3');
+                show.removeClass('showless');
+            } else {
+                this.innerHTML = 'show less';
+                $('#about').attr('rows', '10');
+                show.addClass("showless");
+            }
+        })
+
+        modify.click(function () {
+            if (childrenModify.hasClass('bi-pencil-fill')) {
+                $('.form-control').removeAttr('readonly');
+                childrenModify.removeClass('bi-pencil-fill');
+                childrenModify.addClass('bi-check-lg');
+            } else {
+                $('.form-control').attr('readonly', true);
+                childrenModify.removeClass('bi-check-lg');
+                childrenModify.addClass('bi-pencil-fill');
+            }
+        })
+
+        playPobcast.click(function () {
+            if (childrenPlay.hasClass('bi-play-circle-fill')) {
+                childrenPlay.removeClass('bi-play-circle-fill');
+                childrenPlay.addClass('bi-pause-circle-fill');
+            } else {
+                childrenPlay.removeClass('bi-pause-circle-fill');
+                childrenPlay.addClass('bi-play-circle-fill');
+            }
+        })
+    </script>
+</body>
+
+</html>

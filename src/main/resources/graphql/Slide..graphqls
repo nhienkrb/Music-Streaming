@@ -1,0 +1,11 @@
+#Slide.graphqls
+
+type Slide{
+	slideId: ID
+	position: String
+	listImage: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate:String
+}

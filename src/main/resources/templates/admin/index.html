@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Admin page</title>
+    <link rel="stylesheet" href="../../static/css/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_css_bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/css/variable.css">
+    <link rel="stylesheet" href="../../static/css/layout.css">
+    <link rel="stylesheet" href="../../static/css/content.css">
+    <link rel="stylesheet" href="../../static/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/auth0/angular-jwt@0.1.10/dist/angular-jwt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/graphql-request@6.1.0/build/cjs/index.min.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/routing_admin.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/subscriptionUI.js"></script>
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+    <style>
+        .alert-success {
+            display: block;
+            position: absolute;
+            top: 50px;
+            right: 12px;
+            z-index: 999;
+        }
+    </style>
+
+</head>
+
+<body ng-app="myApp">
+    <div class="main-wrapper">
+        <!-- NAVBAR -->
+        <div class="header-container fixed-top" ng-controller="navbarAdmin">
+            <header class="header navbar navbar-expand-sm expand-header">
+                <div class="header-left d-flex">
+                    <div class="logo">
+                        Music-Streaming
+                    </div>
+                    <a href="" id="toggleSidebar" class="sidebarCollapse" data-placement="bottom">
+                        <span class="fas fa-bars"></span>
+                    </a>
+                </div>
+                <ul class="navbar-item flex-row ml-auto" ng-controller="ReportController">
+                    <li class="nav-item dropdown user-profile-dropdown">
+                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                            <img src="../../static/img/bell.png" class="icon" alt="">
+                            <p class="count purple-gradient">{{ totalNumberOfReports > 3 ? '9+' : totalNumberOfReports
+                                }}</p>
+                        </a>
+                        <div class="dropdown-menu ">
+                            <div class="dp-main-menu">
+                                <a href="#!manage-report" class="dropdown-item message-item responsives"
+                                    ng-repeat="notification in notifications | limitTo: 3">
+                                    <img src="../../static/img/bell.png" alt="" class="user-note">
+                                    <div class="note-info-desmis">
+                                        <div class="user-notify-info">
+                                            <p class="note-name d-inline-block text-truncate" style="max-width: 150px;">{{ notification.reportDescription }}</p>
+                                            <p class="note-time">{{ formatTime(notification.minutesAgo) }}</p>
+                                        </div>
+                                        <p href="" class="status-link">
+                                            <span class="fas fa-times"></span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="container-fluid text-center border-top">
+                                <a href="#!manage-report" class="text-primary">Show more</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown user-profile-dropdown">
+                        <a href="" class="nav-link user" id="Notify" data-bs-toggle="dropdown">
+                            <img src="../../static/img/email.png" class="icon" alt="">
+                            <p class="count bg-clc">{{listArtistIsVerify.length >= 4 ? '9+' : listArtistIsVerify.length
+                                }}</p>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dp-main-menu" ng-repeat=" artist in listArtistIsVerify | limitTo : 4 ">
+                                <a href="#" class="dropdown-item message-item">
+                                    <img src="../../static/img/email.png" alt="" class="user-note">
+                                    <div class="note-info-desmis">
+                                        <div class="user-notify-info">
+                                            <p class="note-name">{{artist.artistName}}</p>
+                                            <p class="note-time">{{artist.dateStarted | date: 'dd-MM-yyyy'}}</p>
+                                        </div>
+                                        <p href="" class="status-link">
+                                            <span class="fas fa-times"></span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="container-fluid text-center border-top" ng-if="listArtistIsVerify.length >= 4 ">
+                                <a href="#!/approve-role" class="text-primary">Show more</a>
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item dropdown user-profile-dropdown">
+                        <a href="" class="nav-link user " id="Notify" data-bs-toggle="dropdown">
+                            <img ng-src="{{infoAdmin.image.url}}" class="icon rounded" alt="">
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="user-profile-section ">
+                                <div class="media mx-auto ">
+                                    <img ng-src="{{infoAdmin.image.url}}" alt="" class="img-fluid mr-2">
+                                    <div class="media-body">
+                                        <h5 class="text-break">{{infoAdmin.username}}</h5>
+                                        <p>Admin</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dp-profile-menu">
+                                <a href="../user/account.html" class="dropdown-item">
+                                    <span class="fas fa-user"></span>
+                                    Profile
+                                </a>
+                                <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePass" >
+                                    <span class="fas fa-inbox"></span>
+                                    Change password
+                                </a>
+                                <a href="./" class="dropdown-item">
+                                    <span class="fas fa-lock-open"></span>
+                                    Mapping
+                                </a>
+                                <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <span class="fas fa-outdent"></span>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="changePass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change PassWord</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" ng-controller="navbarAdmin">
+                        <form ng-submit="changepassword()">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword"
+                                    ng-model="passwordCurrent">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" ng-model="newpass">
+                            </div>
+                            <div class="mb-3">
+                                <label for="repeatPassword" class="form-label">Repeat New Password</label>
+                                <input type="password" class="form-control" id="repeatPassword" ng-model="confirmpass">
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" ng-click="">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content" ng-controller="navbarAdmin">
+                    <div class="modal-header modal-header-delete">
+                        <div>
+
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="icon-close-bodyModal">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                        <div style="text-align: center;" class="m-2">
+                            <h5> Are you sure ? </h5>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer btn-event-deleteModal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" ng-click="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- NAVBAR END -->
+        <!-- SIDEBAR START -->
+        <div class="left-menu">
+            <div class="menubar-content">
+                <nav class="animated bounceInDown">
+                    <ul id="sidebar">
+                        <li class="activeslidebar">
+                            <a href="#/!"><i class="bi bi-speedometer2"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#!manage-playlist"><i class="bi bi-music-note-list"></i>Manager Playlist</a>
+                        </li>
+                        <li>
+                            <a href="#!account"><i class="bi bi-people-fill"></i>Manager Account</a>
+                        </li>
+                        <li class="sub-menu" ng-show="statusShow">
+                            <a href=""><i class="bi bi-graph-up"></i>Statistical Management
+
+                                <div class="fa fa-caret-down right"></div>
+                            </a>
+                            <ul class="left-menu-dp">
+                                <li><a href="#!music-content"><i class="bi bi-music-note-beamed"></i>Music content</a>
+                                </li>
+                                <li><a href="#!subscription-content"><i class="bi bi-bar-chart-fill"></i>Subscription
+                                        content</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href=""> <i class="bi bi-newspaper"></i>Manager News
+                                <div class="fa fa-caret-down right"></div>
+                            </a>
+                            <ul class="left-menu-dp">
+                                <li><a href="#!create-news"><i class="bi bi-music-note-beamed"></i>Create New</a></li>
+                                <li><a href="#!ManagerBlog"><i class="bi bi-body-text"></i>List News</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#!display-slide"><i class="bi bi-badge-3d-fill"></i>Display Slide</a>
+                        </li>
+                        <li>
+                            <a href="#!notification"><i class="bi bi-pip-fill"></i>Notification</a>
+                        </li>
+                        <li>
+                            <a href="#!manage-report"><i class="bi bi-flag"></i>Manager Report</a>
+                        </li>
+                        <!-- <li>
+                            <a href="#!edit-user"><i class="bi bi-file-earmark-music"></i>Music Genre Management</a>
+                        </li> -->
+                        <li class="sub-menu">
+                            <a href=""><i class="bi bi-body-text"></i>ADS
+                                <div class="fa fa-caret-down right"></div>
+                            </a>
+                            <ul class="left-menu-dp">
+                                <li><a href="#!ads"><i class="bi bi-music-note-beamed"></i>All advertising</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#!approve-role"><i class="bi bi-person-lines-fill"></i>Approve Role</a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href=""><i class="bi bi-house-door-fill"></i>Category
+                                <div class="fa fa-caret-down right"></div>
+                            </a>
+                            <ul class="left-menu-dp">
+                                <li><a href="#!mood"><i class="bi bi-music-note-beamed"></i>Mood</a></li>
+                                <li><a href="#!instrument"><i class="bi bi-music-note-beamed"></i>Instrument</a></li>
+                                <li><a href="#!country"><i class="bi bi-music-note-beamed"></i>Country</a></li>
+                                <li><a href="#!song-style"><i class="bi bi-music-note-beamed"></i>Song Style</a></li>
+                                <li><a href="#!culture"><i class="bi bi-music-note-beamed"></i>Culture</a></li>
+                                <li><a href="#!genre"><i class="bi bi-music-note-beamed"></i>Genre</a></li>
+                                <li><a href="#!tag"><i class="bi bi-tags-fill"></i>Tag</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- <li>
+                            <a href="#!statistical_managerment"><i class="bi bi-bar-chart-fill"></i>Statistical
+                                Managerment</a>
+                        </li> -->
+                        <li class="sub-menu">
+                            <a href=""><i class="bi bi-body-text"></i>Subscriptions
+                                <div class="fa fa-caret-down right"></div>
+                            </a>
+                            <ul class="left-menu-dp">
+                                <li><a href="#!subscriptions-package"><i class="bi bi-music-note-beamed"></i>Package</a>
+                                </li>
+                                <li><a href="#!subscriptions-statistic"><i
+                                            class="bi bi-music-note-list"></i>Statistics</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+
+                <div class="">
+                    <nav class="navbar fixed-bottom nav-song">                       
+                        <audio style="color: red;" id="music"
+                            src="https://cdn.pixabay.com/audio/2023/01/18/audio_43b48c0a90.mp3" controls></audio>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+        <!-- SIDEBAR END -->
+
+        <!-- CONTENT START  -->
+        <div ng-view></div>
+        <!--  CONTENT END  -->
+    </div>
+    <!-- js -->
+
+    <script src="../../static/js/angularjs/BE-Admin/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/statistical.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/UI_DisplaySlide.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Profile/profile.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/mood.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/instrument.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/country.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/songStyle.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/culture.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/genre.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Category/tag.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/News/News.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/News/managerNews.js "></script>
+    <script src="../../static/js/angularjs/BE-Admin/Slide/displaySlide.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Report/Report.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/subscription.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/ManagerAccount/tblAccount.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/ManagerAccount/profileAccount.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/ManagerAccount/profilePodcast.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Playlist/playlist_Detail.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Playlist/managerPlaylist.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/Advertisement/advertisement.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/approveRole.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/statistical/mucsicStatistic.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/statistical/SubscriptionStatistic.js"></script>
+    <script src="../../static/js/angularjs/BE-Admin/notification.js"></script>
+    <script
+        src="../../static/js/jscustom/UI-Js-Admin/cdn.jsdelivr.net_npm_bootstrap@5.3.1_dist_js_bootstrap.bundle.min.js"></script>
+    <script src="../../static/js/jscustom/toasts.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/dirPagination.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/admin.js"></script>
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+    <script type="text/javascript" src="https://code.jscharting.com/latest/modules/maps.js"></script>
+    <!-- <script src="../../static/js/jscustom/UI-Js-Admin/subscriptionUI.js"></script> -->
+    <script src="../../static/js/jscustom/UI-Js-Admin/dirPagination.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/latest/custom/world/world.js"></script>
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    <script>
+
+        $('.newbtn').bind("click", function () {
+            $('#pic').click();
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+    <script>
+
+        $("#imageEpisode").change(function () {
+            imagePreview(this);
+        });
+
+        function imagePreview(input) {
+            //Check if there is a file that has been selected
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

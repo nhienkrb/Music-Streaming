@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <!-- CONTENT START  -->
+    <div class="content-wrapper">
+        <style>
+            @media (min-width: 576px) {
+                .rounded-nav {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            @media (min-width: 576px) {
+                .rounded-nav .nav-link {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            /* With arrow tabs */
+
+            .with-arrow .nav-link.active {
+                position: relative;
+            }
+
+            .with-arrow .nav-link.active::after {
+                content: '';
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid #2b90d9;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: block;
+            }
+
+            /* CSS PLAYLIST  DETAIL*/
+
+
+
+            .image-palylist-detail {
+                margin-top: 5px;
+                max-width: 150px;
+                height: 150px;
+                padding-top: 10px !important;
+            }
+
+            .font-playlist-detail h1 {
+                font-size: 70px;
+                font-weight: 600;
+                color: #464646;
+            }
+
+            .edit-playlist-detail {
+                font-size: 25px;
+                text-decoration: none;
+                color: #464646;
+            }
+
+            .edit-playlist-detail:hover {
+                color: (134, 132, 132);
+            }
+
+            .modal-header {
+                border-bottom: none;
+            }
+
+            .font-size-iconPlaylist {
+                font-size: 1.2rem;
+                font-weight: 600;
+
+            }
+
+
+            /* FILTER  */
+            .filter-table .bi {
+                font-size: 2rem;
+                text-decoration: none;
+                color: #464646;
+                font-weight: 700px;
+            }
+
+            .three-dots {
+                margin-left: 15px;
+                font-size: 1.4rem;
+                text-decoration: none;
+                color: black;
+
+            }
+
+
+
+            .switchToggle input[type=checkbox] {
+                height: 0;
+                width: 0;
+                visibility: hidden;
+                position: absolute;
+            }
+
+            .switchToggle label {
+                cursor: pointer;
+                text-indent: -9999px;
+                width: 70px;
+                max-width: 70px;
+                height: 30px;
+                background: #d1d1d1;
+                display: block;
+                border-radius: 100px;
+                position: relative;
+            }
+
+            .switchToggle label:after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 26px;
+                height: 26px;
+                background: #fff;
+                border-radius: 90px;
+                transition: 0.3s;
+            }
+
+            .switchToggle input:checked+label,
+            .switchToggle input:checked+input+label {
+                background: #3e98d3;
+            }
+
+            .switchToggle input+label:before,
+            .switchToggle input+input+label:before {
+                content: 'No';
+                position: absolute;
+                top: 5px;
+                left: 35px;
+                width: 26px;
+                height: 26px;
+                border-radius: 90px;
+                transition: 0.3s;
+                text-indent: 0;
+                color: #fff;
+            }
+
+            .switchToggle input:checked+label:before,
+            .switchToggle input:checked+input+label:before {
+                content: 'Yes';
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                width: 26px;
+                height: 26px;
+                border-radius: 90px;
+                transition: 0.3s;
+                text-indent: 0;
+                color: #fff;
+            }
+
+            .switchToggle input:checked+label:after,
+            .switchToggle input:checked+input+label:after {
+                left: calc(100% - 2px);
+                transform: translateX(-100%);
+            }
+
+            .switchToggle label:active:after {
+                width: 60px;
+            }
+
+            .toggle-switchArea {
+                margin: 10px 0 10px 0;
+            }
+
+            .form {
+
+                position: relative;
+            }
+
+            .form .fa-search {
+
+                position: absolute;
+                top: 13px;
+                left: 15px;
+                color: #9ca3af;
+
+            }
+
+            .form span {
+
+                position: absolute;
+                right: 17px;
+                top: 13px;
+                padding: 2px;
+                border-left: 1px solid #d1d5db;
+
+            }
+
+            .left-pan {
+                padding-left: 7px;
+            }
+
+            .left-pan i {
+
+                padding-left: 10px;
+            }
+
+            .form-input {
+                text-indent: 33px;
+                border-radius: 10px;
+            }
+/* 
+            .form-input:focus {
+                box-shadow: none;
+                border: none;
+            } */
+        </style>
+        <section class="dashboard-top-sec">
+            <div class="container-fluid">
+                <div class="container ">
+
+                    <div class="p-3 bg-white rounded shadow mb-5">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <!-- NEXT BACK -->
+
+                                <div class="row col-1" >
+                                    <button class="btn btn-secondary" onclick="history.back()" ><i class="bi bi-chevron-left"></i></button>
+                                </div>
+                                <!-- START TITLE PLAYLIST -->
+
+                                <div class="row mt-2">
+                                    <div class="image-palylist-detail shadow mb-5 bg-body-tertiary rounded">
+                                        <img ng-src="{{listPlaylist.image.url}}" class="img-fluid rounded" alt="">
+                                    </div>
+                                    <div class="col-md-8 font-playlist-detail ">
+
+                                        <div class="position-relative d-inline p-4">
+                                            <h1 id="namePlaylist" class="d-inline">#{{listPlaylist.playlistName}}</h1>
+                                            <div class="position-absolute top-50 start-100 translate-middle">
+                                                <a type="button" class="edit-playlist-detail" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"> <i class="bi bi-pen"></i></a>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="description-playlist-detail text-break">
+                                            <h5 class="px-4" id="playlistDescription">{{listPlaylist.description}}</h5>
+
+                                        </div>
+
+                                        <div class="ms-4 mt-2 isPublic d-flex align-items-center d-inline">
+                                            <h6 class="mb-2 mt-2" style="margin-right: 10px;">Is Public:</h6>
+                                            <div class="outerDivFull">
+                                                <div class="switchToggle">
+                                                    <input type="checkbox" id="switch" ng-model="listPlaylist.isPublic"
+                                                        ng-click="setIsPublicPlaylist(listPlaylist.isPublic)">
+                                                    <label for="switch">Toggle</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ms-4">
+                                            <p class="fs-7"> <span> Songs: {{listPlaylist.playlistRecords.length}}
+                                                </span> <span>,Time:3h31p
+                                                    is the time it takes to finish the playlist</span> </p>
+                                        </div>
+
+                                        <!-- START MODAL EDIT PLAYLIST DETAIL -->
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit detail
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-4 col-lg-4">
+
+                                                                    <img id="image-preview"
+                                                                        ng-src="{{listPlaylist.image.url}}"
+                                                                        class="img-fluid rounded" alt=""
+                                                                        style=" cursor: pointer;">
+                                                                    <input hidden id="imagePlaylist-edit" name="" type="file">
+
+                                                                </div>
+
+                                                                <div class="col-sm-6 col-md-8 col-lg-8">
+                                                                    <div class="mb-3 mt-0">
+                                                                        <input type="text" class="form-control"
+                                                                            ng-model="listPlaylist.playlistName"
+                                                                            id="idPlaylistName"
+                                                                            placeholder="Name playlist">
+                                                                    </div>
+                                                                    <div class="mb-0">
+                                                                        <textarea class="form-control"
+                                                                            ng-model="listPlaylist.description"
+                                                                            id="exampleFormControlTextarea1" rows="3"
+                                                                            placeholder="Description"></textarea>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer " style="border-top: none;">
+                                                        <button type="button" data-bs-dismiss="modal"
+                                                            class="btn btn-primary"
+                                                            ng-click="updatePlaylist(listPlaylist.playlistId)">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END   MODAL EDIT PLAYLIST DETAIL-->
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+
+                                <!-- END TITLE PLAYLIST DETAIL -->
+
+                                <!-- START FILTER PLAYLIST DETAIL -->
+                                <div class="row mt-0">
+
+
+                                    <div class="col-lg-6">
+                                  
+
+                                        <div class="form col-8">
+                                            <i class="fa fa-search"></i>
+                                            <input type="text" class="form-control form-input" ng-model="searchTable"
+                                                placeholder="Search anything ...">
+                                          
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="filter-table text-end">
+                                          
+                                            <div class="btn-group dropstart align-items-center">
+                                                <div class="mx-3 fs-6 " id="fieldSort" >{{field === 'recording.recordingName' ? 'Song Name' :'Duration'}}</div>
+                                                <a class="mt-2" href="" type="button" data-bs-toggle="dropdown"
+                                                    aria-expanded="false"> <i class="bi bi-list-ul"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li ng-repeat="arraySort in arraySort">
+                                                        <a class="dropdown-item" href=""  ng-click="setSortField(arraySort)" ng-model="sortFields">{{arraySort === 'recording.recordingName' ? 'Song Name' :'Duration'}}</a>
+                                                    </li>
+                                                   
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                               <!-- END  FILTER PLAYLIST DETAIL -->
+
+
+                                <!-- START TABLE PLAYLIST -->
+                                <div class="row">
+                                    <table class="table  table-hover">
+                                        <thead style="border-bottom: 1px solid #c0c0c0;">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Listened</th>
+                                                <th scope="col" class="text-end font-size-iconPlaylist">
+                                                    <i class="bi bi-clock" style="margin-right: 2.7rem;"></i>
+                                                </th>
+                                        </thead>
+                                        <tbody style="border-bottom:1px solid #ffffff;">
+                                            <tr ng-repeat="playlistRecord in listPlaylist.playlistRecords | filter:searchTable | orderBy: sortFields">
+                                                <th scope="row"> {{$index +1}}</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center " style="cursor:pointer">
+                                                        <img ng-src="{{playlistRecord.recording.song.image.url}}"
+                                                            alt="img" class="img-songs rounded-1  ">
+                                                        <div class="mx-2" style="line-height: 15px;" ng-click="runMusic(playlistRecord.recording.audioFileUrl)">
+
+                                                            <h6>{{playlistRecord.recording.recordingName}}</h6>
+                                                            <h6 class="songs-in-album ">
+                                                                <span
+                                                                    ng-repeat="artists in playlistRecord.recording.song.writters">{{artists.artist.artistName}},
+                                                                </span>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                              
+                                                <td>{{playlistRecord.recording.listened | number : 0 }}</td>
+                                                <td class="text-end "> 
+                                                   <format-time seconds="playlistRecord.recording.duration"></format-time>
+
+                                                    <div class="btn-group dropstart">
+                                                        <a class="three-dots" href="" type="button"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="bi bi-three-dots"></i>
+                                                        </a>
+
+                                                        <ul class="dropdown-menu" style="min-width: 5rem; ">
+                                                            <li><a class="dropdown-item" href=""
+                                                                    ng-click="removeRecordFromPlaylist(playlistRecord.playlistRecordingId)">Remove</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </td>
+
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+
+                                <!-- END TABLE PLAYLIST -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--  CONTENT END  -->
+
+
+
+</body>
+
+</html>

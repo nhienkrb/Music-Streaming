@@ -1,0 +1,10 @@
+#Access.graphqls
+#import "./PlaylistRecord.graphqls"
+#import "./UserType.graphqls"
+#import "./Playlist_Podcast.graphqls"
+type Access{
+	accessId: ID
+	playlistRecord: PlaylistRecord
+	usertype: UserType
+	playlistPodcast: Playlist_Podcast
+}

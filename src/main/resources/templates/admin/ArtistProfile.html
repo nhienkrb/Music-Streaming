@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   <!-- CONTENT START  -->
+
+   <div class="content-wrapper">
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+            <div class="row profile-content">
+               <div class="col-12 col-md-12 col-lg-4">
+                  <div class="iq-card">
+                     <div class="d-flex justify-content-end  " style="margin-right: 10px; margin-top: 10px;">
+                        <div class="dropdown ">
+                           <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="bi bi-three-dots" style="font-size: 1.5rem;"></i>
+                           </a>
+                        
+                           <ul class="dropdown-menu">
+                              <li ><a class="dropdown-item" href="" ng-click="lockAccount(form.account.email)" >Lock</a></li>
+                              <li ><a class="dropdown-item" href="" ng-click="unLockAccount(form.account.email)" >Unlock</a></li>
+
+                           </ul>
+                        </div>
+                    </div>
+                     <div class="iq-card-body profile-page">
+                        
+                        <div class="profile-header">
+                           <div class="box-img-info text-center">
+                              <img ng-src="{{form.imagesProfile.url == null ? 'https://res.cloudinary.com/div9ldpou/image/upload/v1697882865/ProfilePicture/User%20null/user-null.png' : form.imagesProfile.url}}" class="img-profile" alt="">
+                              <div class="profile-detail mt-3 ">
+                                 <h3>{{form.artistName}}</h3>
+                                 <p class="text-primary">{{form.fullName}}</p>
+                                 <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                       <h2 class="accordion-header">
+                                          <button class=" collapsed btn btn-link" type="button"
+                                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                             aria-expanded="false" aria-controls="flush-collapseOne"
+                                             style="text-decoration: none;">
+                                             show more
+                                          </button>
+
+                                       </h2>
+                                       <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                          data-bs-parent="#accordionFlushExample">
+                                          <div class="accordion-body">{{form.bio}}</div>
+                                       </div>
+                                    </div>
+
+                                 </div>
+                                 <!-- <p >{{form.bio}}</p> -->
+                              </div>
+
+                              <div class="icon-profile">
+                                 <ul class="list-inline d-flex p-0 mb-0 align-items-center">
+                                    <li ng-repeat="social in form.socialMediaLinks">
+                                       <a ng-href="{{social}}" class="icon-profile-detail"><i class="bi bi-facebook"
+                                             aria-hidden="true"></i></a>
+                                    </li>
+
+
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                        <div class="iq-header-title">
+                           <h4 class="card-title mb-0">Personal Details</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <ul class="profile-detail-personal list-inline p-0 mb-0 ">
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>Email</h6>
+                                 <p class="mb-0">{{form.account.email}}</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>Birthday</h6>
+                                 <p class="mb-0">{{form.dateOfBirth | date: 'dd-MM-yyyy'}}</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>Gender</h6>
+                                 <p class="mb-0">{{form.account.gender == 1 ? 'Male':'Female'}}</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>Address</h6>
+                                 <p class="mb-0">{{form.placeOfBirth}}</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>Date Started</h6>
+                                 <p class="mb-0">{{form.dateStarted | date: 'dd-MM-yyyy'}}</p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                 <h6>userType</h6>
+                                 <p class="mb-0" ng-repeat="userType in form.account.userType"><span
+                                       ng-class="{'badge text-bg-info mx-1': userType.nameType === 'BASIC', 'badge text-bg-warning mx-1': userType.nameType === 'PREMIUM'}">{{userType.nameType}}</span>
+                                 </p>
+
+                              </div>
+                           </li>
+
+                        </ul>
+                     </div>
+                  </div>
+
+               </div>
+               <div class="col-12 col-md-12 col-lg-8">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                           <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title mb-0">Statistic</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body ">
+                              <ul class="list-inline p-0 mb-4">
+                                 <li class="d-flex mb-4 align-items-center">
+                                    <div class="profile-icon bg-secondary"><span><i class="ri-file-3-fill"></i></span>
+                                    </div>
+                                    <div class="media-support-info ml-3">
+                                       <h6>Total Album</h6>
+                                       <p class="mb-0">{{totalAlbumAndSong[1] === null || "" ? 0: totalAlbumAndSong[1]}}</p>
+                                    </div>
+
+                                 </li>
+                                 <li class="d-flex mb-4 align-items-center">
+                                    <div class="profile-icon bg-secondary"><span><i class="ri-image-fill"></i></span>
+                                    </div>
+                                    <div class="media-support-info ml-3">
+                                       <h6>Total Song</h6>
+                                       <p class="mb-0">{{totalAlbumAndSong[0] === null || "" ? 0: totalAlbumAndSong[0]}}</p>
+                                    </div>
+
+                                 </li>
+                                 <li class="d-flex mb-4 align-items-center">
+                                    <div class="profile-icon bg-secondary"><span><i class="ri-video-fill"></i></span>
+                                    </div>
+                                    <div class="media-support-info ml-3">
+                                       <h6>Follower</h6>
+                                       <p class="mb-0">{{follower| number:0}}</p>
+                                    </div>
+
+                                 </li>
+                                 <li class="d-flex  align-items-center">
+                                    <div class="profile-icon bg-secondary"><span><i class="ri-file-3-fill"></i></span>
+                                    </div>
+                                    <div class="media-support-info ml-3">
+                                       <h6>Listener</h6>
+                                       <p class="mb-0" >{{sumListened | number:0}}</p>
+                                    </div>
+
+                                 </li>
+
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                           <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title mb-0">Albums</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body">
+                              <ul class="list-inline p-0 mb-0">
+                                 <span ng-if="album.albums.length == 0"> None</span>
+                                 <li ng-repeat="album in album.albums">
+                                    <div class="iq-details mb-2 d-flex">
+
+                                       <img ng-src="{{album.image.url}}" alt="img" class="img-album rounded-1  ">
+
+                                       <div class="title-album ms-2 mt-2">
+                                          <h6>{{album.albumName}}</h6>
+                                          <p class="songs-in-album">Songs: <span>{{album.tracks.length}}</span></p>
+                                       </div>
+
+                                    </div>
+                                 </li>
+
+
+                              </ul>
+
+                              <div ng-if="album.albums.length > 0" class="paginations d-flex justify-content-between">
+                                 <a href="#" class="previous round">&#8249;</a>
+                                 <h6 class="number-page-artistProfile mt-2"> 1 </h6>
+                                 <a href="#" class="next round">&#8250;</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="iq-card">
+                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                        <div class="iq-header-title">
+                           <h4 class="card-title mb-0">Songs</h4>
+                        </div>
+
+                     </div>
+                     <div class="iq-card-body">
+                        <div class="row mb-2">
+                           <div class="form col-5  mt-0">
+                              <i class=" mx-2 fa fa-search"></i>
+                              <input type="text" class="form-control form-input" placeholder="Search" ng-model="search">
+
+                           </div>
+                           <div class=" col-3 mx-0">
+                              <select class="form-select" style="font-size: 16px;" ng-model="sortFilter">
+                                 <option value="" selected >Default</option>
+                                 <option ng-value="song.songName"  >ASC</option>
+                                 <option  ng-value="-song.songName">DESC</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="table-responsive ">
+                           <table class="table table-hover table-borderless">
+                              <thead style="border-bottom: 1px solid rgb(234, 230, 230);">
+                                 <tr>
+                                    
+                                    <th scope="col">Song name</th>
+                                    <th scope="col">Listened</th>
+                                    <th scope="col">Wishlist</th>
+                                    <th scope="col">Album</th>
+                                    <th scope="col">Time</th>
+                                 </tr>
+                              </thead>
+                              <tbody ng-repeat=" itemSong in album.writters" >
+                                 <tr ng-repeat=" itemRecording in itemSong.song.recordings  | filter: search | orderBy: true"  >
+                                   
+                                    <td >
+                                       <div class="d-flex align-items-center " style="cursor:pointer">
+                                          <img ng-src="{{itemRecording.song.image.url}}" alt="img" class="img-songs rounded-1  ">
+                                          <div class="mx-2"   style="line-height: 15px;">
+                                             <span class="song-namefor-actist">{{itemRecording.song.songName}}
+                                             </span>
+
+                                             <!-- <audio   id="audio-player" src="{{itemRecording.audioFileUrl}}">
+                                                
+                                             </audio> -->
+
+                                             <h6 class="songs-in-album "><span ng-repeat="artist in itemSong.artist">{{artist}}</span></h6>
+                                          </div>
+                                       </div>
+                                    </td>
+                                 
+
+                                    <td >
+                                       <div class="title-albums">
+                                          <h6 class="songs-in-album mb-1"  >
+                                           
+                                             <span class="mx-2">{{ itemRecording.listened | number:0}} </span>   </h6>
+                                       </div>
+                                    </td>
+
+                                    
+                                    <td >
+                                       <div class="title-albums">
+                                          <h6 class="songs-in-album mb-1"  >
+                                           
+                                             <span class="mx-2">{{ itemRecording.wishlists.length | number:0}} </span>   </h6>
+                                       </div>
+                                    </td>
+
+                                    <td >
+                                       <div class="title-albums">
+                                          <h6 class="songs-in-album mb-1" 
+                                             ng-repeat="album in itemRecording.tracks">
+                                             <span class="mx-2">{{ album.album.albumName}} </span>   </h6>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <div class="title-albums ">
+                                          <h6 class="songs-in-album " >
+                                          
+                                             <format-time seconds="itemRecording.duration"></format-time>
+
+                                          </h6>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- <div class="pagination d-flex justify-content-between">
+                           <a href="#" class="previous round">&#8249;</a>
+                           <h6 class="number-page-artistProfile mt-2"> 1 </h6>
+                           <a href="#" class="next round">&#8250;</a>
+                        </div> -->
+                        <!-- <div class="row">
+                                       
+                           <div class="mt-3 mb-3">
+                               
+                              <dir-pagination-controls class="dir-pagination-controls"></dir-pagination-controls>
+
+                           </div>
+                       </div> -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+   <!--  CONTENT END  -->
+   </div>
+   
+</body>
+
+</html>

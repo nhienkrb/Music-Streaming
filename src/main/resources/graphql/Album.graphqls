@@ -1,0 +1,13 @@
+#Album.graphqls
+#import "./Image.graphqls"
+#import "./Artist.graphqls"
+#import "./Track.graphqls"
+type Album{
+	albumId: ID
+	albumName: String
+	releaseDate:String
+	description: String
+	image: Image
+	artist: Artist
+	tracks: [Track]
+}

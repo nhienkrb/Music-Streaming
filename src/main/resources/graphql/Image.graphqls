@@ -1,0 +1,11 @@
+#Image.graphqls
+#import "./Episode.graphqls"
+
+type Image{
+	accessId: ID
+	url: String
+	publicId: String
+	weight: Int
+	height: Int
+	episodes: [Episode]
+}

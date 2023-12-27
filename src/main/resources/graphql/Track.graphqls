@@ -1,0 +1,10 @@
+#Track.graphqls
+#import "./Album.graphqls"
+#import "./Recording.graphqls"
+
+type Track{
+	trackId: ID
+	trackNumber: Int
+	album: Album
+	recording: Recording
+}

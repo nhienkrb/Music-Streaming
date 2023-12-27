@@ -1,0 +1,211 @@
+<body ng-controller="subscriptionCtrl">
+    <div class="container-fluid p-0">
+        <section class="container col-5">
+            <div class="mt-5">
+                <div class="d-flex justify-content-between">
+                    <h5>You chose</h5>
+                    <a class="text-decoration-none" href="#!/premium">Change plan</a>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header d-flex flex-column">
+                        <h6>{{subscription.subscriptionType}}</h6>
+                        <p>1 account</p>
+                    </div>
+                    <div class="card-body ">
+                        <span class="small">
+                            Terms and conditions apply. Open only to users who haven’t already tried Premium.
+                            <div class="d-flex justify-content-between mt-3">
+                                <h6>Start billing date</h6>
+                                <h6>{{startDate | date:'yyyy-MM-dd'}}</h6>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <h6>End billing date</h6>
+                                <h6>{{endDate | date:'yyyy-MM-dd'}}</h6>
+                            </div>
+                            <div>
+                                <ul class="p-3">
+                                    <li>Cancel anytime.</li>
+                                    <li>We'll remind you 7 days before you get charged.</li>
+                                </ul>
+                            </div>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <h5>Subscribe</h5>
+                <span>Auto-renews monthly; cancel anytime.</span>
+                <div class="border shadow rounded-2 p-3">
+                    <div data-bs-toggle="collapse" data-bs-target="#auto">
+                        <span class="badge bg-success">1 monthly</span>
+                        <h5>Subscribe with credit card or wallet</h5>
+                        <p>{{subscription.price}}$ after offer period</p>
+                    </div>
+                    <div id="auto" class="collapse">
+                        <div>
+                            <button class="btn w-100 border" id="btn-payment-vnpay"><img style="width: 50px; height: 50px; object-fit: cover;" src="https://res.cloudinary.com/div9ldpou/image/upload/v1700104153/Background/System/Icon-VNPAY-QR_lmd6lp.webp" alt=""></button>
+                        </div>
+                        <div class="mt-3">
+                            <!-- <div>
+                                <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+                                <div id="paypal-button-container"></div>
+                            </div> -->
+                            <button class="btn w-100 border" id="btn-payment-paypal">
+                                <i class="display-6 i bi-paypal"></i>
+                            </button>
+                        </div>
+                        <div ng-show="$scope.prdStripeId !==null" class="mt-3">
+                            <button class="btn w-100 border" id="btn-payment-stripe">
+                                <i class="display-6 bi bi-stripe"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="mt-5">
+                <h5>One-time Payment</h5>
+                <span>Top up when you want. Does not auto-renew..</span>
+                <div class="border rounded-2">
+                    <div class="p-3">
+                        <div data-bs-toggle="collapse" data-bs-target="#none-auto-1">
+                            <span class="badge bg-success">1 monthly</span>
+                            <h5>Subscribe with credit card or wallet</h5>
+                            <p>59,000₫/month after offer period</p>
+                        </div>
+                        <div id="none-auto-1" class="collapse">
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>VNPAY</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Paypal</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Stripe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="p-3">
+                        <div data-bs-toggle="collapse" data-bs-target="#none-auto-2">
+                            <span class="badge bg-success">1 monthly</span>
+                            <h5>Subscribe with credit card or wallet</h5>
+                            <p>59,000₫/month after offer period</p>
+                        </div>
+                        <div id="none-auto-2" class="collapse">
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>VNPAY</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Paypal</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Stripe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="p-3">
+                        <div data-bs-toggle="collapse" data-bs-target="#none-auto-3">
+                            <span class="badge bg-success">1 monthly</span>
+                            <h5>Subscribe with credit card or wallet</h5>
+                            <p>59,000₫/month after offer period</p>
+                        </div>
+                        <div id="none-auto-3" class="collapse">
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>VNPAY</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Paypal</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Stripe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="p-3">
+                        <div data-bs-toggle="collapse" data-bs-target="#none-auto-4">
+                            <span class="badge bg-success">1 monthly</span>
+                            <h5>Subscribe with credit card or wallet</h5>
+                            <p>59,000₫/month after offer period</p>
+                        </div>
+                        <div id="none-auto-4" class="collapse">
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>VNPAY</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Paypal</p>
+                                </div>
+                            </div>
+                            <div class="d-flex border">
+                                <div>
+                                    <input type="radio">
+                                </div>
+                                <div>
+                                    <p>Stripe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+    </div>
+</body>

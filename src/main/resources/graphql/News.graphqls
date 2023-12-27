@@ -1,0 +1,17 @@
+#News.graphqls
+#import "./Image.graphqls"
+#import "./Account.graphqls"
+
+type News{
+	newsId: ID
+	title: String
+	content: String
+	publishDate: String
+	lastModified: String
+	createDate: String
+	createFor: String
+	modifiedBy: String
+	modifiDate: String
+	image: Image
+	account: Account
+}

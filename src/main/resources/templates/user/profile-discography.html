@@ -1,0 +1,183 @@
+<body ng-controller="discography">
+    <div class="card card-content shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="bl-search">
+                    <div class="bl-search-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 ms-2">
+                <div><a href="#!artist/{{discography.artistId}}" style="color: white;font-weight: bold;font-size: 32px;">{{discography.artistName}}</a>
+                </div>
+                <div></div>
+            </div>
+            <div class="col-sm-12 mt-5 ms-3">
+                <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills d-flex text-center border-0 rounded-nav">
+                    <button id="singles-tab" data-toggle="tab" id="pills-user-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-singles" type="button" role="tab" aria-controls="pills-singles"
+                        aria-selected="true"
+                        class="btn border-0 rounded-pill bg-white text-dark px-3 font-weight-bold active">Singles
+                    </button>
+
+                    <button id="pills-albums-tab" data-bs-toggle="pill" data-bs-target="#pills-albums" type="button"
+                        role="tab" aria-controls="pills-albums" aria-selected="false"
+                        class="btn border-0 rounded-pill bg-white text-dark px-3 mx-3 font-weight-bold">Albums
+                    </button>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div id="pills-singles" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                        class="tab-pane fade show active">
+                        <div ng-if="discographySong.length > 0 | limitTo : 6" class="row">
+                            <div class="col-sm-12 mt-5 ms-3" ng-repeat="dissong in discographySong track by $index">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <img ng-src="{{dissong.song.image.url}}" alt=""
+                                            style="width: 100px; height: 100px;">
+                                    </div>
+                                    <div class="col-sm-3 ms-5">
+                                        <h2>{{dissong.recordingName}}</h2>
+                                        <p>single | {{dissong.song.releaseDay | limitTo: 4}} | song</p>
+                                        <!-- <div><button id="btn-playlist-play" class="btn text-white border-0 py-0"><i
+                                                    class="bi bi-play-circle"></i></button>
+                                            <button id="btn-playlist-pause" hidden
+                                                class="btn text-white border-0 py-0"><i
+                                                    class="bi bi-pause-circle"></i></button>
+                                            <button class="btn text-white border-0 py-0"><i
+                                                    class="bi bi-heart"></i></button> <button
+                                                class="btn text-white border-0 py-0"><i
+                                                    class="bi bi-three-dots"></i></button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <table class="table text-white table-borderless">
+                                        <thead class="border-bottom">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Title</th>
+                                                <th class="text-center"><i class="bi bi-clock"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-dblclick="selectAudio(dissong,'song', dissong, $index)"
+                                                class="audio align-items-center">
+                                                <!-- Col 1 -->
+                                                <td class="text-white">
+                                                    {{$index+1}}
+                                                </td>
+                                                <!-- Col 2 -->
+                                                <td ng-if="dissong.recordingId">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h6 class="text-white">{{dissong.recordingName}}</h6>
+                                                                <span class="small text-white"
+                                                                    ng-repeat="a in dissong.song.writters">
+                                                                    <a class="text-white"
+                                                                        href="#!artist/{{a.artist.artistId}}">{{a.artist.artistName}}</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <!-- <p>{{dissong.recordingId}}</p> -->
+                                                        <button ng-click="checkExisted(dissong,$event)"
+                                                            class="btn border-0 playlist-liked text-white">
+                                                            <i ng-style="{'color': isLiked(dissong) ? 'green' : 'white'}"
+                                                                class="{{isLiked(dissong) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                                        </button>
+                                                        <h6 class="p-0 m-0 text-white"><format-time
+                                                                seconds="dissong.duration"></format-time></h6>
+                                                        <button class="btn border-0 text-white"><i
+                                                                class="bi bi-three-dots"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pills-albums" role="tabpanel" aria-labelledby="pills-albums-tab" tabindex="0"
+                        class="tab-pane fade">
+                        <div ng-if="discography.albums.length > 0 | limitTo : 6" class="row">
+                            <div class="col-sm-12 mt-5 ms-3" ng-repeat="al in discography.albums">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <img ng-src="{{al.image.url}}" alt="" style="width: 100px; height: 100px;">
+                                    </div>
+                                    <div class="col-sm-3 ms-5">
+                                        <h2>{{al.albumName}}</h2>
+                                        <p>album | {{al.releaseDate | limitTo: 4}} | {{al.tracks.length}} song</p>
+                                        <!-- <div><button class="btn text-white border-0 py-0"><i class="bi bi-play-circle"></i></button>
+                                            <button class="btn text-white border-0 py-0"><i class="bi bi-heart"></i></button> <button
+                                                class="btn text-white border-0 py-0"><i class="bi bi-three-dots"></i></button></div> -->
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <table class="table text-white table-borderless">
+                                        <thead class="border-bottom">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Title</th>
+                                                <th class="text-center"><i class="bi bi-clock"></i></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in al.tracks track by $index"
+                                                ng-dblclick="selectAudio(item.recording,'song', listSong, $index)"
+                                                class="audio align-items-center">
+                                                <!-- Col 1 -->
+                                                <td class="text-white">
+                                                    {{$index+1}}
+                                                </td>
+                                                <!-- Col 2 -->
+                                                <td ng-if="item.recording.recordingId">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h6 class="text-white">{{item.recording.recordingName}}
+                                                                </h6>
+                                                                <span class="small text-white"
+                                                                    ng-repeat="a in item.recording.song.writters">
+                                                                    <a class="text-white"
+                                                                        href="#!artist/{{a.artist.artistId}}">{{a.artist.artistName}}</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <!-- <p>{{item.recording.recordingId}}</p> -->
+                                                        <button ng-click="checkExisted(item.recording,$event)"
+                                                            class="btn border-0 playlist-liked text-white">
+                                                            <i ng-style="{'color': isLiked(item.recording) ? 'green' : 'white'}"
+                                                                class="{{isLiked(item.recording) ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                                                        </button>
+                                                        <h6 class="p-0 m-0 text-white"><format-time
+                                                                seconds="item.recording.duration"></format-time></h6>
+                                                        <button class="btn border-0 text-white"><i
+                                                                class="bi bi-three-dots"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

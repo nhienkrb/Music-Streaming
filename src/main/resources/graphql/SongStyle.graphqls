@@ -1,0 +1,10 @@
+#SongStyle.graphqls
+
+type SongStyle{
+	songStyleId: ID
+	songStyleName: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

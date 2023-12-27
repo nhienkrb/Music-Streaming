@@ -1,0 +1,120 @@
+body{
+    background-color: rgb(20,32,60);
+}
+.bg-dark-custom {
+    background-color: rgb(0, 0, 0);
+}
+.navbar-dark .navbar-nav .nav-link {
+    font-weight: bold;
+    color: white;
+}
+.dropdown-item{
+    font-weight: bold;
+}
+.option-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.option-list li {
+    margin-bottom: 10px;
+}
+
+.option-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.content-display {
+    background-color: #f0f0f0;
+    padding: 20px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+}
+.optionlist{
+    background-color: rgb(0, 0, 0);
+}
+/* Nền đen cho danh sách tùy chọn */
+.optionlist .option-list {
+    background-color: #000;
+    color: #fff; /* Màu chữ trắng */
+    padding: 10px; /* Khoảng cách giữa các tùy chọn */
+}
+
+/* Màu nền và màu chữ cho các tùy chọn */
+.optionlist .list-group-item {
+    background-color: #000;
+    border: none; /* Loại bỏ đường viền */
+    padding: 5px 0; /* Khoảng cách giữa các tùy chọn */
+}
+
+/* Màu chữ cho các tùy chọn */
+.optionlist .list-group-item a {
+    color: #fff; /* Màu chữ trắng cho tùy chọn */
+}
+
+/* Màu nền và đường kẻ ngăn cách giữa các tùy chọn */
+.optionlist .list-group-item:not(:last-child) {
+    border-bottom: 1px solid rgb(114,114,114); /* Đường kẻ ngăn cách màu trắng */
+}
+
+/* Màu hover khi di chuột vào tùy chọn */
+.optionlist .list-group-item:hover {
+    background-color: #333; /* Màu nền khi hover */
+}
+.user-avatar {
+    flex: 1; /* Mở rộng hình ảnh đại diện để lấp đầy toàn bộ không gian còn lại */
+    text-align: center; /* Căn giữa hình ảnh đại diện người dùng */
+}
+
+.user-avatar img {
+    width: 75px; /* Độ rộng hình ảnh */
+    height: 75px; /* Chiều cao hình ảnh */
+    border-radius: 50%; /* Làm cho hình ảnh tròn */
+}
+.content-display{
+    background-color: white;
+}
+.content-data{
+    min-height: 800px;
+}
+.title-option{
+    font-weight: bold;
+}
+.premium {
+    position: relative; /* Đặt vị trí của div cha là relative */
+}
+
+.text-overlay {
+    position: absolute; /* Đặt vị trí của div con là absolute để có thể di chuyển tự do trên ảnh */
+    top: 50%; /* Đặt vị trí theo chiều dọc (50% là giữa) */
+    left: 35%; /* Đặt vị trí theo chiều ngang (50% là giữa) */
+    transform: translate(-50%, -50%); /* Dịch chuyển div con lên và sang trái để đặt giữa ảnh */
+    font-size: 24px; /* Kích thước chữ */
+    color: white; /* Màu chữ */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền của văn bản (có thể sử dụng rgba để đặt màu nền với độ trong suốt) */
+    padding: 10px; /* Khoảng cách giữa văn bản và viền */
+}
+@media screen and (max-width: 1000px) and (max-height: 1000px) {
+    .premium {
+      display: none; /* Ẩn thẻ div khi kích thước màn hình nhỏ hơn 1000x1000 pixel */
+    }
+  }
+
+  /* CSS */
+.container.premium {
+    position: relative;
+}
+
+.img-wrapper {
+    width: 100%;
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài container */
+}
+
+.background-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+

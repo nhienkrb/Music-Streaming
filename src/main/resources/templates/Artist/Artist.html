@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhymthwave</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script src="../../static/js/angularjs/artist/Art.js"></script>
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <script src="../../static/js/jscustom/toasts.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <section>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../../static/img/logo.png" alt="" width="117">
+                </a>
+                <div>
+                    <button class="btn text-white" ng-show="!account.email" ng-click="login()">Login</button>
+                    <a href="/api/v1/auth/logout" ng-show="account.email"><button
+                            class="btn text-white">Logout</button></a>
+                    <button class="btn text-white" ng-show="account.email" ng-click="getAccess()">Get Access</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section ng-show="listImage.length > 0">
+
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="{{listSlide[0].url}}"><img src="{{listSlide[0].urlImage}}" alt="Los Angeles"
+                            class="d-block w-100" style="height: 372px;object-fit: cover;"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{listSlide[1].url}}"><img src="{{listSlide[1].urlImage}}" alt="Chicago"
+                            class="d-block w-100" style="height: 372px;object-fit: cover;"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{listSlide[2].url}}"><img src="{{listSlide[2].urlImage}}" alt="New York"
+                            class="d-block w-100" style="height: 372px;object-fit: cover;"></a>
+                </div>
+            </div>
+
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <section class="container-fluid py-4 bg-black text-white">
+        <div class="row py-5 justify-content-center align-items-center">
+            <div class="col-8">
+                <h1>
+                    Your music. Your fans. Your team.
+                </h1>
+                <h1>
+                    All together now.
+                </h1>
+                <h6>
+                    All the tools you need to build your following and career on Spotify, all in one place.
+                </h6>
+            </div>
+            <div class="col-3 ">
+                <button class="btn bg-white text-black rounded-pill text-center py-2">Join your team</button>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid py-5" id="landing-home">
+        <div class="row py-5">
+            <div class="col-6">
+                <img class="ps-5" id="img-landing-home" alt="" style="height: 372px;width: 100%;object-fit: cover;">
+            </div>
+            <div class="col-6 content-features">
+                <h1>Build your audience at any stage</h1>
+                <p>Spotify is where music discovery happens for 500+ million listeners in 180+ markets.
+                    Whether you’re an established artist or new to the game, Spotify for Artists is the only way to
+                    pitch new songs to
+                    editors of some of the world’s most followed playlists.
+                </p>
+                <button class="btn bg-black text-white rounded-pill text-center py-2">See more</button>
+            </div>
+        </div>
+        <div class="btn-features m-5 py-4 d-flex align-items-center">
+            <button id="prev" class="btn"><i class="bi bi-arrow-left"></i></button>
+            <button id="next" class="btn"><i class="bi bi-arrow-right"></i></button>
+            <p class="position-img my-0 mx-2"></p>
+        </div>
+    </section>
+
+    <section class="container-fluid" ng-show="listImage.length > 0">
+        <div class="row bg-black text-white">
+            <img class="p-0" src="{{listImage[0]}}" alt="" style="height: 372px;object-fit: cover;">
+            <div class="d-flex m-4">
+                <div class="col-5 ps-3">
+                    <p class="my-0">FEATURING</p>
+                    <h1 ng-if="$first">{{top3.artistName}}</h1>
+                    <div ng-repeat="top3 in top3">
+                        <div class="my-4">
+                            <h6>{{top3.artistName}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <h3><i class="bi bi-quote"></i></h3>
+                    <p>Spotify for Artists has made a huge difference in the way we do business.
+                        Being able to see that progress and reach in real time is invaluable.
+                    </p>
+                    <h3>—Gang Starr</h3>
+                    <h6>ARTIST</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid col-11">
+        <h1 class="my-4">News</h1>
+        <p class="mb-4">Our latest stories to get you inspired</p>
+        <div class="row">
+            <div class="col-6" ng-repeat="news in dataNews | orderBy:'-date' | limitTo:2">
+                <a ng-click="newsPage(news.newsId)"><img class="w-100" ng-src="{{news.image.url}}" alt=""></a>
+                <h4>{{news.title | limitTo:30}}</h4>
+                <p>{{news.content | limitTo:150}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4" ng-repeat="news in dataNews | orderBy:'-date' | limitTo:5:2">
+                <a ng-click="newsPage(news.newsId)"><img class="w-100" ng-src="{{news.image.url}}" alt=""></a>
+                <h4>{{news.title | limitTo:30}}</h4>
+                <p>{{news.content | limitTo:150}}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container-fluid text-lg-start bg-dark text-white">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-google"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <img src="../../static/img/logo.png" alt="" width="117">
+                        </h6>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Công ty
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Giới thiệu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Việc làm</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">For the Record</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Cộng đồng
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Dành cho các Nghệ sĩ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà phát triển</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Quảng cáo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà đầu tư </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Nhà cung cấp</a>
+                        </p>
+                    </div>
+
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">liên kết hữu ích</h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Hỗ trợ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Trình phát web</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Ứng dụng di động miễn phí</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+    </footer>
+</body>
+
+</html>

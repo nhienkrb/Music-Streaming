@@ -1,0 +1,37 @@
+#Account.graphqls
+#import "./Image.graphqls"
+#import "./Author.graphqls"
+#import "./News.graphqls"
+#import "./Monitor.graphqls"
+#import "./UserType.graphqls"
+#import "./Advertisement.graphqls"
+#import "./Podcast.graphqls"
+#import "./Artist.graphqls"
+
+
+
+
+
+type Account{
+	email: ID
+	password: String
+	username: String
+	birthday: String
+	gender: Int
+	country: String
+	isVerify: Boolean
+	verificationCode: String
+	verificationCodeExpires: Boolean
+	remainingVerification: Int
+	isBlocked: Boolean
+	refreshToken: String
+	image: Image
+	news:[News]
+	monitor:[Monitor]
+	monitorEp:[MonitorEpisode]
+	userType:[UserType]
+	advertisement:[Advertisement]
+	podcast:[Podcast]
+	artist: Artist
+	author:[Author]
+}

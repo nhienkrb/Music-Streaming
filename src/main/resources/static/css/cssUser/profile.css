@@ -1,0 +1,413 @@
+.background-in4 {
+    position: relative;
+    /* Điều chỉnh chiều cao của background theo mong muốn */
+}
+.in4-card {
+    position: absolute;
+    display: flex;
+    /* background-color: transparent; Bỏ nền của in4-card */
+    border-radius: 10px;
+    /* Bo tròn góc của in4-card */
+    padding: 20px;
+    /* Điều chỉnh khoảng cách bên trong in4-card */
+    top: 40%;
+    /* Đưa in4-card lên giữa theo chiều dọc */
+    left: 0%;
+    /* Điều chỉnh khoảng cách bên trái in4-card */
+    transform: translateY(-20%);
+    /* Dịch in4-card lên trên để căn giữa */
+}
+
+.in4-card-profile-user-podcast{
+    position: absolute;
+    display: flex;
+    /* background-color: transparent; Bỏ nền của in4-card */
+    border-radius: 10px;
+    /* Bo tròn góc của in4-card */
+    padding: 20px;
+    /* Điều chỉnh khoảng cách bên trong in4-card */
+    top: 55%;
+    /* Đưa in4-card lên giữa theo chiều dọc */
+    left: 0%;
+    /* Điều chỉnh khoảng cách bên trái in4-card */
+    transform: translateY(-20%);
+    /* Dịch in4-card lên trên để căn giữa */
+}
+
+.in4-card img {
+    width: 200px;
+    /* Điều chỉnh kích thước của hình ảnh trong in4-card */
+    border-radius: 50%;
+    /* Bo tròn góc của hình ảnh */
+    margin: 10px 0;
+    /* Cân chỉnh khoảng cách trên và dưới hình ảnh */
+}
+
+.in4-text {
+    margin-left: 20px;
+    /* Điều chỉnh khoảng cách từ hình ảnh đến văn bản bên phải */
+    align-items: center;
+    color: white;
+}
+
+.in4-name {
+    font-size: 24px;
+    /* Điều chỉnh kích thước của chữ trong in4-name */
+    font-weight: bold;
+    /* In đậm chữ trong in4-name */
+}
+
+.flow {
+    background-color: black;
+    display: flex;
+    color: white;
+}
+
+.pr-btn {
+    color: white;
+    border: 1px solid var(--essential-subdued, #878787);
+    justify-content: center;
+    border-radius: 500px;
+}
+
+.in {
+    font-size: 24px;
+}
+
+.public-play {
+    display: flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    position: relative;
+    color: white;
+}
+
+.prf-name-title {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    /* In đậm chữ trong in4-name */
+}
+
+.prf-show {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+}
+.btn-folow-profile {
+    background-color: transparent; /* Nền trong suốt */
+    border: 1px solid white; /* Viền trắng 1px */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Kích thước nút */
+    border-radius: 10px; /* Bo góc */
+    cursor: pointer; /* Con trỏ khi rê chuột vào */
+}
+
+/* 
+profile artist */
+.play {
+    font-size: 44px;
+}
+
+.prf-shuffle {
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.in-dot {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.name-title {
+    color: white;
+}
+
+/* list play */
+.list-popular {
+    font-size: 18px;
+    display: flex;
+    color: white;
+}
+.list-popular:hover{
+    background-color: #878787;
+    border-radius: 10px;
+}
+.list-popular:hover .stt {
+    display: none; /* Ẩn stt khi hover */
+}
+.list-popular:hover .icon-play-list, .list-popular:hover .icon-like, .list-popular:hover .dot {
+    display: block;
+}
+.stt {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.icon-play-list {
+    font-size: 24px;
+    margin-left: 13px;
+    margin-right: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+.list-popular img {
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+.listens {
+    margin-top: 10px;
+    position: absolute;
+    left: 750px;
+}
+
+.icon-like {
+    margin-top: 10px;
+    position: absolute;
+    left: 1000px;
+    display: none;
+}
+
+.time-play {
+    margin-top: 10px;
+    position: absolute;
+    right: 90px ;
+}
+
+.dot {
+    margin-top: 10px;
+    position: absolute;
+    right: 40px;
+    display: none;
+}
+
+.about img{
+    border-radius: 10px;
+    height: 600px;
+    width: 750px;
+}
+
+.about {
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Căn văn bản dưới cùng của div */
+}
+
+.text-about {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7); /* Tạo một lớp nền mờ cho văn bản */
+    color: #fff; /* Màu chữ trắng */
+    padding: 20px; /* Khoảng cách giữa nội dung và viền của .text-about */
+    max-width: 62%; /* Giới hạn chiều rộng tối đa của nội dung */
+    border-radius: 10px; /* Bo tròn góc cho phần nội dung */
+}
+
+.text-about p {
+    margin: 0; /* Loại bỏ khoảng cách giữa các đoạn văn bản */
+}
+/* CSS cho card */
+.card-tt-profile {
+    width: 800px;
+    height: 800px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* CSS cho tiêu đề */
+.title-profile-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* CSS cho nội dung tiêu đề */
+.title-profile-card p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detail-profile{
+    background-color: black ;
+    color: white;
+}
+/* CSS cho hình ảnh trong carousel */
+.carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+.detail-profile .close {
+    font-size: 34px;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1050;
+    background: transparent;
+    border: none;
+}
+.modal-detail-artist{
+    max-height: 90%;
+}
+.modal-body-detail-artist{
+    max-height: 80vh; /* Giới hạn chiều cao tối đa cho phần nội dung */
+    overflow-y: auto; /* Tạo thanh cuộn nếu nội dung vượt quá kích thước cho phép */
+    scrollbar-width: thin; /* Ẩn thanh cuộn theo chiều ngang */
+}
+/* Ẩn thanh cuộn theo chiều dọc trên Firefox */
+.modal-body-detail-artist::-webkit-scrollbar {
+    width: 0.4em;
+}
+
+.modal-body-detail-artist::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+/* Ẩn thanh cuộn theo chiều dọc trên các trình duyệt khác */
+.modal-body-detail-artist::-webkit-scrollbar-thumb {
+    width: 0.4em;
+}
+.card-tt-profile {
+    width: 800px;
+    height: 800px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* CSS cho tiêu đề */
+.title-profile-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* CSS cho nội dung tiêu đề */
+.title-profile-card p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+card-play-list-profile
+.detail-profile{
+    background-color: black ;
+    color: white;
+}
+/* CSS cho hình ảnh trong carousel */
+.carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+.detail-profile .close {
+    background-color: black;
+    color: white;
+    margin-left: 450px;
+}
+
+
+/* card profile  playlist*/
+.card-play-list-profile{
+    width: 100%;
+    max-width: 100%;
+    width: 220px !important;
+    background-color: rgb(24,24,24);
+}
+.card-play-list-profile:hover{
+    background-color:rgb(130 130 130);
+}
+.img-car-profile{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 1px;
+}
+.img-car-profile img{
+    border-radius: 10px;
+}
+.card-text-playlist-profile-namesong {
+    margin-bottom: 5px;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+}
+
+.card-text-playlist-profile-year {
+    margin-top: 5px;
+    font-size: 15px;
+    color: azure;
+}
+.card-body-playlist-profile {
+    margin-top: 5px; 
+}
+.card-body-playlist-profile{
+    margin-top: 1px;
+}
+.icon-play-card-playlist-profile{
+    display: none;
+    position: absolute;
+    top: 55%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color:rgb(30,212,95);
+}
+.card-play-list-profile:hover .icon-play-card-playlist-profile {
+    display: block;
+}
+.card-text-playlist-profile-conten{
+    white-space: nowrap;       
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+    color: azure;
+}
+.img-car-profile-like img{
+    border-radius: 50%;
+    height:150px;
+    width: 150px; 
+    object-fit: cover!important;
+}
+.img-car-profile-like{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.tile-playlist-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.prf-name-title {
+    margin: 0;
+}
+
+.show-all-playlist-profile {
+    margin: 0;
+    color: white;
+}
+.card-text-playlist-profile-folow{
+    color: azure;
+}
+.card-text-playlist-profile-namerole{
+    color: azure;
+}

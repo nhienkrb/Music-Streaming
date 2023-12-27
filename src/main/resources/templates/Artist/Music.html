@@ -1,0 +1,1013 @@
+<body ng-controller="musicCtrl">
+    <section>
+        <h1>Music</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link active" id="click-tab-1" role="tab"
+                    onclick="openTabProfile(event, 'tab1-p')">Record</button>
+            </li>
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link" id="click-tab-2" role="tab"
+                    onclick="openTabProfile(event, 'tab2-p')">Releases</button>
+            </li>
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link" id="click-tab-3" role="tab"
+                    onclick="openTabProfile(event, 'tab3-p')">Project</button>
+            </li>
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link" id="click-tab-4" role="tab"
+                    onclick="openTabProfile(event, 'tab4-p')">Upcoming</button>
+            </li>
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link" id="click-tab-5" role="tab"
+                    onclick="openTabProfile(event, 'tab5-p')">Garbage</button>
+            </li>
+            <li ng-click="pagination.setPageNo(0)" class="nav-item me-3 pb-3">
+                <button class="tab-button-p nav-link" id="click-tab-5" role="tab"
+                    onclick="openTabProfile(event, 'tab6-p')">Generate lyrics</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-p tab-pane active " id="tab1-p">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <div>
+                            <div class="input-group me-3">
+                                <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+                                <input type="text" class="form-control" placeholder="Search" ng-model="searchRecord">
+                            </div>
+                        </div>
+                        <div class="product_sorting_container product_sorting_container_top">
+                            <ul class="product_sorting">
+                                <li>
+                                    <span class="type_sorting_text">Default Sorting</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_type p-0" style="z-index: 2;">
+                                        <li class="type_sorting_btn" ng-click="sortNumber(listRecord,'recordingId')"> 
+                                            <span>Default Sorting</span>
+                                        </li>
+                                        <li ng-click="sort(listRecord,'recordingName')" class="type_sorting_btn"><span>Title</span></li>
+                                        <li ng-click="sort(listRecord,'recordingdate')" class="type_sorting_btn"><span>Create date</span></li>
+                                        <li ng-click="sortNumber(listRecord,'duration')" class="type_sorting_btn"><span>Duration</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>Show</span>
+                                    <span class="num_sorting_text">{{pagination.size}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_num  p-0" style="z-index: 2;">
+                                        <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                        <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                        <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                        <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="dropdown">
+                        <button type="button options" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                            Last 24 hours
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Last 1 month</a></li>
+                            <li><a class="dropdown-item" href="#">Last 6 months</a></li>
+                            <li><a class="dropdown-item" href="#">Last 1 years</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th ng-click="sort(listRecord,'recordingName')">Name Record</th>
+                                <th ng-click="sortNumber(listRecord,'listened')">Listeners</th>
+                                <th ng-click="sort(listRecord,'recordingdate')">Uploaded date </th>
+                                <th>
+                                    <button ng-click="resetRecord()" id="btn-upload-record" class="btn border-0 p-0"
+                                        data-bs-toggle="modal" data-bs-target="#record">
+                                        <i class="bi bi-plus-circle"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in pagination.items(listRecord) | filter: searchRecord" class="align-items-start">
+                                <td>{{$index+1}}
+                                    <i ng-if="item.song ==null" class="ms-1 bi bi-filetype-raw"></i>
+                                    <i ng-if="item.song !=null" class="ms-1 bi bi-file-music"></i>
+                                </td>
+                                <td class="align-items-center">
+                                    {{item.recordingName}}
+                                </td>
+                                <td class="align-items-center">{{item.listened}}</td>
+                                <td class="align-items-center">{{item.recordingdate | date:'dd/MM/yyyy'}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="p-0 btn border-0 align-items-center" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a ng-click="getRecordDetail(item.recordingId)" data-bs-toggle="modal"
+                                                    data-bs-target="#recordDetail" class="dropdown-item">Review</a>
+                                            </li>
+                                            <li>
+                                                <a href="#!artist-audience/{{item.recordingId}}" class="dropdown-item">Analytics</a>
+                                            </li>
+                                            <li><a ng-show="item.song ==null" ng-click="changeTab()"
+                                                    class="dropdown-item">Pitch</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                        <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listRecord)}} of
+                            {{pagination.items(listRecord).length}} results</span>
+                        <div class="pages d-flex flex-row align-items-center">
+                            <div ng-show="pagination.page > 0" ng-click="pagination.prev(listRecord)" id="next_page_1" class="page_prev">
+                                <a>
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                            <div class="page_current">
+                                <span>{{pagination.page +1}}</span>
+                                <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                    <li ng-repeat="i in pagination.getNumbers(pagination.count(listRecord))">
+                                        <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="page_total"><span>of</span> {{pagination.count(listRecord)}}</div>
+                            <div ng-show="pagination.page < pagination.count(listRecord)-1" ng-click="pagination.next(listRecord)" id="next_page_1" class="page_next">
+                                <a>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-include="'Artist/Recording.html'"></div>
+                <div ng-include="'Artist/RecordDetail.html'"></div>
+            </div>
+            <div class="tab-p tab-pane" id="tab2-p">
+                <div class="row">
+                    <ul id="myTab" role="tablist"
+                        class="nav nav-tabs nav-pills d-flex text-center border-0 rounded-nav mb-4">
+                        <button id="singles-tab" data-toggle="tab" id="pills-user-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-singles" type="button" role="tab" aria-controls="pills-singles"
+                            aria-selected="true"
+                            class="btn border-0 rounded-pill bg-black text-white px-3 font-weight-bold active">Singles
+                        </button>
+
+                        <button ng-click="pagination.setPageNo(0)" id="pills-albums-tab" data-bs-toggle="pill" data-bs-target="#pills-albums" type="button"
+                            role="tab" aria-controls="pills-albums" aria-selected="false"
+                            class="btn border-0 rounded-pill bg-black text-white px-3 mx-3 font-weight-bold">Albums
+                        </button>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div id="pills-singles" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                            class="tab-pane fade show active">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="input-group me-3">
+                                        <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+                                        <input type="text" class="form-control" placeholder="Search" ng-model="searchSongRelease">
+                                    </div>
+                                </div>
+                                <div class="product_sorting_container product_sorting_container_top">
+                                    <ul class="product_sorting">
+                                        <li>
+                                            <span class="type_sorting_text">Default Sorting</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_type p-0" style="z-index: 2;">
+                                                <li ng-click="sortNumber(listSongReleased,'songId')" class="type_sorting_btn">
+                                                    <span>Default Sorting</span>
+                                                </li>
+                                                <li ng-click="sort(listSongReleased,'songName')" class="type_sorting_btn"><span>Name</span></li>
+                                                <li ng-click="sort(listSongReleased,'releaseDay')" class="type_sorting_btn"><span>Release</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span>Show</span>
+                                            <span class="num_sorting_text">{{pagination.size}}</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_num  p-0" style="z-index: 2;">
+                                                <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                                <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                                <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                                <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" id="song-release" ng-repeat="item in pagination.items(listSongReleased) | filter: searchSongRelease">
+                                    <a type="button" ng-click="detail(item.songId,'song')" data-bs-toggle="modal"
+                                        data-bs-target="#detail">
+                                        <div class="card mx-4 my-2" style="width:250px">
+                                            <img class="cover-release rounded-4 card-img-top" src="{{item.image.url}}" alt="">
+                                            <div
+                                                class="w-100 total-song rounded-top-4 d-flex align-items-center justify-content-between">
+                                                <i class="bi bi-music-note mx-2"></i>
+                                                <p class="py-0 my-0 mx-2">{{item.tracks.length}}</p>
+                                            </div>
+                                            <div class="card-body realease-card">
+                                                <h6 class="my-2 card-title">{{item.songName}}</h6>
+                                                <p class="card-text py-0">
+                                                    {{item.artist.artistName}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listSongReleased)}} of
+                                    {{pagination.items(listSongReleased).length}} results</span>
+                                <div class="pages d-flex flex-row align-items-center">
+                                    <div ng-show="pagination.page > 0" ng-click="pagination.prev(listSongReleased)" id="next_page_1" class="page_prev">
+                                        <a>
+                                            <i class="bi bi-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                    <div class="page_current">
+                                        <span>{{pagination.page +1}}</span>
+                                        <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                            <li ng-repeat="i in pagination.getNumbers(pagination.count(listSongReleased))">
+                                                <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="page_total"><span>of</span> {{pagination.count(listSongReleased)}}</div>
+                                    <div ng-show="pagination.page < pagination.count(listSongReleased)-1" ng-click="pagination.next(listSongReleased)" id="next_page_1" class="page_next">
+                                        <a>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="pills-albums" role="tabpanel" aria-labelledby="pills-albums-tab" tabindex="0"
+                            class="tab-pane fade">
+                            <div class="d-flex">
+                                <div>
+                                    <div class="input-group me-3">
+                                        <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+                                        <input type="text" class="form-control" placeholder="Search" ng-model="searchAlbumRelease">
+                                    </div>
+                                </div>
+                                <div class="product_sorting_container product_sorting_container_top">
+                                    <ul class="product_sorting">
+                                        <li>
+                                            <span class="type_sorting_text">Default Sorting</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_type p-0" style="z-index: 2;">
+                                                <li ng-click="sortNumber(listAlbumReleased,'albumId')" class="type_sorting_btn">
+                                                    <span>Default Sorting</span>
+                                                </li>
+                                                <li ng-click="sort(listAlbumReleased,'albumName')" class="type_sorting_btn"><span>Name Album</span></li>
+                                                <li ng-click="sort(listAlbumReleased,'releaseDate')" class="type_sorting_btn"><span>Create date</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span>Show</span>
+                                            <span class="num_sorting_text">{{pagination.size}}</span>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="sorting_num  p-0" style="z-index: 2;">
+                                                <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                                <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                                <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                                <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div ng-show="listAlbumReleased.length > 0" class="row" id="album-release">
+                                <div class="col-3" ng-repeat="item in pagination.items(listAlbumReleased) | filter:searchAlbumRelease">
+                                    <a type="button" ng-click="detail(item.albumId,'album')" data-bs-toggle="modal"
+                                        data-bs-target="#detail">
+                                        <div class="card mx-4 my-2" style="width:250px">
+                                            <img class="cover-release rounded-4 card-img-top" src="{{item.image.url}}"
+                                                alt="">
+                                            <div
+                                                class="w-100 total-song rounded-top-4 d-flex align-items-center justify-content-between">
+                                                <i class="bi bi-music-note mx-2"></i>
+                                                <p class="py-0 my-0 mx-2">{{item.tracks.length}}</p>
+                                            </div>
+                                            <div class="card-body realease-card">
+                                                <h6 class="my-2 card-title">{{item.albumName}}</h6>
+                                                <p class="card-text py-0 ">{{item.artist.artistName}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listAlbumReleased)}} of
+                                    {{pagination.items(listAlbumReleased).length}} results</span>
+                                <div class="pages d-flex flex-row align-items-center">
+                                    <div ng-show="pagination.page > 0" ng-click="pagination.prev(listAlbumReleased)" id="next_page_1" class="page_prev">
+                                        <a>
+                                            <i class="bi bi-arrow-left"></i>
+                                        </a>
+                                    </div>
+                                    <div class="page_current">
+                                        <span>{{pagination.page +1}}</span>
+                                        <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                            <li ng-repeat="i in pagination.getNumbers(pagination.count(listAlbumReleased))">
+                                                <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="page_total"><span>of</span> {{pagination.count(listAlbumReleased)}}</div>
+                                    <div ng-show="pagination.page < pagination.count(listAlbumReleased)-1" ng-click="pagination.next(listAlbumReleased)" id="next_page_1" class="page_next">
+                                        <a>
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="detail">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Details</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body py-0">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="card my-5 border rounded-4" style="min-height: 85vh;">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <button hidden id="addRecord" class="btn"
+                                                            data-bs-toggle="collapse" data-bs-target="#add"><i
+                                                                class="bi bi-plus"></i></button>
+
+                                                    </div>
+                                                    <div>
+                                                        <button id="modified-release" class="btn"><i
+                                                                class="bi bi-pencil-fill"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div id="add" class="collapse">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="dropdown w-100">
+                                                            <button type="button"
+                                                                class="text-center btn dropdown-toggle"
+                                                                data-bs-toggle="dropdown">
+                                                                Add more record
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li ng-repeat="item in listRecord">
+                                                                    <a ng-click="addRecordToSongOrAlbum(typeDetail,typeDetail==='album' ? album : song,item)"
+                                                                        class="dropdown-item">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div>
+                                                                                <img style="width: 50px; height: 50px; object-fit: cover;"
+                                                                                    class="" src="{{item.song.image.url}}">
+                                                                            </div>
+                                                                            <div>
+                                                                                <p>{{item.recordingName}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div ng-show="typeDetail === 'song'" class="dropdown w-100">
+                                                            <div>
+                                                                <input type="text" class="form-control "
+                                                                    id="search-artist" placeholder="Search Artist">
+                                                            </div>
+                                                            <div ng-show="search.length>0" class="menu-artist mt-2">
+                                                                <div ng-click="JoinSongWritter(item)"
+                                                                    ng-repeat="item in listArtist | limitTo: 5">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <img style="width: 50px; height: 50px; object-fit: cover;"
+                                                                                class=""
+                                                                                ng-src="{{item.imagesProfile.url == null ? 'https://res.cloudinary.com/div9ldpou/image/upload/v1696293833/Avatar/System/807831_rrsd2v.png':item.imagesProfile.url}}">
+                                                                        </div>
+                                                                        <div>
+                                                                            <p>{{item.artistName}}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="my-3 align-items-center">
+                                                    <div class="d-flex justify-content-center">
+                                                        <img ng-click="selectFile(typeDetail === 'album' ? album.albumId : song.songId)"
+                                                            id="coverImg-{{typeDetail === 'album' ? album.albumId : song.songId}}"
+                                                            class="img-thumbnail "
+                                                            style="object-fit: cover; width: 300px; height: 200px;"
+                                                            src="{{typeDetail === 'album' ? album.image.url : song.image.url}}"
+                                                            alt="">
+                                                        <input accept="image/*" id="fileCoverImg" type="file" hidden>
+                                                    </div>
+
+                                                    <div class="mx-4">
+                                                        <input id="nameDetail" class="inputCss" type="text"
+                                                            value="{{typeDetail === 'album' ? album.albumName : song.songName}}"
+                                                            readonly>
+                                                        <h4>
+                                                        </h4>
+                                                        <h6 ng-if="typeDetail === 'album'">{{album.artist.artistName}}
+                                                        </h6>
+                                                        <div ng-if="typeDetail === 'song'" class="d-flex">
+                                                            <h6 ng-repeat="item in songWritter" class="me-1">
+                                                                {{item.artist.artistName}}</h6>
+                                                            <button ng-show="artist.artistId === song.artistCreate"
+                                                                class="btn border-0 py-0" data-bs-toggle="collapse"
+                                                                data-bs-target="#demo"><i
+                                                                    class="bi bi-person-fill-x"></i></button>
+                                                        </div>
+                                                        <div id="demo" class="collapse">
+                                                            <div ng-repeat="item in songWritter"
+                                                                ng-if="item.artist.artistId !== song.artistCreate">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p class="p-0">{{item.artist.artistName}}</p>
+                                                                    <button ng-click="deleteWritter(item.writterId)"
+                                                                        class="btn border-0">
+                                                                        <i class="bi bi-x-lg"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between">
+                                                            <p class="m-0 p-0">{{listDetail.length}} record</p>
+                                                            <p class="m-0 p-0">{{listened}} listeners</p>
+                                                        </div>
+                                                        <div>
+                                                            <input class="inputCss" type="text" id="releaseDetail"
+                                                                value="{{typeDetail === 'album' ? album.releaseDate :
+                                                            song.releaseDay | date:'dd/MM/yyyy, hh:mm a'}}" readonly>
+                                                        </div>
+                                                        <textarea readonly rows="10" id="descriptionDetail"
+                                                            class="inputCss w-100" type="text">{{typeDetail === 'album' ? album.description :
+                                                            song.description}}</textarea>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <button class="btn btn-outline-danger ms-3"
+                                                            ng-click="Elimidate(typeDetail === 'album' ? album.albumId : song.songId,typeDetail)">Elimidate</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-8 mt-5">
+                                            <div class="table-detail-container table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr ng-repeat="item in listDetail">
+                                                            <td>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p>{{$index + 1}}</p>
+                                                                        <img class="mx-3"
+                                                                            style="object-fit: cover; width: 50px; height: 50px;"
+                                                                            ng-src="{{typeDetail === 'album' ? item.recording.song.image.url : item.song.image.url}}"
+                                                                            alt="">
+                                                                        <div>
+                                                                            <h6>{{typeDetail === 'album' ?
+                                                                                item.recording.song.songName :
+                                                                                item.recordingName}}</h6>
+                                                                            <span>{{typeDetail === 'album' ?
+                                                                                item.recording.listened :
+                                                                                item.listened}} listened</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn"
+                                                                            ng-click="removeRecord(typeDetail === 'album' ? item.trackId : item.recordingId,typeDetail)"><i
+                                                                                class="bi bi-x-lg"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-p tab-pane" id="tab3-p">
+                <div class="row">
+                    <div class="d-flex">
+                        <div>
+                            <div class="input-group me-3">
+                                <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+                                <input type="text" class="form-control" placeholder="Search" ng-model="searchProject">
+                            </div>
+                        </div>
+                        <div class="product_sorting_container product_sorting_container_top">
+                            <ul class="product_sorting">
+                                <li>
+                                    <span class="type_sorting_text">Default Sorting</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_type p-0" style="z-index: 2;">
+                                        <li class="type_sorting_btn" ng-click="sortNumber(listRecordProject,'recordingId')"> 
+                                            <span>Default Sorting</span>
+                                        </li>
+                                        <li ng-click="sort(listRecordProject,'recordingName')" class="type_sorting_btn"><span>Title</span></li>
+                                        <li ng-click="sort(listRecordProject,'recordingdate')" class="type_sorting_btn"><span>Create date</span></li>
+                                        <li ng-click="sortNumber(listRecordProject,'duration')" class="type_sorting_btn"><span>Duration</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>Show</span>
+                                    <span class="num_sorting_text">{{pagination.size}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_num  p-0" style="z-index: 2;">
+                                        <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                        <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                        <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                        <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-3" ng-repeat="item in pagination.items(listRecordProject) | filter: searchProject">
+                        <div class="card w-100" style="border: 1px !important">
+                            <div data-bs-toggle="collapse" data-bs-target="#project-{{item.recordingId}}">
+                                <img class="card-img-top rounded-4" src="{{item.song.image.url}}" alt="Card image">
+                            </div>
+                            <div class="card-body p-0">
+                                <h6 class="card-title">{{item.recordingName}}</h6>
+                                <div id="project-{{item.recordingId}}" class="collapse">
+                                    <div class="d-flex">
+                                        <h6 class="me-2" ng-repeat="a in item.song.writters">{{a.artist.artistName}}
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p>{{item.song.releaseDay | date:'dd/MM/yyyy'}}</p>
+                                        <p>{{item.listened}} listened</p>
+                                    </div>
+                                    <audio class="mt-2" controls src="{{item.audioFileUrl}}"></audio>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn border-0" data-bs-toggle="modal"
+                                            data-bs-target="#out-project-{{item.recordingId}}"><i
+                                                class="bi bi-door-open"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="out-project-{{item.recordingId}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Out project</h4>
+                                        <button id="btn-out-song-{{item.recordingId}}" type="button" class="btn-close"
+                                            data-bs-dismiss="modal"></button>
+                                    </div>
+
+                                    <div class="modal-body d-flex align-items-center">
+                                        <img class="w-50 rounded-4 m-3" src="{{item.song.image.url}}" alt="Card image">
+                                        <h5 class="card-title">{{item.recordingName}}</h5>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button ng-show="artist.artistId !== item.song.artistCreate" type="button"
+                                            class="btn btn-outline-dark"
+                                            ng-click="outSong(item.song.writters,item.song.songId,artist.artistId,item.recordingId)">Yes</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                        <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listRecordProject)}} of
+                            {{pagination.items(listRecordProject).length}} results</span>
+                        <div class="pages d-flex flex-row align-items-center">
+                            <div ng-show="pagination.page > 0" ng-click="pagination.prev(listRecordProject)" id="next_page_1" class="page_prev">
+                                <a>
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                            <div class="page_current">
+                                <span>{{pagination.page +1}}</span>
+                                <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                    <li ng-repeat="i in pagination.getNumbers(pagination.count(listRecordProject))">
+                                        <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="page_total"><span>of</span> {{pagination.count(listRecordProject)}}</div>
+                            <div ng-show="pagination.page < pagination.count(listRecordProject)-1" ng-click="pagination.next(listRecordProject)" id="next_page_1" class="page_next">
+                                <a>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-p tab-pane" id="tab4-p">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <h4>Realease</h4>
+                            </th>
+                            <th>Playlist pitch</th>
+                            <th>Realease day</th>
+                            <th>
+                                <button class="btn border-0" data-bs-toggle="modal" data-bs-target="#upcoming">
+                                    <i class="bi bi-plus-circle"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-items-center">
+                        <tr class="align-items-center" ng-repeat="x in listSongUpcoming">
+                            <td class="d-flex align-items-center">
+                                <i class="bi bi-music-note"></i>
+                                <img class="mx-3 cover-image rounded-4" src="{{x.image.url}}" alt="">
+                                <h6>{{x.songName}}</h6>
+                            </td>
+                            <td>
+                                <button id="" type="button" ng-click="pitch('song',x.songId)"
+                                    class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Pitch
+                                </button>
+                            </td>
+                            <td colspan="2">{{x.releaseDay | date:'dd/MM/yyyy, hh:mm a'}}</td>
+                        </tr>
+                        <tr class="align-items-center" ng-repeat="x in listAlbumUpcoming">
+                            <td class="d-flex align-items-center">
+                                <i class="bi bi-journal-album"></i>
+                                <img class="mx-3 cover-image rounded-4" src="{{x.image.url}}" alt="">
+                                <h6>{{x.albumName}}</h6>
+                            </td>
+                            <td class="">
+                                <button type="button" class="btn btn-outline-dark" ng-click="pitch('album',x.albumId)"
+                                    data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Pitch
+                                </button>
+                            </td>
+                            <td colspan="2">{{x.releaseDate | date:'dd/MM/yyyy, hh:mm a'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-include="'Artist/Upcoming.html'"></div>
+            </div>
+            <div class="tab-p tab-pane" id="tab5-p">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <div>
+                            <div class="input-group me-3">
+                                <span class="input-group-text"><i class="bi bi-search-heart"></i></span>
+                                <input type="text" class="form-control" placeholder="Search" ng-model="searchGarbage">
+                            </div>
+                        </div>
+                        <div class="product_sorting_container product_sorting_container_top">
+                            <ul class="product_sorting">
+                                <li>
+                                    <span class="type_sorting_text">Default Sorting</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_type p-0" style="z-index: 2;">
+                                        <li class="type_sorting_btn" ng-click="sortNumber(garbageRecord,'recordingId')"> 
+                                            <span>Default Sorting</span>
+                                        </li>
+                                        <li ng-click="sort(garbageRecord,'recordingName')" class="type_sorting_btn"><span>Title</span></li>
+                                        <li ng-click="sort(garbageRecord,'recordingdate')" class="type_sorting_btn"><span>Create date</span></li>
+                                        <li ng-click="sortNumber(garbageRecord,'duration')" class="type_sorting_btn"><span>Duration</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>Show</span>
+                                    <span class="num_sorting_text">{{pagination.size}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                    <ul class="sorting_num  p-0" style="z-index: 2;">
+                                        <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                                        <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                                        <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                                        <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="dropdown">
+                        <button type="button options" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                            Last 24 hours
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Last 1 month</a></li>
+                            <li><a class="dropdown-item" href="#">Last 6 months</a></li>
+                            <li><a class="dropdown-item" href="#">Last 1 years</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th ng-click="sort(garbageRecord,'recordingName')">
+                                    Name Record
+                                </th>
+                                <th ng-click="sortNumber(garbageRecord,'listened')">Listeners</th>
+                                <th ng-click="sort(garbageRecord,'versions')">Version</th>
+                                <th>Audio</th>
+                                <th ng-click="sort(garbageRecord,'recordingdate')">Uploaded date </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in pagination.items(garbageRecord) | filter: searchGarbage" class="align-items-start">
+                                <td>{{$index+1}}
+                                    <i class="ms-1 bi bi-filetype-raw"></i>
+                                </td>
+                                <td class="align-items-center">
+                                    {{item.recordingName}}
+                                </td>
+                                <td class="align-items-center">{{item.listened}}</td>
+                                <td class="align-items-center">{{item.versions}}</td>
+                                <td class="align-items-center">
+                                    <audio controls src="{{item.audioFileUrl}}"></audio>
+                                </td>
+                                <td class="align-items-center">{{item.recordingdate | date:'dd/MM/yyyy'}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="p-0 btn border-0 align-items-center" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a ng-click="DestroyRecord(item.recordingId,item.publicIdAudio,item.publicIdLyrics)"
+                                                    class="dropdown-item">Elimidate</a>
+                                            </li>
+                                            <li><a ng-click="RecoveryRecord(item.recordingId)"
+                                                    class="dropdown-item">Recover</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                        <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(garbageRecord)}} of
+                            {{pagination.items(garbageRecord).length}} results</span>
+                        <div class="pages d-flex flex-row align-items-center">
+                            <div ng-show="pagination.page > 0" ng-click="pagination.prev(garbageRecord)" id="next_page_1" class="page_prev">
+                                <a>
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                            <div class="page_current">
+                                <span>{{pagination.page +1}}</span>
+                                <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                    <li ng-repeat="i in pagination.getNumbers(pagination.count(garbageRecord))">
+                                        <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="page_total"><span>of</span> {{pagination.count(garbageRecord)}}</div>
+                            <div ng-show="pagination.page < pagination.count(garbageRecord)-1" ng-click="pagination.next(garbageRecord)" id="next_page_1" class="page_next">
+                                <a>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-p tab-pane" id="tab6-p">
+                <div class="row justify-content-around">
+                    <div class="col-5">
+                        <textarea class="w-100" name="" id="lyricsContainer" rows="15"></textarea>
+                    </div>
+                    <div class="col-5">
+                        <textarea class="w-100" name="" id="after-generate" rows="15" readonly></textarea>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <audio class="w-100" controls id="audio-lyrics" src=""></audio>
+                        <div class="row mt-3 align-items-center">
+                            <div class="col-5">
+                                <input accept="audio/*" class="form-control" type="file" id="fileAudio">
+                            </div>
+
+                            <div class="col-7">
+                                <button class="btn text-white px-4 bg-black rounded-pill"
+                                    id="btn-generate">Generate</button>
+                                <button class="btn text-white px-4 bg-black rounded-pill" id="btn-reset">Reset</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container mt-5 col-7">
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <form id="regForm">
+                                <div class="all-steps my-0" id="all-steps" hidden>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
+
+                                <div class="tab tab-1">
+                                    <div class="d-flex">
+                                        <h6>1 of 5 - Song</h6>
+                                    </div>
+                                    <h1>Choose a song to pitch</h1>
+                                    <p>We'll add this song to Release Radar if we get yout pitch at least a week before
+                                        release</p>
+                                    <div class="my-3">
+                                        <div ng-if="type === 'song'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{song.image.url}}" alt="">
+                                            <div>
+                                                <h6>{{song.songName}}</h6>
+                                                <p>{{song.releaseDay | date:'dd/MM/yyyy, hh:mm:ss'}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-if="type === 'album'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{album.image.url}}" alt="">
+                                            <div>
+                                                <h6>{{album.albumName}}</h6>
+                                                <p>{{album.releaseDate | date:'dd/MM/yyyy, hh:mm:ss'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-container table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Title</th>
+                                                    <th>Duration</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in listRecord">
+                                                    <td>{{$index}}</td>
+                                                    <td>{{item.recordingName}}</td>
+                                                    <td>{{item.duration}}</td>
+                                                    <td><input type="checkbox" value="{{item.recordingId}}"
+                                                            onchange="checkListRecord(this)" name="pitch" id=""></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab tab-2">
+                                    <div class="d-flex">
+                                        <h6>2 of 5 - Location</h6>
+                                    </div>
+                                    <h1>Confirm where the artist is from</h1>
+                                    <p>We only use this information to look for music made by people from specific parts
+                                        of the world</p>
+                                    <div class="my-5">
+                                        <label for="hometown">
+                                            <h6>Hometown <span>(Optional)</span></h6>
+                                        </label>
+                                        <input ng-model="artist.placeOfBirth" type="text" class="form-control">
+                                    </div>
+
+
+                                </div>
+
+                                <div class="tab tab-3">
+                                    <div class="d-flex">
+                                        <h6>3 of 4 - Description</h6>
+                                    </div>
+                                    <h1>Add a description</h1>
+                                    <h6>Tell our team about the process of creating this song, as well as any plans to
+                                        promote it</h6>
+                                    <div class="mt-5">
+                                        <h5>Description <span>(Optional)</span></h5>
+                                        <textarea ng-model="descriptions" class="w-100 form-control" name=""
+                                            id="description" cols="30" rows="10"
+                                            placeholder="500 characters remaining"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab tab-4">
+                                    <div class="d-flex">
+                                        <h6>4 of 4 - Review</h6>
+                                    </div>
+                                    <h1>Make sure everything looks goods</h1>
+                                    <p>You can update your pitch up until release day. But changes made within a week of
+                                        release won't be
+                                        reflected on Release Radar</p>
+
+                                    <div class="my-3">
+                                        <div ng-if="type === 'song'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{song.image.url}}" alt="">
+                                            <div>
+                                                <h6>{{song.songName}}</h6>
+                                                <p>{{song.releaseDay | date:'dd/MM/yyyy, hh:mm:ss'}}</p>
+                                            </div>
+                                        </div>
+                                        <div ng-if="type === 'album'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{album.image.url}}" alt="">
+                                            <div>
+                                                <h6>{{album.albumName}}</h6>
+                                                <p>{{album.releaseDate | date:'dd/MM/yyyy, hh:mm:ss'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Title</th>
+                                                <th>Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in listRecordChecked">
+                                                <td>{{$index}}</td>
+                                                <td>{{item.recordingName}}</td>
+                                                <td>{{item.duration}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div>
+                                        <textarea readonly class="form-control" name="" id="result-description"
+                                            cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="tab text-center">
+                                    <h3>Everything Already</h3>
+                                    <div class="my-3">
+                                        <div ng-if="type === 'song'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{song.image.url}}" alt="">
+                                            <div>
+                                                <h4>{{song.songName}}</h4>
+                                            </div>
+                                        </div>
+                                        <div ng-if="type === 'album'" class="d-flex">
+                                            <img class="me-3 cover-image rounded-4" src="{{album.image.url}}" alt="">
+                                            <div>
+                                                <h4>{{album.albumName}}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div id="nextprevious" class="modal-footer d-flex justify-content-between">
+                    <div>
+                        <button type="button" id="prevBtn"
+                            class="float-start py-2 btn btn-dark rounded-pill bg-white text-black ms-5"
+                            onclick="nextPrev(-1)">Previous</button>
+                    </div>
+                    <div>
+                        <button type="button" id="nextBtn" class="float-end py-2 px-4 btn btn-success rounded-pill me-5"
+                            onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

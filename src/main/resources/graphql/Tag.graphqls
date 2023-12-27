@@ -1,0 +1,12 @@
+#Tag.graphqls
+#import "./Podcast.graphqls"
+
+type Tag{
+	tagId: ID
+	tagName: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+	podcasts: [Podcast]
+}

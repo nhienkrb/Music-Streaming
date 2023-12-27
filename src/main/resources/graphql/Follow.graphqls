@@ -1,0 +1,9 @@
+#Follow.graphqls
+#import "./Author.graphqls"
+
+type Follow{
+	followerId: ID
+	followDate: String
+	authorsAccountA: Author
+	authorsAccountB: Author
+}

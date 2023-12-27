@@ -1,0 +1,186 @@
+<body>
+    <div ng-controller="recordCtrl" class="modal fade" id="record">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button id="btn-close-upload-record" type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5">
+                                <img class="img-thumbnail cover-image w-100 h-100" style="object-fit: cover;"
+                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1696394508/Background/System/ss_276c32d569fe8394e31f5f53aaf7ce07b8874387.1920x1080_raeceo.jpg"
+                                    alt="">
+                            </div>
+                            <div class="col-7">
+                                <div class=" my-3">
+                                    <label for="">Record name(*)</label>
+                                    <input ng-model="record.name" class="form-control" type="text" name="id"
+                                        placeholder="Name" required>
+                                </div>
+                                <div class=" my-3">
+                                    <label for="">File record(*)</label>
+                                    <input ng-click="selectFileRecord('records')" class="form-control" accept="audio/*"
+                                        type="file" name="audiofile" id="records" required>
+                                    <div ng-messages="validate.audiofile.$touched && validate.audiofile.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" my-3">
+                                    <label for="">File lyrics</label>
+                                    <input ng-click="selectFileRecord('lyrics')" class="form-control" accept=".lrc"
+                                        type="file" id="lyrics">
+                                </div>
+                                <div class=" my-3">
+                                    <label for="">ID MV</label>
+                                    <input ng-model="record.idMv" class="form-control" type="text" name="" id=""
+                                        placeholder="id MV">
+                                </div>
+                                <div class="d-flex my-1 my-3">
+                                    <input ng-model="record.proceduce" class="form-control me-2" type="text" name=""
+                                        id="" placeholder="Proceduce">
+                                    <input ng-model="record.studio" class="form-control " type="text" name="" id=""
+                                        placeholder="Studio">
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="mt-4">
+                                    <label for="genre">
+                                        <h6>Choose up to 3 genre(*)</h6>
+                                    </label>
+                                    <input list="genres" class="form-control" name="genres" id="genre">
+                                    <datalist id="genres">
+                                        <option ng-repeat="item in genres" class="option-genre" value="{{item.id}}">
+                                            {{item.nameGenre}}</option>
+                                    </datalist>
+                                    <!-- List genres -->
+                                    <div id="list-genres" class="d-flex">
+                                    </div>
+                                </div>
+                                <!-- List music cultures -->
+                                <div class="mt-4">
+                                    <h6>Choose up to 3 music cultures. (Optional)</h6>
+                                    <div class="list-tag">
+                                        <div ng-repeat="item in cultures track by $index" class="checkbox">
+                                            <input type="checkbox" value="{{item.cultureName}}" name="culture" id="" />
+                                            <div class="box">
+                                                <p>{{item.cultureName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- List mood -->
+                                <div class="mt-4">
+                                    <h6>Choose up to 3 moods. (Optional)</h6>
+                                    <div class="list-tag">
+                                        <div ng-repeat="item in moods track by $index" class="checkbox">
+                                            <input type="checkbox" name="mood" id="" value="{{item.moodname}}" />
+                                            <div class="box">
+                                                <p>{{item.moodname}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- List song styles -->
+                                <div class="mt-4">
+                                    <h6>Choose up to 3 song styles. (Optional)</h6>
+                                    <div class="list-tag">
+                                        <div ng-repeat="item in songStyles track by $index" class="checkbox">
+                                            <input type="checkbox" name="style" id="" value="{{item.songStyleName}}" />
+                                            <div class="box">
+                                                <p>{{item.songStyleName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- List instruments -->
+                                <div class="mt-4">
+                                    <h6>What instruments are on this song? (Optional)</h6>
+                                    <div class="list-tag">
+                                        <div ng-repeat="item in instruments track by $index" class="checkbox">
+                                            <input type="checkbox" name="intrument" id=""
+                                                value="{{item.instrumentName}}" />
+                                            <div class="box">
+                                                <p>{{item.instrumentName}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="question mt-4">
+                                    <h6>Type(*)</h6>
+                                    <div class="d-flex justify-content-between me-5">
+                                        <div>
+                                            <h6>Is this a cover?</h6>
+                                            <div class="checkbox ">
+                                                <input ng-model="record.version" type="radio" value="Cover"
+                                                    name="version" id="" />
+                                                <div class="box">
+                                                    <p class="my-0">Yes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6>Is it a remix?</h6>
+                                            <div class="checkbox ">
+                                                <input ng-model="record.version" value="Remix" type="radio"
+                                                    name="version" id="" />
+                                                <div class="box">
+                                                    <p class="my-0">Yes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6>Is it an Official?</h6>
+                                            <div class="checkbox ">
+                                                <input ng-model="record.version" value="Official" type="radio"
+                                                    name="version" id="" />
+                                                <div class="box">
+                                                    <p class="my-0">Yes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6>Is it an instrumental?</h6>
+                                            <div class="checkbox ">
+                                                <input ng-model="record.version" value="Instrumental" type="radio"
+                                                    name="version" />
+                                                <div class="box">
+                                                    <p class="my-0">Yes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6>Is it an interlude?</h6>
+                                            <div class="checkbox ">
+                                                <input ng-model="record.version" value="Interlude" type="radio"
+                                                    name="version" />
+                                                <div class="box">
+                                                    <p class="my-0">Yes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 id="err" class="text-end text-danger pe-5 m-0"></h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-outline-dark"
+                        id="create-record">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

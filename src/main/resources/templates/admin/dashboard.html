@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="content-wrapper">
+        <section>
+            <div class="sm-chart-sec mt-5 mb-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
+                            <div class="card gradient-1">
+                                <div class="card-body">
+                                    <h3 class="card-title text-white">Visited</h3>
+                                       
+                                    <div class="d-inline-block">
+                                        <h2 class="text-white">{{visitor | number: 0}}</h2>
+                                        <p class="text-white mb-0">{{date | date:'longDate'}}</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5 "><i
+                                            class="fa-solid fa-users "></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
+                            <div class="card gradient-1">
+                                <div class="card-body">
+                                    <h3 class="card-title text-white">Subscription</h3>
+                                      
+                                    <div class="d-inline-block">
+                                        <h2 class="text-white">{{countSubscriptions | number : 0}}</h2>
+                                        <p class="text-white mb-0">{{date | date:'longDate'}}</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5"><i class="bi bi-cash-stack"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
+                            <div class="card gradient-1">
+                                <div class="card-body">
+                                    <h3 class="card-title text-white">Song</h3>
+                                        
+                                    <div class="d-inline-block">
+                                        <h2 class="text-white">{{countSongAndEpisode.song | number :0}}</h2>
+                                        <p class="text-white mb-0">{{date | date:'longDate'}}</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5"><i class="bi bi-file-music-fill"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 my-2">
+                            <div class="card gradient-1">
+                                <div class="card-body">
+                                    <h3 class="card-title text-white">Podcast</h3>
+                                      
+                                    <div class="d-inline-block">
+                                        <h2 class="text-white">{{countSongAndEpisode.podcast | number :0}}</h2>
+                                        <p class="text-white mb-0">{{date | date:'longDate'}}</p>
+                                    </div>
+                                    <span class="float-right display-5 opacity-5"><i class="bi bi-caret-right-square-fill"></i></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <section class="dashboard-top-sec">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="bg-white top-chart-earn">
+                            <div class="container mb-3">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h4>Overview</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select  class="form-select form-select-sm" ng-model="dateCreate" ng-change="getCountCreateRecordsAndEpisodeByDay(dateCreate)">
+                                            <option value="month" selected>Month</option>
+                                            <option value="year">Year</option>
+                                          </select>
+                                    </div>
+                                    <canvas id="chartline"></canvas>
+                                </div>
+                            </div>
+                           
+
+
+                            <div class="wre-sec">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-6 bdr-cls">
+                                        <div class="earn-view">
+                                            <span class="bi bi-airplane-engines earn-icon icon-near"></span>
+                                            
+                                            <div class="earn-view-text">
+
+                                                <p class="name-text">
+                                                  Top 1 Country 
+                                                </p>
+                                                <h6 class="balance-text">
+                                                    {{top1Country[0]}} - {{top1Country[1] | number : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-3 col-6 bdr-cls">
+                                        <div class="earn-view">
+                                            <span class="bi bi-airplane-engines earn-icon icon-near"></span>
+
+                                            <div class="earn-view-text">
+
+                                                <p class="name-text">
+                                                    Total Account
+                                                </p>
+                                                <h6 class="balance-text">
+                                                    {{totalAccount | number : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-3 col-6 bdr-cls">
+                                        <div class="earn-view">
+                                            <span class="bi bi-airplane-engines earn-icon icon-near"></span>
+
+                                            <div class="earn-view-text">
+
+                                                <p class="name-text">
+                                                     A.Created
+                                                </p>
+                                                <h6 class="balance-text">
+                                                   {{accountCurrent | number : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-3 col-6 bdr-cls">
+                                        <div class="earn-view">
+                                            <span class="bi bi-airplane-engines earn-icon icon-near"></span>
+
+                                            <div class="earn-view-text">
+
+                                                <p class="name-text">
+                                                    Verify Account
+                                                </p>
+                                                <h6 class="balance-text">
+                                                   {{verifyAccount | number : 0}}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="bg-white top-chart-earn">
+                            <div class="row">
+
+                                <div class="title-chart-right mb-2">
+                                    <h5>Top 4 Genre</h5>
+                                </div>
+                                <div class="chart-right">
+                                    <canvas id="myChartTopGenre"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 ">
+                    <div class="col-md-6">
+
+                        <div class="bg-white top-chart-earn">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Top 10 Artist</h5>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                          <tr>
+                                          
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Listened</th>
+                                            <th scope="col"></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr ng-repeat="artist in top10Artist">
+                                            <td scope="row">
+                                                <img ng-src="{{artist.url}}" class="img-fluid  rounded-3" alt="image Artist" style="width: 40px;">
+                                                <span class="mx-2">{{artist.artistName}}</span>
+                                            </td>
+                                           
+                                            <td>{{artist.totalListened | number: 0}}</td>
+                                            <td class="text-end fs-4 px-4">
+                                                <div class="dropdown">
+                                                    <a href="" type="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-three-dots"></i></a>
+                                                    <ul class="dropdown-menu" style="min-width: 5rem; ">
+                                                      <li><a class="dropdown-item" href="#!{{artist.email}}/artist-profile">See Artist</a></li>
+                                                   
+                                                    </ul>
+                                                  </div>
+                                            </td>
+                                          </tr>
+                                        
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                         
+
+                        </div>
+                      
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-white top-chart-earn">
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Top 10 Podcast</h5>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                          <tr>
+                                           
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Listened</th>
+                                            <th scope="col"></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr ng-repeat=" account in top10Podcast">
+                                            <td scope="row">
+                                                <img ng-src="{{account.url}}" class="img-fluid  rounded-3" alt="image Artist" style="width: 40px;">
+                                                <span class="mx-2">{{account.authorName}}</span>
+                                            </td>
+                                     
+                                            <td>{{account.totalListened | number: 0}}</td>
+                                            <td class="text-end fs-4 px-4">
+                                                <div class="dropdown" >
+                                                    <a href="" type="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-three-dots"></i></a>
+                                                    <ul class="dropdown-menu" style="min-width: 5rem; ">
+                                                      <li><a class="dropdown-item" href="#!/{{account.email}}/podcast-profile">See Detail</a></li>
+                                                   
+                                                    </ul>
+                                                  </div>
+                                            </td>
+                                          </tr>
+                                        
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                           
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="container">
+                        <div class="bg-white top-chart-earn">
+                            <div class="table-responsive">
+                                <div class="container">
+                                    <div class="row mb-2">
+                                        <div class="col-md-10">
+                                        <h4 class="fw-bold">Top Trending</h4>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <select class="form-select form-select-sm" ng-model="selectedDuration"   ng-change="getTop10RecordTrending(selectedDuration)">
+                                                <option value="1" >Day</option>
+                                                <option value="7">Week</option>
+                                                <option value="30">Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <table class="table  table-hover">
+                                        <thead style="border-bottom: 1px solid #c0c0c0;">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Listened</th>
+                                                <th scope="col">Album</th>
+                                                <th scope="col" class="text-end font-size-iconPlaylist">
+                                                    <i class="bi bi-clock" style="margin-right: 2.7rem;"></i>
+                                                </th>
+                                        </thead>
+                                        <tbody style="border-bottom:1px solid #ffffff;">
+                                            <tr ng-repeat="recording in top10TrendingByRecord">
+                                                <th scope="row"> {{$index +1}}</th>
+                                                <td>
+                                                    <div class="d-flex align-items-center " style="cursor:pointer">
+                                                        <img ng-src="{{recording.song.image.url}}"
+                                                            alt="img" class="img-songs rounded-1  ">
+                                                        <div class="mx-2" style="line-height: 15px;" ng-click="runMusic(recording.audioFileUrl)">
+                                                            <h6>{{recording.recordingName}}</h6>
+                                                            
+                                                            <h6 class="songs-in-album ">
+                                                                <span
+                                                                    ng-repeat="artists in recording.song.writters">{{artists.artist.artistName}},
+                                                                </span>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <h6 class="songs-in-album ">
+                                                        {{recording.listened |number :0}}
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="songs-in-album ">
+                                                        <span
+                                                            ng-repeat="tracks in recording.tracks">{{tracks.album.albumName}},
+                                                        </span>
+                                                    </h6>
+                                               </td>
+                                                <td class="text-end "> 
+                                                   <format-time seconds="recording.duration"></format-time>
+
+                                                    <div class="btn-group dropstart mx-2">
+                                                        <a class="three-dots fs-5" href="" type="button"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="bi bi-three-dots"></i>
+                                                        </a>
+
+                                                        <ul class="dropdown-menu" style="min-width: 5rem; ">
+                                                            <li><a class="dropdown-item" href="#!{{recording.emailCreate}}/artist-profile">See Artist</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </td>
+
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                              
+                            </div>
+                            
+                        </div>
+                    </div>
+                       
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--  CONTENT END  -->
+    </div>
+</body>
+
+</html>

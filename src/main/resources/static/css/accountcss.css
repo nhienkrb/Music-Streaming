@@ -1,0 +1,130 @@
+body {
+    background-color: rgb(0, 0, 0);
+
+    .bg-dark-custom {
+        background-color: rgb(0, 0, 0);
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        font-weight: bold;
+        color: white;
+    }
+
+    .plan {
+        background-color: rgb(26, 26, 26);
+        color: white;
+        border-radius: 6px;
+    }
+
+    .pre {
+        background: linear-gradient(219.47deg, rgb(59, 58, 123) 6.36%, rgb(122, 22, 98) 91.17%);
+        border-radius: 6px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .pre i {
+        margin-bottom: 5px;
+        /* Điều chỉnh khoảng cách giữa biểu tượng và văn bản */
+    }
+
+    .logo {
+        float: right;
+    }
+
+    .btnacc {
+        bottom: 20px;
+        border: 1px solid var(--essential-subdued, #878787);
+        justify-content: center;
+        border-radius: 500px;
+    }
+
+    .text {
+        color: rgb(179, 179, 179);
+        font-family: var(--font-family, CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+        ;
+    }
+}
+
+.account {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border-radius: 6px;
+}
+
+.chose {
+    display: flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    position: relative;
+}
+
+.in {
+    position: absolute;
+    right: 10px;
+}
+
+.logo-conten {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.conten-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.list-chose .chose:hover {
+    background-color: rgb(0, 0, 0);
+}
+.text-chose{
+    color: white;
+}
+.btn-back {
+    background-color: #f2f2f2; /* Màu nền trắng nhạt */
+    border: none; /* Loại bỏ viền */
+    border-radius: 50%; /* Đặt border-radius thành 50% để làm thành hình tròn */
+    width: 40px; /* Điều chỉnh kích thước nút tùy ý */
+    height: 40px; /* Điều chỉnh kích thước nút tùy ý */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none; /* Loại bỏ đường viền khi nút được focus */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+  }
+  
+  .btn-back:hover {
+    background-color: #ccc; /* Màu nền trắng nhạt khi hover */
+  }
+/* Chọn tất cả các ô nhập trong form */
+form input {
+    background-color: black; /* Nền đen */
+    border: 2px solid #333; /* Viền màu sắm */
+    color: white; /* Chữ màu trắng */
+}
+
+
+/* Tùy chỉnh nền của select */
+form select {
+    background-color: black; /* Nền đen */
+    border: 2px solid #333; /* Viền màu sắm */
+    color: white; /* Chữ màu trắng */
+}
+
+/* Tùy chỉnh nền của button */
+form button {
+    background-color: black; /* Nền đen */
+    border: 2px solid #333; /* Viền màu sắm */
+    color: white; /* Chữ màu trắng */
+}
+
+/* Để làm cho label màu trắng, bạn có thể thêm đoạn CSS sau */
+form label {
+    color: white; /* Chữ màu trắng */
+}
+  

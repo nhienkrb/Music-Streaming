@@ -1,0 +1,9 @@
+#SongGenre.graphqls
+#import "./Genre.graphqls"
+#import "./Recording.graphqls"
+
+type SongGenre{
+	id: ID
+	genre: Genre
+	recording: Recording
+}

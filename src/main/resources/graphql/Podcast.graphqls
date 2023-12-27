@@ -1,0 +1,22 @@
+#Podcast.graphqls
+#import "./Image.graphqls"
+#import "./Tag.graphqls"
+#import "./Account.graphqls"
+#import "./Episode.graphqls"
+#import "./Report.graphqls"
+
+type Podcast{
+	podcastId: ID
+	podcastName: String
+	bio: String
+	socialMediaLink: String
+	releaseDate: String
+	language: String
+	rate: Int
+	authorName: String
+	image: Image
+	tag: Tag
+	account: Account
+	Episodes: [Episode]
+	reports: [Report]
+ }

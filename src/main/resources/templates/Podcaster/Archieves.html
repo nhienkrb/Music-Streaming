@@ -1,0 +1,108 @@
+<body ng-controller="myArchiveCtrl">
+    <div class="container">
+        <h3>Archive episode deleted</h3>
+        <div class="d-flex">
+            <div>
+                <div class="input-group me-3">
+                    <span class="input-group-text" style="background-color: transparent;"><i
+                            class="text-white bi bi-search-heart"></i></span>
+                    <input type="text" class="text-white form-control" placeholder="Search in playlist"
+                        style="background-color: transparent;">
+                </div>
+            </div>
+            <div class="product_sorting_container product_sorting_container_top">
+                <ul class="product_sorting">
+                    <li>
+                        <span class="type_sorting_text">Default Sorting</span>
+                        <i class="fa fa-angle-down"></i>
+                        <ul class="sorting_type p-0" style="z-index: 2;">
+                            <li ng-click="sortNumber(listEpisodes,'episodeId')" class="type_sorting_btn">
+                                <span>Default Sorting</span>
+                            </li>
+                            <li ng-click="sort(listEpisodes,'episodeTitle')" class="type_sorting_btn"><span>Title</span></li>
+                            <li ng-click="sort(listEpisodes,'publishDate')" class="type_sorting_btn"><span>Create date</span></li>
+                            <li ng-click="sortNumber(listEpisodes,'duration')" class="type_sorting_btn"><span>Duration</span></li>
+                            <li ng-click="sortNumber(listEpisodes,'listened')" class="type_sorting_btn"><span>listened</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Show</span>
+                        <span class="num_sorting_text">{{pagination.size}}</span>
+                        <i class="fa fa-angle-down"></i>
+                        <ul class="sorting_num  p-0" style="z-index: 2;">
+                            <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                            <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                            <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                            <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-3" ng-repeat="item in pagination.items(listEpisodeDeleted)">
+                <div class="card">
+                    <img class="card-img-top w-100 h-100"  src="{{item.image.url}}" alt="Card image">
+                    <div class="card-body">
+                        <audio class="w-100" controls src="{{item.fileUrl}}"></audio>
+                        <h6 class="card-title">{{item.episodeTitle}}</h6>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button ng-click="recoveryEpisode(item.episodeId)" class="rounded-pill btn border-dark bg-dark text-white">Recover</button>
+                            <button class="rounded-pill btn border-dark bg-dark text-white" data-bs-toggle="modal" data-bs-target="#destroy-episode-{{item.episodeId}}">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="destroy-episode-{{item.episodeId}}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+            
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirm</h4>
+                                <button id="finish-destroy-episode" type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+            
+                            <div class="modal-body">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <img class="w-25 h-100" style="object-fit: cover;" src="{{item.image.url}}" alt="">
+                                    <h6>{{item.episodeTitle}}</h6>
+                                </div>
+                            </div>
+            
+                            <div class="modal-footer">
+                                <button ng-click="destroyEpisode(item.episodeId)" id="confirm-destroy-episode" type="button" class="btn btn-danger">Yes</button>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="product_sorting_container product_sorting_container_bottom clearfix">
+            <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listEpisodeDeleted)}} of
+                {{pagination.items(listEpisodeDeleted).length}} results</span>
+            <div class="pages d-flex flex-row align-items-center">
+                <div ng-show="pagination.page > 0" ng-click="pagination.prev(listEpisodeDeleted)" id="next_page_1" class="page_prev">
+                    <a>
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="page_current">
+                    <span>{{pagination.page +1}}</span>
+                    <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                        <li ng-repeat="i in pagination.getNumbers(pagination.count(listEpisodeDeleted))">
+                            <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page_total"><span>of</span> {{pagination.count(listEpisodeDeleted)}}</div>
+                <div ng-show="pagination.page < pagination.count(listEpisodeDeleted)-1" ng-click="pagination.next(listEpisodeDeleted)" id="next_page_1" class="page_next">
+                    <a>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>

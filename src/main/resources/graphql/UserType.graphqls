@@ -1,0 +1,22 @@
+#UserType.graphqls
+#import "./Playlist.graphqls"
+#import "./Access.graphqls"
+#import "./Report.graphqls"
+#import "./Wishlist.graphqls"
+#import "./Subscription.graphqls"
+#import "./Account.graphqls"
+
+type UserType{
+	userTypeId: ID
+	nameType: String
+	startDate: String
+	endDate: String
+	status: String
+	paymentStatus: Int
+	account: Account
+	subscription: Subscription
+	wishlists: [Wishlist]
+	reports: [Report]
+	accesses: [Access]
+	playlists: [Playlist]
+}

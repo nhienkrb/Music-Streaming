@@ -1,0 +1,10 @@
+#Instrument.graphqls
+
+type Instrument{
+	instrumentId: ID
+	instrumentName: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- CONTENT START  -->
+    <div class="content-wrapper">
+        <style>
+            ::placeholder {
+                font-size: 12px;
+            }
+
+            @media (min-width: 576px) {
+                .rounded-nav {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            @media (min-width: 576px) {
+                .rounded-nav .nav-link {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            /* With arrow tabs */
+
+            .with-arrow .nav-link.active {
+                position: relative;
+            }
+
+            .with-arrow .nav-link.active::after {
+                content: '';
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid #2b90d9;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: block;
+            }
+
+            /* lined tabs */
+
+            .lined .nav-link {
+                border: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .lined .nav-link:hover {
+                border: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .lined .nav-link.active {
+                background: none;
+                color: #555;
+                border-color: #2b90d9;
+            }
+
+
+            .nav-pills .nav-link {
+                color: #555;
+            }
+
+            .text-uppercase {
+                letter-spacing: 0.1em;
+            }
+
+            /* START CSS CART SUBSCRIPTION */
+
+
+
+            /* END CSS CART SUBSCRIPTION*/
+
+            .visuallyhidden {
+                position: absolute;
+                z-index: -1;
+                right: 0;
+                opacity: 0;
+
+            }
+
+
+            .container {
+                overflow: hidden;
+                padding: 20px;
+                margin-top: 2em;
+
+            }
+
+            .card-carousel {
+                --card-width: 80%;
+                --card-max-width: 300px;
+                --card-height: 500px;
+                --carousel-min-width: 600px;
+                z-index: 1;
+                position: relative;
+                margin: 0 auto;
+                width: 100%;
+                height: var(--card-height);
+                min-width: var(--carousel-min-width);
+                transition: filter .3s ease;
+            }
+
+            @media screen and (max-width: 640px) {
+                .card-carousel {
+                    margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+                }
+            }
+
+            .card-carousel.smooth-return {
+                transition: all .2s ease;
+            }
+
+            .card-carousel .card {
+                background: whitesmoke;
+                width: var(--card-width);
+                max-width: var(--card-max-width);
+                text-align: center;
+
+                /* padding: 1em; */
+                min-width: 250px;
+                height: var(--card-height);
+                position: absolute;
+                margin: 0 auto;
+                color: rgba(0, 0, 0, .5);
+                transition: inherit;
+                -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+                -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+                box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+                border-radius: 1em;
+                filter: brightness(.9);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            }
+
+            .card.highlight {
+                filter: brightness(1)
+            }
+
+            [type=radio] {
+                display: none;
+            }
+
+            #slider {
+                height: 35vw;
+                position: relative;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+            }
+
+            #slider label {
+                margin: auto;
+                width: 60%;
+                height: 100%;
+                border-radius: 4px;
+                position: absolute;
+                left: 0;
+                right: 0;
+                cursor: pointer;
+                transition: transform 0.4s ease;
+            }
+
+            #s1:checked~#slide4,
+            #s2:checked~#slide5,
+            #s3:checked~#slide1,
+            #s4:checked~#slide2,
+            #s5:checked~#slide3 {
+                box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+                transform: translate3d(-30%, 0, -200px);
+            }
+
+            #s1:checked~#slide5,
+            #s2:checked~#slide1,
+            #s3:checked~#slide2,
+            #s4:checked~#slide3,
+            #s5:checked~#slide4 {
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+                transform: translate3d(-15%, 0, -100px);
+            }
+
+            #s1:checked~#slide1,
+            #s2:checked~#slide2,
+            #s3:checked~#slide3,
+            #s4:checked~#slide4,
+            #s5:checked~#slide5 {
+                box-shadow: 0 13px 25px 0 rgba(0, 0, 0, .3), 0 11px 7px 0 rgba(0, 0, 0, .19);
+                transform: translate3d(0, 0, 0);
+            }
+
+            #s1:checked~#slide2,
+            #s2:checked~#slide3,
+            #s3:checked~#slide4,
+            #s4:checked~#slide5,
+            #s5:checked~#slide1 {
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+                transform: translate3d(15%, 0, -100px);
+            }
+
+            #s1:checked~#slide3,
+            #s2:checked~#slide4,
+            #s3:checked~#slide5,
+            #s4:checked~#slide1,
+            #s5:checked~#slide2 {
+                box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+                transform: translate3d(30%, 0, -200px);
+            }
+
+            #slide1 {
+                background: #00BCD4
+            }
+
+            #slide2 {
+                background: #4CAF50
+            }
+
+            #slide3 {
+                background: #CDDC39
+            }
+
+            #slide4 {
+                background: #FFC107
+            }
+
+            #slide5 {
+                background: #FF5722
+            }
+
+
+            .pricing .card {
+                border: none;
+                border-radius: 1rem;
+                transition: all 0.2s;
+                box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+            }
+
+            .pricing hr {
+                margin: 1.5rem 0;
+            }
+
+            .pricing .card-title {
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+                letter-spacing: .1rem;
+                font-weight: bold;
+            }
+
+            .pricing .card-price {
+                font-size: 3rem;
+                margin: 0;
+            }
+
+            .pricing .card-price .period {
+                font-size: 0.8rem;
+            }
+
+            .pricing ul li {
+                margin-bottom: 1rem;
+            }
+
+            .pricing .text-muted {
+                opacity: 0.7;
+            }
+
+            .pricing .btns {
+                font-size: 80%;
+                border-radius: 5rem;
+                letter-spacing: .1rem;
+                font-weight: bold;
+                padding: 1rem;
+                opacity: 0.7;
+                transition: all 0.2s;
+            }
+
+            /* Hover Effects on Card */
+
+            @media (min-width: 992px) {
+                .pricing .card:hover {
+                    margin-top: -.25rem;
+                    margin-bottom: .25rem;
+                    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+                }
+
+                .pricing .card:hover .btns {
+                    opacity: 1;
+                }
+            }
+        </style>
+
+        <div class="container-fluid">
+
+            <div class="container ">
+                <div class="p-4 bg-white rounded shadow mb-5">
+
+                    <div class="row">
+                        <div class="text-center mt-0">
+                            <h3>Subscription</h3>
+                        </div>
+                    </div>
+
+                    <hr style="color: #a1a1a1;">
+                    <!-- Rounded tabs -->
+                    <ul id="myTab" role="tablist"
+                        class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+                        <li class="nav-item flex-sm-fill">
+                            <a id="home-tab" data-toggle="tab" href="" id="pills-user-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true"
+                                class="nav-link border-0 text-uppercase font-weight-bold active">Subscription On</a>
+                        </li>
+
+                        <li class="nav-item flex-sm-fill">
+                            <a id="pills-podcast-tab" data-bs-toggle="pill" data-bs-target="#pills-podcast"
+                                type="button" role="tab" aria-controls="pills-podcast" aria-selected="false"
+                                class="nav-link border-0 text-uppercase font-weight-bold">Subscription Off
+                            </a>
+                        </li>
+
+                        <li class="nav-item flex-sm-fill">
+                            <a ng-click="resetFrom()" id="profile-tab" id="pills-artist-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">New
+                                Subscription</a>
+                        </li>
+
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+
+                        <!-- SUBSCRIPTION ON -->
+
+                        <div id="pills-home" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                            class="tab-pane fade px-4 py-2 show active">
+                            
+                            <section class="pricing ">
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Free Tier -->
+                                        <div class="col-lg-4 mb-3" ng-repeat="item in item | filter:{active: true}">
+                                            <div class="card mb-5 mb-lg-0">
+                                                <div class="card-body">
+                                                    <h5 class="card-title text-muted text-uppercase text-center" >
+                                                        {{item.subscriptionType}}
+                                                    </h5>
+                                                    <h6 class="card-price text-center">${{item.price}}<span
+                                                            class="period">/month</span></h6>
+                                                    <hr>
+                                                    <ul class="fa-ul">
+                                                        <li><span class="fa-li"><i
+                                                                    class="fas fa-check"></i></span>Description:
+                                                            {{item.description}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i
+                                                                    class="fas fa-check"></i></span>Duration:
+                                                            {{item.duration}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Limit
+                                                            playlist:
+                                                            {{item.playlistAllow}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Limit
+                                                            songs in playlist:
+                                                            {{item.nip}}
+                                                        </li>
+
+<!-- 
+                                                        <li class="text-muted"><span class="fa-li"><i
+                                                                    class="fas fa-times"></i></span>Dedicated Phone
+                                                            Support</li> -->
+
+
+
+                                                    </ul>
+                                                    <div class="d-grid gap-2">
+                                                        <a href="" class="btn btn-primary text-uppercase btns"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            ng-click="edit(item.subscriptionId)">Edit</a>
+                                                        <a href="" class="btn btn-danger text-uppercase btns"
+                                                            data-bs-toggle="modal" data-bs-target="#delete-{{item.subscriptionId}}">Delete</a>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- START MODAL DELETE -->
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="delete-{{item.subscriptionId}}" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header modal-header-delete">
+
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="icon-close-bodyModal">
+                                                                    <i class="bi bi-x-circle"></i>
+                                                                </div>
+                                                                <div style="text-align: center;" class="m-2">
+                                                                    <h5> Are you sure ? </h5>
+                                                                   
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer btn-event-deleteModal">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-dismiss="modal"
+                                                                    ng-click="deleteSubscription(item.subscriptionId)">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END MODAL DELETE -->
+
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- <section id="slider">
+                                <input type="radio" name="slider" id="s1">
+                                <input type="radio" name="slider" id="s2">
+                                <input type="radio" name="slider" id="s3" checked>
+                                <input type="radio" name="slider" id="s4">
+                                <input type="radio" name="slider" id="s5">
+                                <label for="s1" id="slide1"></label>
+                                <label for="s2" id="slide2"></label>
+                                <label for="s3" id="slide3"></label>
+                                <label for="s4" id="slide4"></label>
+                                <label for="s5" id="slide5"></label>
+                            </section> -->
+                        </div>
+
+
+                        <!-- SUBSCRIPTION OFF -->
+                        <div id="pills-podcast" role="tabpanel" aria-labelledby="pills-podcast-tab" tabindex="0"
+                            class="tab-pane fade px-4">
+
+                            <section class="pricing ">
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Free Tier -->
+                                        <div class="col-lg-4" ng-repeat="item in item | filter:{active: false}">
+                                            <div class="card mb-5 mb-lg-0">
+                                                <div class="card-body">
+                                                    <h5 class="card-title text-muted text-uppercase text-center">
+                                                        {{item.subscriptionType}}
+                                                    </h5>
+                                                    <h6 class="card-price text-center">${{item.price}}<span
+                                                            class="period">/month</span></h6>
+                                                    <hr>
+                                                    <ul class="fa-ul">
+                                                        <li><span class="fa-li"><i
+                                                                    class="fas fa-check"></i></span>Description:
+                                                            {{item.description}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i
+                                                                    class="fas fa-check"></i></span>Duration:
+                                                            {{item.duration}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Limit
+                                                            playlist:
+                                                            {{item.playlistAllow}}
+                                                        </li>
+                                                        <li><span class="fa-li"><i class="fas fa-check"></i></span>Limit
+                                                            songs in playlist:
+                                                            {{item.nip}}
+                                                        </li>
+
+
+                                                        <li class="text-muted"><span class="fa-li"><i
+                                                                    class="fas fa-times"></i></span>Dedicated Phone
+                                                            Support</li>
+
+
+
+                                                    </ul>
+                                                    <div class="d-grid gap-2">
+                                                        <a href="" class="btn btn-primary text-uppercase btns"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            ng-click="edit(item.subscriptionId)">Edit</a>
+                                                        <a href="" class="btn btn-danger text-uppercase btns"
+                                                            data-bs-toggle="modal" data-bs-target="#delete-{{item.subscriptionId}}">Delete</a>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- START MODAL DELETE -->
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="delete-{{item.subscriptionId}}" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header modal-header-delete">
+
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="icon-close-bodyModal">
+                                                                    <i class="bi bi-x-circle"></i>
+                                                                </div>
+                                                                <div style="text-align: center;" class="m-2">
+                                                                    <h5> Are you sure ? </h5>
+                                                                   
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer btn-event-deleteModal">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-dismiss="modal"
+                                                                    ng-click="deleteSubscription(item.subscriptionId)">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END MODAL DELETE -->
+
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+
+                        <!-- START CREATE A Subscription -->
+                        <div id="pills-profile" role="tabpanel" aria-labelledby="pills-artist-tab" tabindex="0"
+                            class="tab-pane fade px-4  ">
+                            <div class="container">
+                             <form name="validateSub" novalidate>
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Subscription Category:</label>
+                                      
+                                    <select name="category" class="form-select form-select mb-3" ng-model="form.subscriptionCategory" required>
+                                        <option value="ADVERTISEMENT">Advertisement</option>
+                                        <option value="ACCOUNT">Account</option>
+                                    </select>
+                                      <!-- VALIDATION FORM -->
+                                      <div
+                                      ng-messages="validateSub.category.$touched && validateSub.category.$error ">
+                                      <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                      </div>
+                                   </div>
+                                </div>
+
+                                <div class="mb-3"  ng-if="form.subscriptionCategory ==='ADVERTISEMENT'">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Name:</label>
+                                    <input ng-model="form.subscriptionType" type="text" name="name" class="form-control"
+                                        placeholder="Name Subscription" required ng-minlength="10"   >
+                                    <!-- VALIDATION FORM -->
+                                    <div ng-messages="validateSub.name.$dirty && validateSub.name.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                      </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Price:</label>
+                                    <input ng-model="form.price" type="number" name="price" class="form-control"
+                                        placeholder="Price" required ng-minlength="1" >
+                                        <!-- !-- VALIDATION FORM --> 
+                                             <div ng-messages="validateSub.price.$dirty && validateSub.price.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Description:</label>
+                                    <input ng-model="form.description" type="text" name="des" class="form-control"
+                                        placeholder="Description" required ng-minlength="10 " >
+                                     <!-- VALIDATION FORM -->
+                                    <div ng-messages="validateSub.des.$dirty && validateSub.des.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Duration day:</label>
+                                    <input ng-model="form.duration" type="number" name="duration" class="form-control"
+                                        placeholder="Subscription expiration time" required ng-minlength="1" >
+                                     <!-- VALIDATION FORM -->
+                                     <div ng-messages="validateSub.duration.$dirty && validateSub.duration.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3" ng-if="form.subscriptionCategory ==='ADVERTISEMENT'">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Priority:</label>
+                                    <input ng-model="form.priority" type="number" name="priority" class="form-control"
+                                        placeholder="Priority for Ads" required ng-minlength="1" >
+                                       <!-- VALIDATION FORM -->
+                                    <div ng-messages="validateSub.priority.$dirty && validateSub.priority.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Product Stripe Id:
+                                    </label>
+                                    <input ng-model="form.prdStripeId" type="text" name="stripeId" class="form-control"
+                                        placeholder="Payment id"  required ng-minlength="1" >
+                                         <!-- VALIDATION FORM -->
+                                    <div ng-messages="validateSub.stripeId.$dirty && validateSub.stripeId.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Product Paypal Id:
+                                    </label>
+                                    <input ng-model="form.prdPaypalId" type="text" name="paypalId" class="form-control"
+                                        placeholder="Payment id"  required ng-minlength="1" >
+                                    <div ng-messages="validateSub.paypalId.$dirty && validateSub.paypalId.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3" ng-if="form.subscriptionCategory ==='ACCOUNT'">
+                                    <label for="formGroupExampleInput" class="form-label mb-0">Playlist Allow:</label>
+                                    <input ng-model="form.playlistAllow" type="number" name="playlistAllow" class="form-control"
+                                        placeholder="Limit playlist" required ng-minlength="1">
+                                    <div ng-messages="validateSub.playlistAllow.$dirty && validateSub.playlistAllow.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4" ng-if="form.subscriptionCategory ==='ACCOUNT'">
+                                    <label for="formGroupExampleInput" class="form-label mb-0 font-label">Number song in
+                                        playlist:</label>
+                                    <input ng-model="form.nip" type="number" name="nip" class="form-control"
+                                        placeholder="Limit songs in playlist" required ng-minlength="1">
+                                    <div ng-messages="validateSub.nip.$dirty && validateSub.nip.$error ">
+                                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center mt-2">
+                                    <div class=" col-10">
+                                        <button ng-click="createSubscription()" class="btn btn-success w-100"
+                                            type="button" ng-disabled="!validateSub.$valid">Save</button>
+                                    </div>
+
+                                </div>
+                             </form>
+                            </div>
+
+
+                        </div>
+
+                
+
+                        <!--END CREATE A Subscription -->
+                    </div>
+                    <!-- End rounded tabs -->
+
+
+                    <!-- START MODAL EDIT -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="padding-top: 0px;">
+                                    <div class="container" style="padding-top: 0px;">
+                                        <div class="mb-3" ng-if="form.subscriptionCategory ==='ACCOUNT'">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Subscription
+                                                Type:</label>
+                                            <select class="form-select form-select mb-3"
+                                                ng-model="form.subscriptionType">
+                                                <option value="PREMIUM">PREMIUM</option>
+                                                <option value="BASIC">BASIC</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Active:</label>
+                                            <select class="form-select form-select mb-3" ng-model="form.active">
+                                                <option ng-value="true">Active</option>
+                                                <option ng-value="false">Inactive</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3"  ng-if="form.subscriptionCategory ==='ADVERTISEMENT'">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Name:</label>
+                                            <input ng-model="form.subscriptionType" type="text" name="title" class="form-control"
+                                                placeholder="Name Subscription">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Price:</label>
+                                            <input ng-model="form.price" type="number" name="title" class="form-control"
+                                                placeholder="Price">
+                                        </div>
+                                        <div class="mb-3" ng-if="form.subscriptionCategory ==='ADVERTISEMENT'">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Priority:</label>
+                                            <input ng-model="form.priority" type="number" name="title" class="form-control"
+                                                placeholder="Priority for Ads">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput"
+                                                class="form-label mb-0">Description:</label>
+                                            <input ng-model="form.description" type="text" name="title"
+                                                class="form-control" placeholder="Description">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Duration:</label>
+                                            <input ng-model="form.duration" type="number" name="title"
+                                                class="form-control" placeholder="Subscription expiration time">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Product Stripe
+                                                Id:
+                                            </label>
+
+                                            <input ng-model="form.prdStripeId" type="text" name="title"
+                                                class="form-control" placeholder="Payment id">
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Product Paypal
+                                                Id:
+                                            </label>
+                                            <input ng-model="form.prdPaypalId" type="text" name="title"
+                                                class="form-control" placeholder="Payment id">
+                                        </div>
+
+                                        <div class="mb-3" ng-if="form.subscriptionCategory ==='ACCOUNT'">
+                                            <label for="formGroupExampleInput" class="form-label mb-0">Playlist
+                                                Allow:</label>
+                                            <input ng-model="form.playlistAllow" type="number" name="title"
+                                                class="form-control" placeholder="Limit playlist">
+                                        </div>
+
+                                        <div class="mb-4" ng-if="form.subscriptionCategory ==='ACCOUNT'">
+                                            <label for="formGroupExampleInput" class="form-label mb-0 font-label">Number
+                                                song in
+                                                playlist:</label>
+                                            <input ng-model="form.nip" type="number" name="title" class="form-control"
+                                                placeholder="Limit songs in playlist">
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                                        ng-click="updateSubscription()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MODAL EDIT -->
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--  CONTENT END  -->
+
+
+
+</body>
+
+</html>

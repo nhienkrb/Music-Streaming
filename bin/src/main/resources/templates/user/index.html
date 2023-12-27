@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="../../static/js/angularjs/index.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="content d-flex">
+        <div class="sidebar container-fluid">
+            <div class="row">
+                <ul class="list-group">
+                    <div class="card card-content shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <li>
+                                    <a class="list-group-item py-3 m-2" href="#!main">
+                                        <i class="mx-2 bi bi-house-heart-fill"></i> Dash board
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="list-group-item py-3 m-2" href="#!search">
+                                        <i class="mx-2 bi bi-search"></i> Search
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-content shadow">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5>Your Library</h5>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn button-control" data-bs-toggle="dropdown">
+                                            <i class="bi bi-plus-circle"></i>
+                                        </button>
+                                        <ul class="dropdown-menu drop-playlist ">
+                                            <li><a class="dropdown-item" href="#"><i
+                                                        class="bi bi-music-note-beamed"></i> Create a new Playlist</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#"><i class="bi bi-folder2-open"></i>
+                                                    Create a new folder playlist</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="playlist">
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-coupon|}">
+                                            <i class="mx-2 bi bi-ticket-perforated-fill"></i> Voucher
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-orders|}">
+                                            <i class="mx-2 bi bi-bag-heart-fill"></i> Order
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2"
+                                            th:href="@{|/admin-statistic|}">
+                                            <i class="mx-2 bi bi-bar-chart-line-fill"></i> Statistics
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-coupon|}">
+                                            <i class="mx-2 bi bi-ticket-perforated-fill"></i> Voucher
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-coupon|}">
+                                            <i class="mx-2 bi bi-ticket-perforated-fill"></i> Voucher
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-coupon|}">
+                                            <i class="mx-2 bi bi-ticket-perforated-fill"></i> Voucher
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="list-group-item playlist-child py-3 m-2" th:href="@{|/admin-coupon|}">
+                                            <i class="mx-2 bi bi-ticket-perforated-fill"></i> Voucher
+                                        </a>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <main class="bl-body p-1" ng-view>
+            
+        </main>
+    </div>
+    <footer class="player-controls col-12 fixed-bottom">
+        <div class="audio-bar row align-items-center">
+            <div class="col-md-3 col-3 player-controls-left">
+                <div class="media d-flex align-items-center">
+                    <div class="media-left">
+                        <a href="">
+                            <img class="m-2 thumbnail" src="https://img.youtube.com/vi/lkzhGTwzDjc/maxresdefault.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="media-content d-none d-md-block">
+                        <span><a href="">Song title</a></span>
+                        <h6><a href="">Name Singer</a></h6>
+                    </div>
+                    <div class="media-right d-flex">
+                        <div class="level-item">
+                            <span><button class="btn button-control" data-bs-hover="tooltip"
+                                    title="Thêm vào yêu thích!"><i class="bi bi-heart"></i></button></span>
+                        </div>
+                        <div class="level-item d-none d-md-block">
+                            
+                            <div class="dropdown">
+                                <button type="button" class="btn button-control" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu drop-playlist ">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-music-note-beamed"></i> Create
+                                            a new Playlist</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-folder2-open"></i> Create a
+                                            new folder playlist</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-9 player-controls-center d-flex flex-column align-items-center">
+                <div class="controls-bar d-flex align-items-center">
+                    <button class="btn py-0 shuffle button-control-music" data-bs-hover="tooltip"
+                        title="Bật phát ngẫu nhiên!"><i class="bi bi-shuffle"></i></button>
+
+                    <button class="btn py-0 prev button-control-music"><i class="bi bi-skip-start-circle"></i></button>
+
+                    <button class="btn py-0 resume button-control-music-play"><i class="bi bi-play-circle"></i></button>
+                    <!-- <i class="bi bi-pause-circle"></i> -->
+
+                    <button class="btn py-0 next button-control-music"><i class="bi bi-skip-end-circle"></i></button>
+
+                    <button class="btn py-0 repeat button-control-music"><i class="bi bi-repeat"></i></button>
+                    <!-- <i class="bi bi-repeat-1"></i> -->
+                </div>
+                <div class="time-line w-100 d-flex align-items-center flex-fill">
+                    <span class="current-time">current time</span>
+                    <input class="duration-bar w-75" type="range" min="0" max="100" name="" id="">
+                    <div class="line-first"></div>
+                    <div class="line-current"></div>
+                    <div class="circle"></div>
+                    <span class="duration">duration</span>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-md-block player-controls-right d-flex align-items-center">
+                <button class="btn"  data-bs-toggle="modal" data-bs-target="#MV">MV</button>
+                <button class="btn button-control"><i class="bi bi-pip"></i></button>
+                <button class="btn button-control"><i class="bi bi-mic"></i></button>
+                <button class="btn button-control"><i class="bi bi-volume-up"></i></button>
+                <input class="" type="range" min="0" max="100" name="" id="">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal thông báo  -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="popup modal-dialog">
+            <div class="popup-message modal-content">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-end">
+                        <span type="button" aria-hidden="true" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+                    </div>
+                    <p>This is the body of the modal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal trình chiếu MV -->
+    <div class="modal " id="MV">
+        <div class="popup modal-dialog">
+            <div class="popup-message  modal-content"  style="background-color: transparent;">
+                <div class="modal-body p-0">
+                    <iframe class="w-100" height="600" src="https://www.youtube.com/embed/U0Vr1zotKIo?si=1psE6T1thDFwY7vY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#myModal').modal('show');
+        });
+
+        //Playlist
+        var playlistChild = document.getElementsByClassName('playlist-child');
+        var playlist = document.getElementsByClassName('playlist');
+        if (playlistChild.length > 4) {
+            playlist.style = 'overflow-y: hidden;'
+        }
+
+        // isPlaying: false,
+        // isRandom: false,
+        // isRepeat: false,
+        // isMute: false,
+        app.controller('SearchController', ['$scope', '$location', function($scope, $location) {
+            // Watch for changes in the input field
+            $scope.$watch('searchInput', function(newVal) {
+              // Check if the input value meets your criteria
+              if (newVal && newVal.length > 0) {
+                // If the input is not empty, navigate to the desired route (search-detail)
+                $location.path('/search-detail');
+              }
+            });
+          }]);  
+          
+    </script>
+
+</body>
+
+</html>

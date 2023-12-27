@@ -1,0 +1,16 @@
+.btnnews{
+    border-radius: 30px;
+}
+.navbar-news{
+    background-color: white;
+    color: black;
+}
+.text-conten-news{
+    font-weight: bold;
+    font-size: 34px;
+    text-align: center;
+}
+.title-conten-news{
+    font-weight: bold;
+    font-size: 24px;
+}

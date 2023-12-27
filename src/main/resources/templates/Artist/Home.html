@@ -1,0 +1,92 @@
+<body>
+    <section class="container">
+        <h1>Home</h1>
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div ng-if="listSongUpcoming.length > 0" class="col-6 shadow border-1">
+                        <div class="d-flex mt-2 flex-wrap">
+                            <img ng-repeat="img in listSongUpcoming" class="w-50"
+                                style="height: 150px; object-fit: cover;" src="{{img.image.url}}" alt="">
+                        </div>
+
+                        <h4>Pitch songs to our editors</h4>
+                        <p class="font-weight-bold">Have {{listSongUpcoming.length}} need pitch</p>
+                        <div class="d-flex justify-content-end">
+                            <a style="text-decoration: none;" href="#!artist-music">
+                                <h5>Pitch songs</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div ng-repeat="item in listNews | limitTo : 8" class="col-6 bg-white border-1">
+                        <a href="./news/home/{{item.newsId}}" class="text-black">
+                            <img class="w-100" src="{{item.image.url}}" alt="">
+                            <h4 class="col-12 text-truncate">{{item.title}}</h4>
+                            <p class="text-truncate" style="width: 350px;">{{item.content}}</p>
+                            <div class="d-flex justify-content-end">
+                                <p>{{item.publishDate | date:'yyyy-MM-dd'}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Last 7 days</h4>
+                                </th>
+                                <th>{{sevenDaysAgo | date:'dd-MM' }} -> {{ currentDate | date:'dd-MM' }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h6>Listeners</h6>
+                                </td>
+                                <td>12,2023</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>Followers</h6>
+                                </td>
+                                <td><i class="bi bi-caret-up-fill"></i> {{quantityFollow}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Your top songs</h4>
+                                </th>
+                                <th>streams</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listSong | limitTo: 5" class="align-items-center">
+                                <td class="d-flex align-items-center">
+                                    <img class="rounded-4 me-3" src="{{item.song.image.url}}"
+                                        style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                                    <div>
+                                        <h6>{{item.recordingName}}</h6>
+                                        <h6 ng-repeat="a in item.song.writters">{{a.artist.artistName}}</h6>
+                                        <span ng-repeat="g in item.songGenres"
+                                            class="badge rounded-pill bg-dark me-3">{{g.genre.nameGenre}}</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">{{item.listened}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#!artist-music"><i class="bi bi-arrow-right"></i><span>See songs</span></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>

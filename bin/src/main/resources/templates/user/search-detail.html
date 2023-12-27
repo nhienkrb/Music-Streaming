@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Latest compiled JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/search-detail.css" />
+  </head>
+
+  <body ng-app="myApp">
+    <div class="card card-content shadow mb-4">
+      <div class="card-body">
+        <div class="table-responsive">
+          <!-- search -->
+          <div class="bl-search">
+            <div class="bl-search-box">
+              <div class="bl-search-hilden" style="opacity: 0"></div>
+              <div class="bl-back-next">
+                <button class="bl-back-next-btn">
+                  <svg
+                    role="img"
+                    height="16"
+                    width="16"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    data-encore-id="icon"
+                  >
+                    <path
+                      d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
+                    ></path>
+                  </svg>
+                </button>
+                <button class="bl-back-next-btn">
+                  <svg
+                    role="img"
+                    height="16"
+                    width="16"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    data-encore-id="icon"
+                  >
+                    <path
+                      d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="bl-input-search" ng-controller="SearchController">
+                <div class="bl-input-search-box">
+                  <div class="bl-input-search-f">
+                    <form role="search">
+                      <input
+                        class="bl-input-search-f-in"
+                        maxlength="800"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        placeholder="What do you want to listen to?"
+                        data-testid="search-input"
+                        data-encore-id="type"
+                        value=""
+                        style="color: rgb(0, 0, 0)"
+                      />
+                    </form>
+                    <div class="bl-input-search-f-icon">
+                      <span class="H6jh9Xd7DNOq3NsLDmCB"
+                        ><svg
+                          role="img"
+                          height="16"
+                          width="16"
+                          aria-hidden="true"
+                          class="Svg-sc-ytk21e-0 haNxPq mOLTJ2mxkzHJj6Y9_na_"
+                          viewBox="0 0 16 16"
+                          data-encore-id="icon"
+                        >
+                          <path
+                            d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z"
+                          ></path></svg
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bl-install-ring-account">
+                <div class="bl-install-ring-account-hilden"></div>
+                <a href="">
+                  <svg
+                    role="img"
+                    height="16"
+                    width="16"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    data-encore-id="icon"
+                    class="Svg-sc-ytk21e-0 haNxPq"
+                  >
+                    <path
+                      d="M4.995 8.745a.75.75 0 0 1 1.06 0L7.25 9.939V4a.75.75 0 0 1 1.5 0v5.94l1.195-1.195a.75.75 0 1 1 1.06 1.06L8 12.811l-.528-.528a.945.945 0 0 1-.005-.005L4.995 9.805a.75.75 0 0 1 0-1.06z"
+                    ></path>
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="Type__TypeElement-sc-goli3j-0 eoWRdH ellipsis-one-line"
+                    data-encore-id="type"
+                    >Install App</span
+                  >
+                </a>
+                <button class="bl-install-ring-account-btn">
+                  <svg
+                    role="img"
+                    height="16"
+                    width="16"
+                    aria-hidden="true"
+                    class="Svg-sc-ytk21e-0 haNxPq t93PZphItuM19kPhX7tC"
+                    viewBox="0 0 16 16"
+                    data-encore-id="icon"
+                  >
+                    <path
+                      d="M8 1.5a4 4 0 0 0-4 4v3.27a.75.75 0 0 1-.1.373L2.255 12h11.49L12.1 9.142a.75.75 0 0 1-.1-.374V5.5a4 4 0 0 0-4-4zm-5.5 4a5.5 5.5 0 0 1 11 0v3.067l2.193 3.809a.75.75 0 0 1-.65 1.124H10.5a2.5 2.5 0 0 1-5 0H.957a.75.75 0 0 1-.65-1.124L2.5 8.569V5.5zm4.5 8a1 1 0 1 0 2 0H7z"
+                    ></path>
+                  </svg>
+                </button>
+                <button class="bl-install-ring-account-btn">
+                  <figure>
+                    <svg
+                      role="img"
+                      height="16"
+                      width="16"
+                      aria-hidden="true"
+                      class="Svg-sc-ytk21e-0 haNxPq t93PZphItuM19kPhX7tC"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M6.233.371a4.388 4.388 0 0 1 5.002 1.052c.421.459.713.992.904 1.554.143.421.263 1.173.22 1.894-.078 1.322-.638 2.408-1.399 3.316l-.127.152a.75.75 0 0 0 .201 1.13l2.209 1.275a4.75 4.75 0 0 1 2.375 4.114V16H.382v-1.143a4.75 4.75 0 0 1 2.375-4.113l2.209-1.275a.75.75 0 0 0 .201-1.13l-.126-.152c-.761-.908-1.322-1.994-1.4-3.316-.043-.721.077-1.473.22-1.894a4.346 4.346 0 0 1 .904-1.554c.411-.448.91-.807 1.468-1.052zM8 1.5a2.888 2.888 0 0 0-2.13.937 2.85 2.85 0 0 0-.588 1.022c-.077.226-.175.783-.143 1.323.054.921.44 1.712 1.051 2.442l.002.001.127.153a2.25 2.25 0 0 1-.603 3.39l-2.209 1.275A3.25 3.25 0 0 0 1.902 14.5h12.196a3.25 3.25 0 0 0-1.605-2.457l-2.209-1.275a2.25 2.25 0 0 1-.603-3.39l.127-.153.002-.001c.612-.73.997-1.52 1.052-2.442.032-.54-.067-1.097-.144-1.323a2.85 2.85 0 0 0-.588-1.022A2.888 2.888 0 0 0 8 1.5z"
+                      ></path>
+                    </svg>
+                  </figure>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- end search -->
+          <!-- option search -->
+          <div class="bl-option-search">
+            <div class="bl-option-search-box">
+              <a href=""><button>All</button></a>
+              <a href=""><button>Artists</button></a>
+              <a href=""><button>Playlists</button></a>
+              <a href=""><button>Songs</button></a>
+              <a href=""><button>Albums</button></a>
+              <a href=""><button>Podcasts & Shows</button></a>
+              <a href=""><button>Profiles</button></a>
+            </div>
+          </div>
+          <!-- end option search -->
+          <!-- Top result & song -->
+          <div class="container-fluid bl-t-s">
+            <div>
+              <div class="row">
+                <div class="bl-r col-sm-6">
+                  <div class="text-title mb-3">
+                    <h3>Top result</h3>
+                  </div>
+                  <div class="row">
+                    <div class="bl-t-s-cart card play-list">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-4">
+                        <div class="card-img">
+                          <img
+                            src="../../static/img/searchdetail/actist2.png"
+                            class="circle-img card-img-top"
+                            alt="Sunset Over the Sea"
+                          />
+                          <div class="icon">
+                            <div class="icon-play">
+                              <i class="bi bi-play-circle"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-play-list">
+                          <p class="card-text">Artist Name</p>
+                          <p class="card-text">Artist</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bl-s col-sm-6">
+                  <div class="text-title mb-3">
+                    <h3>Songs</h3>
+                  </div>
+                  <div class="row">
+                    <div class="bl-t-s-cart card play-list">
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-12 mt-1">
+                            <div class="card-img">
+                              <img
+                                style="height: 64px; width: 64px"
+                                src="../../static/img/searchdetail/ab1.png"
+                                class="card-img-top"
+                                alt="Sunset Over the Sea"
+                              />
+                              <span class="card-text">Artist</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 mt-1">
+                            <div class="card-img">
+                              <img
+                                style="height: 64px; width: 64px"
+                                src="../../static/img/searchdetail/ab1.png"
+                                class="card-img-top"
+                                alt="Sunset Over the Sea"
+                              />
+                              <span class="card-text">Artist</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 mt-1">
+                            <div class="card-img">
+                              <img
+                                style="height: 64px; width: 64px"
+                                src="../../static/img/searchdetail/ab1.png"
+                                class="card-img-top"
+                                alt="Sunset Over the Sea"
+                              />
+                              <span class="card-text">Artist</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 mt-1">
+                            <div class="card-img">
+                              <img
+                                style="height: 64px; width: 64px"
+                                src="../../static/img/searchdetail/ab1.png"
+                                class="card-img-top"
+                                alt="Sunset Over the Sea"
+                              />
+                              <span class="card-text">Artist</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 mt-1">
+                            <div class="card-img">
+                              <img
+                                style="height: 64px; width: 64px"
+                                src="../../static/img/searchdetail/ab1.png"
+                                class="card-img-top"
+                                alt="Sunset Over the Sea"
+                              />
+                              <span class="card-text">Artist</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Top result & song -->
+          <!-- Artist -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Artist</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist2.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist3.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist4.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist5.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist6.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/actist7.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Artist -->
+          <!-- Albums -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Albums</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab1.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab2.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab3.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab4.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab7.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ab6.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Albums -->
+          <!-- Playlist -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Playlists</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl1.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl7.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl3.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl4.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl5.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pl6.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Playlist -->
+          <!-- Posdcasts -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Posdcasts</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc1.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc3.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc4.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc5.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc6.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pc7.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Posdcasts -->
+          <!-- Episodes -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Episodes</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep1.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep3.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep4.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep5.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep6.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/ep7.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Episodes -->
+          <!-- Profiles -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Profiles</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr1.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr3.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr4.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr5.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr6.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/pr2.png"
+                      class="circle-img card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Profiles -->
+          <!-- Genres & Moods -->
+          <div class="container-fluid mt-5">
+            <div class="text-title mb-3">
+              <h3>Genres & Moods</h3>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="card play-list">
+                  <div class="card-img">
+                    <img
+                      src="../../static/img/searchdetail/gm.png"
+                      class="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div class="icon">
+                      <div class="icon-play">
+                        <i class="bi bi-play-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-play-list">
+                    <p class="card-text">Artist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Genres & Moods -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

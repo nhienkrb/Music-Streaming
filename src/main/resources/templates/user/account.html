@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhymthwave</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/css/accountcss.css">
+    <script src="../../static/js/angularjs/user/account.js"></script>
+    <link rel="stylesheet" href="../../static/css/content.css">
+
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+    <script src="../../static/js/jscustom/toasts.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="accountCtrl">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../../static/img/logo.png" alt="" width="117">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-2">
+                        <a class="nav-link me-2" href="/subscription">Premium</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link" href="#">Hỗ trợ </a>
+                    </li>
+                    <li class="nav-item dropdown ms-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> Hồ sơ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a href="/api/v1/auth/logout" class="dropdown-item" ng-click="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="menu">
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-sm-8 plan me-5 ms-3" data-page="page-0">
+                    <div class="frist mb-5">
+                        <div class="logo mt-2">
+                            <img src="../../static/img/logo.png" alt="" width="117">
+                        </div>
+                        <p>Your plan</p>
+                        <h2 class="text mb-5">Rhymthwave Free</h2>
+                        <button type="button" class="btn btn-outline-secondary mb-3 mt-5"> <a href="/subscription"
+                                style="text-decoration: none;">Explore plans</a></button>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 pre" data-page="page-0">
+                    <i class="fas fa-gem"></i>
+                    <a href="/subscription" style="text-decoration: none;color: white;">
+                        <p>Join Premium</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="account mt-5">
+                <div class="title ms-3 mt-3">
+                    <h4>Account</h4>
+                </div>
+
+                <div class="list-chose" data-page="page-0">
+                    <div class="chose">
+                        <div class="logo-conten ms-3 "><i class="bi bi-globe-central-south-asia"></i></div>
+                        <div class="conten-text ms-3 mt-3">
+                            <p>Manege your plan</p>
+                        </div>
+                        <div class="in"><i class="bi bi-chevron-right"></i></div>
+                    </div>
+                </div>
+                <div class="list-chose" data-page="page-1">
+                    <div class="chose">
+                        <div class="logo-conten ms-3 "><i class="bi bi-brush-fill"></i></div>
+                        <div class="conten-text ms-3 mt-3">
+                            <p>Edit profile</p>
+                        </div>
+                        <div class="in"><i class="bi bi-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account mt-5">
+                <div class="title ms-3 mt-3">
+                    <h4>Security and privacy</h4>
+                </div>
+
+                <div class="list-chose" data-page="page-6">
+                    <div class="chose">
+                        <div class="logo-conten ms-3 "><i class="bi bi-file-lock-fill"></i></div>
+                        <div class="conten-text ms-3 mt-3">
+                            <p>Change password</p>
+                        </div>
+                        <div class="in"><i class="bi bi-chevron-right"></i></div>
+                    </div>
+                </div>
+
+                <div data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    <div class="chose">
+                        <div class="logo-conten ms-3 "><i class="bi bi-box-arrow-right"></i></div>
+                        <div class="conten-text ms-3 mt-3">
+                            <p>Sign out everywhere</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-delete">
+                    <div>
+
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="icon-close-bodyModal">
+                        <i class="bi bi-x-circle"></i>
+                    </div>
+                    <div style="text-align: center;" class="m-2">
+                        <h5> Are you sure ? </h5>
+                    </div>
+
+                </div>
+                <div class="modal-footer btn-event-deleteModal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" ng-click="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giao diện riêng lẻ cho từng mục -->
+    <div class="page" id="page-0">
+        <div class="container manegeplan mt-5 mb-5">
+            <button class="btn-back" onclick="goBack()"><i class="bi bi-chevron-left"></i></button>
+            <h1 class="text-chose mt-5 mb-5">Manage your plan</h1>
+            <div class="package mt-5">
+                <div class="card shadow border-2 mt-3">
+                    <div class="card-header">
+                        <h1 class=" mt-5 mb-5">Rhymthwave Free</h1>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-check-lg"></i>1 Free account</h5>
+                        <p class="card-text"><a class=" text-dark" href="#">Learn more about your plan</a></p>
+                        <hr>
+                        <h3>Free</h3>
+                    </div>
+                </div>
+                <button type="button" class="btn-outline-dark btn-rounded mt-4 " data-mdb-ripple-color="dark"
+                    style="border-radius: 10px;"><a href="/subscription" style="text-decoration: none;">Join
+                        Premium</a></button>
+            </div>
+        </div>
+
+        <!-- Thêm nội dung và thành phần HTML khác cho trang Manage Plan tại đây -->
+
+        </div>
+    </div>
+
+    <div class="page" id="page-1">
+        <div class="container edit-profile mt-5 mb-5">
+            <button class="btn-back" onclick="goBack()"><i class="bi bi-chevron-left"></i></button>
+            <h1 class="text-chose mt-5 mb-5">Edit profile</h1>
+            <form ng-submit="updateProfile()">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input class="form-control" id="username" ng-model="newusername">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" ng-model="email" ng-readonly="true">
+                </div>
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select id="gender" class="form-select" ng-model="newgender"
+                        ng-options="gender.id as gender.name for gender in genders"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="birthdate" class="form-label">Date of birth</label>
+                    <input class="form-control" id="birthday" ng-model="newbirthday" ng-pattern="/^\d{4}-\d{2}-\d{2}$/"
+                        required ng-model-options="{ allowInvalid: true }">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country or region</label>
+                    <input type="text" class="form-control" id="country" placeholder="Nhập quốc gia"
+                        ng-model="newcountry">
+                </div>
+
+                <button type="submit" class="btn btn-outline-dark ms-3" style="color: white;">Save profile</button>
+                <button class="btn btn-outline-dark" style="color: white;">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page" id="page-6">
+        <div class="container change-pass mt-5 mb-5">
+            <button class="btn-back" onclick="goBack()"><i class="bi bi-chevron-left"></i></button>
+            <h1 class="text-chose mt-5 mb-5">Change your password</h1>
+            <form ng-submit="changepassword()">
+                <div class="mb-3">
+                    <label for="currentPassword" class="form-label">Current Password</label>
+                    <input type="password" class="form-control" id="currentPassword" ng-model="passwordCurrent">
+                </div>
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="newPassword" ng-model="newpass">
+                </div>
+                <div class="mb-3">
+                    <label for="repeatPassword" class="form-label">Repeat New Password</label>
+                    <input type="password" class="form-control" id="repeatPassword" ng-model="confirmpass">
+                </div>
+                <button type="submit" class="btn btn-outline-dark ms-3" style="color: white;">Set new password</button>
+                <button class="btn btn-outline-dark" style="color: white;">Cancel</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-dark-custom text-white mt-5">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-google"></i>
+                </a>
+                <a href="#" class="me-4 text-reset">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <img src="../../static/img/logo.png" alt="" width="117">
+                        </h6>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Công ty
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Giới thiệu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Việc làm</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">For the Record</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Cộng đồng
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Dành cho các Nghệ sĩ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà phát triển</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Quảng cáo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà đầu tư </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Nhà cung cấp</a>
+                        </p>
+                    </div>
+
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">liên kết hữu ích</h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Hỗ trợ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Trình phát web</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Ứng dụng di động miễn phí</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+    </footer>
+    <!-- Footer -->
+
+
+    <script>
+        // Ẩn tất cả các trang giao diện riêng lẻ khi trang được tải lên
+        document.querySelectorAll('.page').forEach(page => {
+            page.style.display = 'none';
+        });
+
+        // Hiển thị trang danh sách ban đầu
+        document.querySelector('.menu').style.display = 'block';
+
+        // Hàm quay lại
+        function goBack() {
+            // Ẩn tất cả các trang giao diện riêng lẻ
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            // Hiển thị trang danh sách
+            document.querySelector('.menu').style.display = 'block';
+        }
+
+        // Xử lý sự kiện khi một mục trong danh sách được click
+        const listItems = document.querySelectorAll('.list-chose');
+        listItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                // Ẩn tất cả các trang giao diện
+                document.querySelectorAll('.page').forEach(page => {
+                    page.style.display = 'none';
+                });
+
+                // Hiển thị trang giao diện tương ứng
+                document.querySelector('.menu').style.display = 'none';
+                const pageId = item.getAttribute('data-page');
+                document.getElementById(pageId).style.display = 'block';
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

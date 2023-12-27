@@ -1,0 +1,135 @@
+# schema.graphqls
+
+#import "./Access.graphqls"
+#import "./Account.graphqls"
+#import "./Advertisement.graphqls"
+#import "./AdvertisementStatistics.graphqls"
+#import "./Album.graphqls"
+#import "./Artist.graphqls"
+#import "./Author.graphqls"
+#import "./Category.graphqls"
+#import "./Country.graphqls"
+#import "./Culture.graphqls"
+#import "./Episode.graphqls"
+#import "./Follow.graphqls"
+#import "./Genre.graphqls"
+#import "./Image.graphqls"
+#import "./Instrument.graphqls"
+#import "./Monitor.graphqls"
+#import "./Mood.graphqls"
+#import "./News.graphqls"
+#import "./Notification.graphqls"
+#import "./Playlist_Podcast.graphqls"
+#import "./Playlist.graphqls"
+#import "./PlaylistRecord.graphqls"
+#import "./Podcast.graphqls"
+#import "./Recording.graphqls"
+#import "./Report.graphqls"
+#import "./Role.graphqls"
+#import "./Slide.graphqls"
+#import "./Song.graphqls"
+#import "./SongGenre.graphqls"
+#import "./SongStyle.graphqls"
+#import "./Subscription.graphqls"
+#import "./Tag.graphqls"
+#import "./Track.graphqls"
+#import "./UserType.graphqls"
+#import "./Wishlist.graphqls"
+#import "./Writter.graphqls"
+
+type Query {
+ #NgoNhien
+ findOneArtist(emailArtist: String): Artist
+ getAllAccountByRole(role: String):[Account]
+ getAllIsVerifyArtist:[Artist]
+ totalSubscriptionsUsing:[Subscription]
+ getAllMood:[Mood]
+ getAllInstrument:[Instrument]
+ getAllSongStyle:[SongStyle]
+ getAllCulture:[Culture] 
+ getAllGener:[Genre]
+ getAllCountry:[Country]
+ getAllTag:[Tag]
+ getAllPlaylist:[Playlist]
+ getAllPodcastPlaylist:[Playlist]
+ getPlayListById(idPlaylist: Int):Playlist
+ getAllRecord: [Recording]
+ getAllEpisode: [Episode]
+ findAllAdvertisementPendingAndRejectByStatus:[AdvertisementStatistics]
+ findAccountByEmail(id: String): Account
+ getAllRecordTop100:[Recording]
+ getAllEpisodeTop100: [Episode]
+ top10Trending(day: Int):[Recording]
+ #VanBao
+ recordingById(recordingId: ID!):Recording
+ 
+ episodeById(episodeId: ID!):Episode
+ 
+ playlistById(playlistId: ID!):Playlist
+ 
+ myListFollow(email: String!): [Follow]
+ 
+ recommendedListRecording: [Recording!]
+ 
+ myWishlist(email: String!): [Wishlist]
+ 
+ findAllAdsAudio: [Advertisement]
+ 
+ accountByUsername(username: String!): Account
+ 
+ artistById(artistId: Int!): Artist
+ 
+ findYourFollow(roleId: Int!, email: String!): [Follow]
+  
+ mySongProject(artistid: Int!): [Recording]
+ 
+ findPublicPlaylist(userTypeId: Int!, isPublic: Boolean): [Playlist]
+ 
+ findPodcastByEmail(email:String!): [Podcast]
+ 
+ getListSongReleased(email:String!): [Recording]
+ 
+ getListRecordByFavorite(genre: String, culture:String, instrument: String, mood:String, songstyle: String, versions: String): [Recording]
+ 
+ findListPopularByArtist(artistId: Int!): [Recording]
+ 
+ findListArtistFanLiked(accountFan: [Int], idRole: Int, country: String): [Author]
+ 
+ findPlaylistFeaturingByArtist(artistId: Int, roleId: [Int]): [Playlist]
+ 
+ findPlaylistDiscoverByArtist(artistId: Int, roleId: [Int]): [Playlist]
+
+ findRecordingAppearOnByArtist(artistId: Int): [Recording]
+
+ getNewListened(recordingId: Int, duration: Int): [Monitor]
+ 
+ getNewListenedEpisode(episodeId: Int, duration: Int): [MonitorEpisode]
+
+ top50ArtistByListener(country: String) : [Artist]
+ 
+ top50ArtistByFollow(country: String): [Artist]
+ 
+ top50SongByAreaListened(country: String) : [Recording]
+ 
+ top50SongByDate(country: String): [Recording]
+ 
+ findTopNewPlaylist: [Playlist]
+
+ findTopRecentPlaylist(genre: [String], culture:String, instrument: String, mood:String, songstyle: String, versions: String): [Playlist]
+
+ #Nam
+ findAlbum(id: ID!): Album
+ findAlByArtist(idArist: ID!): Artist
+ findSongPl(songName: String!): [Recording]
+ findRecordingBySongId(songId: Int!): Recording
+
+ 
+ #Khoa
+ findAllReport : [Report]
+ findAllReportStatusTrue : [Report]
+
+}
+
+type Mutation{
+  lockAccount(id: String!, block:Boolean):Boolean
+}

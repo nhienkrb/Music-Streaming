@@ -1,0 +1,196 @@
+<body>
+    <div class="modal fade" id="recordDetail">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" ng-click="closeDetail()" class="btn-close btn-close-record-detail" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class=" my-3">
+                                    <label for="">Record name</label>
+                                    <input ng-model="record.recordingName" class="form-control" type="text" name=""
+                                        id="" placeholder="Name">
+                                </div>
+                                <div class="d-flex my-3">
+                                    <audio class="w-100 audio-record" controls src="{{record.audioFileUrl}}"></audio>
+                                    <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#audio-change"><i class="bi bi-recycle"></i></button>
+                                </div>
+                                <div id="audio-change" class="collapse">
+                                    <div ng-show="record.song == null" class="d-flex justify-content-between my-3">
+                                        <div>
+                                            <label for="">File lyrics</label>
+                                            <input ng-click="changeFileRecord('change-lyrics')" class="form-control"
+                                                type="file" name="" id="change-lyrics" accept=".lrc" >
+                                        </div>
+                                        <div>
+                                            <label for="">File record</label>
+                                            <input ng-click="changeFileRecord('change-record')" class="form-control"
+                                                type="file" id="change-record" accept="audio/*" placeholder="record">
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class=" my-3">
+                                    <label for="">ID MV</label>
+                                    <input ng-model="record.idMv" class="form-control" type="text" name="" id=""
+                                        placeholder="id MV">
+                                </div>
+                                <div class="d-flex my-1 my-3">
+                                    <input ng-model="record.produce" class="form-control me-2" type="text" name=""
+                                        id="" placeholder="Proceduce">
+                                    <input ng-model="record.studio" class="form-control " type="text" name="" id=""
+                                        placeholder="Studio">
+                                </div>
+                                <div class="question mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Version</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#version">
+                                            <i class="bi bi-arrow-repeat"></i>
+                                        </button>
+                                    </div>
+                                    <div id="version" class="collapse m-2">
+                                        <input ng-model="record.versions" class="form-check-input" id="rdo-cover"
+                                            type="radio" value="Cover" name="version">
+                                        <label class="me-3" for="rdo-cover">Cover</label>
+
+                                        <input ng-model="record.versions" class="form-check-input" id="rdo-remix"
+                                            type="radio" value="Remix" name="version">
+                                        <label class="me-3" for="rdo-remix">Remix</label>
+
+                                        <input ng-model="record.versions" class="form-check-input" id="rdo-official"
+                                            type="radio" value="Official" name="version">
+                                        <label class="me-3" for="rdo-official">Official</label>
+
+                                        <input ng-model="record.versions" class="form-check-input" id="rdo-instrumental"
+                                            type="radio" value="Instrumental" name="version">
+                                        <label class="me-3" for="rdo-instrumental">Instrumental</label>
+                                    </div>
+                                    <span id="tag-version" class="badge bg-primary">{{record.versions}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-5">
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Genre</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#genre"><i class="bi bi-plus-circle"></i></button>
+                                    </div>
+                                    <div id="genre" class="collapse">
+                                        <select ng-change="updateRecordGenre(tmpGenre)" class="form-control w-100"
+                                            ng-model="tmpGenre">
+                                            <option ng-repeat="item in genre" value="{{item.id}}">{{item.nameGenre}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <span ng-dblclick="removeRecordGenre($event)"
+                                        ng-repeat="item in songGenreRecord track by $index"
+                                        class="badge bg-primary me-2">{{item.genre.nameGenre}}</span>
+                                </div>
+                                <!-- List music cultures -->
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Cultures</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#culture"><i class="bi bi-plus-circle"></i></button>
+                                    </div>
+                                    <div id="culture" class="collapse">
+                                        <select ng-change="addTag('culture',tmpCulture)" ng-model="tmpCulture"
+                                            class="form-control w-100">
+                                            <option ng-repeat="item in culture" value="{{item.cultureName}}">
+                                                {{item.cultureName}}</option>
+                                        </select>
+                                    </div>
+                                    <span ng-dblclick="removeTag('culture',$event)"
+                                        ng-repeat="culture in record.culture.split(' ') track by $index"
+                                        class="me-2 badge bg-success">{{culture}}</span>
+                                    <div class="">
+
+                                    </div>
+                                </div>
+
+                                <!-- List mood -->
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Moods</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse" data-bs-target="#mood"><i
+                                                class="bi bi-plus-circle"></i></button>
+
+                                    </div>
+                                    <div id="mood" class="collapse">
+                                        <select ng-change="addTag('mood',tmpMood)" ng-model="tmpMood"
+                                            class="form-control w-100">
+                                            <option ng-repeat="item in mood" value="{{item.moodname}}">{{item.moodname}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <span ng-dblclick="removeTag('mood',$event)"
+                                        ng-repeat="mood in record.mood.split(' ') track by $index"
+                                        class="me-2 badge bg-primary">{{mood}}</span>
+                                    <div class="">
+
+                                    </div>
+                                </div>
+
+                                <!-- List song styles -->
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Song styles</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#songstyle"><i class="bi bi-plus-circle"></i></button>
+                                    </div>
+                                    <div id="songstyle" class="collapse">
+                                        <select ng-change="addTag('songStyle',tmpSongStyle)" ng-model="tmpSongStyle"
+                                            class="form-control w-100">
+                                            <option ng-repeat="item in songStyle" value="{{item.songStyleName}}">
+                                                {{item.songStyleName}}</option>
+                                        </select>
+                                    </div>
+                                    <span ng-dblclick="removeTag('songStyle',$event)"
+                                        ng-repeat="songStyle in record.songStyle.split(' ') track by $index"
+                                        class="me-2 badge bg-primary">{{songStyle}}</span>
+                                    <div class="">
+
+                                    </div>
+                                </div>
+
+                                <!-- List instruments -->
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <h6>Instruments</h6>
+                                        <button class="btn border-0" data-bs-toggle="collapse"
+                                            data-bs-target="#instrument"><i class="bi bi-plus-circle"></i></button>
+                                    </div>
+                                    <div id="instrument" class="collapse">
+                                        <select ng-change="addTag('instrument',tmpInstrument)" ng-model="tmpInstrument"
+                                            class="form-control w-100">
+                                            <option ng-repeat="item in instrument" value="{{item.instrumentName}}">
+                                                {{item.instrumentName}}</option>
+                                        </select>
+                                    </div>
+                                    <span ng-dblclick="removeTag('instrument',$event)"
+                                        ng-repeat="instrument in record.instrument.split(' ') track by $index"
+                                        class="me-2 badge bg-primary">{{instrument}}</span>
+                                    <div class="">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button ng-show="record.song == null" type="button" class="btn btn-outline-danger" ng-click="MoveRecordToGarbage()">Remove</button>
+                    <button class="btn btn-outline-success" ng-click="SaveRecord()" id="save-record">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

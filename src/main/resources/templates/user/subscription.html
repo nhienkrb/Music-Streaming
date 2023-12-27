@@ -1,0 +1,194 @@
+<body>
+    <div class="container-fluid p-0">
+        <div class="pr-banner container-fluid">
+            <div class="pr-banner-content col-sm-12">
+                <h1 class="pr-banner-content-h1">GET PREMIUM FREE FOR 1 MONTH</h1>
+                <div class="pr-banner-content-h2">
+                    <h2>Just 59,000₫/month after. Cancel anytime.</h2>
+                </div>
+                <div class="pr-banner-content-btn">
+                    <button>Get started</button>
+                    <button>View Plans</button>
+                </div>
+                <p class="pr-banner-content-p"><a href="">Terms and conditions apply</a>. 1 month free not available for users who have already tried Premium.</p>
+            </div>
+        </div>
+        <div class="pr-why">
+            <div class="row">
+                <div class="pr-why-h2 col-sm-12">
+                    <h2>Why go Premium?</h2>
+                </div>
+                <div class="pr-why-column row">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <span class="pr-why-column-img dl-music"></span>
+                        <p><b>Download music.</b></p>
+                        <p>Listen anywhere.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <span class="pr-why-column-img play-song"></span>
+                        <p><b>Ad-free music listening.</b></p>
+                        <p>Enjoy uninterrupted music.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <span class="pr-why-column-img ad-free"></span>
+                        <p><b>Play songs in any order.</b></p>
+                        <p>Any song, any order.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <span class="pr-why-column-img hight-song"></span>
+                        <p><b>Higher sound quality.</b></p>
+                        <p>Feel the sound.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pr-pick">
+            <div class="pr-pick-header">
+                <div class="pr-pick-h2">
+                    <h2>Pick your Premium</h2>
+                </div>
+                <div class="pr-pick-h3">
+                    <h3>Listen without limits on your phone, speaker, and other devices.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-show="item.subscriptionId !==1 && item.subscriptionId !==5 " ng-repeat="item in listSubscription" class="pr-pick-column col-md-4 col-sm-4 mb-3">
+                    <div class="card card-content shadow">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="pr-pick-columnp-tt1">One-time payment</div>
+                                <h3 class="card-title">{{item.subscriptionType}}</h3>
+                                <p class="card-text">From {{item.price}}$/{{item.duration}} days</p>
+                                <p class="card-text">1 account on only</p>
+                                <p class="card-text">{{item.description}}</p>
+                            </div>
+                            
+                            <div>
+                                <hr>
+                                <a href="#!/premium/{{item.subscriptionId}}" class="pr-pick-btn justify-content-center text-decoration-none">Get Started</a>
+                                <p class="pr-pick-column-term"><a href="">Terms and conditions apply.</a></p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-white text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 link-secondary">
+                <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+        
+            <!-- Section: Links  -->
+            <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-gem me-3 text-secondary"></i>Company name
+                    </h6>
+                    <p>
+                    Here you can use rows and columns to organize your footer content. Lorem ipsum
+                    dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    Products
+                    </h6>
+                    <p>
+                    <a href="#!" class="text-reset">Angular</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">React</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">Vue</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">Laravel</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    Useful links
+                    </h6>
+                    <p>
+                    <a href="#!" class="text-reset">Pricing</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">Settings</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">Orders</a>
+                    </p>
+                    <p>
+                    <a href="#!" class="text-reset">Help</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
+                    <p>
+                    <i class="fas fa-envelope me-3 text-secondary"></i>
+                    info@example.com
+                    </p>
+                    <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+            </section>
+            <!-- Section: Links  -->
+        
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="#">Rhymthwave</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+</body>

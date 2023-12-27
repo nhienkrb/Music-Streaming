@@ -1,0 +1,40 @@
+<body ng-controller="SearchController">
+    <div class="card card-content shadow mb-4" style="background: linear-gradient(to bottom, #237958, #413d3d);">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="bl-search">
+                    <div class="bl-search-box"></div>
+                    </div>
+                </div>
+                <!-- love list -->
+                <div class="container-fluid mt-5">
+                    <div class="text-title mb-3">
+                        <h1 style="font-size: 80px;">Podcast</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2" ng-repeat="podcast in listPodcast">
+                <a href="#!show/{{podcast.podcastId}}">
+                    <div class="card play-list">
+                        <div class="card-img">
+                            <img ng-src="{{ podcast.image.url }}" class="card-img-top"  alt="Sunset Over the Sea" style="height: 200px; object-fit: cover;" />
+                            <div class="icon">
+                                <div class="icon-play">
+                                    <i class="bi bi-play-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-play-list">
+                            <p class="card-text">{{ podcast.podcastName | limitTo : 10 }}...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</body>

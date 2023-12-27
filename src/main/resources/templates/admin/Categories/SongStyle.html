@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   <!-- CONTENT START  -->
+   <div class="content-wrapper">
+
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+
+                <!-- START Alert  -->
+
+                <div ng-show="success" class="alert alert-success alert-dismissible fade show " role="alert">
+                  <div class="alert-ok">
+                  <strong>Successfully!</strong> Create a Country
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ng-click="closeAlert()"></button>
+               </div>
+            </div>
+               
+             <!-- END Alert  -->
+
+            <div class="cardperShadow shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"> Create The Song Style
+                  </h6>
+               </div>
+
+               <div class="card-bodyPerShadow">        
+                  <form name="validate" novalidate>
+                  <div class="mb-3 row">
+                     <label class="col-sm-2 col-form-label">Name Song Style:</label>
+                     <div class="col-sm-10">
+                        <input  required ng-minlength="2"  ng-maxlength="55" name="song" ng-model="form.songStyleName" type="text" class="form-control">
+                        <div ng-messages="validate.song.$touched && validate.song.$error ">
+                           <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                           </div>
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                     <div class="col-sm-2"></div>
+                     <div class="col-sm-10">
+                        <div class="event-createCountry">
+                           <button class="btn btn-success" ng-disabled="!validate.$valid" ng-click="create()">Save</button>
+                           <button class="btn btn-success" ng-disabled="!validate.$valid" ng-click="update()">Update</button>
+                           <button class="btn btn-success" ng-disabled="!validate.$valid" ng-click="delete(form.songStyleId)">Delete</button>                          
+                          
+                        </div>
+                     </div>
+                  </div>
+               </form>
+               </div>
+
+            </div>
+
+
+
+            <div class="cardperShadow shadow mb-4">
+               <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary"> Song Style Table
+                  </h6>
+               </div>
+               <div class="card-bodyPerShadow">
+
+                  <div id="dataTable_wrapper">
+                     <div class="row">
+                        <div class="row">
+                           <div class="col-sm-6 text-left"></div>
+                           <div class="col-sm-6 text-right">
+                              <div class="dt-buttons btn-group mb-2">
+                                 <button class="btn btn-secondary buttons-export" ng-click="exportToExcel()" type="button"><i class="bi bi-file-earmark-spreadsheet-fill" style="margin-right: 5px;"></i><span>Excel</span>
+
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-sm-12 ">
+                              <table class="table table-bordered ">
+                                 <thead style="border-bottom: 2px solid rgb(212, 212, 212); cursor: pointer;">
+                                    <tr>
+                                       <th scope="col" style="width: 145.333px;" ng-click="sortData('songStyleId')">
+                                          ID 
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('songStyleId')"></i></a>
+                                      </th>
+                                       <th scope="col" style="width: 218.333px;" ng-click="sortData('songStyleName')">Genre  
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('songStyleName')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('createBy')">Create By
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('createBy')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('createDate')">Create Date
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('createDate')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('modifiedBy')">Modified By
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('modifiedBy')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;"  ng-click="sortData('modifiDate')">Modified Date
+                                          <a class="fs-6" href=""  ><i  ng-class="getSortClass('modifiDate')"></i></a>
+                                       </th>
+                                       <th scope="col" style="width: 218.333px;">action</th>
+                                    </tr>
+                                 </thead>
+                                 <tfoot>
+                                    <tr>
+                                       <th scope="col" rowspan="1" colspan="1">Id</th>
+                                       <th scope="col" rowspan="1" colspan="1">Song Style</th>
+                                       <th scope="col" style="width: 218.333px;">Create By</th>
+                                       <th scope="col" style="width: 218.333px;">Create Date</th>
+                                       <th scope="col" style="width: 218.333px;">Modified By</th>
+                                       <th scope="col" style="width: 218.333px;">Modified Date</th>
+                                       <th scope="col" style="width: 218.333px;">Action</th>
+                                    </tr>
+                                 </tfoot>
+                                 <tbody>
+
+                                    <tr class="odd"  dir-paginate=" songStyle in itemCountries | itemsPerPage: 12 | orderBy: sortColumn:revertSort">
+                                       <td class="sorting_1">{{songStyle.songStyleId}}</td>
+                                       <td>{{songStyle.songStyleName}}</td>
+                                       <td>{{songStyle.createBy}}</td>
+                                       <td>{{songStyle.createDate | date:'dd-MM-yyyy HH:mm:ss '}}</td>
+                                       <td>{{songStyle.modifiedBy ? songStyle.modifiedBy : "Null" }}</td>
+                                       <td>{{songStyle.modifiDate ? songStyle.modifiDate : "Null" | date:'dd-MM-yyyy HH:mm:ss '}}</td>
+                                       <td><button class="btn btn-primary" ng-click="edit(songStyle.songStyleId)">Edit</button></td>
+                                    </tr>
+                                
+                                
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                           <div class="d-flex justify-content-end">
+                                 <dir-pagination-controls class="dir-pagination-controls"></dir-pagination-controls>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+      </section>
+   </div>
+   <!--  CONTENT END  -->
+   </div>
+   </div>
+
+</body>
+
+</html>

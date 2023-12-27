@@ -1,0 +1,609 @@
+<body ng-controller="marketingCtrl">
+    <div class="container mt-5">
+        <h1>Marketing</h1>
+        <div class="d-flex justify-content-between">
+            <div class="input-group w-25">
+                <span class="input-group-text "><i class="bi bi-search"></i></span>
+                <input type="text" ng-model="searchAd" class="form-control" placeholder="search">
+            </div>
+            <div class="product_sorting_container product_sorting_container_top">
+                <ul class="product_sorting">
+                    <li>
+                        <span class="type_sorting_text">Default Sorting</span>
+                        <i class="fa fa-angle-down"></i>
+                        <ul class="sorting_type p-0" style="z-index: 2;">
+                            <li class="type_sorting_btn" ng-click="sortNumber(listRecord,'recordingId')"> 
+                                <span>Default Sorting</span>
+                            </li>
+                            <li ng-click="sort(listAds,'title')" class="type_sorting_btn"><span>Name</span></li>
+                            <li ng-click="sort(listAds,'active')" class="type_sorting_btn"><span>Active</span></li>
+                            <li ng-click="sortNumber(listRecord,'status')" class="type_sorting_btn"><span>Status</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Show</span>
+                        <span class="num_sorting_text">{{pagination.size}}</span>
+                        <i class="fa fa-angle-down"></i>
+                        <ul class="sorting_num  p-0" style="z-index: 2;">
+                            <li ng-click="pagination.setPageSize(10)" class="num_sorting_btn"><span>10</span></li>
+                            <li ng-click="pagination.setPageSize(15)" class="num_sorting_btn"><span>25</span></li>
+                            <li ng-click="pagination.setPageSize(35)" class="num_sorting_btn"><span>35</span></li>
+                            <li ng-click="pagination.setPageSize(50)" class="num_sorting_btn"><span>50</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Name
+                        </th>
+                        <th>Active</th>
+                        <th>Status</th>
+                        <th>Reach</th>
+                        <th>
+                            <button ng-click="create()" class="btn border-0 m-0 p-0" data-bs-toggle="modal"
+                                data-bs-target="#marketing">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="align-items-start" ng-repeat="item in listAds | filter: searchAd">
+                        <td>{{$index + 1}}</td>
+                        <td>{{item.title}}</td>
+                        <td>
+                            <span ng-if="item.active" class="badge bg-success">On</span>
+                            <span ng-if="!item.active" class="badge bg-danger">Off</span>
+                        </td>
+                        <td>
+                            <p>{{item.status}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.clicked + item.listened}}</p>
+                        </td>
+                        <td>
+                            <button ng-click="selectDetail(item)" class="p-0 btn border-0 align-items-center"
+                                data-bs-toggle="modal" data-bs-target="#adsDetail">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listAds)}} of
+                    {{pagination.items(listAds).length}} results</span>
+                <div class="pages d-flex flex-row align-items-center">
+                    <div ng-show="pagination.page > 0" ng-click="pagination.prev(listAds)" id="next_page_1" class="page_prev">
+                        <a>
+                            <i class="bi bi-arrow-left"></i>
+                        </a>
+                    </div>
+                    <div class="page_current">
+                        <span>{{pagination.page +1}}</span>
+                        <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                            <li ng-repeat="i in pagination.getNumbers(pagination.count(listAds))">
+                                <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="page_total"><span>of</span> {{pagination.count(listAds)}}</div>
+                    <div ng-show="pagination.page < pagination.count(listAds)-1" ng-click="pagination.next(listAds)" id="next_page_1" class="page_next">
+                        <a>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Create -->
+        <div class="modal fade" id="marketing">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Campaign</h4>
+                        <button id="btn-close-ads" type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <section>
+                            <ul id="myTab" role="tablist"
+                                class="nav nav-tabs nav-pills d-flex text-center border-0 rounded-nav">
+                                <button id="Episodes-tab" data-toggle="tab" id="pills-user-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-Episodes" type="button" role="tab"
+                                    aria-controls="pills-Episodes" aria-selected="true"
+                                    class="btn border-0 rounded-pill bg-dark text-white px-3 font-weight-bold active">Episodes
+                                </button>
+
+                                <button id="pills-Podcast-tab" data-bs-toggle="pill" data-bs-target="#pills-Podcast"
+                                    type="button" role="tab" aria-controls="pills-Podcast" aria-selected="false"
+                                    class="btn border-0 rounded-pill bg-dark text-white px-3 mx-3 font-weight-bold">Podcast
+                                </button>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div id="pills-Episodes" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                                    class="tab-pane fade show active">
+                                    <div ng-if="listEpisode.length > 0" class="row">
+                                        <div class="col-2 mt-3" ng-repeat="item in listEpisode"
+                                            ng-click="selectAdsQuick(item)">
+                                            <div class="card card-play-list-profile">
+                                                <div class="img-car-profile">
+                                                    <img src="{{item.image.url}}" class="card-img-top w-100"
+                                                        style="height: 150px; object-fit: cover;" alt="...">
+                                                </div>
+                                                <div class="card-body card-body-playlist-profile">
+                                                    <h6 class="text-truncate">{{item.episodeTitle}}</h6>
+                                                    <div class="d-flex">
+                                                        <p class="card-text-playlist-profile-folow">Episode</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                        <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listEpisode)}} of
+                                            {{pagination.items(listEpisode).length}} results</span>
+                                        <div class="pages d-flex flex-row align-items-center">
+                                            <div ng-show="pagination.page > 0" ng-click="pagination.prev(listEpisode)" id="next_page_1" class="page_prev">
+                                                <a>
+                                                    <i class="bi bi-arrow-left"></i>
+                                                </a>
+                                            </div>
+                                            <div class="page_current">
+                                                <span class="text-black">{{pagination.page +1}}</span>
+                                                <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                                    <li ng-repeat="i in pagination.getNumbers(pagination.count(listEpisode))">
+                                                        <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="page_total"><span>of</span> {{pagination.count(listEpisode)}}</div>
+                                            <div ng-show="pagination.page < pagination.count(listEpisode)-1" ng-click="pagination.next(listEpisode)" id="next_page_1" class="page_next">
+                                                <a>
+                                                    <i class="bi bi-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="pills-Podcast" role="tabpanel" aria-labelledby="pills-Podcast-tab" tabindex="0"
+                                    class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-2 mt-3" ng-click="selectAdsQuick(podcast)">
+                                            <div class="card card-play-list-profile">
+                                                <div class="img-car-profile">
+                                                    <img src="{{podcast.image.url}}" class="card-img-top w-100"
+                                                        style="height: 150px; object-fit: cover;" alt="...">
+                                                </div>
+                                                <div class="card-body card-body-playlist-profile">
+                                                    <h6 class="text-truncate">{{podcast.podcastName}}</h6>
+                                                    <div class="d-flex">
+                                                        <p class="card-text-playlist-profile-folow">{{podcast.releaseDate |
+                                                            date: 'yyyy'}}</p>
+                                                        <i class="bi bi-dot"></i>
+                                                        <p class="card-text-playlist-profile-folow">Podcast</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="mb-4">
+                            <label for="">
+                                <h6>Banner</h6>
+                            </label>
+                            <img ng-click="selectFile('banner')" src="" class="w-100 banner" alt=""
+                                style="height: 350px; object-fit: cover;">
+                            <input hidden class="form-control" id="banner" type="file">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">
+                                <h6>Title</h6>
+                            </label>
+                            <img src="" class="w-100" alt="">
+                            <input ng-model="ads.title" class="form-control" id="" type="text">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">
+                                <h6>Content</h6>
+                            </label>
+                            <textarea class="form-control" ng-model="ads.content" name="" id="" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="">
+                                <h6>Tag</h6>
+                            </label>
+                            <img src="" class="w-100" alt="">
+                            <input ng-model="ads.tag" class="form-control" id="" type="text">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">
+                                <h6>URL</h6>
+                            </label>
+                            <input ng-model="ads.url" class="form-control" id="" type="text">
+                        </div>
+                        <div class="mb-4 row">
+                            <label for="">
+                                <h6>Subsciption</h6>
+                            </label>
+                            <div ng-repeat="item in listSubscription" class="col-3">
+                                <div ng-click="selectSubScription(item)" class="card card-content shadow"
+                                    ng-style="{ 'border': (ads.subscription.subscriptionId === item.subscriptionId) ? '1px solid black' : '0px' }">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="pr-pick-columnp-tt1">One-time payment</div>
+                                            <h3 class="card-title">{{item.subscriptionType}}</h3>
+                                            <p class="card-text">From {{item.price}}$/{{item.duration}} days</p>
+                                            <p class="card-text">1 account on only</p>
+                                            <p class="card-text">{{item.description}}</p>
+                                        </div>
+
+                                        <div>
+                                            <hr>
+                                            <a href="#!/premium/{{item.subscriptionId}}"
+                                                class="pr-pick-btn justify-content-center text-decoration-none">Details</a>
+                                            <p class="pr-pick-column-term"><a href="">Terms and conditions apply.</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="audio-ads-container"
+                            ng-show="ads.subscription.priority === 1 || ads.subscription.priority === 2 || ads.subscription.priority === 3"
+                            class="mb-4">
+                            <label for="">
+                                <h6>Audio ads</h6>
+                            </label>
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <audio controls src="" class="audio-ads w-100"></audio>
+                                </div>
+                                <div class="col-2">
+                                    <button class="rounded-pill bg-dark text-white py-1"
+                                        ng-click="selectFile('audio-ads')">
+                                        Select audio
+                                    </button>
+                                </div>
+
+                                <input hidden class="form-control" id="audio-ads" type="file">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">
+                                <h6>Target</h6>
+                            </label>
+                            <div class="d-flex">
+                                <div class="checkbox">
+                                    <input ng-model="ads.targetAudience" type="radio" value="All" name="content"
+                                        id="" />
+                                    <div class="box">
+                                        <p>All</p>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <input ng-model="ads.targetAudience" type="radio" value="Explicit" name="content"
+                                        id="" />
+                                    <div class="box">
+                                        <p>Over 18</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-4 d-flex justify-content-end">
+                        <button id="save-draft-ads" type="button" class="btn bg-dark text-white">Save draft</button>
+                        <button type="button" class="btn bg-dark text-white mx-4" data-bs-toggle="collapse"
+                            data-bs-target="#auto">Payment method</button>
+                    </div>
+
+                    <div id="auto" class="collapse mb-4">
+                        <div>
+                            <button ng-click="payment('vnpay')" class="btn w-100 border" id="btn-payment-vnpay"><img
+                                    style="width: 50px; height: 50px; object-fit: cover;"
+                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1700104153/Background/System/Icon-VNPAY-QR_lmd6lp.webp"
+                                    alt=""></button>
+                        </div>
+                        <div class="mt-3">
+                            <button ng-click="payment('paypal')" class="btn w-100 border" id="btn-payment-paypal">
+                                <i class="display-6 i bi-paypal"></i>
+                            </button>
+                        </div>
+                        <div ng-show="ads.subscription.prdStripeId !==null" class="mt-3">
+                            <button ng-click="payment('stripe')" class="btn w-100 border" id="btn-payment-stripe">
+                                <i class="display-6 bi bi-stripe"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="modal fade" id="adsDetail">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Campaign</h4>
+                        <button id="btn-close-ads-detail" type="button" class="btn-close"
+                            data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mb-4">
+                                    <label for="">
+                                        <h6>Banner</h6>
+                                    </label>
+                                    <img ng-show="ads.status > 1" src="{{ads.image.url}}" class="w-100" alt="" style="height: 350px; object-fit: cover;">
+                                    <img ng-show="ads.active == null || (ads.active == false && ads.status==1)" ng-click="selectFile('banner')"
+                                        src="{{ads.image.url}}" class="w-100 banner" alt=""
+                                        style="height: 350px; object-fit: cover;">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="">
+                                        <h6>Title</h6>
+                                    </label>
+                                    <img src="" class="w-100" alt="">
+                                    <input ng-readonly="(ads.active == null || (ads.active == false && ads.status == 1))" 
+                                            ng-model="ads.title" class="form-control" id="" type="text">
+                                </div>
+                                <div>
+                                    <label for="">
+                                        <h6>Content</h6>
+                                    </label>
+                                    <textarea class="form-control" ng-model="ads.content" name="" id="" cols="30"
+                                        rows="10"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="">
+                                        <h6>Tag</h6>
+                                    </label>
+                                    <img src="" class="w-100" alt="">
+                                    <input ng-model="ads.tag" class="form-control" id="" type="text">
+                                </div>
+                                <div class="my-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text">@URL</span>
+                                        <input ng-model="ads.url" class="form-control" id="" type="text">
+                                    </div>
+                                </div>
+                                <div ng-show="ads.priority == 1 || ads.priority == 2 || ads.priority == 3" class="my-4">
+                                        <span class="">Audio</span>
+                                        <div>
+                                            <audio controls  class="audio-ads w-100"></audio>
+                                            <button ng-show="ads.active == false && ads.status==1" class="rounded-pill bg-dark text-white py-1"
+                                            ng-click="selectFile('audio-ads')">Change audio</button>
+                                        </div>                             
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-4 row">
+                                    <label for="">
+                                        <h6>Subsciption</h6>
+                                    </label>
+                                    <div>
+                                        <div class="card card-content shadow">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <div class="pr-pick-columnp-tt1">One-time payment</div>
+                                                    <h3 class="card-title">{{ads.subscription.subscriptionType}}</h3>
+                                                    <p class="card-text">From
+                                                        {{ads.subscription.price}}$/{{ads.subscription.duration}} days
+                                                    </p>
+                                                    <p class="card-text">1 account on only</p>
+                                                    <p class="card-text">{{ads.subscription.description}}</p>
+                                                </div>
+
+                                                <div>
+                                                    <hr>
+                                                    <a href="#!/premium/{{item.subscriptionId}}"
+                                                        class="pr-pick-btn justify-content-center text-decoration-none">Details</a>
+                                                    <p class="pr-pick-column-term"><a href="">Terms and conditions
+                                                            apply.</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-show="ads.active == null || ads.status==1" id="sub" class="carousel slide"
+                                        data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div ng-click="selectSubScription(item)"
+                                                ng-repeat="item in listSubscription" class="carousel-item"
+                                                ng-class="{ 'active': $index === 0 }">
+                                                <div class="card bg-dark text-white mt-4">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title">{{item.subscriptionType}}</h4>
+                                                        <p class="card-text">{{item.price}}$ / {{item.duration}} days
+                                                        </p>
+                                                        <p class="card-text">{{item.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#sub"
+                                            data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#sub"
+                                            data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </button>
+                                    </div>
+                                    <div ng-show="ads.clicked > 0" class="card-body my-4">
+                                        <div>
+                                            <h6>Achieve the number of people clicking on the link</h6>
+                                            <h3 class="card-title">{{ads.clicked}}</h3>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="ads.listened > 0" class="card-body">
+                                        <div>
+                                            <h6>Reach the number of listeners</h6>
+                                            <h3 class="card-title">{{ads.listened}}</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="my-4">
+                                        <div class="card" data-bs-toggle="collapse" data-bs-target="#collapseShowmore">
+                                            <div class="card-header" id="headingOne">
+                                                <h5 class="mb-0">
+                                                    <button class="btn border-0">
+                                                        Show more
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="collapse" id="collapseShowmore">
+                                            <div class="card d-flex flex-row card-body">
+                                                <div>
+                                                    <i class="bi bi-calendar-check"></i>
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <p class="text-black-50 m-0 p-0">Start date</p>
+                                                    <p>{{ads.startdate}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="card d-flex flex-row card-body">
+                                                <div>
+                                                    <i class="bi bi-calendar-x"></i>
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <p class="text-black-50">End date</p>
+                                                    <p>{{ads.enddate}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <section ng-show="ads.active == null || (ads.active == false && ads.status==1)"> 
+                                <ul id="myTab" role="tablist"
+                                    class="nav nav-tabs nav-pills d-flex text-center border-0 rounded-nav">
+                                    <button id="Episodes-tab" data-toggle="tab" id="pills-user-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-Episodes" type="button" role="tab"
+                                        aria-controls="pills-Episodes" aria-selected="true"
+                                        class="btn border-0 rounded-pill bg-dark text-white px-3 font-weight-bold active">Episodes
+                                    </button>
+    
+                                    <button id="pills-Podcast-tab" data-bs-toggle="pill" data-bs-target="#pills-Podcast"
+                                        type="button" role="tab" aria-controls="pills-Podcast" aria-selected="false"
+                                        class="btn border-0 rounded-pill bg-dark text-white px-3 mx-3 font-weight-bold">Podcast
+                                    </button>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div id="pills-Episodes" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                                        class="tab-pane fade show active">
+                                        <div ng-if="listEpisode.length > 0" class="row">
+                                            <div class="col-2 mt-3" ng-repeat="item in listEpisode"
+                                                ng-click="selectAdsQuick(item)">
+                                                <div class="card card-play-list-profile">
+                                                    <div class="img-car-profile">
+                                                        <img src="{{item.image.url}}" class="card-img-top w-100"
+                                                            style="height: 150px; object-fit: cover;" alt="...">
+                                                    </div>
+                                                    <div class="card-body card-body-playlist-profile">
+                                                        <h6 class="text-truncate">{{item.episodeTitle}}</h6>
+                                                        <div class="d-flex">
+                                                            <p class="card-text-playlist-profile-folow">Episode</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                                            <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(listEpisode)}} of
+                                                {{pagination.items(listEpisode).length}} results</span>
+                                            <div class="pages d-flex flex-row align-items-center">
+                                                <div ng-show="pagination.page > 0" ng-click="pagination.prev(listEpisode)" id="next_page_1" class="page_prev">
+                                                    <a>
+                                                        <i class="bi bi-arrow-left"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="page_current">
+                                                    <span class="text-black">{{pagination.page +1}}</span>
+                                                    <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                                        <li ng-repeat="i in pagination.getNumbers(pagination.count(listEpisode))">
+                                                            <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="page_total"><span>of</span> {{pagination.count(listEpisode)}}</div>
+                                                <div ng-show="pagination.page < pagination.count(listEpisode)-1" ng-click="pagination.next(listEpisode)" id="next_page_1" class="page_next">
+                                                    <a>
+                                                        <i class="bi bi-arrow-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="pills-Podcast" role="tabpanel" aria-labelledby="pills-Podcast-tab" tabindex="0"
+                                        class="tab-pane fade">
+                                        <div class="row">
+                                            <div class="col-2 mt-3" ng-click="selectAdsQuick(podcast)">
+                                                <div class="card card-play-list-profile">
+                                                    <div class="img-car-profile">
+                                                        <img src="{{podcast.image.url}}" class="card-img-top w-100"
+                                                            style="height: 150px; object-fit: cover;" alt="...">
+                                                    </div>
+                                                    <div class="card-body card-body-playlist-profile">
+                                                        <h6 class="text-truncate">{{podcast.podcastName}}</h6>
+                                                        <div class="d-flex">
+                                                            <p class="card-text-playlist-profile-folow">{{podcast.releaseDate |
+                                                                date: 'yyyy'}}</p>
+                                                            <i class="bi bi-dot"></i>
+                                                            <p class="card-text-playlist-profile-folow">Podcast</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="my-4 d-flex justify-content-end">
+                        <button ng-readonly="(ads.active == null || (ads.active == false && ads.status == 1))"  ng-click="updateAds(ads)" type="button" class="mx-4 btn bg-dark text-white">Save</button>
+                        <button ng-show="ads.active == null" type="button" class="btn bg-dark text-white mx-4"
+                            data-bs-toggle="collapse" data-bs-target="#auto">Payment method</button>
+                    </div>
+
+                    <div id="auto" class="collapse mb-4">
+                        <div>
+                            <button ng-click="paymentVnpay(ads)" class="btn w-100 border" id="btn-payment-vnpay"><img
+                                    style="width: 50px; height: 50px; object-fit: cover;"
+                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1700104153/Background/System/Icon-VNPAY-QR_lmd6lp.webp"
+                                    alt=""></button>
+                        </div>
+                        <div class="mt-3">
+                            <button ng-click="paymentPayPal(ads)" class="btn w-100 border" id="btn-payment-paypal">
+                                <i class="display-6 i bi-paypal"></i>
+                            </button>
+                        </div>
+                        <div ng-show="ads.subscription.prdStripeId !==null" class="mt-3">
+                            <button ng-click="paymentStripe(ads)" class="btn w-100 border" id="btn-payment-stripe">
+                                <i class="display-6 bi bi-stripe"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

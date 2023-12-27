@@ -1,0 +1,12 @@
+#Genre.graphqls
+#import "./SongGenre.graphqls"
+
+type Genre{
+	id: ID
+	nameGenre: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+	songGenres: [SongGenre]
+}

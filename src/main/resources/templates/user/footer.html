@@ -1,0 +1,66 @@
+<footer class="player-controls col-12 py-0" style="background-color: rgb(222, 89, 0)">
+    <div class="row align-items-center">
+        <div class="col-md-3 col-3 player-controls-left">
+            <div class="media d-flex align-items-center">
+                <div class="media-left">
+                    <a href="">
+                        <img class="thumbnail" src="https://img.youtube.com/vi/lkzhGTwzDjc/maxresdefault.jpg"
+                            alt="">
+                    </a>
+                </div>
+                <div class="media-content d-none d-md-block">
+                    <span><a href="">Song title</a></span>
+                    <h6><a href="">Name Singer</a></h6>
+                </div>
+                <div class="media-right d-flex">
+                    <div class="level-item">
+                        <span><button class="btn button-control" data-bs-hover="tooltip"
+                                title="Thêm vào yêu thích!"><i class="bi bi-heart"></i></button></span>
+                    </div>
+                    <div class="level-item d-none d-md-block">
+                        <a href="#more" data-bs-toggle="collapse" title="Xem thêm"
+                            class="slide-toggle list-group-item">
+                            <i class=""></i> ...
+                        </a>
+                        <ul id="more" class="px-0 collapse slide rounded shadow ">
+                            <li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-account|}">Account</a>
+                            </li>
+                            <li class="py-3 m-2"><a class="ps-5" th:href="@{|/admin-role|}">Role</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-9 player-controls-center d-flex flex-column align-items-center">
+            <div class="controls-bar d-flex align-items-center">
+                <button class="btn py-0 shuffle button-control-music" data-bs-hover="tooltip"
+                    title="Bật phát ngẫu nhiên!"><i class="bi bi-shuffle"></i></button>
+
+                <button class="btn py-0 prev button-control-music"><i class="bi bi-skip-start-circle"></i></button>
+
+                <button class="btn py-0 resume button-control-music"><i class="bi bi-play-circle"></i></button>
+                <!-- <i class="bi bi-pause-circle"></i> -->
+
+                <button class="btn py-0 next button-control-music"><i class="bi bi-skip-end-circle"></i></button>
+
+                <button class="btn py-0 repeat button-control-music"><i class="bi bi-repeat"></i></button>
+                <!-- <i class="bi bi-repeat-1"></i> -->
+            </div>
+            <div class="time-line w-100 d-flex align-items-center flex-fill">
+                <span class="current-time">current time</span>
+                <input class="duration-bar w-75" type="range" min="0" max="100" name="" id="">
+                <div class="line-first"></div>
+                <div class="line-current"></div>
+                <div class="circle"></div>
+                <span class="duration">duration</span>
+            </div>
+        </div>
+        <div class="col-md-3 d-none d-md-block player-controls-right d-flex">
+            <button class="btn"></button>
+            <button class="btn button-control"><i class="bi bi-pip"></i></button>
+            <button class="btn button-control"><i class="bi bi-mic"></i></button>
+            <button class="btn button-control"><i class="bi bi-volume-up"></i></button>
+            <input class="" type="range" min="0" max="100" name="" id="">
+        </div>
+    </div>
+</footer>

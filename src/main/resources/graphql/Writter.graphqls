@@ -1,0 +1,9 @@
+#Writter.graphqls
+#import "./Artist.graphqls"
+#import "./Song.graphqls"
+
+type Writter{
+	writterId: ID
+	artist: Artist
+	song: Song
+}

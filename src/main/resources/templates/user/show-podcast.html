@@ -1,0 +1,182 @@
+<body ng-controller="ShowPodcast">
+    <div class="card card-content shadow mb-4" style="background: linear-gradient(to bottom, #237958, #413d3d);">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="bl-search">
+                    <div class="bl-search-box"></div>
+                </div>
+                <div class="container-fluid">
+                    <div class="text-title mb-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img ng-src="{{ podcastDetail.image.url }}" alt="Sunset Over the Sea"
+                                            style="width: 100%; height: 200px;object-fit: cover;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tt-pct col-sm-8">
+                                <h4>Podcast</h4>
+                                <h1>{{podcastDetail.podcastName | limitTo: 13}}</h1> <br>
+                                <h2>{{podcastDetail.authorName}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="eps in episodeAll">
+                            <td style="color: #fff; background-color: rgb(85, 84, 84);" ng-if="$first">
+                                <a href="#!episode/{{eps.episodeId}}" style="color: #fff;">
+                                    <p>up next</p>
+                                    <h3>{{eps.episodeTitle}}</h3>
+                                    <h6>
+                                        <i class="bi bi-circle-fill" style="color: lightblue; font-size: 12px;"></i>
+                                        {{podcastDetail.podcastName}} ({{eps.publishDate | date :'dd-MM-yyyy'}})
+                                    </h6>
+                                    <div class="d-flex">
+                                        <p><i class="bi bi-star-fill" style="color: yellow;"></i></p>
+                                        <p>
+                                            {{eps.content}}:
+                                            <a href="{{podcastDetail.socialMediaLink}}"
+                                                style="color: #fff;">{{podcastDetail.socialMediaLink}}</a>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn" id="play-podcast" ng-dblclick="selectAudio(eps,'episode',eps,$index)"> 
+                                                <i class="bi bi-play-circle-fill"
+                                                    style="font-size: 30px; color: green;"></i>
+                                            </button>
+                                            <div class="">
+                                                <span><format-time seconds="eps.duration"></format-time></span>
+                                            </div>
+                                        </div>
+
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#share">
+                                            <i class="bi bi-cloud-arrow-up"></i>
+                                            Share
+                                        </button>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <h2>All Episodes</h2>
+                    <div>
+                        <table class="table table-hover table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="eps in pagination.items(episodeAll)">
+                                    <td style="color: #fff;" onmouseover="this.style.backgroundColor='#404040'"
+                                        onmouseout="this.style.backgroundColor=''">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="card">
+                                                    <div class="card-img" style="width: 100%; height: 100px;">
+                                                        <img class="w-100" ng-src="{{eps.image.url}}" alt=""
+                                                            style="width: 100%; height: 100%; object-fit: cover;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-9 flex-fill">
+                                                <h3><a href="#!episode/{{eps.episodeId}}"
+                                                        style="color: #fff;">{{eps.episodeTitle}}</h3>
+                                                <h6>{{podcastDetail.podcastName}} ({{eps.publishDate | date
+                                                    :'dd-MM-yyyy'}})</h6></a>
+                                                <div class="d-flex">
+                                                    <p><i class="bi bi-star-fill" style="color: yellow;"></i></p>
+                                                    <p>{{eps.content}}: <a href="{{podcastDetail.socialMediaLink}}"
+                                                            style="color: #fff;">
+                                                            {{podcastDetail.socialMediaLink}}</a>
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex align-items-center">
+                                                        <button class="btn" id="play-pobcast" ng-dblclick="selectAudio(eps,'episode',eps,$index)"> 
+                                                            <i class="bi bi-play-circle-fill"
+                                                                style="font-size: 30px; color: #fff;"></i>
+                                                        </button>
+                                                        <div class="">
+                                                            <span> <format-time
+                                                                    seconds="eps.duration"></format-time></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <button class="btn">
+                                                        <button class="btn" data-bs-toggle="modal"
+                                                            data-bs-target="#share">
+                                                            <i class="bi bi-cloud-arrow-up"></i>
+                                                            Share
+                                                        </button>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="product_sorting_container product_sorting_container_bottom clearfix">
+                            <span class="showing_results">Showing {{pagination.page +1}} – {{pagination.count(episodeAll)}} of
+                                {{pagination.items(episodeAll).length}} results</span>
+                            <div class="pages d-flex flex-row align-items-center">
+                                <div ng-show="pagination.page > 0" ng-click="pagination.prev(episodeAll)" id="next_page_1"
+                                    class="page_prev">
+                                    <a>
+                                        <i class="bi bi-arrow-left text-white"></i>
+                                    </a>
+                                </div>
+                                <div class="page_current">
+                                    <span>{{pagination.page +1}}</span>
+                                    <ul class="page_selection ps-0 pe-4 bg-black" style="z-index: 200000;">
+                                        <li ng-repeat="i in pagination.getNumbers(pagination.count(episodeAll))">
+                                            <a ng-click="pagination.setPageNo($index)" class="text-white">{{$index+1}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="page_total"><span>of</span> {{pagination.count(episodeAll)}}</div>
+                                <div ng-show="pagination.page < pagination.count(episodeAll)-1"
+                                    ng-click="pagination.next(episodeAll)" id="next_page_1" class="page_next">
+                                    <a>
+                                        <i class="bi bi-arrow-right text-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <h2>About</h2>
+                <p>{{podcastDetail.bio}}</p>
+                <button
+                    style="color: #fff ; padding: 5px 10px; border: none;border-radius: 25px; background-color: #2b2929; text-align: center;">
+                    <div>5 <i class="bi bi-star"></i> ({{podcastDetail.rate |limitTo : 2}})</div>
+                </button>
+                <button
+                    style="color: #fff ; padding: 5px 10px; border: none;border-radius: 25px; background-color: #2b2929; text-align: center;">
+                    <a class="dropdown-item" href="#!report/podcast/{{podcastId}}">Report</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

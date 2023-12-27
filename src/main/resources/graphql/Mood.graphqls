@@ -1,0 +1,10 @@
+#Mood.graphqls
+
+type Mood{
+	moodid: ID
+	moodname: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

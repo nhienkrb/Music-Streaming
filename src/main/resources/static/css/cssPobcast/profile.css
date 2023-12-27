@@ -1,0 +1,27 @@
+.input-profile {
+    border: 0px !important;
+}
+
+.textarea-profile {
+    border: 0px !important;
+    overflow-y: hidden;
+    resize: none;
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+}
+
+.podcast-name {
+    font-weight: bold;
+    font-size: xx-large;
+}
+a{
+    text-decoration: none;
+}

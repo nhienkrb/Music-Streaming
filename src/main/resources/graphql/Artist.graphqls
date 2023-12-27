@@ -1,0 +1,27 @@
+#Artist.graphqls
+#import "./Image.graphqls"
+#import "./Account.graphqls"
+#import "./Report.graphqls"
+#import "./Album.graphqls"
+#import "./Writter.graphqls"
+
+type Artist{
+	artistId: ID
+	artistName: String
+	dateOfBirth: String
+	fullName: String
+	placeOfBirth: String
+	bio: String
+	imagesGallery: [String]
+	publicIdImageGallery: [String]
+	socialMediaLinks: [String]
+	active: Boolean
+	isVerify: Boolean
+	dateStarted: String
+	imagesProfile: Image
+	backgroundImage: Image
+	account: Account
+	reports: [Report]
+	albums: [Album]
+	writters: [Writter]
+}

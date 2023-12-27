@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <section>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="logo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+                </a>
+                <div>
+                    <button class="btn text-white">Login</button>
+                    <button class="btn text-white">Get Access</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <!-- Carousel -->
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../static/img/carousel1.jpg" alt="Los Angeles" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="../static/img/carousel1.jpg" alt="Chicago" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="../static/img/carousel1.jpg" alt="New York" class="d-block w-100">
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <section class="container-fluid py-4 bg-black text-white">
+        <div class="row py-5 justify-content-center align-items-center">
+            <div class="col-8">
+                <h1>
+                    Your music. Your fans. Your team.
+                </h1>
+                <h1>
+                    All together now.
+                </h1>
+                <h6>
+                    All the tools you need to build your following and career on Spotify, all in one place.
+                </h6>
+            </div>
+            <div class="col-3 ">
+                <button class="btn bg-white text-black rounded-pill text-center py-2">Join your team</button>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid py-5" id="landing-home">
+        <div class="row py-5">
+            <div class="col-6">
+                <img class="w-50 ps-5" id="img-landing-home" alt="">
+            </div>
+            <div class="col-6 content-features">
+                <h1>Build your audience at any stage</h1>
+                <p>Spotify is where music discovery happens for 500+ million listeners in 180+ markets. 
+                    Whether you’re an established artist or new to the game, Spotify for Artists is the only way to pitch new songs to 
+                    editors of some of the world’s most followed playlists.
+                </p>
+                <button class="btn bg-black text-white rounded-pill text-center py-2">See more</button>
+            </div>
+        </div>
+        <div class="btn-features m-5 py-4 d-flex align-items-center">
+            <button id="prev" class="btn"><i class="bi bi-arrow-left"></i></button>
+            <button id="next" class="btn"><i class="bi bi-arrow-right"></i></button>
+            <p class="position-img my-0 mx-2"></p>
+        </div>
+    </section>
+
+    <section class="container-fluid">       
+        <div class="row bg-black text-white">
+            <img class="p-0" src="../static/img/artistfeature.webp" alt="" style="height: 600px; object-fit: cover;">
+            <div class="d-flex m-4">
+                <div class="col-5 ps-3">
+                    <p class="my-0">FEATURING</p>
+                    <h1>Jeremy Zucker</h1>
+                    <div class="my-4">
+                        <h6>Rian Kirchhoff</h6>
+                        <h6>Rian Kirchhoff</h6>
+                        <h6>Rian Kirchhoff</h6>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <h3><i class="bi bi-quote"></i></h3>
+                    <p>Spotify for Artists has made a huge difference in the way we do business. 
+                        Being able to see that progress and reach in real time is invaluable.
+                    </p>
+                    <h3>—Gang Starr</h3>
+                    <h6>ARTIST</h6>
+                </div>
+            </div>  
+        </div>
+    </section>
+    <section class="container-fluid col-11">
+        <h1 class="my-4">News</h1>
+        <p class="mb-4">Our latest stories to get you inspired</p>
+        <div class="row">
+            <div class="col-6">
+                <img class="w-100" src="../static/img/ms10.webp" alt="">
+                <h4>How thuy’s Team Used Discovery Mode and Marquee to Grow Her Audience on Spotify</h4>
+                <p>See how independent artist thuy’s team (manager Anh Vu and Venice Music’s Isobel Kelly) used Discovery Mode and Marquee 
+                    over the course of 15 months and multiple releases to grow her audience.
+                </p>
+            </div>
+            <div class="col-6">
+                <img class="w-100" src="../static/img/ms10.webp" alt="">
+                <h4>Making Money on Spotify: Loud & Clear, Merch, Ticketing, Fan Support, and Future Opportunities</h4>
+                <p>Watch the replay of our latest Spotify for Artists Masterclass event to learn about Loud & Clear 
+                    and the different ways to make money on Spotify.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img class="w-100" src="../static/img/ms10.webp" alt="">
+                <h4>How thuy’s Team Used Discovery Mode and Marquee to Grow Her Audience on Spotify</h4>
+                <p>See how independent artist thuy’s team (manager Anh Vu and Venice Music’s Isobel Kelly) used Discovery Mode and Marquee 
+                    over the course of 15 months and multiple releases to grow her audience.
+                </p>
+            </div>
+            <div class="col-4">
+                <img class="w-100" src="../static/img/ms10.webp" alt="">
+                <h4>Making Money on Spotify: Loud & Clear, Merch, Ticketing, Fan Support, and Future Opportunities</h4>
+                <p>Watch the replay of our latest Spotify for Artists Masterclass event to learn about Loud & Clear 
+                    and the different ways to make money on Spotify.
+                </p>
+            </div>
+            <div class="col-4">
+                <img class="w-100" src="../static/img/ms10.webp" alt="">
+                <h4>Making Money on Spotify: Loud & Clear, Merch, Ticketing, Fan Support, and Future Opportunities</h4>
+                <p>Watch the replay of our latest Spotify for Artists Masterclass event to learn about Loud & Clear 
+                    and the different ways to make money on Spotify.
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        //Slide feature
+        var img = ["carousel1.jpg", "carousel2.jpg", "carousel3.jpg"]
+        var color = ["#b49bc8", "#ed7e7e", "#a0c3d2"]
+        const imgFeature = $('#img-landing-home');
+        const prevImg = $('#prev');
+        const nextImg = $('#next');
+        const positionImg = $('.position-img');
+        var index = 0;
+        imgFeature.attr("src", "../static/img/" + img[index]);
+
+        positionImg.text(index + 1 + "/" + img.length);
+
+        $('#landing-home').css("background-color", color[index]);
+
+        prevImg.click(function () {
+            prevImg.attr("disable", index === 0 ? true : false);
+            if (index > 0) index--;
+            imgFeature.attr("src", "../static/img/" + img[index]);
+            positionImg.text(index + 1 + "/" + img.length);
+            $('#landing-home').css({
+                'background-color':color[index],
+                'transition': 'background-color 1s ease'
+            });
+        });
+
+        nextImg.click(function () {
+            if (index < img.length - 1) index++;
+            imgFeature.attr("src", "../static/img/" + img[index]);
+            positionImg.text(index + 1 + "/" + img.length);
+            $('#landing-home').css({
+                'background-color':color[index],
+                'transition': 'background-color 1s ease'
+            });
+        });
+    </script>
+
+</body>
+
+</html>

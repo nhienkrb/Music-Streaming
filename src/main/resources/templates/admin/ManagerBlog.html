@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+   <!-- CONTENT START  -->
+
+   <div>
+      <style>
+         /* width */
+         ::-webkit-scrollbar {
+            width: 10px;
+         }
+
+         /* Track */
+         ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+         }
+
+         /* Handle */
+         ::-webkit-scrollbar-thumb {
+            background: #bbbbbb;
+         }
+
+         /* Handle on hover */
+         ::-webkit-scrollbar-thumb:hover {
+            background: #bcbcbc;
+         }
+      </style>
+
+   </div>
+
+   <div class="content-wrapper">
+
+      <section class="dashboard-top-sec">
+
+         <div class="container-fluid">
+
+            <div class="row profile-content">
+
+               <div class="col-12 col-md-12 col-lg-12">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                           <div class="iq-card-header text-center">
+                              <div class="iq-header-title">
+                                 <h4 class="card-title mb-0 ">Manager News</h4>
+                              </div>
+                           </div>
+                           <div class="iq-card-body ">
+                              <div class="row">
+                                 <div class=" col-lg-6 col-md-12  col-12">
+                                    <h5>Filter:</h5>
+                                 </div>
+                                 <div class="col-lg-6 col-md-12 col-12">
+                                    <div class="row">
+                                       <div class="col-lg-6">
+                                          <div class="mb-3">
+                                             
+                                             <!-- <select ng-change="loadAllNews()" name="month" id="monthSelect" class="form-select  font-select" 
+                                                    ng-options="x for x in month" ng-model="monthSelect" >
+                                             </select> -->
+                                             <select ng-change="loadAllNews()" name="month" id="monthSelect" class="form-select  font-select" ng-model="monthSelect" >
+                                                <option  value="">Month Default</option> 
+                                                <option   ng-repeat="x  in month" value="{{x}}">{{x}}</option> 
+                                             </select>
+                                          </div>
+                                       </div>
+
+                                       <div class="col-lg-6">
+                                          <div class="mb-3">
+                                             <select ng-change="loadAllNews()" class="form-select  font-select" name="" ng-model="yearSelect">
+                                                <option  value="">Year Default</option> 
+                                                <option   ng-repeat="year in year" value="{{year}}">{{year}}</option> 
+                                             </select>
+                                          </div>
+                                       </div>
+                                    </div>
+
+
+
+                                 </div>
+                              </div>
+                              <div class="row mt-3" dir-paginate="(time, posts) in groupedPosts | itemsPerPage: 6 ">
+
+                                 <div class="date-blog-manager">
+                                    <h4>{{ time |date:'dd-MM-yyyy' }}</h4>
+                                 </div>
+
+                                 <div class="col-md-4 col-sm-6 mb-3" ng-repeat="post in posts">
+                                    <div id="card-managerBlog" class="card" style="width: 18rem">
+                                       <div class="edit-blog">
+                                          <a href="{{ post.toUrl }}">
+                                             <img ng-src="{{ post.image }}" alt="Post Image" class="card-img-top " style="width: 286.76px;height: 156px !important; object-fit: fill;" >
+                                          </a>
+                                          <div class="dots-edit ">
+                                             <a href data-bs-toggle="dropdown" id="Notify" class="nav-link"> <i
+                                                   class="bi bi-three-dots"></i></a>
+                                             <div class="dropdown-menu" style="min-width: 5rem;">
+                                                <div class="dp-main-menu">
+                                                   <a href="" class="dropdown-item message-item mt-1"
+                                                      data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                      <i class="bi bi-pencil-square icon-pen-edit"></i>
+                                                      <div class="note-info-desmis">
+                                                         <div class="dropdown-edit-font"
+                                                            ng-click="findById(post.idNew)">
+                                                            <p class="note-name">Edit</p>
+                                                         </div>
+                                                      </div>
+                                                   </a>
+
+                                                   <a href="" class="dropdown-item message-item mt-1"
+                                                   data-bs-toggle="modal" data-bs-target="#delete">
+                                                   <i class="bi bi-trash3 icon-pen-edit"></i>
+                                                   <div class="note-info-desmis">
+                                                      <div class="dropdown-edit-font"
+                                                        >
+                                                         <p class="note-name">Delete</p>
+                                                      </div>
+                                                   </div>
+                                                </a>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="card-body">
+                                          <div class="d-flex align-items-center">
+                                             <div class="img-person-manager ">
+                                                <img ng-src="{{ post.account}}" alt="Post Image">
+                                             </div>
+
+                                             <div class="title-manager-blog ms-2 mt-0 ">
+                                                <a href="#" class="title-manager-blog ">
+                                                   <h6 class="text-truncate">{{ post.title }} </h6>
+                                                </a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="card-footer">
+                                          <small class="text-body-secondary">
+                                             <div class="row">
+                                                <div class="col-7 ">
+                                                   <p class="text-truncate">{{post.modifiedby === null ||
+                                                      post.modifiedby ==="" ? "Unmodified" : post.modifiedby}}</p>
+                                                </div>
+                                                <div class="col-5">
+                                                   <p>{{post.modifidate === null || post.modifidate ==="" ? "Unmodified"
+                                                      : post.modifidate | date:'dd-MM-yyyy HH:mm' }}</p>
+                                                </div>
+
+
+                                             </div>
+                                          </small>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                              <div class="row">
+                                 <div class="col-sm-12 col-md-5">
+                                    <!-- <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
+                                       aria-live="polite">Đang xem 1 đến 1 trong
+                                       tổng số 1 mục</div> -->
+                                 </div>
+
+                               
+
+                                 <div class="col-sm-12 col-md-7">
+                                    <dir-pagination-controls class="dir-pagination-controls"></dir-pagination-controls>
+                                    
+                              </div>
+
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          
+            
+               
+               <!-- Modal -->
+               <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-sm modal-dialog-centered">
+                  <div class="modal-content">
+                     <div class="modal-header modal-header-delete">
+                        <div>
+                         
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <div class="icon-close-bodyModal">
+                           <i class="bi bi-x-circle"></i>
+                        </div>
+                        <div style="text-align: center;" class="m-2">
+                           <h5> Are you sure ? </h5>
+                          
+                        </div>
+                       
+                     </div>
+                     <div class="modal-footer btn-event-deleteModal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger"    data-bs-dismiss="modal"  ng-click="delete(form.newsId)">Delete</button>
+                     </div>
+                  </div>
+                  </div>
+               </div>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+               aria-hidden="true">
+               <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                  <div class="modal-content">
+                     <div class="modal-header">
+
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit News {{ form.title}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <div class="container-fluid mt-0">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <div class="image-news-modal mb-3">
+                                    <img class="w-100" style="height: 300px;  object-fit: fill;"
+                                       ng-src="{{form.image.url}}"
+                                       alt="">
+                                 </div>
+
+                                 <div class="container col-11">
+                                    <div class="row">
+                                       <div class="content-news-modal ">
+                                          <div class="mb-2">
+                                             <label for="formGroupExampleInput" class="form-label mb-0">Title:</label>
+                                             <input type="text" name="title" class="form-control" ng-model="form.title"
+                                                required ng-minlength="3" ng-maxlength="250">
+
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.title.$dirty && validate.title.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+
+                                          </div>
+
+                                          <label for="formGroupExampleInput" class="form-label mb-0">Content:</label>
+                                          <div class="form-floating mb-2 ">
+                                             <textarea name="content" ng-model="form.content" class="form-control"
+                                                placeholder="here" id="floatingTextarea2" style="height: 300px" required
+                                                ng-minlength="10"></textarea>
+                                         
+
+                                             <!-- VALIDATION FORM -->
+                                             <div ng-messages="validate.content.$dirty && validate.content.$error ">
+                                                    <div ng-messages-include="../admin/ng-Utilities/messages_error.html">
+                                                </div>
+                                             </div>
+
+                                          </div>
+
+                                       </div>
+
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" ng-click="update(form.newsId)">Save</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+
+      </section>
+   </div>
+
+   <!--  CONTENT END  -->
+
+</body>
+
+</html>

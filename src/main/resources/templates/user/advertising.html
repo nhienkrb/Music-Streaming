@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhymthwave - Advertising</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../static/css/advertising.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="../../static/js/angularjs/user/ads.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <script src="../../static/js/jscustom/toasts.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="ads">
+    <nav class="navbar navbar-expand-sm ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img class="ad-nav-logo" src="../../static/img/logo.png" alt="" width="117px">
+            </a>
+            <div class="me-auto"></div>
+            <form class="d-flex">
+                <a href="#basicpackage"><button class="ad-nav-btn" type="button">Start</button></a>
+            </form>
+        </div>
+    </nav>
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="ad-img-sh" src="../../static/img/ad-sh.webp" alt="">
+            </div>
+            <div class="col-md-6">
+                <h1 class="ad-h1-sh">Reach an engaged audience with ads on Spotify</h1>
+                <p class="ad-p-sh">Spotify’s self serve ads manager, Ad Studio, can help you reach new and engaged
+                    audiences to grow your business.</p>
+                <div>
+                    <a href="#basicpackage"><button class="ad-btn-sh">
+                            Start now
+                        </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white pt-5 pb-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="mb-5">Connect with listeners where it drives results.</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>5X</h4>
+                        <p>increase in Ad Recall compared to other digital platforms</p>
+                        <p><i>Sonic Science Vol 2, 2023</i></p>
+                        <hr>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>1#</h4>
+                        <p>app in ‘time-spent’ per user</p>
+                        <p><i>Comscore Mobile Metrix Key Measures, 2023</i></p>
+                        <hr>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>574M+</h4>
+                        <p>Monthly Active Users globally 100% logged in, all the time</p>
+                        <p><i>Spotify Q2 Earnings Report</i></p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-5 pb-5" id="basicpackage">
+        <div class="container">
+            <div class="text-center">
+                <div class="pr-pick-header">
+                    <div class="pr-pick-h2">
+                        <h2>Basic package</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-repeat="sub in bas" class="pr-pick-column col-md-4 col-sm-4">
+                        <div class="card card-content shadow">
+                            <div class="card-body">
+                                <div class="pr-pick-columnp-tt1">One-time payment</div>
+                                <h3 class="card-title">{{sub.subscriptionType}}</h3>
+                                <p class="card-text">From {{sub.price}}₫/{{sub.duration}} day</p>
+                                <hr>
+                                <button class="pr-pick-btn"
+                                    ng-click="startAdvertising(sub.priority) ; findSubById(sub.subscriptionId)"
+                                    data-bs-toggle="modal" data-bs-target="#myModal">Get Started</button>
+                                <p class="pr-pick-column-term"><a href="">Terms and conditions apply.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark pt-5 pb-5">
+        <div class="container">
+            <div class="text-center">
+                <div class="pr-pick-header">
+                    <div class="pr-pick-h2 text-white">
+                        <h2>Pro package</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-repeat="sub in pre" class="pr-pick-column col-md-4 col-sm-4">
+                        <div class="card card-content shadow">
+                            <div class="card-body">
+                                <div class="pr-pick-columnp-tt1">One-time payment</div>
+                                <h3 class="card-title">{{sub.subscriptionType}}</h3>
+                                <p class="card-text">From {{sub.price}}₫/ {{sub.duration}} day</p>
+                                <hr>
+                                <button class="pr-pick-btn"
+                                    ng-click="startAdvertising(sub.priority); findSubById(sub.subscriptionId)"
+                                    data-bs-toggle="modal" data-bs-target="#myModal">Get Started</button>
+                                <p class="pr-pick-column-term"><a href="">Terms and conditions apply.</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start">
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <img src="../../static/img/logo.png" alt="" width="117">
+                        </h6>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Công ty
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Giới thiệu</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Việc làm</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">For the Record</a>
+                        </p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Cộng đồng
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Dành cho các Nghệ sĩ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà phát triển</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Quảng cáo</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Nhà đầu tư </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Nhà cung cấp</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">liên kết hữu ích</h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Hỗ trợ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Trình phát web</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none ">Ứng dụng di động miễn phí</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Buy ads</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <form enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input ng-model="req.title" type="text" class="form-control" id="title">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Url</label>
+                            <input ng-model="req.url" type="url" class="form-control" id="url">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tag</label>
+                            <input ng-model="req.tag" type="text" class="form-control" id="tag">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Target Audience</label>
+                            <input ng-model="req.target" type="text" class="form-control" id="target">
+                        </div>
+                        <div class="mb-3" ng-show="!hiden">
+                            <label class="form-label">Content</label>
+                            <textarea ng-model="req.content" class="form-control" id="content" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Banner</label>
+                            <input class="form-control" type="file" id="banner">
+                        </div>
+                        <div class="mb-3" ng-show="!hiden">
+                            <label class="form-label">Audio</label>
+                            <input class="form-control" type="file" id="audio">
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#myModal-bill">Submit</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div> -->
+
+                    <div class="my-4 d-flex justify-content-end">
+                        <button type="button" class="btn bg-dark text-white" data-bs-toggle="collapse"
+                            data-bs-target="#auto">Payment method</button>
+                        <button id="#btn-close-ads" type="button" class="btn btn-danger mx-4" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                    <div id="auto" class="collapse mb-4">
+                        <div>
+                            <button ng-click="payment('vnpay')" class="btn w-100 border" id="btn-payment-vnpay"><img
+                                    style="width: 50px; height: 50px; object-fit: cover;"
+                                    src="https://res.cloudinary.com/div9ldpou/image/upload/v1700104153/Background/System/Icon-VNPAY-QR_lmd6lp.webp"
+                                    alt=""></button>
+                        </div>
+                        <div class="mt-3">
+                            <button ng-click="payment('paypal')" class="btn w-100 border" id="btn-payment-paypal">
+                                <i class="display-6 i bi-paypal"></i>
+                            </button>
+                        </div>
+                        <div ng-show="ads.subscription.prdStripeId !==null" class="mt-3">
+                            <button ng-click="payment('stripe')" class="btn w-100 border" id="btn-payment-stripe">
+                                <i class="display-6 bi bi-stripe"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

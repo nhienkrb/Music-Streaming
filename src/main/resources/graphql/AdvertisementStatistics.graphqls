@@ -1,0 +1,29 @@
+#AdvertisementStatistics.graphqls
+#import "./Image.graphqls"
+#import "./Account.graphqls"
+
+type AdvertisementStatistics{
+	adId: ID
+	title: String
+	content: String
+	url: String
+	startDate: String
+	endDate:String
+	budget: Float
+	status: String
+	targetAudience: String
+	clicked: Int
+	listened: Int
+	priority: Int
+	audioFile: String
+	publicIdAudio: String
+	tag: String
+	currency: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+	image: Image
+	account: Account
+	total_pending:Int
+	total_reject: Int
+}

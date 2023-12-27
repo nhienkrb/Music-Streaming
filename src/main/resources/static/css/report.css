@@ -1,0 +1,56 @@
+@media (min-width: 768px) {
+    .rpt {
+        padding-top: 100px;
+        padding-bottom: 200px;
+    }
+}
+
+.rpt {
+    min-height: 600px;
+    flex: 1 1;
+    padding: 40px 0;
+}
+
+@media (min-width: 992px) {
+    .rpt-b {
+        max-width: 840px;
+    }
+}
+
+.rpt-b {
+    max-width: 768px;
+    margin: 0 auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.rpt-b h1,
+.rpt-b-a {
+    color: #2fb960;
+}
+
+.rpt-b button {
+    border: 0px;
+    box-sizing: border-box;
+    background-color: var(--background-base, #1ed760);
+    color: #000000;
+    font-weight: bolder;
+    border-radius: 500px;
+    min-block-size: 48px;
+    justify-content: center;
+    padding-block: 8px;
+    padding-inline: 32px;
+    inline-size: 100%;
+}
+
+.rpt-b button:hover {
+    background-color: #1ed760;
+    color: #000000;
+    box-shadow: 0px 0px 10px #1ed760;
+}
+
+
+.rpt-b .form-check-input:checked {
+    background-color: #1ed760;
+    border: 2px solid black;
+}

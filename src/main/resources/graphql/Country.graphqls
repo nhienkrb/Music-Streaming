@@ -1,0 +1,10 @@
+#Country.graphqls
+
+type Country{
+	id: ID
+	nameCountry: String
+	createBy: String
+	createDate: String
+	modifiedBy: String
+	modifiDate: String
+}

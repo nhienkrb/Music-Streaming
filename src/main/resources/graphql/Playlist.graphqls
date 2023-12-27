@@ -1,0 +1,18 @@
+#Playlist.graphqls
+#import "./UserType.graphqls"
+#import "./Image.graphqls"
+#import "./PlaylistRecord.graphqls"
+#import "./Playlist_Podcast.graphqls"
+
+type Playlist{ 
+	playlistId: ID
+	playlistName: String
+	quantity: Int
+	isPublic: Boolean
+	description: String
+	createDate: String
+	usertype: UserType
+	image: Image
+	playlistRecords: [PlaylistRecord]
+	playlistPodcast: [Playlist_Podcast]
+}

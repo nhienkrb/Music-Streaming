@@ -1,0 +1,1183 @@
+::placeholder{
+    font-size: 12px;
+}
+.content-wrapper {
+    margin-left: 240px;
+    margin-top: 65px;
+
+}
+
+.content-wrapper.hide {
+    margin-left: 0;
+    transition: .7s;
+}
+
+.top-chart-earn {
+    border-radius: 5px;
+    padding-top: 15px;
+    box-shadow: -2px 3px 13px 0px rgba(203, 203, 203, 0.4);
+}
+
+.last-month {
+    line-height: 20px;
+    text-align: center;
+
+}
+
+.last-month h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.last-month p {
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+.earn {
+    margin: 12px 0;
+}
+
+
+/* CHART NAV TAB */
+.chart-nav {
+    color: var(--second-color);
+
+}
+
+.chart-nav {
+    padding: 0px 15px;
+    transition: .3s;
+    border-radius: 0;
+}
+
+.chart-nav:hover {
+    color: var(--main-color);
+
+}
+
+.chart-nav.active {
+    background: #fff !important;
+    color: var(--main-color) !important;
+    border-bottom: 2px solid var(--main-color);
+    border-radius: 0;
+}
+
+
+.chart-header-tab {
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bdr-cls {
+    border-right: 1px solid #ededed;
+}
+
+.wre-sec {
+    overflow: hidden;
+    border-top: 1px solid #ededed;
+}
+
+.earn-view {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.earn-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 3px;
+
+    line-height: 20px;
+    font-size: 16px;
+    color: var(--white-color);
+}
+
+span.bi.bi-airplane-engines.earn-icon.icon-near {
+    background: var(--main-color);
+}
+
+/* END CHART NAV TAB */
+div#pills-tabContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SECTION 2 */
+/* BIỂU ĐỒ TRÒN */
+
+.title-chart-right {
+    text-align: left;
+    font-weight: 500;
+    font-size: 17px;
+    padding-left: 2rem;
+}
+
+.chart-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+/* SECTION 2 */
+
+
+/* START SECTION 1 */
+
+.revinue-one_hedding {
+    background: linear-gradient(rgba(194, 13, 90, 1)25%, rgb(162, 101, 182)100%);
+}
+
+.revinue {
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.w-title {
+    display: flex;
+    padding: 0;
+    align-items: center;
+}
+
+.w-icon {
+    font-size: 28px;
+    color: var(--white-color);
+    padding-right: 10px;
+}
+
+.sm-chart-text {
+    line-height: 20px;
+    color: var(--white-color);
+
+}
+
+p.w-value {
+    font-size: 16px;
+}
+
+
+.card {
+    margin-bottom: 10px;
+    border: 0px;
+    border-radius: 0.625rem;
+    box-shadow: 6px 11px 41px -28px #a99de7;
+}
+
+.gradient-1 {
+    color: #fff !important;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.gradient-1 {
+    background-image: linear-gradient(230deg, #759bff, #843cf6);
+}
+
+.card .card-body {
+    padding: 1.3rem 1.28rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.opacity-5 {
+    opacity: 0.5;
+}
+
+.display-5 {
+    font-size: 3rem;
+}
+
+.float-right {
+    float: right !important;
+}
+
+/*  ND SECTION 1 */
+
+
+
+
+/* ================== START USERPROFILE ============== */
+
+.iq-card {
+    background: var(--iq-light-card);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 4px 20px 0px rgba(44, 101, 144, 0.1);
+    box-shadow: 0px 4px 20px 0px rgba(44, 101, 144, 0.1);
+}
+
+.iq-card-2 {
+
+    background: var(--iq-light-card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 4px 20px 0px rgba(44, 101, 144, 0.1);
+    box-shadow: 0px 4px 20px 0px rgba(44, 101, 144, 0.1);
+
+}
+
+.iq-card-body {
+    padding: 10px 20px 20px 20px;
+}
+
+
+.iq-card-body.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.img-profile {
+    height: 100px;
+    border-radius: 50%;
+    width: auto;
+}
+
+.icon-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-profile-detail {
+    margin-top: 10px;
+    padding: 4px;
+    font-size: 30px;
+    background: var(--white-color);
+    color: red;
+}
+
+.iq-card-header {
+    padding: 20px;
+    border-bottom: 1px solid rgb(229, 229, 229) !important;
+    overflow-x: hidden;
+}
+
+.profile-detail-personal {
+    overflow: hidden;
+}
+
+h4.card-title.mb-0 {
+    font-size: 25px;
+}
+
+.img-album {
+    height: 50px;
+    border-radius: 6px;
+}
+
+.songs-in-album {
+    font-size: 12px;
+    color: #919191;
+   
+}
+
+.img-songs {
+    height: 40px;
+    max-width: 40px;
+    border-radius: 6px;
+}
+
+.song-namefor-actist {
+    font-size: 14px;
+    color: var(--dark-bg);
+    font-weight: 500;
+}
+
+.songIn-artistProfile {
+    font-size: 16px;
+    color: var(--dark-bg);
+    font-weight: 500;
+}
+
+.title-song-artistPrfile {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 12px;
+    font-size: 25px;
+}
+
+.round:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+@media(max-width:540px) {
+
+    .songIn-artistProfile {
+        display: none;
+    }
+
+    .title-song-artistPrfile {
+        border-bottom: none
+    }
+
+    .iq-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* ================== END USERPROFILE artist ============== */
+
+.file-input__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input__label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    padding: 2px;
+    background-color: #4245a8;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.file-input__label svg {
+    height: 13px;
+    margin-right: 4px;
+}
+
+.file-input__label span {
+    font-size: 12px;
+}
+
+
+/* =================== Start Create Blog ============== */
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+
+.drop-container:hover {
+    background: #eee;
+    border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+    color: #222;
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+.drop-container.drag-active {
+    background: #eee;
+    border-color: #111;
+}
+
+.drop-container.drag-active .drop-title {
+    color: #222;
+}
+
+.font-select {
+    font-size: 15px;
+}
+
+
+/* =================== End Create Blog ============== */
+
+
+/* =================== Start MANAGER Blog ============== */
+.date-blog-manager {
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.img-person-manager img {
+    border-radius: 50%;
+    height: 1.6rem;
+    width: 1.4rem;
+    border: 1px solid #cac9c9;
+    object-fit: fill;
+}
+
+.card-img-top:hover {
+
+    opacity: 0.8;
+}
+
+
+.card-body {
+    padding: 8px !important;
+}
+
+.title-manager-blog {
+    display: block;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #111;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+.card-body p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-footer {
+    padding: 2px 5px !important;
+}
+
+.edit-blog {
+    position: relative;
+}
+
+.dots-edit {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 25px;
+    padding: 2px 3px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.dots-edit:hover {
+    border-radius: 50%;
+    background: rgb(214, 214, 214);
+
+}
+
+
+.dots-edit a {
+    color: #1f1d1d;
+
+}
+
+.dropdown-edit-font p {
+    font-size: 0.8rem;
+}
+
+.icon-pen-edit {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.dropdown-menu-dots {
+    z-index: var(--z-fixed);
+    max-width: 15rem;
+    min-width: 16rem;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: -1px 4px 20px 1px #dcdcdc85;
+
+}
+
+/* modal-header-delete */
+.modal-header-delete{
+    border-bottom: none !important;
+}
+.icon-close-bodyModal{
+    font-size: 70px;
+    color: rgb(255, 70, 70);
+    font-weight: 200;
+    text-align: center;
+}
+.btn-event-deleteModal{
+    text-align: center;
+    justify-content:center !important;
+    border-top: none !important;
+}
+/* =================== End MANAGER Blog ============== */
+
+
+/* Converted from SCSS to CSS */
+.responsive-table li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.responsive-table .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.responsive-table .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-table .col-1 {
+    flex-basis: 10%;
+}
+
+.responsive-table .col-2 {
+    flex-basis: 40%;
+}
+
+.responsive-table .col-3 {
+    flex-basis: 25%;
+}
+
+.responsive-table .col-4 {
+    flex-basis: 25%;
+}
+
+@media all and (max-width: 767px) {
+    .responsive-table .table-header {
+        display: none;
+    }
+
+    .responsive-table li {
+        display: block;
+    }
+
+    .responsive-table .col {
+        flex-basis: 100%;
+    }
+
+    .responsive-table .col {
+        display: flex;
+        padding: 10px 0;
+    }
+
+    .responsive-table .col:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+    }
+}
+
+.iq-card.iq-card-header {
+    align-items: center !important;
+}
+
+/* ================ Manager category =============== */
+
+
+.shadow {
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
+}
+
+.cardperShadow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+}
+
+.card-header:first-child {
+    border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.card-header h6 {
+    line-height: 1.2;
+}
+
+.card-bodyPerShadow {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+/* @media (min-width: 576px) {
+
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+} */
+
+.btn-group {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+
+}
+
+td {
+    vertical-align: middle;
+}
+
+.buttons-export {
+    font-size: 13px;
+    font-weight: 350;
+    padding: 5px 10px;
+
+}
+
+
+/* .pagination {
+    display: inline-block;
+} */
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    line-height: 20px;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.dir-pagination-controls li.active .ng-binding {
+    background-color:#4CAF50;
+}
+
+
+/* ===================== Quan ly giao dien ====================== */
+
+.form-select-display {
+    font-size: 15px;
+    line-height: 15px;
+    padding: 10px;
+    border-radius: 4px !important;
+
+}
+
+.button-edit {
+    font-size: 15px;
+    line-height: 15px;
+    margin-top: 1.6rem;
+}
+
+.button-size {
+    padding: 5px 20px;
+    margin-left: 1rem;
+}
+
+
+.image-number-display {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 16px;
+    border-radius: 50%;
+    background: #04AA6D;
+    font-size: 15px;
+}
+
+.addSlideImage {
+    height: 170px;
+    cursor: pointer;
+    border: 2px dashed rgb(123, 123, 123);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconAddSlideImage {
+    font-size: 90px;
+    color: rgb(123, 123, 123);
+}
+
+/* ===================== END Quan ly giao dien ====================== */
+
+
+/* ===================== START  TABLE ACCOUNT  ===================== */
+/* css input search */
+#custom-search-input {
+
+    border: solid 1px #c9c8c8;
+    border-radius: 6px;
+    background-color: #fff;
+    max-width: 300px;
+
+
+}
+
+#custom-search-input input {
+    border: 0;
+    box-shadow: none;
+
+}
+
+#custom-search-input button {
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #7e7e7e;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover {
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #a0a0a0;
+}
+
+#custom-search-input .bi-search {
+    font-size: 23px;
+}
+
+/* css input search */
+
+/* image in table tab */
+.cha {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    overflow: hidden;
+    
+}
+
+.image-table-user-tabs {
+    width: 40px;
+    height: 40px;
+    filter: none;
+    object-fit: cover;
+}
+.threee-dots-table{
+    font-size: 15px;
+    color: #111;
+}
+
+/* Start Madal Profile User */
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 14px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 12px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+/* End Madal Urofile User */
+/* ===================== END  TABLE ACCOUNT  ===================== */
+
+/* SEARCH PLAYLIST DETAIL */
+.switchToggle input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.switchToggle label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 70px;
+    max-width: 70px;
+    height: 30px;
+    background: #d1d1d1;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.switchToggle label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.switchToggle input:checked+label,
+.switchToggle input:checked+input+label {
+    background: #3e98d3;
+}
+
+.switchToggle input+label:before,
+.switchToggle input+input+label:before {
+    content: 'No';
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    width: 26px;
+    height: 26px;
+    border-radius: 90px;
+    transition: 0.3s;
+    text-indent: 0;
+    color: #fff;
+}
+
+.switchToggle input:checked+label:before,
+.switchToggle input:checked+input+label:before {
+    content: 'Yes';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 90px;
+    transition: 0.3s;
+    text-indent: 0;
+    color: #fff;
+}
+
+.switchToggle input:checked+label:after,
+.switchToggle input:checked+input+label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.switchToggle label:active:after {
+    width: 60px;
+}
+
+.toggle-switchArea {
+    margin: 10px 0 10px 0;
+}
+
+.form {
+
+    position: relative;
+}
+
+.form .fa-search {
+
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    color: #9ca3af;
+
+}
+
+.form span {
+
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan {
+    padding-left: 7px;
+}
+
+.left-pan i {
+
+    padding-left: 10px;
+}
+
+.form-input {
+    text-indent: 33px;
+    border-radius: 10px;
+}
+/* END SEARCH PLAYLIST DETAIL */
+
+/* START MODAL ADS  */
+
+.icon-detail{
+    font-size: x-large;
+    color: #808080;
+}
+.start-date-detail{
+    color: #8b8b8b;
+    font-size: smaller;
+}
+.progress-bar{
+    background-color: rgb(0, 122, 128);
+}
+/* START MODAL ADS */
+
+
+/*START PROFILE PODCAST  */
+
+.box-image-name-profile{
+    border-right: 1px solid #c1c1c1;
+}
+
+.image-profile-podcast img{
+    height: 8rem;
+    width: auto;
+    object-fit: cover;
+}
+.personal-detail-podcast i{
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    color: #787878;
+}
+.personal-detail-podcast p span{
+    font-size: 14px
+  
+}
+
+/*END PROFILE PODCAST  */
+
+/* RADIO PUBLIC */
+.switchToggle input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.switchToggle label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 70px;
+    max-width: 70px;
+    height: 30px;
+    background: #d1d1d1;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.switchToggle label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.switchToggle input:checked+label,
+.switchToggle input:checked+input+label {
+    background: #3e98d3;
+}
+
+.switchToggle input+label:before,
+.switchToggle input+input+label:before {
+    content: 'No';
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    width: 26px;
+    height: 26px;
+    border-radius: 90px;
+    transition: 0.3s;
+    text-indent: 0;
+    color: #fff;
+}
+
+.switchToggle input:checked+label:before,
+.switchToggle input:checked+input+label:before {
+    content: 'Yes';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 90px;
+    transition: 0.3s;
+    text-indent: 0;
+    color: #fff;
+}
+
+.switchToggle input:checked+label:after,
+.switchToggle input:checked+input+label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.switchToggle label:active:after {
+    width: 60px;
+}
+
+.form-select{
+    border: 1px solid #c0c0c0;
+}

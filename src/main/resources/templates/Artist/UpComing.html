@@ -1,0 +1,84 @@
+<body>
+    <div ng-controller="upComingCtrl" class="modal fade" id="upcoming">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Up coming</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container">
+                        <form name="validate">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img ng-click="selectFile('coverImg')" class="img-thumbnail w-100 coverImg"
+                                        style="height: 330px; object-fit: cover;"
+                                        src="https://res.cloudinary.com/div9ldpou/image/upload/v1696394508/Background/System/ss_276c32d569fe8394e31f5f53aaf7ce07b8874387.1920x1080_raeceo.jpg"
+                                        alt="">
+                                    <input id="coverImg" accept="image/*" hidden type="file" name="coverfile" required>
+                                    <span id="err-image" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="my-3">
+                                        <label for="">Name</label>
+                                        <input ng-model="upcoming.name" class="form-control" type="text"
+                                            name="upcomingId" id="" placeholder="Name" ng-minlength="1"
+                                            ng-maxlength="55" required>
+                                        <div ng-messages="validate.upcomingId.$touched && validate.upcomingId.$error ">
+                                            <div ng-messages-include="../admin/ng-Utilities/messages_error.html"></div>
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <label for="">Type</label>
+                                        <select class="form-control" name="" id="opt">
+                                            <option value="single">Single</option>
+                                            <option value="album">Album</option>
+                                        </select>
+                                    </div>
+                                    <div class="my-3">
+                                        <label for="">Release date</label>
+                                        <input ng-model="upcoming.releaseDate" name="release" class="form-control mb-3"
+                                            type="datetime-local" required>
+                                        <div ng-messages="validate.release.$touched && validate.release.$error ">
+                                            <div ng-messages-include="../admin/ng-Utilities/messages_error.html"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label id="label-collab" for="">Colaboration</label>
+                                        <input autocomplete="off" list="writters" class="form-control" name="writters"
+                                            id="writter">
+                                    </div>
+
+                                    <datalist class="w-100" id="writters">
+                                        <option class="option-writter" readonly="true" ng-repeat="item in listArtist"
+                                            value="{{item.artistId}}">{{item.artistName}}
+                                        </option>
+                                    </datalist>
+
+                                    <div id="list-writter" class="d-flex">
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button id="create-song" ng-disabled="!validate.$valid" class="btn btn-outline-dark">Upload</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../static/js/jscustom/Artist/upcoming.js"></script>
+</body>

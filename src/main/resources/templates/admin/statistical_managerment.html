@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>statistical managerment</title>
+</head>
+
+<body ng-app="myApp">
+   <!-- CONTENT START  -->
+   <div class="content-wrapper">
+      <section class="dashboard-top-sec">
+         <div class="container-fluid">
+            <h1>Statistical Managerment</h1>
+         </div>
+         <div class="profile-content pt-4">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height  mb-0">
+                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                        <div class="iq-header-title">
+                           <h4 class="card-title mb-0">Chart</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div id="chart1"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                     <div class="iq-card-header d-flex justify-content-between align-items-center mb-0">
+                        <div class="iq-header-title">
+                           <h4 class="card-title mb-0">Chart</h4>
+                        </div>
+                     </div>
+                     <div class="iq-card-body">
+                        <div id="chart2"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-3">
+               <!-- Tabs content -->
+               <div class="tab-content">
+                  <div class="tab-pane show active" id="rp-tabs-1">
+                     <table class="table table-hover">
+                        <thead>
+                           <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">text1</th>
+                              <th scope="col">text2</th>
+                              <th scope="col">text3</th>
+                              <th scope="col">text4</th>
+                              <th scope="col">text5</th>
+                              <th scope="col">Edit</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <th scope="row">1</th>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <button data-bs-toggle="dropdown"
+                                       style="border: none;background-color: transparent;"><i
+                                          class="bi bi-three-dots-vertical"></i></button>
+                                    <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" data-bs-toggle="modal"
+                                             data-bs-target="#myModal">Detail</a></li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <th scope="row">2</th>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Thornton</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <button data-bs-toggle="dropdown"
+                                       style="border: none;background-color: transparent;"><i
+                                          class="bi bi-three-dots-vertical"></i></button>
+                                    <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" data-bs-toggle="modal"
+                                             data-bs-target="#myModal">Detail</a></li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <th scope="row">3</th>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Larry the Bird</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <button data-bs-toggle="dropdown"
+                                       style="border: none;background-color: transparent;"><i
+                                          class="bi bi-three-dots-vertical"></i></button>
+                                    <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" data-bs-toggle="modal"
+                                             data-bs-target="#myModal">Detail</a></li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <th scope="row">4</th>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Larry the Bird</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <button data-bs-toggle="dropdown"
+                                       style="border: none;background-color: transparent;"><i
+                                          class="bi bi-three-dots-vertical"></i></button>
+                                    <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" data-bs-toggle="modal"
+                                             data-bs-target="#myModal">Detail</a></li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr>
+                              <th scope="row">5</th>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Otto</td>
+                              <td>Larry the Bird</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <button data-bs-toggle="dropdown"
+                                       style="border: none;background-color: transparent;"><i
+                                          class="bi bi-three-dots-vertical"></i></button>
+                                    <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" data-bs-toggle="modal"
+                                             data-bs-target="#myModal">Detail</a></li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="tab-pane" id="rp-tabs-2">
+                     Tab 2 content
+                  </div>
+                  <div class="tab-pane" id="rp-tabs-3">
+                     Tab 3 content
+                  </div>
+               </div>
+               <!-- Tabs content -->
+            </div>
+         </div>
+      </section>
+   </div>
+</body>
+
+</html>

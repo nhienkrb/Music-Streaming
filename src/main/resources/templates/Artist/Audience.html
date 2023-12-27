@@ -1,0 +1,111 @@
+<body ng-controller="analysisCtrl">
+    <div class="container">
+        <h1>Audience</h1>
+        <div class="row">
+            <div class="row">
+                <div class="col-10">
+                    <div class="d-flex align-items-center">
+                        <h3>{{listened}} Listeners</h3>
+                    </div>
+                    <p>{{daysAgo | date: 'yyyy-MM-dd'}} - {{currentDate | date: 'yyyy-MM-dd'}}</p>
+                </div>
+                <div class="col-2 d-flex  align-items-center">
+                    <button class="btn"><i class="bi bi-arrow-down-circle"></i></button>
+                    <select ng-change="changeTime()" ng-model="selectedTime" class="px-4 py-2 border-0">
+                        <option value="7">Last week</option>
+                        <option value="30">Last 1 month</option>
+                        <option value="180">Last 6 month</option>
+                        <option value="365">Last 1 year</option>
+                    </select>
+                </div>
+                <div ng-show="recordingId == undifined">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                        <li class="nav-item" role="presentation">
+                            <button class="tab-button-a nav-link active" onclick="openTabAudience(event, 'tab1-a')"
+                                role="tab">Listen record</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="tab-button-a nav-link" onclick="openTabAudience(event, 'tab2-a')"
+                                role="tab">Followers</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane tab-a show active" id="tab1-a">
+                            <div>
+                                <canvas id="record"></canvas>
+                            </div>
+                        </div>
+                        <div class="tab-pane  tab-a" id="tab2-a">
+                            <div>
+                                <canvas id="chartFollower"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-6">
+                    <h3>Listeners' gender</h3>
+                    <div>
+                        <canvas id="gender"></canvas>
+                    </div>
+                </div>
+                <div class="col-6 d-flex flex-column align-items-center justify-content-between">
+                    <h3>Listeners' age</h3>
+                    <div class="w-100">
+                        <canvas id="age"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h3>Listeners also like</h3>
+                <div ng-show="listListener.length > 0" class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex justify-content-between flex-column listener align-items-center my-3"
+                        ng-repeat="item in listListener">
+                        <img style="width: 100px; height: 100px; object-fit: cover;" src="{{item.account.image.url}}"
+                            class="rounded-circle" alt="Cinque Terre">
+                        <h6>{{item.account.username}}</h6>
+                    </div>
+                </div>
+
+                <div ng-show="listListenerAlsoLiked.length > 0" class=" d-flex justify-content-between flex-wrap">
+                    <div class="d-flex justify-content-between flex-column listener align-items-center my-3"
+                        ng-repeat="item in listListenerAlsoLiked">
+                        <img style="width: 100px; height: 100px; object-fit: cover;" src="{{item[0].image.url}}"
+                            class="rounded-circle" alt="Cinque Terre">
+                        <h6>{{item[0].username}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <h3>Top contries</h3>
+                <div class="col-4">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    <span>Last 7 days</span>
+                                </th>
+                                <th>9/9 - 16/9</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in listCountries | limitTo: 5">
+                                <td>{{$index +1}}</td>
+                                <td>
+                                    <h6>{{item.country}}</h6>
+                                </td>
+                                <td>{{item.quantity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-8">
+                    <div id="world"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

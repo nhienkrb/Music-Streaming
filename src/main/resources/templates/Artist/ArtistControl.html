@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhymthwave - artist studio</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="../../static/js/angularjs/artist/RoutingArtist.js"></script>
+    <script src="../../static/js/jscustom/Artist/Change_tab.js"></script>
+    <link rel="stylesheet" href="../../static/css/cssArtist/audience.css">
+    <link rel="stylesheet" href="../../static/css/cssArtist/music.css">
+    <link rel="stylesheet" href="../../static/css/cssArtist/record.css">
+    <link rel="stylesheet" href="../../static/css/toasts.css">
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <nav class="navbar navbar-expand-lg bg-black text-white">
+        <div class="container-fluid">
+            <button class="navbar-toggler navbar-light buttonCss" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls=" offcanvasExample">
+                <span class="navbar-toggler-icon" style="color: snow;"></span>
+            </button>
+            <div class="dropdown">
+                <button class="btn dropdown-item" data-bs-toggle="dropdown">
+                    <img src="{{artist.imagesProfile.url}}" alt="" class="rounded-circle" height="22"
+                        loading="lazy">
+                    <span class="text-white">{{artist.artistName}}</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item p-3" href="./">Rthyme Wave</a>
+                    </li>
+                    <li><a class="dropdown-item p-3" href="./api/v1/auth/logout">Log out</a></li>
+                </ul>
+            </div>
+            <!-- offcanvas -->
+            <div class=" offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#!artist-home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#!artist-music">Music</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#!artist-audience/all">Audience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#!artist-marketing">Marketing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#!artist-profile">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <section class="container">
+        <main class="" ng-view>
+
+        </main>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.js"></script>
+    <script src="../../static/js/Utiliez/CookiesUtil.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="../../static/js/jscustom/UI-Js-Admin/bootstrap-show-notification.js"></script>
+    <script src="../../static/js/jscustom/toasts.js"></script>
+    <!-- Tab home -->
+    <script src="../../static/js/angularjs/artist/Artist.js"></script>
+    <script src="../../static/js/angularjs/artist/Home.js"></script>
+    <!-- Tab music -->
+    <script src="../../static/js/angularjs/artist/Music.js"></script>
+    <script src="../../static/js/jscustom/Artist/Music.js"></script>
+    <script src="../../static/js/angularjs/artist/Record.js"></script>
+    <script src="../../static/js/angularjs/artist/Upcoming.js"></script>
+
+    <!-- tab marketing -->
+    <script src="../../static/js/angularjs/artist/Marketing.js"></script>
+
+    <!-- tab profile -->
+    <script src="../../static/js/angularjs/artist/Profile.js"></script>
+
+    <script src="../../static/js/jscustom/Artist/profile.js"></script>
+    <link rel="stylesheet" href="../../static/css/cssArtist/profile.css">
+
+    <!-- tab audience -->
+    <script src="../../static/js/angularjs/artist/Analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/latest/custom/world/world.js"></script>
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+</body>
+
+</html>

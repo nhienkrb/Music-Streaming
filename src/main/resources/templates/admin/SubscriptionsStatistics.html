@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- CONTENT START  -->
+    <div class="content-wrapper">
+        <style>
+            ::placeholder {
+                font-size: 12px;
+            }
+
+            @media (min-width: 576px) {
+                .rounded-nav {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            @media (min-width: 576px) {
+                .rounded-nav .nav-link {
+                    border-radius: 50rem !important;
+                }
+            }
+
+            /* With arrow tabs */
+
+            .with-arrow .nav-link.active {
+                position: relative;
+            }
+
+            .with-arrow .nav-link.active::after {
+                content: '';
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid #2b90d9;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: block;
+            }
+
+            /* lined tabs */
+
+            .lined .nav-link {
+                border: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .lined .nav-link:hover {
+                border: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .lined .nav-link.active {
+                background: none;
+                color: #555;
+                border-color: #2b90d9;
+            }
+
+
+            .nav-pills .nav-link {
+                color: #555;
+            }
+
+            .text-uppercase {
+                letter-spacing: 0.1em;
+            }
+
+            /* START CSS CART SUBSCRIPTION */
+
+
+
+
+            .visuallyhidden {
+                position: absolute;
+                z-index: -1;
+                right: 0;
+                opacity: 0;
+
+            }
+
+
+            .container {
+                overflow: hidden;
+                padding: 20px;
+                margin-top: 2em;
+
+            }
+
+            .card-carousel {
+                --card-width: 80%;
+                --card-max-width: 300px;
+                --card-height: 500px;
+                --carousel-min-width: 600px;
+                z-index: 1;
+                position: relative;
+                margin: 0 auto;
+                width: 100%;
+                height: var(--card-height);
+                min-width: var(--carousel-min-width);
+                transition: filter .3s ease;
+            }
+
+            @media screen and (max-width: 640px) {
+                .card-carousel {
+                    margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+                }
+            }
+
+            /* END CSS CART SUBSCRIPTION*/
+        </style>
+
+        <div class="container-fluid">
+
+            <div class="container ">
+                <div class="p-4 bg-white rounded shadow mb-5">
+
+                    <div class="row">
+                        <div class="text-center mt-0">
+                            <h3>Statistics Subscription</h3>
+                        </div>
+                    </div>
+
+                    <hr style="color: #a1a1a1;">
+                    <!-- Rounded tabs -->
+                    <ul id="myTab" role="tablist"
+                        class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+
+                        <li class="nav-item flex-sm-fill">
+                            <a id="statistics-tab" id="pills-statistics-package-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-statistics-package" type="button" role="tab"
+                                aria-controls="pills-statistics-package" aria-selected="true"
+                                class="nav-link border-0 text-uppercase font-weight-bold active">Package Account</a>
+                        </li>
+
+
+                        <li class="nav-item flex-sm-fill">
+                            <a id="home-tab" data-toggle="tab" href="" id="pills-user-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold ">Package
+                                ADS</a>
+                        </li>
+
+                    </ul>
+
+
+                    <div id="myTabContent" class="tab-content">
+
+                        <!-- Statistics  Package Account -->
+                        <div id="pills-statistics-package" role="tabpanel"
+                            aria-labelledby="pills-statistics-package-tab" tabindex="0"
+                            class="tab-pane fade px-2 show active ">
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <table class="table ">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col" class="text-center">#</th>
+                                                <th scope="col" class="text-center"> Type</th>
+                                                <th scope="col" class="text-center">Price</th>
+                                                <th scope="col" class="text-center">Duration</th>
+                                                <th scope="col" class="text-center">Limit playlist</th>
+                                                <th scope="col" class="text-center">Limit songs</th>
+                                                <th scope="col" class="text-center">Total Users using</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                          
+                                            <tr ng-repeat="statistics in statistics | filter: { subscriptionCategory: 'ACCOUNT', subscriptionType: '!MASTER' } | orderBy: 'userTypes.length':false">
+                                           
+                                                <th class="text-center" scope="row">{{$index + 1}}</th>
+
+                                                <td class="text-center">
+
+                                                    <span
+                                                        ng-class="{'badge text-bg-info mx-1':statistics.subscriptionType === 'BASIC', 'badge text-bg-warning mx-1': statistics.subscriptionType === 'PREMIUM'}">{{statistics.subscriptionType}}</span>
+
+                                                </td>
+                                                <td class="text-center">{{statistics.price}}</td>
+                                                <td class="text-center">{{statistics.duration }} Days</td>
+                                                <td class="text-center">
+                                                    {{statistics.playlistAllow }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{statistics.nip }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{statistics.userTypes.length | number : 0}}
+                                                </td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <th scope="col" class="text-center">#</th>
+                                            <th scope="col" class="text-center"> Type</th>
+                                            <th scope="col" class="text-center">Price</th>
+                                            <th scope="col" class="text-center">Duration</th>
+                                            <th scope="col" class="text-center">Limit playlist</th>
+                                            <th scope="col" class="text-center">Limit songs</th>
+                                            <th scope="col" class="text-center">Total Users using</th>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- Statistics Package Account -->
+
+                        <!-- Statistics  Package ADS -->
+                        <div id="pills-home" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0"
+                            class="tab-pane fade px-4  ">
+                            <div class="container">
+                                <div class="table-responsive">
+                                    <table class="table ">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th scope="col" class="text-center">#</th>
+                                                <th scope="col" class="text-center">Type</th>
+                                                <th scope="col" class="text-center">Price</th>
+                                                <th scope="col" class="text-center">Duration</th>
+                                                <th scope="col" class="text-center">Total Users using</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                           
+                                            <tr ng-repeat="statistics in statistics | filter: { subscriptionCategory: 'ADVERTISEMENT', subscriptionType: '!MASTER' } | orderBy: 'userTypes.length':false">
+                                                <th class="text-center" scope="row">{{$index + 1}}</th>
+
+                                                <td class="text-center">
+
+                                                  
+                                                    <span   class="badge text-bg-danger p-2">{{statistics.subscriptionType}}</span>
+
+                                                </td>
+                                                <td class="text-center">{{statistics.price}}</td>
+                                                <td class="text-center">{{statistics.duration }} Days</td>
+                                                <td class="text-center">
+                                                    {{statistics.advertisement.length | number : 0}}
+                                                </td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <th scope="col" class="text-center">#</th>
+                                                <th scope="col" class="text-center"> Type</th>
+                                                <th scope="col" class="text-center">Price</th>
+                                                <th scope="col" class="text-center">Duration</th>
+                                                <th scope="col" class="text-center">Total Users using</th>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- Statistics Package ADS -->
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--  CONTENT END  -->
+
+
+
+</body>
+
+</html>

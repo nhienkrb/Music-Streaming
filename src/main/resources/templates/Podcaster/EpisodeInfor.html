@@ -1,0 +1,137 @@
+<body controller="episodeInforCtrl">
+    <div class="container mt-5">
+        <div class="row">
+            <div>
+                <h3>Episode options</h3>
+            </div>
+            <form name="validate">
+                <div class="mt-5 d-flex justify-content-between align-items-center">
+                    <audio id="audioFile" controls class="w-100 me-5" src=""></audio>
+                    <div>
+                        <button ng-click="deleteFile()" class="btn border-dark rounded-pill text-black">Delete</button>
+                    </div>
+                </div>
+                <div class="title mt-5">
+                    <label for="">Episode title</label>
+                    <input ng-model="episode.episodeTitle" class="form-control border-dark border-1 my-1 py-2"
+                        type="text" name="title" id="" placeholder="What do you want to call this episode?"
+                        ng-minlength="1" ng-maxlength="250" required>
+                    <div ng-messages="validate.title.$touched && validate.title.$error ">
+                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html"></div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <label for="">Episode description</label>
+                    <textarea ng-model="episode.description" class="form-control my-1 py-2" name="" id="" cols="30"
+                        rows="10" ng-maxlength="500"></textarea>
+                </div>
+                <div class="mt-5">
+                    <label for="">Publish date:</label>
+                    <input ng-model="episode.publishDate" name="publish" class="form-control my-1" type="datetime-local"
+                        required>
+                    <div ng-messages="validate.publish.$touched && validate.publish.$error ">
+                        <div ng-messages-include="../admin/ng-Utilities/messages_error.html"></div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="5" class="">
+                                        <div class="d-flex align-items-center">
+                                            <h3>Customize this episode</h3>
+                                            <span class="mx-3">(Optional)</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Season number</td>
+                                    <td colspan="2"><input ng-model="episode.sessionNumber"
+                                            class="rounded-pill py-3 text-center" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Episode number</td>
+                                    <td colspan="2"><input ng-model="episode.episodeNumber"
+                                            class="rounded-pill py-3 text-center" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Episode type</td>
+                                    <td colspan="2">
+                                        <div class="d-flex">
+                                            <div class="checkbox ">
+                                                <input ng-model="episode.episodeType" type="radio" name="type"
+                                                    value="Full" id="" />
+                                                <div class="box">
+                                                    <p class="my-0">Full</p>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input ng-model="episode.episodeType" type="radio" value="Trailer"
+                                                    name="type" id="" />
+                                                <div class="box">
+                                                    <p>Trailer</p>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input ng-model="episode.episodeType" type="radio" value="Bonus"
+                                                    name="type" id="" />
+                                                <div class="box">
+                                                    <p>Bonus</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Content</td>
+                                    <td colspan="2">
+                                        <div class="d-flex">
+                                            <div class="checkbox">
+                                                <input ng-model="episode.content" type="radio" value="Clean"
+                                                    name="content" id="" />
+                                                <div class="box">
+                                                    <p>Clean</p>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox">
+                                                <input ng-model="episode.content" type="radio" value="Explicit"
+                                                    name="content" id="" />
+                                                <div class="box">
+                                                    <p>Explicit</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-4 d-flex justify-content-between">
+                        <img id="img-ep" class="ms-5 w-100 img-podcast"
+                            src="https://media.istockphoto.com/id/1222357475/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-xem-tr%C6%B0%E1%BB%9Bc-h%C3%ACnh-%E1%BA%A3nh-gi%E1%BB%AF-ch%E1%BB%97-h%C3%ACnh-%E1%BA%A3nh-cho-trang-web-ho%E1%BA%B7c-thi%E1%BA%BFt-k%E1%BA%BF-ui-ux-minh-h%E1%BB%8Da.jpg?s=612x612&w=0&k=20&c=85Mb60buhPvbdQd2CaKEXn6YJyhKqd_QZ0nIh_2OtqM="
+                            alt="">
+                        <input accept="image/*" type="file" name="imageEP" id="fileImgEP" hidden required>
+                        <h6 class="text-danger" id="err-image"></h6>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center my-5">
+                    <button ng-click="createEpisode()" ng-disabled="!validate.$valid"
+                        class="btn border-dark bg-black text-white rounded-pill px-5">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../../static/js/angularjs/pobcast/Episode.js"></script>
+
+</body>
